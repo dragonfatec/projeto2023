@@ -22,6 +22,8 @@
 -not null.
 
 #TECNOLOGIAS UTILIZADAS
+-Slack.
+-GitHub.
 -Discord.
 -Visual Studio Code.
   Linguagens:
