@@ -22,4 +22,7 @@
 -not null.
 
 #TECNOLOGIAS UTILIZADAS
--not null.
+-Discord.
+-Visual Studio Code.
+  Linguagens:
+    Java.
