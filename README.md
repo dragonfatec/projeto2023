@@ -1,6 +1,6 @@
 # Projeto integrador 2023
 FATEC São José dos Campos - Prof. Jessen Vidal<br>
-1º Período - Banco De Dados
+2º Período - Banco De Dados
 
 # Objetivo
 
