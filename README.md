@@ -1,5 +1,5 @@
 # Projeto integrador 2023
-Desenvolvido pelos alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º Período - Banco De Dados.
+Desenvolvido por alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º Período - Banco De Dados.
 
 # Objetivo
 
