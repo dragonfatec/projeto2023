@@ -76,17 +76,49 @@ Desenvolvido pelos alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2
 -not null.
 
 # TECNOLOGIAS UTILIZADAS
-Para contato com o cliente:
- Slack <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
-Para desenvolvimento do programa:
- Armazenamento do código:
-  GitHub <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
- Desenvolvimento do código:
-  Visual Studio Core <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
-  Linguagens:
-   Java <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
-  Ferramentas:
-   Ainda não decidido <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
- Comunicação interna da equipe:
-  Discord <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
-  WHatsapp <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
+
+<ul dir="auto">
+ <li><b>Para contato com o cliente</b>
+ <ul dir="auto">
+  <li>Slack <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"></li>
+ </ul>
+</li>
+ <li><b>Para desenvolvimento do programa</b>
+ <ul dir="auto">
+  <li>Hospedagem do código e controle de versão</li>
+  <ul>
+   <li>GitHub <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+  </ul>
+  <li>Desenvolvimento do código</li>
+  <ul>
+   <li>Visual Studio Code <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+  </ul>
+  <li>Linguagens</li>
+  <ul>
+   <li>Java <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+  </ul>
+  <li>Ferramentas</li>
+  <ul>
+   <li>A definir <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+  </ul>
+ </ul>
+</li>
+  <li><b>Para comunicação interna da equipe</b>
+ <ul dir="auto">
+  <li>Discord <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"></li>
+  <li>Whatsapp <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"></li>
+ </ul>
+</ul>
+
+Para desenvolvimento do programa:<br>
+ Armazenamento do código:<br>
+  GitHub <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
+ Desenvolvimento do código:<br>
+  Visual Studio Core <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
+  Linguagens:<br>
+   Java <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
+  Ferramentas:<br>
+   Ainda não decidido <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
+ Comunicação interna da equipe:<br>
+  Discord <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
+  WHatsapp <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
