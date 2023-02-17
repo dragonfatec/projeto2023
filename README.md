@@ -86,14 +86,14 @@ Desenvolvido por alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º
  
  <li><b>Desenvolvimento do projeto</b>
   <ul dir="auto">
-   <li>Planejamento</li>
+   <li>Fluxograma</li>
    <ul>
-    <a href=""><li>Fluxograma <img src="" height="20"></li></a>
+    <a href="https://trello.com/"><li>Trello <img src="https://cdn-icons-png.flaticon.com/512/6124/6124991.png" height="20"></li></a>
    </ul>
   
-  <li>Wireframe</li>
+  <li>Telas</li>
    <ul>
-    <a href=""><li>Wireframe <img src="" height="20"></li></a>
+    <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
    </ul>
   
   <li>Hospedagem do código e controle de versão</li>
