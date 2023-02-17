@@ -88,7 +88,8 @@ Desenvolvido por alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º
   <ul dir="auto">
    <li>Fluxograma</li>
    <ul>
-    <a href="https://trello.com/"><li>Trello <img src="https://cdn-icons-png.flaticon.com/512/6124/6124991.png" height="20"></li></a>
+    <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
+    <a href="https://github.com/"><li>GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></li></a>
    </ul>
   
   <li>Telas</li>
