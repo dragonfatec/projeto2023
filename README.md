@@ -87,19 +87,19 @@ Desenvolvido pelos alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2
  <ul dir="auto">
   <li>Hospedagem do código e controle de versão</li>
   <ul>
-   <li>GitHub <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+   <li>GitHub <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"</li>
   </ul>
   <li>Desenvolvimento do código</li>
   <ul>
-   <li>Visual Studio Code <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+   <li>Visual Studio Code <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"</li>
   </ul>
   <li>Linguagens</li>
   <ul>
-   <li>Java <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+   <li>Java <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"</li>
   </ul>
   <li>Ferramentas</li>
   <ul>
-   <li>A definir <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%</li>
+   <li>A definir <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"</li>
   </ul>
  </ul>
 </li>
@@ -109,16 +109,3 @@ Desenvolvido pelos alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2
   <li>Whatsapp <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"></li>
  </ul>
 </ul>
-
-Para desenvolvimento do programa:<br>
- Armazenamento do código:<br>
-  GitHub <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
- Desenvolvimento do código:<br>
-  Visual Studio Core <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
-  Linguagens:<br>
-   Java <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
-  Ferramentas:<br>
-   Ainda não decidido <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
- Comunicação interna da equipe:<br>
-  Discord <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
-  WHatsapp <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"><br>
