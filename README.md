@@ -1,14 +1,10 @@
 # Projeto integrador 2023
-FATEC São José dos Campos - Prof. Jessen Vidal
+FATEC São José dos Campos - Prof. Jessen Vidal<br>
 1º Período - Banco De Dados
-
-<br>
 
 # Objetivo
 
 -not null.
-
-<br>
 
 # Equipe de desenvolvimento
 PO - Lucas Jonathan Cordeiro Gomes
