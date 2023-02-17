@@ -86,12 +86,7 @@ Desenvolvido por alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º
  
  <li><b>Desenvolvimento do projeto</b>
   <ul dir="auto">
-   <li>Fluxograma</li>
-   <ul>
-    <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
-   </ul>
-  
-  <li>Telas</li>
+   <li>Fluxograma e telas</li>
    <ul>
     <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
    </ul>
