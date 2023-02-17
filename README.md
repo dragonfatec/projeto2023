@@ -1,6 +1,5 @@
 # Projeto integrador 2023
-FATEC São José dos Campos - Prof. Jessen Vidal<br>
-2º Período - Banco De Dados
+Desenvolvido pelos alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º Período - Banco De Dados.
 
 # Objetivo
 
@@ -70,16 +69,24 @@ FATEC São José dos Campos - Prof. Jessen Vidal<br>
 # SPRINT BACKLOG
 -not null.
 
-#SPRINT DETALHADAS
+# SPRINT DETALHADAS
 -not null.
 
-#MOCKUP
+# MOCKUP
 -not null.
 
-#TECNOLOGIAS UTILIZADAS
--Slack.
--GitHub.
--Discord.
--Visual Studio Code.
+# TECNOLOGIAS UTILIZADAS
+Para contato com o cliente:
+ Slack <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
+Para desenvolvimento do programa:
+ Armazenamento do código:
+  GitHub <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
+ Desenvolvimento do código:
+  Visual Studio Core <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
   Linguagens:
-    Java.
+   Java <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
+  Ferramentas:
+   Ainda não decidido <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
+ Comunicação interna da equipe:
+  Discord <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
+  WHatsapp <img src="" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;">
