@@ -3,7 +3,8 @@ Desenvolvido por alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º
 
 # Objetivo
 
--not null.
+Sistema que faça o controle da jornada de trabalho do colaborador, identifique e classifique horas extras, controle das horas extras e sobreavisos.<b>
+Acesso de administrador (master para osdepartamentospessoale financeiro), gestor (aprovaçãoe lançamento) e colaborador (apontar horasextras).<b>
 
 # Equipe de desenvolvimento
 
