@@ -121,7 +121,7 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
 
           <li>Desenvolvimento do código</li>
            <ul>
-            <a href="https://code.visualstudio.com/"><li>Visual Studio Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" height="20"></li></a>
+            <a href="https://code.visualstudio.com/"><li>Visual Studio Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png"              height="20"></li></a>
            </ul>
 
           <li>Linguagens</li>
@@ -139,7 +139,7 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
          <li><b>Comunicação interna da equipe</b>
           <ul dir="auto">
            <a href="https://discord.com/"><li>Discord <img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" height="20"></li></a>
-           <a href="https://www.whatsapp.com/?lang=pt_br"><li>Whatsapp <img src="https://imagepng.org/wp-content/uploads/2017/08/whatsapp-icone-1.png" height="20"></li></a>
+           <a href="https://www.whatsapp.com/?lang=pt_br"><li>Whatsapp <img src="https://imagepng.org/wp-content/uploads/2017/08/whatsapp-icone-1.png" height="20">                    </li></a>
           </ul>
          </ul>
  </summary>
