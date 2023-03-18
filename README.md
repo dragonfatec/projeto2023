@@ -100,48 +100,47 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
  
 <details>
  <summary> TECNOLOGIAS UTILIZADAS 
+   <ul>
+    <li><b>Contato com o cliente</b>
+      <ul dir="auto">
+      <a href="https://app.slack.com/"><li>Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></li></a>
+      </ul>
+    </li>
 
- <ul>
-  <li><b>Contato com o cliente</b>
-   <ul dir="auto">
-    <a href="https://app.slack.com/"><li>Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></li></a>
-   </ul>
-  </li>
+         <li><b>Desenvolvimento do projeto</b>
+          <ul dir="auto">
+           <li>Fluxograma e telas</li>
+           <ul>
+            <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
+           </ul>
 
-  <li><b>Desenvolvimento do projeto</b>
-   <ul dir="auto">
-    <li>Fluxograma e telas</li>
-    <ul>
-     <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
-    </ul>
+          <li>Hospedagem do código e controle de versão</li>
+           <ul>
+            <a href="https://github.com/"><li>GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></li></a>
+           </ul>
 
-   <li>Hospedagem do código e controle de versão</li>
-    <ul>
-     <a href="https://github.com/"><li>GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></li></a>
-    </ul>
+          <li>Desenvolvimento do código</li>
+           <ul>
+            <a href="https://code.visualstudio.com/"><li>Visual Studio Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" height="20"></li></a>
+           </ul>
 
-   <li>Desenvolvimento do código</li>
-    <ul>
-     <a href="https://code.visualstudio.com/"><li>Visual Studio Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" height="20"></li></a>
-    </ul>
+          <li>Linguagens</li>
+           <ul>
+            <a href="https://www.java.com/pt-BR/"><li>Java <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" height="20"></li></a>
+           </ul>
 
-   <li>Linguagens</li>
-    <ul>
-     <a href="https://www.java.com/pt-BR/"><li>Java <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" height="20"></li></a>
-    </ul>
+          <li>Ferramentas</li>
+           <ul>
+            <a href=""><li>A definir <img src="" height="20"></li></a>
+           </ul>
 
-   <li>Ferramentas</li>
-    <ul>
-     <a href=""><li>A definir <img src="" height="20"></li></a>
-    </ul>
-
-  </ul>
- </li>
-  <li><b>Comunicação interna da equipe</b>
-   <ul dir="auto">
-    <a href="https://discord.com/"><li>Discord <img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" height="20"></li></a>
-    <a href="https://www.whatsapp.com/?lang=pt_br"><li>Whatsapp <img src="https://imagepng.org/wp-content/uploads/2017/08/whatsapp-icone-1.png" height="20"></li></a>
-   </ul>
-  </ul>
+         </ul>
+        </li>
+         <li><b>Comunicação interna da equipe</b>
+          <ul dir="auto">
+           <a href="https://discord.com/"><li>Discord <img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" height="20"></li></a>
+           <a href="https://www.whatsapp.com/?lang=pt_br"><li>Whatsapp <img src="https://imagepng.org/wp-content/uploads/2017/08/whatsapp-icone-1.png" height="20"></li></a>
+          </ul>
+         </ul>
  </summary>
 </details>
