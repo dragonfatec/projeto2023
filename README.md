@@ -91,9 +91,6 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
 # SPRINT BACKLOG
 -not null.
 
-# SPRINT DETALHADAS
--not null.
-
 # MOCKUP
 -not null.
  
