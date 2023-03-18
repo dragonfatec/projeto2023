@@ -1,3 +1,7 @@
+<div align="center">
+![Capa DRAGON](https://user-images.githubusercontent.com/111617449/226095576-86edb6ff-c411-401a-8347-f37f1b7fe10f.png)
+</div>
+
 # Projeto integrador 2023
 Desenvolvido por alunos da FATEC São José dos Campos - Prof. Jessen Vidal, 2º Período - Banco De Dados.
 
