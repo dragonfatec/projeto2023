@@ -97,7 +97,7 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
 # MOCKUP
 -not null.
 
-# <summary> TECNOLOGIAS UTILIZADAS </summary>
+# <summary> TECNOLOGIAS UTILIZADAS 
 
 <ul>
  <li><b>Contato com o cliente</b>
@@ -140,4 +140,5 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
    <a href="https://discord.com/"><li>Discord <img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" height="20"></li></a>
    <a href="https://www.whatsapp.com/?lang=pt_br"><li>Whatsapp <img src="https://imagepng.org/wp-content/uploads/2017/08/whatsapp-icone-1.png" height="20"></li></a>
   </ul>
-</ul>
+ </ul>
+</summary>
