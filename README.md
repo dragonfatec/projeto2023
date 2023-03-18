@@ -99,7 +99,8 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
  
  
 <details>
- <summary> TECNOLOGIAS UTILIZADAS 
+ 
+ <summary> TECNOLOGIAS UTILIZADAS </summary>
    <ul>
     <li><b>Contato com o cliente</b>
       <ul dir="auto">
