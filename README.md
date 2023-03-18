@@ -97,7 +97,7 @@ Acesso de administrador (master para osdepartamentospessoale financeiro), gestor
 # MOCKUP
 -not null.
 
-# <summary> TECNOLOGIAS UTILIZADAS 
+<summary> TECNOLOGIAS UTILIZADAS 
 
 <ul>
  <li><b>Contato com o cliente</b>
