@@ -4,7 +4,7 @@
  
 </div>
 
-# Objetivo
+![Objetivo](https://user-images.githubusercontent.com/111617449/226420067-8dd376b4-c7f0-4073-9fa3-b89afe4d7f38.png)
 
 Sistema que faça o controle da jornada de trabalho do colaborador, identifique e classifique horas extras, controle das horas extras e sobreavisos.<b>
 Acesso de administrador (master para osdepartamentospessoale financeiro), gestor (aprovaçãoe lançamento) e colaborador (apontar horasextras).<b>
