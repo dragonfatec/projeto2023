@@ -49,9 +49,10 @@ Acesso de administrador (master para os departamentos pessoal e financeiro), ges
 <div align="center">
 
 ![Mockup](https://user-images.githubusercontent.com/111617449/226683334-0ddb2ed1-9d5b-4c67-a90f-6376e1ff1245.png)
--not null.
  
  </div>
+ 
+ -not null.
  
 <details>
  
