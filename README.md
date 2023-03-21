@@ -38,12 +38,20 @@ Acesso de administrador (master para os departamentos pessoal e financeiro), ges
 | 15 | Atualizar o sistema para JavaFX | Alta | indicar | A fazer |
 | 17 | Como Gestor eu quero visualizar desempenho da Squad | Alta | indicar | Avançando |
 
-# SPRINT BACKLOG
+<div align="center">
+
+![Sprint Backlog](https://user-images.githubusercontent.com/111617449/226683297-18907cc3-257f-451b-872c-a20534c8f223.png)
+
+</div>
+
 -not null.
 
-# MOCKUP
+<div align="center">
+
+![Mockup](https://user-images.githubusercontent.com/111617449/226683334-0ddb2ed1-9d5b-4c67-a90f-6376e1ff1245.png)
 -not null.
  
+ </div>
  
 <details>
  
