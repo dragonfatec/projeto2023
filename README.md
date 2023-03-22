@@ -30,7 +30,7 @@ Acesso de administrador (master para os departamentos pessoal e financeiro), ges
 | 07 | Como Gestor eu quero justificar horário do colaborador | Alta | indicar | Avançando |
 | 08 | Como Usuário eu quero visualizar a mim mesmo (hora extra e sobreaviso) | Média | indicar | Em processo |
 | 09 | Como Gestor eu quero enviar relatório ao Administrador| Média | indicar | Avançando |
-| 10 | Como Administrador eu quero avaliar o desenpenho da Squad | Média | indicar | Avançando |
+| 10 | Como Administrador eu quero avaliar o desempenho da Squad | Média | indicar | Avançando |
 | 11 | Como Administrador eu quero um histórico onde serão armazenados as horas extras realizadas por cada colaborador | Baixa | indicar | Em processo |
 | 12 | Como Administrador eu quero Dashboards para acompanhamento das Squads, Gestor e Colaborador | Baixa | indicar | Em processo |
 | 13 | Como Gestor eu quero Dashboards para acompanhamento das Squads, Colaborador e próprio | Baixa | indicar | Em processo |
