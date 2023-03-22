@@ -10,8 +10,8 @@
  
 </div>
 
-Desenvolver uma ferramenta que atenda um sistema que faça o controle da jornada de trabalho do colaborador, identifique e classifique horas extras, controle das horas extras e sobreavisos.<b>
-Acesso de administrador (master para os departamentos pessoal e financeiro), gestor (aprovação e lançamento) e colaborador (apontar horas extras).<b>
+Desenvolver uma ferramenta que faça o controle da jornada de trabalho do colaborador, identifique e classifique horas extras, controle das horas extras e sobreavisos.<b>
+Acesso de administrador para o departamento de RH, gestor para aprovação e lançamento das horas e colaborador para apontar horas extras.<b>
 
 <div align="center">
  
