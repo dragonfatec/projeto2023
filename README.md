@@ -102,7 +102,11 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  </summary>
 </details>
  
- # Equipe de desenvolvimento
+<div align="center">
+
+![Equipe de desenvolvimento](https://user-images.githubusercontent.com/111617449/227279289-39f6f145-321b-4940-8db0-28e12f9007ac.png)
+
+</div>
 
 <table>
 <thead>
