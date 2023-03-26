@@ -21,22 +21,22 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 | ID | Descrição | Prioridade | Sprint | Status |
 | :-: | :-----: | :----------: | :---: | :---: |
-| 01 | Como cliente eu quero que meu programa tenha um perfil Administrador para cadastrar Colaborador e cadastrar perfil Gestor | Alta | indicar | Progresso |
-| 02 | Como cliente eu quero que meu programa tenha um perfil Gestor para aprovar lançamento de horas, sobreaviso | Alta | indicar |  Progresso |
-| 03 | Como cliente eu quero que meu programa tenha um perfil Colaborador para enviar as horas trabalhadas (com HE e sobreaviso) | Alta | indicar | A fazer |
-| 04 | Como Gestor eu quero aprovar/negar pedido de horas(HE e sobreaviso) | Alta | indicar | A fazer |
-| 05 | Como Administrador eu quero cadastrar/excluir colaborador e gestor | Alta | indicar | A fazer |
-| 06 | Como cliente meu programa deve ter uma tela de login para ter acesso ao sistema | Baixa | indicar | A fazer |
-| 07 | Como Gestor eu quero justificar horário do colaborador | Alta | indicar | Progresso |
-| 08 | Como Usuário eu quero visualizar a mim mesmo (hora extra e sobreaviso) | Média | indicar | Progresso |
-| 09 | Como Gestor eu quero enviar relatório ao Administrador| Média | indicar | Progresso |
-| 10 | Como Administrador eu quero avaliar o desempenho da Squad | Média | indicar | Avançando |
-| 11 | Como Administrador eu quero um histórico onde serão armazenados as horas extras realizadas por cada colaborador | Baixa | indicar | Progresso |
-| 12 | Como Administrador eu quero Dashboards para acompanhamento das Squads, Gestor e Colaborador | Baixa | indicar | Progresso |
-| 13 | Como Gestor eu quero Dashboards para acompanhamento das Squads, Colaborador e próprio | Baixa | indicar | A fazer |
-| 14 | Como Colaborador eu quero Dashboards para acompanhamento das horas extras e sobreaviso | Baixa | indicar | A fazer |
-| 15 | Atualizar o sistema para JavaFX | Alta | indicar | A fazer |
-| 16 | Como Gestor eu quero visualizar desempenho da Squad | Alta | indicar | Progresso |
+| 01 | Como cliente eu quero que meu programa tenha um perfil Administrador para cadastrar Colaborador e cadastrar perfil Gestor | Alta | indicar | Pronto |
+| 02 | Como cliente eu quero que meu programa tenha um perfil Gestor para aprovar lançamento de horas, sobreaviso | Alta | indicar |  Iniciado |
+| 03 | Como cliente eu quero que meu programa tenha um perfil Colaborador para enviar as horas trabalhadas (com HE e sobreaviso) | Alta | indicar | Iniciado |
+| 04 | Como Gestor eu quero aprovar/negar pedido de horas(HE e sobreaviso) | Alta | indicar | Aguardando |
+| 05 | Como Administrador eu quero cadastrar/excluir colaborador e gestor | Alta | indicar | Aguardando |
+| 06 | Como cliente meu programa deve ter uma tela de login para ter acesso ao sistema | Baixa | indicar | Aguardando |
+| 07 | Como Gestor eu quero justificar horário do colaborador | Alta | indicar | Pronto |
+| 08 | Como Usuário eu quero visualizar a mim mesmo (hora extra e sobreaviso) | Média | indicar | Pronto |
+| 09 | Como Gestor eu quero enviar relatório ao Administrador| Média | indicar | Aguardando |
+| 10 | Como Administrador eu quero avaliar o desempenho da Squad | Média | indicar | Aguardando |
+| 11 | Como Administrador eu quero um histórico onde serão armazenados as horas extras realizadas por cada colaborador | Baixa | indicar | Aguardando |
+| 12 | Como Administrador eu quero Dashboards para acompanhamento das Squads, Gestor e Colaborador | Baixa | indicar | Aguardando |
+| 13 | Como Gestor eu quero Dashboards para acompanhamento das Squads, Colaborador e próprio | Baixa | indicar | Aguardando |
+| 14 | Como Colaborador eu quero Dashboards para acompanhamento das horas extras e sobreaviso | Baixa | indicar | Aguardando |
+| 15 | Atualizar o sistema para JavaFX | Alta | indicar | Aguardando |
+| 16 | Como Gestor eu quero visualizar desempenho da Squad | Alta | indicar | Aguardando |
 
 <div align="center">
 
