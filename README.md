@@ -62,7 +62,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  
 <details>
  
- <summary> TECNOLOGIAS UTILIZADAS </summary>
+ <summary> ![tecnologias usadas com icones](https://user-images.githubusercontent.com/111617449/227805960-20fe98e1-5c0c-4235-8a5c-6eb2b9709010.png) </summary>
  
    <ul>
     <li><b>Contato com o cliente</b>
