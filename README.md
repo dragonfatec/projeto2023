@@ -65,32 +65,32 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  <summary> TECNOLOGIAS UTILIZADAS </summary>
    <ul>
     <li><b>Contato com o cliente</b>
-      <ul dir="auto">
-      <a href="https://app.slack.com/"><li>Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></li></a>
-      </ul>
+    <ul dir="auto">
+    <a href="https://app.slack.com/"><li>Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></li></a>
+    </ul>
     </li>
 
-         <li><b>Desenvolvimento do projeto</b>
-          <ul dir="auto">
-           <li>Fluxograma e telas</li>
-           <ul>
-            <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
-           </ul>
+    <li><b>Desenvolvimento do projeto</b>
+     <ul dir="auto">
+      <li>Fluxograma e telas</li>
+     <ul>
+       <a href="https://www.figma.com/"><li>Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></li></a>
+       </ul>
 
-          <li>Hospedagem do código e controle de versão</li>
-           <ul>
-            <a href="https://github.com/"><li>GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></li></a>
-           </ul>
+    <li>Hospedagem do código e controle de versão</li>
+     <ul>
+      <a href="https://github.com/"><li>GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></li></a>
+     </ul>
 
-          <li>Desenvolvimento do código</li>
-           <ul>
-            <a href="https://code.visualstudio.com/"><li>Visual Studio Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png"              height="20"></li></a>
-           </ul>
+    <li>Desenvolvimento do código</li>
+     <ul>
+      <a href="https://code.visualstudio.com/"><li>Visual Studio Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png"              height="20"></li></a>
+     </ul>
 
-          <li>Linguagens</li>
-           <ul>
-            <a href="https://www.java.com/pt-BR/"><li>Java <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" height="20"></li></a>
-           </ul>
+     <li>Linguagens</li>
+      <ul>
+       <a href="https://www.java.com/pt-BR/"><li>Java <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" height="20"></li></a>
+      </ul>
 
           <li>Ferramentas</li>
            <ul>
