@@ -36,7 +36,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | 13 | Como Gestor eu quero Dashboards para acompanhamento das Squads, Colaborador e próprio | Baixa | indicar | A fazer |
 | 14 | Como Colaborador eu quero Dashboards para acompanhamento das horas extras e sobreaviso | Baixa | indicar | A fazer |
 | 15 | Atualizar o sistema para JavaFX | Alta | indicar | A fazer |
-| 17 | Como Gestor eu quero visualizar desempenho da Squad | Alta | indicar | Progresso |
+| 16 | Como Gestor eu quero visualizar desempenho da Squad | Alta | indicar | Progresso |
 
 <div align="center">
 
@@ -44,7 +44,13 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 </div>
 
--not null.
+
+| SPRINTS | DATAS | DESCRIÇÃO | STATUS |
+|:-------:|:-----:|:---------:|:------:|
+| Sprint 1 | 13/03/23 a 02/04/23 | Entrega de: documentação, apresentação das telas e backlog | Entregue |
+| Sprint 2 | 03/04/23 a 23/04/23 | Entrega do perfil Colaborador e perfil Gestor e da tela de lançamento de hora | Entregar |
+| Sprint 3 | 24/04/23 a 14/05/23 | Atualizar o que foi entregue até a 3º Sprint e entregar o perfil Administrador e cadastro | Entregar |
+| Sprint 4 | 15/05/23 a 04/06/23 | Atualizar todo o sistema para JavaFX e finalizar as entregas | Entregar |
 
 <div align="center">
 
