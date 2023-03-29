@@ -48,9 +48,9 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | SPRINTS | DATAS | DESCRIÇÃO | STATUS |
 |:-------:|:-----:|:---------:|:------:|
 | Sprint 1 | 13/03/23 a 02/04/23 | Entrega de: documentação, apresentação das telas e backlog | Entregue |
-| Sprint 2 | 03/04/23 a 23/04/23 | Entrega do perfil Colaborador e perfil Gestor e da tela de lançamento de hora | Entregar |
-| Sprint 3 | 24/04/23 a 14/05/23 | Atualizar o que foi entregue até a 3º Sprint e entregar o perfil Administrador e cadastro | Entregar |
-| Sprint 4 | 15/05/23 a 04/06/23 | Atualizar todo o sistema para JavaFX e finalizar as entregas | Entregar |
+| Sprint 2 | 03/04/23 a 23/04/23 | Entrega do perfil Colaborador e perfil Gestor e da tela de lançamento de hora | A Fazer |
+| Sprint 3 | 24/04/23 a 14/05/23 | Atualizar o que foi entregue até a 3º Sprint e entregar o perfil Administrador e cadastro | A Fazer |
+| Sprint 4 | 15/05/23 a 04/06/23 | Atualizar todo o sistema para JavaFX e finalizar as entregas | A Fazer |
 
 <div align="center">
 
@@ -178,3 +178,4 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  </table>
  
 </div>
+
