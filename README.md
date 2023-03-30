@@ -68,13 +68,14 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  
  </summary>
  
+ <summary>
    <ul>
     <li><b>Contato com o cliente</b>
     <ul dir="auto">
     <a href="https://app.slack.com/"><li>Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></li></a>
     </ul>
     </li>
-
+    
     <li><b>Desenvolvimento do projeto</b>
     <ul dir="auto">
     <li>Fluxograma e telas</li>
