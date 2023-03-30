@@ -71,7 +71,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  <ul>
   <li><b>Ferramenta utilizada para comunicação com o cliente</b>
    <ul>
-    <a href="https://app.slack.com/">Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></a>
+    <li><a href="https://app.slack.com/">Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></a></li>
    </ul>
   </li>
   <li><b>Ferramenas utilizadas para desenvolver a documentação do projeto: </b>
