@@ -86,8 +86,17 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
    <ul>
     <li dir="auto"><b>Armazenamento e versionamento do projeto</b>
      <a href="https://github.com/">GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></a>
+     </li>
     <li dir="auto"><b>Front-End</b>
-     <a href="">Java FX <img src="https://blog.knoldus.com/wp-content/uploads/2021/07/communityIcon_4v21sx0aiam41.png" height="20"></a>
+     <a href="https://openjfx.io/">Java FX <img src="https://blog.knoldus.com/wp-content/uploads/2021/07/communityIcon_4v21sx0aiam41.png" height="20"></a>
+     <b> e </b>
+     <a href="https://code.visualstudio.com/">Visual Studio Code <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Visual_Studio_Code_1.18_icon.svg/2056px-Visual_Studio_Code_1.18_icon.svg.png" height="20"></a>
+     </li>
+     <li dir="auto"><b>Back-End</b>
+      <a href="https://www.java.com/pt-BR/">Java <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" height="20"></a>
+      <b> e </b>
+      <a href="https://www.jetbrains.com/pt-br/idea/">Intellij <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/2048px-IntelliJ_IDEA_Icon.svg.png" height="20"></a>
+     </li>
    </ul>
   </li>
   <li><b></b>
