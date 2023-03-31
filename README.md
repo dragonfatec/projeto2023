@@ -76,10 +76,10 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
   </li>
   <li><b>Ferramenas utilizadas para desenvolver a documentação do projeto: </b>
    <ul>
-    <li dir="auto"><b>Fluxogramas</b>
+    <li dir="auto"><b>Diagramas</b>
      <a href="http://www.sis4.com/brModelo/">brModelo <img src="https://1.bp.blogspot.com/-QRYdop66NFQ/W5Fpla17bDI/AAAAAAAADfg/Rck2NKfsAYkIhBD5E107wWCpq8GBMIxiACLcBGAs/s1600/brmodelo3.png" height="20"></a>
     <li dir="auto"><b>Wireframes</b>
-     <a href="https://www.figma.com/">Figma <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" height="20"></a>
+     <a href="https://www.canva.com/pt_br/">Canva <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/2048px-Canva_icon_2021.svg.png" height="20"></a>
    </ul>
   </li>
   <li><b>Ferramentas utilizadas para desenvolver o projeto</b>
