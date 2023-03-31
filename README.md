@@ -97,6 +97,9 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
       <b> e </b>
       <a href="https://www.jetbrains.com/pt-br/idea/">Intellij <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/2048px-IntelliJ_IDEA_Icon.svg.png" height="20"></a>
      </li>
+     <li dir="auto"><b>Banco de dados</b>
+      <a href="https://www.postgresql.org/">PostgreSQL <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" height="20"></a>
+     </li>
      <li dir="auto"><b>Comunicação interna da equipe</b>
       <a href="https://discord.com/">Discord <img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" height="20"></a>
       <b> e </b>
