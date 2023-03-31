@@ -64,7 +64,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  
  <summary> 
   
-  ![tecnologias usadas com icones](https://user-images.githubusercontent.com/111617449/227805960-20fe98e1-5c0c-4235-8a5c-6eb2b9709010.png) 
+  ![tecnologias utilizadas01](https://user-images.githubusercontent.com/111617449/229194542-0f4c2753-a50b-404f-aae2-3c334fedf0d4.png) 
  
  </summary>
 
