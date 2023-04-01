@@ -80,6 +80,8 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
      <a href="http://www.sis4.com/brModelo/">brModelo <img src="https://1.bp.blogspot.com/-QRYdop66NFQ/W5Fpla17bDI/AAAAAAAADfg/Rck2NKfsAYkIhBD5E107wWCpq8GBMIxiACLcBGAs/s1600/brmodelo3.png" height="20"></a>
     <li dir="auto"><b>Wireframes</b>
      <a href="https://www.canva.com/pt_br/">Canva <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/2048px-Canva_icon_2021.svg.png" height="20"></a>
+    <li dir="auto"><b>Organização das sprints</b>
+     <a href="https://www.mural.co/?utm_medium=paid-search&utm_source=adwords&utm_campaign=Core_Brand&utm_adgroup=Mural_-_Branded&utm_campaign_id=11265145092&utm_content=mural%20app&utm_adgroupid=109231331743&gclid=Cj0KCQjwiZqhBhCJARIsACHHEH9jPbljUxv7h4HeDxkVPpT7CkqbjBcB29aM3OCfxnSrI3yje1Pkd4IaArmREALw_wcB">Mural <img src="https://play-lh.googleusercontent.com/r_2iOkuF_HGKoJsjCJ3PfcWvFUUnm1l0Q5EgAa3YEhEvYdB4JVZmHUEkuDgL2p6i9Vk" height="20"></a>
    </ul>
   </li>
   <li><b>Ferramentas utilizadas para desenvolver o projeto</b>
