@@ -67,7 +67,8 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  https://user-images.githubusercontent.com/111617449/229277325-9ba27ca7-5a0c-4368-9787-75d5b2127dc4.mp4
  </div>
  
- -not null.
+<br>
+<br>
 
 <div align="center">
 
@@ -103,7 +104,10 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 </div>
 </details>
- 
+<br>
+<br>
+<br>
+<br>
 <details>
  
  <summary> 
