@@ -27,7 +27,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 | ID | Descrição | Prioridade | Sprint | Status |
 | :-: | :-----: | :----------: | :---: | :---: |
-| 01 | Como cliente eu quero que meu programa tenha um perfil Administrador para cadastrar Colaborador e cadastrar perfil Gestor | Alta | Sprint 4 | Pronto |
+| 01 | Como cliente eu quero que meu programa tenha um perfil Administrador para cadastrar Colaborador e cadastrar perfil Gestor | Alta | Sprint 4 | Iniciado |
 | 02 | Como cliente eu quero que meu programa tenha um perfil Gestor para aprovar lançamento de horas, sobreaviso | Alta | Sprint 3 |  Iniciado |
 | 03 | Como cliente eu quero que meu programa tenha um perfil Colaborador para enviar as horas trabalhadas (com HE e sobreaviso) | Alta | Sprint 2 | Iniciado |
 | 04 | Como Gestor eu quero aprovar/negar pedido de horas(HE e sobreaviso) | Alta | Sprint 3 | Aguardando |
@@ -78,43 +78,59 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 </div>
 
-<details>
+
 <div align="center">
 
  ![Diagrama administrador](https://user-images.githubusercontent.com/111617449/229276289-0e893d43-f43e-4916-8f72-c83690d2c942.png)
- ![3_-_Diagrama_administrador 222](https://user-images.githubusercontent.com/111617449/229276287-efe2f641-b317-472a-80f6-6acaf12f97ef.png)
-
-</div>
-</details>
  
  <details>
- <div align="center">
+ 
+ ![3_-_Diagrama_administrador 222](https://user-images.githubusercontent.com/111617449/229276287-efe2f641-b317-472a-80f6-6acaf12f97ef.png)
+
+</details>
+
+</div>
+
+ 
+ 
+<div align="center">
 
 ![Diagrama Gestor](https://user-images.githubusercontent.com/111617449/229276292-857dab2d-4f84-43a4-a9c9-26a5c2ace946.png)
-![2_-_Diagrama_gestor](https://user-images.githubusercontent.com/111617449/229276547-81ea57ed-095d-4947-b7de-3380fe213f1e.png)
-
-</div>
-</details>  
 
 <details>
- <div align="center">
 
-![Diagrama Colaborador](https://user-images.githubusercontent.com/111617449/229276291-71972f75-d911-48a6-9699-6b23ce625fce.png)
-![1_-_Diagrama_colaborador](https://user-images.githubusercontent.com/111617449/229276545-081857de-2344-476e-8b7c-0a014f108bda.png)
+![2_-_Diagrama_gestor](https://user-images.githubusercontent.com/111617449/229276547-81ea57ed-095d-4947-b7de-3380fe213f1e.png)
+
+</details>
 
 </div>
+
+
+<div align="center">
+
+![Diagrama Colaborador](https://user-images.githubusercontent.com/111617449/229276291-71972f75-d911-48a6-9699-6b23ce625fce.png)
+
+<details>
+
+![1_-_Diagrama_colaborador](https://user-images.githubusercontent.com/111617449/229276545-081857de-2344-476e-8b7c-0a014f108bda.png)
+
 </details>
+
+</div>
+
 <br>
-<br>
-<br>
-<br>
+
+
+
 <details>
  
  <summary> 
   
-  ![tecnologias utilizadas01](https://user-images.githubusercontent.com/111617449/229194542-0f4c2753-a50b-404f-aae2-3c334fedf0d4.png) 
+  ![Obejtivo](https://user-images.githubusercontent.com/111617449/229278871-7d19f1d0-df6a-4416-9b16-9671ccd954f4.png) 
  
  </summary>
+
+
 
  <ul>
   <li><b>Ferramenta utilizada para comunicação com o cliente</b>
@@ -160,7 +176,10 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
   </ul>
 
 </details> 
- 
+
+
+
+
 <div align="center">
 
 ![Equipe de desenvolvimento](https://user-images.githubusercontent.com/111617449/227279289-39f6f145-321b-4940-8db0-28e12f9007ac.png)
