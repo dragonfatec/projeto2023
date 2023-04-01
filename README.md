@@ -56,6 +56,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 ![Mockup](https://user-images.githubusercontent.com/111617449/226683334-0ddb2ed1-9d5b-4c67-a90f-6376e1ff1245.png)
  
+ https://user-images.githubusercontent.com/111617449/229277325-9ba27ca7-5a0c-4368-9787-75d5b2127dc4.mp4
  </div>
  
  -not null.
@@ -123,27 +124,33 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 ![4_-_Diagrama_de_banco_de_dados 2](https://user-images.githubusercontent.com/111617449/229276548-1e06eba6-4375-4105-a716-d6ac273abda0.png)
 
 </div>
- 
+
+<details>
 <div align="center">
 
  ![Diagrama administrador](https://user-images.githubusercontent.com/111617449/229276289-0e893d43-f43e-4916-8f72-c83690d2c942.png)
  ![3_-_Diagrama_administrador 222](https://user-images.githubusercontent.com/111617449/229276287-efe2f641-b317-472a-80f6-6acaf12f97ef.png)
 
 </div>
+</details>
  
+ <details>
  <div align="center">
 
 ![Diagrama Gestor](https://user-images.githubusercontent.com/111617449/229276292-857dab2d-4f84-43a4-a9c9-26a5c2ace946.png)
 ![2_-_Diagrama_gestor](https://user-images.githubusercontent.com/111617449/229276547-81ea57ed-095d-4947-b7de-3380fe213f1e.png)
 
 </div>
- 
+</details>  
+
+<details>
  <div align="center">
 
 ![Diagrama Colaborador](https://user-images.githubusercontent.com/111617449/229276291-71972f75-d911-48a6-9699-6b23ce625fce.png)
 ![1_-_Diagrama_colaborador](https://user-images.githubusercontent.com/111617449/229276545-081857de-2344-476e-8b7c-0a014f108bda.png)
 
 </div>
+</details>
  
  
  
