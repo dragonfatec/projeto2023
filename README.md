@@ -5,6 +5,7 @@
 </div>
 
 <br>
+
 <div align="center">
  
 ![Objetivo](https://user-images.githubusercontent.com/111617449/226420067-8dd376b4-c7f0-4073-9fa3-b89afe4d7f38.png)
@@ -13,6 +14,7 @@
 
 Desenvolver uma ferramenta que faça o controle da jornada de trabalho do colaborador, identifique e classifique horas extras, controle das horas extras e sobreavisos.<b>
 Acesso de administrador para o departamento de RH, gestor para aprovação e lançamento das horas e colaborador para apontar horas extras.<b>
+ 
 <br>
  
  
