@@ -59,6 +59,8 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | Sprint 4 | 15/05/23 a 04/06/23 | Atualizar todo o sistema para JavaFX e finalizar as entregas | A Fazer |
 
 <div align="center">
+<br>
+<br>
 
 ![Mockup](https://user-images.githubusercontent.com/111617449/226683334-0ddb2ed1-9d5b-4c67-a90f-6376e1ff1245.png)
  
