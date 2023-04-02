@@ -120,66 +120,58 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 <br>
 
+<div align="center">
 
+   ![Obejtivo](https://user-images.githubusercontent.com/111617449/229278871-7d19f1d0-df6a-4416-9b16-9671ccd954f4.png)
 
-<details>
+</div>
  
- <summary> 
-  
-  ![Obejtivo](https://user-images.githubusercontent.com/111617449/229278871-7d19f1d0-df6a-4416-9b16-9671ccd954f4.png) 
- 
- </summary>
+ <details>
 
-
-
- <ul>
-  <li><b>Ferramenta utilizada para comunicação com o cliente</b>
-   <ul>
-    <li><a href="https://app.slack.com/">Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></a></li>
-   </ul>
-  </li>
-  <li><b>Ferramenas utilizadas para desenvolver a documentação do projeto: </b>
-   <ul>
-    <li dir="auto"><b>Diagramas</b>
-     <a href="http://www.sis4.com/brModelo/">brModelo <img src="https://1.bp.blogspot.com/-QRYdop66NFQ/W5Fpla17bDI/AAAAAAAADfg/Rck2NKfsAYkIhBD5E107wWCpq8GBMIxiACLcBGAs/s1600/brmodelo3.png" height="20"></a>
-    <li dir="auto"><b>Wireframes</b>
-     <a href="https://www.canva.com/pt_br/">Canva <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/2048px-Canva_icon_2021.svg.png" height="20"></a>
-    <li dir="auto"><b>Organização das sprints</b>
-     <a href="https://www.mural.co/?utm_medium=paid-search&utm_source=adwords&utm_campaign=Core_Brand&utm_adgroup=Mural_-_Branded&utm_campaign_id=11265145092&utm_content=mural%20app&utm_adgroupid=109231331743&gclid=Cj0KCQjwiZqhBhCJARIsACHHEH9jPbljUxv7h4HeDxkVPpT7CkqbjBcB29aM3OCfxnSrI3yje1Pkd4IaArmREALw_wcB">Mural <img src="https://play-lh.googleusercontent.com/r_2iOkuF_HGKoJsjCJ3PfcWvFUUnm1l0Q5EgAa3YEhEvYdB4JVZmHUEkuDgL2p6i9Vk" height="20"></a>
-   </ul>
-  </li>
-  <li><b>Ferramentas utilizadas para desenvolver o projeto</b>
-   <ul>
-    <li dir="auto"><b>Armazenamento e versionamento do projeto</b>
-     <a href="https://github.com/">GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></a>
-     </li>
-    <li dir="auto"><b>Front-End</b>
-     <a href="https://openjfx.io/">Java FX <img src="https://blog.knoldus.com/wp-content/uploads/2021/07/communityIcon_4v21sx0aiam41.png" height="20"></a>
-     <b> e </b>
-     <a href="https://code.visualstudio.com/">Visual Studio Code <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Visual_Studio_Code_1.18_icon.svg/2056px-Visual_Studio_Code_1.18_icon.svg.png" height="20"></a>
-     </li>
-     <li dir="auto"><b>Back-End</b>
-      <a href="https://www.java.com/pt-BR/">Java <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" height="20"></a>
-      <b> e </b>
-      <a href="https://www.jetbrains.com/pt-br/idea/">Intellij <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/2048px-IntelliJ_IDEA_Icon.svg.png" height="20"></a>
-     </li>
-     <li dir="auto"><b>Banco de dados</b>
-      <a href="https://www.postgresql.org/">PostgreSQL <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" height="20"></a>
-     </li>
-     <li dir="auto"><b>Comunicação interna da equipe</b>
-      <a href="https://discord.com/">Discord <img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" height="20"></a>
-      <b> e </b>
-      <a href="https://www.whatsapp.com/?lang=pt_br">Whatsapp <img src="https://imagepng.org/wp-content/uploads/2017/08/whatsapp-icone-1.png" height="20"></a>
-     </li>
+  <ul dir="auto">
+   <li><b>Ferramenta utilizada para comunicação com o cliente</b>
+    <ul>
+     <li><a href="https://app.slack.com/">Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></a></li>
     </ul>
-   </li>  
-  </ul>
-
-</details> 
-
-
-
-
+   </li>
+   <li><b>Ferramenas utilizadas para desenvolver a documentação do projeto: </b>
+    <ul>
+     <li dir="auto"><b>Diagramas</b>
+      <a href="http://www.sis4.com/brModelo/">brModelo <img src="https://1.bp.blogspot.com/-QRYdop66NFQ/W5Fpla17bDI/AAAAAAAADfg/Rck2NKfsAYkIhBD5E107wWCpq8GBMIxiACLcBGAs/s1600/brmodelo3.png" height="20"></a>
+     <li dir="auto"><b>Wireframes</b>
+      <a href="https://www.canva.com/pt_br/">Canva <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/2048px-Canva_icon_2021.svg.png" height="20"></a>
+     <li dir="auto"><b>Organização das sprints</b>
+      <a href="https://www.mural.co/?utm_medium=paid-search&utm_source=adwords&utm_campaign=Core_Brand&utm_adgroup=Mural_-_Branded&utm_campaign_id=11265145092&utm_content=mural%20app&utm_adgroupid=109231331743&gclid=Cj0KCQjwiZqhBhCJARIsACHHEH9jPbljUxv7h4HeDxkVPpT7CkqbjBcB29aM3OCfxnSrI3yje1Pkd4IaArmREALw_wcB">Mural <img src="https://play-lh.googleusercontent.com/r_2iOkuF_HGKoJsjCJ3PfcWvFUUnm1l0Q5EgAa3YEhEvYdB4JVZmHUEkuDgL2p6i9Vk" height="20"></a>
+    </ul>
+   </li>
+   <li><b>Ferramentas utilizadas para desenvolver o projeto</b>
+    <ul>
+     <li dir="auto"><b>Armazenamento e versionamento do projeto</b>
+      <a href="https://github.com/">GitHub <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="20"></a>
+      </li>
+     <li dir="auto"><b>Front-End</b>
+      <a href="https://openjfx.io/">Java FX <img src="https://static.wixstatic.com/media/2724b2_a4c660815dde4271be00cb7e9b9cae2c~mv2.png/v1/fit/w_605%2Ch_533%2Cal_c%2Cq_80,enc_auto/file.jpg" height="20"></a>
+      <b> e </b>
+      <a href="https://code.visualstudio.com/">Visual Studio Code <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Visual_Studio_Code_1.18_icon.svg/2056px-Visual_Studio_Code_1.18_icon.svg.png" height="20"></a>
+      </li>
+      <li dir="auto"><b>Back-End</b>
+       <a href="https://www.java.com/pt-BR/">Java <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" height="20"></a>
+       <b> e </b>
+       <a href="https://www.jetbrains.com/pt-br/idea/">Intellij <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/2048px-IntelliJ_IDEA_Icon.svg.png" height="20"></a>
+      </li>
+      <li dir="auto"><b>Banco de dados</b>
+       <a href="https://www.postgresql.org/">PostgreSQL <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" height="20"></a>
+      </li>
+      <li dir="auto"><b>Comunicação interna da equipe</b>
+       <a href="https://discord.com/">Discord <img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" height="20"></a>
+       <b> e </b>
+       <a href="https://www.whatsapp.com/?lang=pt_br">Whatsapp <img src="https://imagepng.org/wp-content/uploads/2017/08/whatsapp-icone-1.png" height="20"></a>
+      </li>
+     </ul>
+    </li>  
+   </ul>
+  </details>
+ 
 <div align="center">
 
 ![Equipe de desenvolvimento](https://user-images.githubusercontent.com/111617449/227279289-39f6f145-321b-4940-8db0-28e12f9007ac.png)
