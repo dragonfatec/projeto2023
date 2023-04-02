@@ -41,7 +41,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | 12 | Como Administrador eu quero Dashboards para acompanhamento das Squads, Gestor e Colaborador | 13 | Sprint 4 | Aguardando |
 | 13 | Como Gestor eu quero Dashboards para acompanhamento das Squads, Colaborador e próprio | 14 | Sprint 4 | Aguardando |
 | 14 | Como Colaborador eu quero Dashboards para acompanhamento das horas extras e sobreaviso | 15 | Sprint 4 | Aguardando |
-| 15 | Atualizar o sistema para JavaFX | Alta | Todas as sprints | Aguardando |
+| 15 | Atualizar o sistema para JavaFX | 16 | Todas as sprints | Aguardando |
 | 16 | Como Gestor eu quero visualizar desempenho da Squad | 9 | Sprint 3 | Aguardando |
 
 <div align="center">
