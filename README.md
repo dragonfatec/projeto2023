@@ -59,13 +59,14 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | Sprint 4 | 15/05/23 a 04/06/23 | Entrega do perfil administrador, tela de cadastro e login | A Fazer |
 
 <div align="center">
-<br>
-<br>
 
 <details>
  <a href="https://app.mural.co/t/api1378/m/api1378/1679696337791/dca54b6baacd7c91e18556b306e24030dfa13786?sender=ued17637c814300f6e4121903">Organização das Sprints <img src="https://user-images.githubusercontent.com/125532603/230391124-4c6140a2-3f96-4a1c-b245-f5f74a668cf4.png" height="20">
 </details>
 
+<br>
+<br>
+ 
 ![Mockup](https://user-images.githubusercontent.com/111617449/226683334-0ddb2ed1-9d5b-4c67-a90f-6376e1ff1245.png)
  
  https://user-images.githubusercontent.com/111617449/229277325-9ba27ca7-5a0c-4368-9787-75d5b2127dc4.mp4
