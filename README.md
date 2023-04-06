@@ -62,7 +62,9 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 <br>
 <br>
 
-https://app.mural.co/t/api1378/m/api1378/1679696337791/dca54b6baacd7c91e18556b306e24030dfa13786?sender=ued17637c814300f6e4121903
+<details>
+ <a href="https://app.mural.co/t/api1378/m/api1378/1679696337791/dca54b6baacd7c91e18556b306e24030dfa13786?sender=ued17637c814300f6e4121903">Organização das Sprints <img src="https://user-images.githubusercontent.com/125532603/230391124-4c6140a2-3f96-4a1c-b245-f5f74a668cf4.png" height="20">
+</details>
 
 ![Mockup](https://user-images.githubusercontent.com/111617449/226683334-0ddb2ed1-9d5b-4c67-a90f-6376e1ff1245.png)
  
@@ -143,7 +145,7 @@ https://app.mural.co/t/api1378/m/api1378/1679696337791/dca54b6baacd7c91e18556b30
      <li dir="auto"><b>Wireframes</b>
       <a href="https://www.canva.com/pt_br/">Canva <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/2048px-Canva_icon_2021.svg.png" height="20"></a>
      <li dir="auto"><b>Organização das sprints</b>
-      <a href="https://www.mural.co/?utm_medium=paid-search&utm_source=adwords&utm_campaign=Core_Brand&utm_adgroup=Mural_-_Branded&utm_campaign_id=11265145092&utm_content=mural%20app&utm_adgroupid=109231331743&gclid=Cj0KCQjwiZqhBhCJARIsACHHEH9jPbljUxv7h4HeDxkVPpT7CkqbjBcB29aM3OCfxnSrI3yje1Pkd4IaArmREALw_wcB">Mural <img src="https://play-lh.googleusercontent.com/r_2iOkuF_HGKoJsjCJ3PfcWvFUUnm1l0Q5EgAa3YEhEvYdB4JVZmHUEkuDgL2p6i9Vk" height="20"></a>
+      <a href="https://www.mural.co/?utm_medium=paid-search&utm_source=adwords&utm_campaign=Core_Brand&utm_adgroup=Mural_-_Branded&utm_campaign_id=11265145092&utm_content=mural%20app&utm_adgroupid=109231331743&gclid=Cj0KCQjwiZqhBhCJARIsACHHEH9jPbljUxv7h4HeDxkVPpT7CkqbjBcB29aM3OCfxnSrI3yje1Pkd4IaArmREALw_wcB">Mural <img src="https://user-images.githubusercontent.com/125532603/230391124-4c6140a2-3f96-4a1c-b245-f5f74a668cf4.png" height="20"></a>
     </ul>
    </li>
    <li><b>Ferramentas utilizadas para desenvolver o projeto</b>
