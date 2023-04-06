@@ -27,14 +27,14 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 | ID | Descrição | Prioridade | Sprint | Status |
 | :-: | :-----: | :----------: | :---: | :---: |
-| 01 | Como cliente eu quero que meu programa tenha um perfil Administrador para cadastrar Colaborador e cadastrar perfil Gestor | 10 | Sprint 4 | Iniciado |
-| 02 | Como cliente eu quero que meu programa tenha um perfil Gestor para aprovar lançamento de horas, sobreaviso | 2 | Sprint 3 |  Iniciado |
+| 01 | Como cliente eu quero que meu programa tenha um perfil Administrador para cadastrar Colaborador e cadastrar perfil Gestor | 10 | Sprint 4 | Aguardando |
+| 02 | Como cliente eu quero que meu programa tenha um perfil Gestor para aprovar lançamento de horas, sobreaviso | 2 | Sprint 3 |  Aguardando |
 | 03 | Como cliente eu quero que meu programa tenha um perfil Colaborador para enviar as horas trabalhadas (com HE e sobreaviso) | 1 | Sprint 2 | Iniciado |
 | 04 | Como Gestor eu quero aprovar/negar pedido de horas(HE e sobreaviso) | 3 | Sprint 3 | Aguardando |
 | 05 | Como Administrador eu quero cadastrar/excluir colaborador e gestor | 11 | Sprint 4 | Aguardando |
 | 06 | Como cliente meu programa deve ter uma tela de login para ter acesso ao sistema | 12 | Sprint 4 | Aguardando |
-| 07 | Como Gestor eu quero justificar horário do colaborador | 4 | Sprint 3 | Pronto |
-| 08 | Como Usuário eu quero visualizar a mim mesmo (hora extra e sobreaviso) | 5 | Sprint 3 | Pronto |
+| 07 | Como Gestor eu quero justificar horário do colaborador | 4 | Sprint 3 | Aguardando |
+| 08 | Como Usuário eu quero visualizar a mim mesmo (hora extra e sobreaviso) | 5 | Sprint 3 | Aguardando |
 | 09 | Como Gestor eu quero enviar relatório ao Administrador| 6 | Sprint 3 | Aguardando |
 | 10 | Como Administrador eu quero avaliar o desempenho da Squad | 7 | Sprint 3 | Aguardando |
 | 11 | Como Administrador eu quero um histórico onde serão armazenados as horas extras realizadas por cada colaborador | 8 | Sprint 3 | Aguardando |
@@ -85,7 +85,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  
  <details>
  
- ![3_-_Diagrama_administrador 222](https://user-images.githubusercontent.com/111617449/229276287-efe2f641-b317-472a-80f6-6acaf12f97ef.png)
+ ![3_-_Diagrama_administrador 222](https://user-images.githubusercontent.com/111407920/230245694-d61bbdc7-0e6d-4063-97d7-e583f4f7a208.png)
 
 </details>
 
@@ -99,7 +99,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 <details>
 
-![2_-_Diagrama_gestor](https://user-images.githubusercontent.com/111617449/229276547-81ea57ed-095d-4947-b7de-3380fe213f1e.png)
+![2_-_Diagrama_gestor](https://user-images.githubusercontent.com/111407920/229246593-018e943b-db20-443b-b36e-e3976f4629ab.png)
 
 </details>
 
@@ -112,7 +112,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 
 <details>
 
-![1_-_Diagrama_colaborador](https://user-images.githubusercontent.com/111617449/229276545-081857de-2344-476e-8b7c-0a014f108bda.png)
+![1_-_Diagrama_colaborador](https://user-images.githubusercontent.com/111407920/229246566-21a9f6b5-6f6d-474c-bd6c-e5623bae2a59.png)
 
 </details>
 
@@ -134,7 +134,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
      <li><a href="https://app.slack.com/">Slack <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" height="20"></a></li>
     </ul>
    </li>
-   <li><b>Ferramenas utilizadas para desenvolver a documentação do projeto: </b>
+   <li><b>Ferramenas utilizadas para desenvolver a documentação do projeto</b>
     <ul>
      <li dir="auto"><b>Diagramas</b>
       <a href="http://www.sis4.com/brModelo/">brModelo <img src="https://1.bp.blogspot.com/-QRYdop66NFQ/W5Fpla17bDI/AAAAAAAADfg/Rck2NKfsAYkIhBD5E107wWCpq8GBMIxiACLcBGAs/s1600/brmodelo3.png" height="20"></a>
