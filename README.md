@@ -209,7 +209,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  </tr>
   
  <tr>
- <td><img src="" width="50" height="50"></td>
+ <td><img src="https://avatars.githubusercontent.com/u/43094055?v=4" width="50" height="50"></td>
  <td><strong>Alec Lima Rondel</strong></td>
  <td><em>Developer Team</em></td>
  <td><a href="https://github.com/aleclr"><img src="https://camo.githubusercontent.com/34f11e6964319f34c6c7153d65d7e5a9df4ba3ab0f7ea9a97a1db25c885f1c47/68747470733a2f2f6269742e6c792f336639586f3050" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"></a></td>
@@ -217,7 +217,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  </tr>
 
  <tr>
- <td><img src="" width="50" height="50"></td>
+ <td><img src="https://avatars.githubusercontent.com/u/107444159?v=4" width="50" height="50"></td>
  <td><strong>Lucas Augusto Oliveira</strong></td>
  <td><em>Developer Team</em></td>
  <td><a href="https://github.com/LucasOliveira321"><img src="https://camo.githubusercontent.com/34f11e6964319f34c6c7153d65d7e5a9df4ba3ab0f7ea9a97a1db25c885f1c47/68747470733a2f2f6269742e6c792f336639586f3050" alt="" data-canonical-src="https://bit.ly/3f9Xo0P" style="max-width: 100%;"></a></td>
