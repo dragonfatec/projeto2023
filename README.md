@@ -125,7 +125,14 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 </div>
 
 <br>
-
+<div align="center">
+ 
+ ![Gráfico de Burndown](https://user-images.githubusercontent.com/111617449/233748281-c7cc9bf4-1f30-4eb6-9542-e00c08e4e639.png)
+ 
+  ![image](https://user-images.githubusercontent.com/111617449/233748126-17df1127-3dea-43ae-9a98-37b34e8d0478.png)
+ 
+ </div>
+ 
 <div align="center">
 
    ![Obejtivo](https://user-images.githubusercontent.com/111617449/229278871-7d19f1d0-df6a-4416-9b16-9671ccd954f4.png)
@@ -250,4 +257,11 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  </table>
  
 </div>
+
+ <div align="center">
+  
+   ![Rodapé do git dragon](https://user-images.githubusercontent.com/111617449/233748683-a4148526-e861-4fb0-bd51-6c6bdcc0e17c.png)
+  
+</details>
+
 
