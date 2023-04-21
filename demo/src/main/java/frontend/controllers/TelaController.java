@@ -2,15 +2,14 @@ package frontend.controllers;
 
 import database.ConexaoDAO;
 import database.conexao.ConnectionFactory;
+import frontend.util.Alerts;
+import frontend.util.Contraints;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Date;
@@ -20,41 +19,51 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class TelaController implements Initializable {
-    ConnectionFactory conn = new ConnectionFactory();
 
     @FXML
     private Button btnCancelar;
-
     @FXML
     private void cancelarRegistroHora() {
         btnCancelar.setOnAction(actionEvent -> Platform.exit());
     }
 
+
     @FXML
     private Button btnConfirmar;
 
+
     @FXML
     void confirmarRegistroHora(){
-        String horaInicial = campoHoraInicial.getText();
-        String horaFinal = campoHoraFinal.getText();
-        LocalDate data = campoData.getValue();
-        Date sqlDate = Date.valueOf(data);
-        String tipoHora = campoTipo.getValue();
-        String justificativa = campoJustificativa.getText();
+            String horaInicial = campoHoraInicial.getText();
+            String horaFinal = campoHoraFinal.getText();
+            LocalDate data = campoData.getValue();
+            Date sqlDate = Date.valueOf(data);
+            String tipoHora = campoTipo.getValue();
+            String justificativa = campoJustificativa.getText();
 
-        try{
-            PreparedStatement statement = conn.recuperaConexao().prepareStatement("INSERT INTO hora(data_registro, hora_inicio, hora_fim, justificativa, tipo) VALUES (?, ?, ?, ?, ?)");
-            statement.setDate(1, sqlDate);
-            statement.setString(2, horaInicial);
-            statement.setString(3, horaFinal);
-            statement.setString(4, justificativa);
-            statement.setString(5, tipoHora);
+            try {
+                ConnectionFactory conn = new ConnectionFactory();
+                PreparedStatement statement = conn.recuperaConexao().prepareStatement("INSERT INTO hora(data_registro, hora_inicio, hora_fim, justificativa, tipo) VALUES (?, ?, ?, ?, ?)");
+                statement.setDate(1, sqlDate);
+                statement.setString(2, horaInicial);
+                statement.setString(3, horaFinal);
+                statement.setString(4, justificativa);
+                statement.setString(5, tipoHora);
 
-            statement.executeUpdate();
-            statement.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+                boolean confirmado = Alerts.showAlert("Confirma", null, "Deseja confirmar?", Alert.AlertType.CONFIRMATION);
+                if (confirmado) {
+                    statement.executeUpdate();
+                    statement.close();
+
+                    campoData.setValue(null);
+                    campoTipo.setValue(null);
+                    campoHoraFinal.clear();
+                    campoHoraInicial.clear();
+                    campoJustificativa.clear();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
     }
 
     @FXML
@@ -83,5 +92,10 @@ public class TelaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
         campoTipo.setItems(tiposDeHora);
+
+        Contraints.setTextFieldDouble(campoHoraInicial);
+        Contraints.setTextFieldDouble(campoHoraFinal);
+        Contraints.setTextFieldMaxLength(campoHoraInicial, 5);
+        Contraints.setTextFieldMaxLength(campoHoraFinal, 5);
     }
 }
