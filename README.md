@@ -35,14 +35,14 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | 06 | Visitante | Ter uma tela de login para ter acesso ao sistema | 12 | Sprint 4 | Aguardando |
 | 07 | Gestor | Justificar horário do colaborador | 4 | Sprint 3 | Aguardando |
 | 08 | Colaborador | Visualizar minha (hora extra e sobreaviso) | 5 | Sprint 3 | Aguardando |
-| 08 | Gestor | Visualizar minha (hora extra e sobreaviso) | 5 | Sprint 3 | Aguardando |
-| 09 | Gestor | Enviar relatório ao Administrador| 6 | Sprint 3 | Aguardando |
-| 10 | Administrador | Avaliar o desempenho da Squad | 7 | Sprint 3 | Aguardando |
-| 11 | Administrador | Visualizar histórico onde serão armazenados as horas extras realizadas por cada colaborador | 8 | Sprint 3 | Aguardando |
-| 12 | Administrador | Visualizar dashboards para acompanhamento das Squads, Gestor e Colaborador | 13 | Sprint 4 | Aguardando |
-| 13 | Gestor | Visualizar dashboards para acompanhamento das Squads, Colaborador e próprio | 14 | Sprint 4 | Aguardando |
-| 14 | Colaborador | Visualizar dashboards para acompanhamento das horas extras e sobreaviso | 15 | Sprint 4 | Aguardando |
-| 15 | Gestor | Visualizar desempenho da Squad | 9 | Sprint 3 | Aguardando |
+| 09 | Gestor | Visualizar minha (hora extra e sobreaviso) | 5 | Sprint 3 | Aguardando |
+| 10 | Gestor | Enviar relatório ao Administrador| 6 | Sprint 3 | Aguardando |
+| 11 | Administrador | Avaliar o desempenho da Squad | 7 | Sprint 3 | Aguardando |
+| 12 | Administrador | Visualizar histórico onde serão armazenados as horas extras realizadas por cada colaborador | 8 | Sprint 3 | Aguardando |
+| 13 | Administrador | Visualizar dashboards para acompanhamento das Squads, Gestor e Colaborador | 13 | Sprint 4 | Aguardando |
+| 14 | Gestor | Visualizar dashboards para acompanhamento das Squads, Colaborador e próprio | 14 | Sprint 4 | Aguardando |
+| 15 | Colaborador | Visualizar dashboards para acompanhamento das horas extras e sobreaviso | 15 | Sprint 4 | Aguardando |
+| 16 | Gestor | Visualizar desempenho da Squad | 9 | Sprint 3 | Aguardando |
 
 
 <div align="center">
