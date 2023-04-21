@@ -86,7 +86,8 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <ChoiceBox fx:id="campoTipo" layoutX="368.0" layoutY="282.0" prefHeight="25.0" prefWidth="186.0" />
+                <ChoiceBox fx:id="campoTipo" layoutX="368.0" layoutY="282.0" prefHeight="25.0" prefWidth="186.0"/>
+
                 <Button fx:id="btnConfirmar" layoutX="367.0" layoutY="327.0" mnemonicParsing="false" onAction="#confirmarRegistroHora" prefHeight="30.0" prefWidth="88.0" text="Confirmar" textFill="#180cff" />
                 <Button fx:id="btnCancelar" layoutX="466.0" layoutY="327.0" mnemonicParsing="false" onAction="#cancelarRegistroHora" prefHeight="30.0" prefWidth="88.0" text="Cancelar" textFill="#ff2828" />
             </children>
