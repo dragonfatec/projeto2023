@@ -39,14 +39,16 @@ public class TelaController implements Initializable {
         String horaFinal = campoHoraFinal.getText();
         LocalDate data = campoData.getValue();
         Date sqlDate = Date.valueOf(data);
+        String tipoHora = campoTipo.getValue();
+        String justificativa = campoJustificativa.getText();
 
         try{
             PreparedStatement statement = conn.recuperaConexao().prepareStatement("INSERT INTO hora(data_registro, hora_inicio, hora_fim, justificativa, tipo) VALUES (?, ?, ?, ?, ?)");
             statement.setDate(1, sqlDate);
             statement.setString(2, horaInicial);
             statement.setString(3, horaFinal);
-            statement.setString(4, "porque eu quero uai");
-            statement.setString(5, "hora extra");
+            statement.setString(4, justificativa);
+            statement.setString(5, tipoHora);
 
             statement.executeUpdate();
             statement.close();
