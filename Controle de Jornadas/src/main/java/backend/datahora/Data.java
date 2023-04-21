@@ -1,4 +1,4 @@
-package backend.datahora;
+package com.example.test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,9 +15,8 @@ public class Data {
     public double calcularHorasExtras(String dataInicio, String dataFim){
         if (validarData(dataInicio) && validarData(dataFim)){
             if (verificarSequenciaDatas(dataInicio, dataFim)){
-                int minutos = pegarDiferencaMinutos(dataInicio, dataFim);
                 // minutos dividido por 60 (quantidade de miutos me 1 hora) vezes o valor (em reais) da hora
-                return minutos;
+                return pegarDiferencaMinutos(dataInicio, dataFim);
             }
         }
         return 0;
@@ -26,12 +25,12 @@ public class Data {
     public boolean validarData(String data){
         String dateFormat = "dd/MM/uuuu HH:mm";
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter
-            .ofPattern(dateFormat)
-            .withResolverStyle(ResolverStyle.STRICT);
+                .ofPattern(dateFormat)
+                .withResolverStyle(ResolverStyle.STRICT);
         try {
             LocalDate.parse(data, dateTimeFormatter);
             return true;
-        } 
+        }
         catch (DateTimeParseException e) {
             return false;
         }
@@ -66,4 +65,17 @@ public class Data {
             return false;
         }
     }
+
+    public String transformarData(LocalDate data, String formato){
+        try{
+            DateTimeFormatter novo = DateTimeFormatter
+                    .ofPattern(formato)
+                    .withResolverStyle(ResolverStyle.STRICT);
+            return data.format(novo);
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+
 }

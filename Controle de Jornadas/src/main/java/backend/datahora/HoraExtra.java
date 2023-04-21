@@ -14,7 +14,7 @@ public class HoraExtra {
         this.user = usuario;
     }
 
-    public lancarHoraNoBanco(){
+    public lancarHorasExtras(){
         //
     }
 }
