@@ -1,6 +1,5 @@
 package frontend.controllers;
 
-import database.ConexaoDAO;
 import database.conexao.ConnectionFactory;
 import frontend.util.Alerts;
 import frontend.util.Contraints;
@@ -43,6 +42,7 @@ public class TelaController implements Initializable {
 
             try {
                 ConnectionFactory conn = new ConnectionFactory();
+
                 PreparedStatement statement = conn.recuperaConexao().prepareStatement("INSERT INTO hora(data_registro, hora_inicio, hora_fim, justificativa, tipo) VALUES (?, ?, ?, ?, ?)");
                 statement.setDate(1, sqlDate);
                 statement.setString(2, horaInicial);
