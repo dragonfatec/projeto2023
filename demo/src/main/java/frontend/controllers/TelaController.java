@@ -95,6 +95,14 @@ public class TelaController implements Initializable {
             }
     }
 
+    @FXML
+    private void setUser(String login, String senha, String matricula, String nome, String tipo){
+        /*
+        Esse metodo vai criar um instancia para a classe Usuario
+        */
+        this.usuario = new Usuario(login, senha, matricula, nome, tipo);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
