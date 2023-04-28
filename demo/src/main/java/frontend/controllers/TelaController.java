@@ -1,5 +1,6 @@
 package frontend.controllers;
 
+
 import database.conexao.ConnectionFactory;
 import frontend.util.Alerts;
 import frontend.util.Contraints;
@@ -17,19 +18,47 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class TelaController implements Initializable {
+// packages
+import backend.usuario.Usuario;
 
+public class TelaController implements Initializable {
+    // Objetos
+    Usuario usuario;
+
+    // Label
+    
+    // Input - Texto
+    @FXML
+    private TextField campoHoraFinal;
+    @FXML
+    private TextField campoHoraInicial;
+    @FXML
+    private TextField campoJustificativa;
+
+    // Input - Data
+    @FXML
+    private DatePicker campoData;
+
+    // Input - Select
+    @FXML
+    private ChoiceBox<String> campoTipo;
+
+    // Button
+    @FXML
+    private Button btnConsultar;
+    @FXML
+    private Button btnRegistrarHora;
     @FXML
     private Button btnCancelar;
+    @FXML
+    private Button btnConfirmar;
+
+    // Metodos
+
     @FXML
     private void cancelarRegistroHora() {
         btnCancelar.setOnAction(actionEvent -> Platform.exit());
     }
-
-
-    @FXML
-    private Button btnConfirmar;
-
 
     @FXML
     void confirmarRegistroHora(){
@@ -65,28 +94,6 @@ public class TelaController implements Initializable {
                 throw new RuntimeException(e);
             }
     }
-
-    @FXML
-    private Button btnConsultar;
-
-    @FXML
-    private Button btnRegistrarHora;
-
-    @FXML
-    private DatePicker campoData;
-
-    @FXML
-    private TextField campoHoraFinal;
-
-    @FXML
-    private TextField campoHoraInicial;
-
-    @FXML
-    private TextField campoJustificativa;
-
-    @FXML
-    private ChoiceBox<String> campoTipo;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
