@@ -9,13 +9,31 @@ public class Usuario {
     private String matricula;
     private String nome;
     private String tipo;
+    private static Usuario instancia;
 
-    public Usuario(String login, String senha, String matricula, String nome, String tipo){
+    private Usuario(){
+
+    }
+
+    private Usuario(String login, String senha, String matricula, String nome, String tipo){
         this.login = login;
         this.senha = senha;
         this.matricula = matricula;
         this.nome = nome;
         this.tipo = tipo;
+    }
+
+    public static Usuario getInstancia(){
+        if (instancia == null){
+            instancia = new Usuario();
+        }
+        return instancia;
+    }
+
+    public static void criarInstancia(String login, String senha, String matricula, String nome, String tipo){
+        if (instancia == null){
+            instancia = new Usuario(login, senha, matricula, nome, tipo);
+        }
     }
 
     public String getMatricula() {

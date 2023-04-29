@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-
     public static void main(String[] args) throws Exception {
         launch(args);
     }
@@ -25,7 +24,6 @@ public class App extends Application {
         //     public void handle(ActionEvent event) {
         //         System.out.println("Clicou no botao");
         //     }
-
         // });
 
         // StackPane root = new StackPane();

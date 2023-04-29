@@ -53,7 +53,7 @@ public class ConexaoDAO {
                 String matricula = resultSet.getString(4);
                 String nome = resultSet.getString(5);
                 String tipo = resultSet.getString(6);
-                usuarios.add(new Usuario(login, senha, matricula, nome, tipo));
+//                usuarios.add(new Usuario(login, senha, matricula, nome, tipo));
             }
 
         }catch (SQLException e){
