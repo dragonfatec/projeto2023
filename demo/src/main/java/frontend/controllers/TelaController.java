@@ -23,7 +23,7 @@ import backend.usuario.Usuario;
 
 public class TelaController implements Initializable {
     // Objetos
-    Usuario usuario;
+    Usuario usuario = Usuario.getInstancia();
 
     // Label
     
@@ -93,15 +93,6 @@ public class TelaController implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-    }
-
-    @FXML
-    private void setUser(String login, String senha, String matricula, String nome, String tipo){
-        /*
-        Esse metodo vai criar um instancia para a classe Usuario
-        */
-        Usuario.criarInstancia(login, senha, matricula, nome, tipo);
-        this.usuario = Usuario.getInstancia();
     }
 
     @Override
