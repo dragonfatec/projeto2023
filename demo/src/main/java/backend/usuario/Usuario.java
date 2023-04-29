@@ -36,6 +36,10 @@ public class Usuario {
         }
     }
 
+    public static Usuario criarUsuario(String login, String senha, String matricula, String nome, String tipo){
+        return new Usuario(login, senha, matricula, nome, tipo);
+    }
+
     public String getMatricula() {
         return matricula;
     }
