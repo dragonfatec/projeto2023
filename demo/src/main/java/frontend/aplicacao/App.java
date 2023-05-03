@@ -5,8 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.io.IOException;
 
 public class App extends Application {
+
+    private static Stage stagePrincipal;
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -31,14 +34,23 @@ public class App extends Application {
         // stage.setScene(new Scene(root, 250, 400, false, null));
         // stage.show();
 
+        stagePrincipal = stage;
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tela.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("colaborador_consulta.fxml"));
         Parent root = fxmlLoader.load();
         Scene tela = new Scene(root);
-
-        stage.setTitle("2rpnet");
-        stage.setScene(tela);
-        stage.show();
+        stagePrincipal.setTitle("2rpnet");
+        stagePrincipal.setScene(tela);
+        stagePrincipal.show();
 
     }
 
+    public static void mudarTela(String telaNome) throws IOException {
+        /*
+        O nome da tela tem que vir com ".fxml"
+        */
+        stagePrincipal.setScene(new Scene(new FXMLLoader(App.class.getResource(telaNome)).load()));
+
+    }
 }

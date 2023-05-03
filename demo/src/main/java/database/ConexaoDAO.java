@@ -2,6 +2,8 @@ package database;
 
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
+import frontend.util.Alerts;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.*;
@@ -97,6 +99,7 @@ public class ConexaoDAO {
             PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
             preparedStatement.execute();
         }catch (SQLException e){
+            Alerts.showAlert("ERRO", "Erro ao salvar no banco", "Erro ao salvar \nErro:\n"+e, Alert.AlertType.ERROR);
             throw new RuntimeException(e);
         }
     }
