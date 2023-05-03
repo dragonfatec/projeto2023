@@ -28,21 +28,21 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | ID | Como um(a) | Eu quero ser capaz de | Prioridade | Sprint | Status |
 | :-: | :---: | :-----: | :----------: | :---: | :---: |
 | 01 | Administrador | Ter um perfil para cadastrar Colaborador e cadastrar perfil Gestor | 10 | Sprint 4 | Aguardando |
-| 02 | Gestor | Ter um perfil para aprovar lançamento de horas, sobreaviso | 2 | Sprint 3 | Aguardando |
-| 03 | Colaborador | Ter um perfil para enviar as horas trabalhadas (com HE e sobreaviso) | 1 | Sprint 2 | Iniciado |
-| 04 | Gestor | Aprovar/negar pedido de horas (HE e sobreaviso) | 3 | Sprint 3 | Aguardando |
+| 02 | Gestor | Ter um perfil para aprovar lançamento de horas, sobreaviso | 2 | Sprint 3 | Iniciado |
+| 03 | Colaborador | Ter um perfil para enviar as horas trabalhadas (com HE e sobreaviso) | 1 | Sprint 2 | Concluído |
+| 04 | Gestor | Aprovar/negar pedido de horas (HE e sobreaviso) | 3 | Sprint 3 | Iniciado |
 | 05 | Administrador | Eu quero cadastrar/excluir colaborador e gestor | 11 | Sprint 4 | Aguardando |
 | 06 | Visitante | Ter uma tela de login para ter acesso ao sistema | 12 | Sprint 4 | Aguardando |
-| 07 | Gestor | Justificar horário do colaborador | 4 | Sprint 3 | Aguardando |
-| 08 | Colaborador | Visualizar minha (hora extra e sobreaviso) | 5 | Sprint 3 | Aguardando |
-| 09 | Gestor | Visualizar minha (hora extra e sobreaviso) | 5 | Sprint 3 | Aguardando |
-| 10 | Gestor | Enviar relatório ao Administrador| 6 | Sprint 3 | Aguardando |
-| 11 | Administrador | Avaliar o desempenho da Squad | 7 | Sprint 3 | Aguardando |
-| 12 | Administrador | Visualizar histórico onde serão armazenados as horas extras realizadas por cada colaborador | 8 | Sprint 3 | Aguardando |
+| 07 | Gestor | Justificar horário do colaborador | 4 | Sprint 3 | Iniciado |
+| 08 | Colaborador | Visualizar minha (hora extra e sobreaviso) | 5 | Sprint 3 | Iniciado |
+| 09 | Gestor | Visualizar minha (hora extra e sobreaviso) | 5 | Sprint 3 | Iniciado |
+| 10 | Gestor | Enviar relatório ao Administrador| 6 | Sprint 3 | Iniciado |
+| 11 | Administrador | Avaliar o desempenho da Squad | 7 | Sprint 3 | Iniciado |
+| 12 | Administrador | Visualizar histórico onde serão armazenados as horas extras realizadas por cada colaborador | 8 | Sprint 4 | Aguardando |
 | 13 | Administrador | Visualizar dashboards para acompanhamento das Squads, Gestor e Colaborador | 13 | Sprint 4 | Aguardando |
 | 14 | Gestor | Visualizar dashboards para acompanhamento das Squads, Colaborador e próprio | 14 | Sprint 4 | Aguardando |
 | 15 | Colaborador | Visualizar dashboards para acompanhamento das horas extras e sobreaviso | 15 | Sprint 4 | Aguardando |
-| 16 | Gestor | Visualizar desempenho da Squad | 9 | Sprint 3 | Aguardando |
+| 16 | Gestor | Visualizar desempenho da Squad | 9 | Sprint 3 | Iniciado |
 
 
 <div align="center">
