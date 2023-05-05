@@ -36,7 +36,7 @@ public class App extends Application {
 
         stagePrincipal = stage;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tela.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("colaborador_registrohora.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("colaborador_consulta.fxml"));
         Parent root = fxmlLoader.load();
         Scene tela = new Scene(root);
