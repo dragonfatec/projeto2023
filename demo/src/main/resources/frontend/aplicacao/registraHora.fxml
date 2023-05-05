@@ -41,20 +41,20 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="875.0" VBox.vgrow="ALWAYS">
             <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="724.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
-                <Label fx:id="textoNomeUsuario" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" text="" textFill="WHITE">
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="724.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
+                <Label fx:id="textoNomeUsuario" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
                 <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Registrar Hora" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font></Button>
+                    <font>
+                        <Font size="24.0" />
+                    </font></Button>
                 <Button fx:id="btnConsultar" onAction="#consultarHoras" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Consultar Minhas Horas" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font></Button>
+                    <font>
+                        <Font size="24.0" />
+                    </font></Button>
                 <DatePicker fx:id="dataInicio" layoutX="603.0" layoutY="116.0" prefHeight="41.0" prefWidth="257.0" />
                 <TextArea fx:id="campoJustificativa" layoutX="494.0" layoutY="327.0" prefHeight="76.0" prefWidth="700.0" promptText="Ex: Foi necessário mais tempo para  o layout" />
                 <Label layoutX="742.0" layoutY="451.0" text="Tipo" textAlignment="CENTER">
@@ -65,64 +65,64 @@
                 <ChoiceBox fx:id="campoTipo" layoutX="742.0" layoutY="496.0" prefHeight="50.0" prefWidth="202.0" />
 
                 <Button fx:id="btnConfirmar" layoutX="657.0" layoutY="612.0" mnemonicParsing="false" onAction="#confirmarRegistroHora" prefHeight="50.0" prefWidth="186.0" stylesheets="@style.css" text="Confirmar" textFill="#180cff">
-               <font>
-                  <Font size="20.0" />
-               </font></Button>
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
                 <Button fx:id="btnCancelar" layoutX="921.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancelarRegistroHora" prefHeight="50.0" prefWidth="186.0" stylesheets="@style.css" text="Cancelar" textFill="#ff2828">
-               <font>
-                  <Font size="20.0" />
-               </font></Button>
-            <Label layoutX="988.0" layoutY="450.0" text="Projeto" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
-            <ChoiceBox layoutX="988.0" layoutY="492.0" prefHeight="50.0" prefWidth="202.0" />
-            <Label layoutX="494.0" layoutY="451.0" text="Equipe" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="494.0" layoutY="287.0" text="Justificativa" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="603.0" layoutY="66.0" text="Data e Hora Inicial" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
-            <DatePicker fx:id="dataFim" layoutX="603.0" layoutY="221.0" prefHeight="41.0" prefWidth="257.0" />
-            <Label alignment="CENTER" layoutX="603.0" layoutY="179.0" text="Data e Hora Final" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="horasInicio" layoutX="873.0" layoutY="117.0" prefHeight="41.0" prefWidth="85.0" />
-            <ComboBox fx:id="minutosInicio" layoutX="982.0" layoutY="117.0" prefHeight="41.0" prefWidth="85.0" />
-            <ComboBox fx:id="horasFim" layoutX="873.0" layoutY="221.0" prefHeight="41.0" prefWidth="85.0" />
-            <ComboBox fx:id="minutosFim" layoutX="982.0" layoutY="221.0" prefHeight="41.0" prefWidth="85.0" />
-            <Label layoutX="494.0" layoutY="496.0" prefHeight="50.0" prefWidth="193.0" text="NOME_EQUIPE" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="-1.0" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="967.0" layoutY="120.0" text=":" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="967.0" layoutY="225.0" text=":" textAlignment="CENTER">
-               <font>
-                  <Font name="Roboto Thin" size="23.0" />
-               </font>
-            </Label>
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
+                <Label layoutX="988.0" layoutY="450.0" text="Projeto" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
+                <ChoiceBox layoutX="988.0" layoutY="492.0" prefHeight="50.0" prefWidth="202.0" />
+                <Label layoutX="494.0" layoutY="451.0" text="Equipe" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
+                <Label layoutX="494.0" layoutY="287.0" text="Justificativa" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="603.0" layoutY="66.0" text="Data e Hora Inicial" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
+                <DatePicker fx:id="dataFim" layoutX="603.0" layoutY="221.0" prefHeight="41.0" prefWidth="257.0" />
+                <Label alignment="CENTER" layoutX="603.0" layoutY="179.0" text="Data e Hora Final" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="horasInicio" layoutX="873.0" layoutY="117.0" prefHeight="41.0" prefWidth="85.0" />
+                <ComboBox fx:id="minutosInicio" layoutX="982.0" layoutY="117.0" prefHeight="41.0" prefWidth="85.0" />
+                <ComboBox fx:id="horasFim" layoutX="873.0" layoutY="221.0" prefHeight="41.0" prefWidth="85.0" />
+                <ComboBox fx:id="minutosFim" layoutX="982.0" layoutY="221.0" prefHeight="41.0" prefWidth="85.0" />
+                <Label layoutX="494.0" layoutY="496.0" prefHeight="50.0" prefWidth="193.0" text="NOME_EQUIPE" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="-1.0" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="967.0" layoutY="120.0" text=":" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="967.0" layoutY="225.0" text=":" textAlignment="CENTER">
+                    <font>
+                        <Font name="Roboto Thin" size="23.0" />
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
     </children>

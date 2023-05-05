@@ -22,33 +22,23 @@ public class TelaController implements Initializable {
     // Label
     
     // Input - Texto
-    @FXML
-    private TextField campoHoraFinal;
-    @FXML
-    private TextField campoHoraInicial;
-    @FXML
-    private TextField campoJustificativa;
+    @FXML private TextField campoHoraFinal;
+    @FXML private TextField campoHoraInicial;
+    @FXML private TextField campoJustificativa;
 
     // Input - Data
-    @FXML
-    private DatePicker campoData;
+    @FXML private DatePicker campoData;
 
     // Input - Select
-    @FXML
-    private ChoiceBox<String> campoTipo;
+    @FXML private ChoiceBox<String> campoTipo;
 
     // Button
-    @FXML
-    private Button btnConsultar;
-    @FXML
-    private Button btnRegistrarHora;
-    @FXML
-    private Button btnCancelar;
-    @FXML
-    private Button btnConfirmar;
+    @FXML private Button btnConsultar;
+    @FXML private Button btnRegistrarHora;
+    @FXML private Button btnCancelar;
+    @FXML private Button btnConfirmar;
 
     // Metodos
-
     @FXML
     private void cancelarRegistroHora() {
 //        btnCancelar.setOnAction(actionEvent -> Platform.exit());
