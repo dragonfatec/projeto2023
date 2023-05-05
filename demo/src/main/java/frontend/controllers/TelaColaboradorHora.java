@@ -3,6 +3,7 @@ package frontend.controllers;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,12 +47,7 @@ public class TelaColaboradorHora implements Initializable {
 
     @FXML
     private void cancelarRegistroHora() {
-//        btnCancelar.setOnAction(actionEvent -> Platform.exit());
-        try {
-            App.mudarTela("colaborador_consulta.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        btnCancelar.setOnAction(actionEvent -> Platform.exit());
     }
 
     @FXML
@@ -94,6 +90,15 @@ public class TelaColaboradorHora implements Initializable {
 //            }
     }
 
+    public void consultarHoras(ActionEvent actionEvent) {
+        try {
+            App.mudarTela("colaborador_consulta.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
@@ -132,5 +137,6 @@ public class TelaColaboradorHora implements Initializable {
         }
 
     }
+
 
 }

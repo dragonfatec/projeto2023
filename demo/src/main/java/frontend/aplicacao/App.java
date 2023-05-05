@@ -36,20 +36,16 @@ public class App extends Application {
 
         stagePrincipal = stage;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("colaborador_consulta.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("colaborador_registrohora.fxml"));
         Parent root = fxmlLoader.load();
         Scene tela = new Scene(root);
         stagePrincipal.setTitle("2rpnet");
         stagePrincipal.setScene(tela);
         stagePrincipal.show();
-
     }
 
     public static void mudarTela(String telaNome) throws IOException {
-        /*
-        O nome da tela tem que vir com ".fxml"
-        */
+        // O nome da tela tem que vir com ".fxml"
         stagePrincipal.setScene(new Scene(new FXMLLoader(App.class.getResource(telaNome)).load()));
-
     }
 }

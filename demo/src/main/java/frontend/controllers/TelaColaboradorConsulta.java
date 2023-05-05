@@ -1,8 +1,10 @@
 package frontend.controllers;
 
+import frontend.aplicacao.App;
 import frontend.util.Tabela;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,7 +40,13 @@ public class TelaColaboradorConsulta implements Initializable {
     ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
     // Metodos
 
-
+    public void registrarHora(ActionEvent actionEvent) {
+        try {
+            App.mudarTela("colaborador_registrohora.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
