@@ -1,11 +1,7 @@
 package frontend.controllers;
 
-import database.ConexaoDAO;
-import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
-import frontend.util.Alerts;
 import frontend.util.Contraints;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,10 +10,6 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 // packages
@@ -69,31 +61,32 @@ public class TelaController implements Initializable {
 
     @FXML
     void confirmarRegistroHora(){
-            try{
-                String horaInicial = campoHoraInicial.getText();
-                String horaFinal = campoHoraFinal.getText();
-                LocalDate data = campoData.getValue();
-                Date sqlDate = Date.valueOf(data);
-                String tipoHora = campoTipo.getValue();
-                String justificativa = campoJustificativa.getText();
 
-                String sql = "INSERT INTO hora(dt_init, hora_inicio, hora_fim, justificativa, tipo_hora) VALUES ('" +
-                         sqlDate +"','"+
-                         horaInicial +"','"+
-                         horaFinal +"','"+
-                         justificativa +"','"+
-                        tipoHora +"'"+
-                        ")";
-                System.out.println(sql);
-
-                ConexaoDAO con = new ConexaoDAO();
-                con.inserirDados(sql);
-                Alerts.showAlert("ERRO", null, "Apontado com sucesso!\n ERRO:", Alert.AlertType.ERROR);
-
-            }
-            catch (Exception e){
-                Alerts.showAlert("ERRO", null, "Por favor, preencha corretamente todos os campos\n ERRO:"+e, Alert.AlertType.ERROR);
-            }
+//            try{
+//                String horaInicial = campoHoraInicial.getText();
+//                String horaFinal = campoHoraFinal.getText();
+//                LocalDate data = campoData.getValue();
+//                Date sqlDate = Date.valueOf(data);
+//                String tipoHora = campoTipo.getValue();
+//                String justificativa = campoJustificativa.getText();
+//
+//                String sql = "INSERT INTO hora(dt_init, hora_inicio, hora_fim, justificativa, tipo_hora) VALUES ('" +
+//                         sqlDate +"','"+
+//                         horaInicial +"','"+
+//                         horaFinal +"','"+
+//                         justificativa +"','"+
+//                        tipoHora +"'"+
+//                        ")";
+//                System.out.println(sql);
+//
+//                ConexaoDAO con = new ConexaoDAO();
+//                con.inserirDados(sql);
+//                Alerts.showAlert("ERRO", null, "Apontado com sucesso!\n ERRO:", Alert.AlertType.ERROR);
+//
+//            }
+//            catch (Exception e){
+//                Alerts.showAlert("ERRO", null, "Por favor, preencha corretamente todos os campos\n ERRO:"+e, Alert.AlertType.ERROR);
+//            }
 
 //            try {
 //                ConnectionFactory conn = new ConnectionFactory();

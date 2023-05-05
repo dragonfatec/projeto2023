@@ -1,8 +1,5 @@
 package backend.login;
 
-import database.ConexaoDAO;
-import java.sql.ResultSet;
-
 public class Login {
     public boolean verificarLogin(String user, String senha) {
 
