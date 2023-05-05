@@ -1,8 +1,7 @@
-package backend.login;
+package backend.util;
 
 public class Login {
-    public boolean verificarLogin(String user, String senha) {
-
+    public static boolean verificarLogin(String user, String senha) {
 
         return false;
     }
