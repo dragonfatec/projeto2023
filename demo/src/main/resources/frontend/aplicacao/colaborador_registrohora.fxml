@@ -42,7 +42,7 @@
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="875.0" VBox.vgrow="ALWAYS">
             <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="724.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
-                <Label alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" text="OLÁ COLABORADOR!" textFill="WHITE">
+                <Label fx:id="textoTipoCargo" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" text="" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
@@ -55,7 +55,7 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
-                <DatePicker fx:id="campoData" layoutX="603.0" layoutY="116.0" prefHeight="41.0" prefWidth="257.0" />
+                <DatePicker fx:id="dataInicio" layoutX="603.0" layoutY="116.0" prefHeight="41.0" prefWidth="257.0" />
                 <TextArea fx:id="campoJustificativa" layoutX="494.0" layoutY="327.0" prefHeight="76.0" prefWidth="700.0" promptText="Ex: Foi necessário mais tempo para  o layout" />
                 <Label layoutX="742.0" layoutY="451.0" text="Tipo" textAlignment="CENTER">
                     <font>
@@ -93,7 +93,7 @@
                   <Font name="Roboto Thin" size="23.0" />
                </font>
             </Label>
-            <DatePicker fx:id="campoData1" layoutX="603.0" layoutY="221.0" prefHeight="41.0" prefWidth="257.0" />
+            <DatePicker fx:id="dataFim" layoutX="603.0" layoutY="221.0" prefHeight="41.0" prefWidth="257.0" />
             <Label alignment="CENTER" layoutX="603.0" layoutY="179.0" text="Data e Hora Final" textAlignment="CENTER">
                <font>
                   <Font name="Roboto Thin" size="23.0" />

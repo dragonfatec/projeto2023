@@ -8,4 +8,6 @@ module tela.registro.horas {
     exports frontend.aplicacao;
     exports frontend.controllers;
     opens frontend.controllers to javafx.fxml;
+    exports frontend.util;
+    opens frontend.util to javafx.fxml;
 }
