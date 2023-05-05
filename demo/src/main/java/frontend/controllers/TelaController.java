@@ -77,15 +77,18 @@ public class TelaController implements Initializable {
                 String tipoHora = campoTipo.getValue();
                 String justificativa = campoJustificativa.getText();
 
-                String sql = "INSERT INTO hora(data_registro, hora_inicio, hora_fim, justificativa, tipo) VALUES (" +
-                        sqlDate +
-                        horaInicial +
-                        horaFinal +
-                        justificativa +
-                        tipoHora +
+                String sql = "INSERT INTO hora(dt_init, hora_inicio, hora_fim, justificativa, tipo_hora) VALUES ('" +
+                         sqlDate +"','"+
+                         horaInicial +"','"+
+                         horaFinal +"','"+
+                         justificativa +"','"+
+                        tipoHora +"'"+
                         ")";
+                System.out.println(sql);
+
                 ConexaoDAO con = new ConexaoDAO();
                 con.inserirDados(sql);
+                Alerts.showAlert("ERRO", null, "Apontado com sucesso!\n ERRO:", Alert.AlertType.ERROR);
 
             }
             catch (Exception e){
