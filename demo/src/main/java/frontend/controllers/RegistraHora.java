@@ -79,7 +79,7 @@ public class RegistraHora implements Initializable {
 
         ArrayList<String> minutosLista = new ArrayList<>();
         ArrayList<String> horasLista = new ArrayList<>();
-        for (int i = 0; i <= 60; i++) {
+        for (int i = 0; i < 60; i++) {
             minutosLista.add(Integer.toString(i));
 
             if (i <= 24){
