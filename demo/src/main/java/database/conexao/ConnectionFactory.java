@@ -77,6 +77,47 @@ public class ConnectionFactory {
         return usuarios;
     }
 
+    public ArrayList<String> getEquipe(){
+        ArrayList<String> equipes = new ArrayList<>();
+
+        String sql = "SELECT * FROM equipe;";
+        Connection conn = recuperaConexao();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                String equipeNome = rs.getString(2);
+                equipes.add(equipeNome);
+            }
+            return equipes;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<String> getCliente(){
+        ArrayList<String> cliente = new ArrayList<>();
+
+        String sql = "SELECT * FROM cliente;";
+
+        Connection conn = recuperaConexao();
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+
+            while (rs.next()){
+                String empresa = rs.getString(2);
+                cliente.add(empresa);
+            }
+            return cliente;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
 //    public void apontamentoDeHoras(TextField campoHoraInicial, TextField campoHoraFinal, DatePicker campoData, ChoiceBox<String> campoTipo, TextField campoJustificativa){
 //        try{
 //                String horaInicial = campoHoraInicial.getText();

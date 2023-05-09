@@ -1,6 +1,7 @@
 package frontend.controllers;
 
 import backend.usuario.Usuario;
+import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.NomesArquivosFXML;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -35,6 +37,8 @@ public class RegistraHora implements Initializable {
     @FXML ComboBox minutosInicio;
     @FXML ComboBox horasFim;
     @FXML ComboBox minutosFim;
+    @FXML ChoiceBox<String> campoEquipe;
+    @FXML ChoiceBox<String> campoCliente;
 
     // Botão
     @FXML Button btnRegistrarHora;
@@ -74,6 +78,9 @@ public class RegistraHora implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        ConnectionFactory conn = new ConnectionFactory();
+
         ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
         campoTipo.setItems(tiposDeHora);
 
@@ -95,7 +102,8 @@ public class RegistraHora implements Initializable {
         horasInicio.setItems(horas);
         horasFim.setItems(horas);
 
-
+        campoEquipe.getItems().addAll(conn.getEquipe());
+        campoCliente.getItems().addAll(conn.getCliente());
 
         // TESTE
         Usuario.criarInstancia("Lukas", "12345","23oj2","Lukas", "gestor");
