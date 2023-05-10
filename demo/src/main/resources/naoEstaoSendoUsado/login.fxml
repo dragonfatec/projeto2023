@@ -92,11 +92,6 @@
                </font>
             </Label>
             <Button fx:id="btnEntrar" layoutX="545.0" layoutY="488.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="191.0" stylesheets="@style.css" text="ENTRAR" />
-            <Label fx:id="labelEsqueceu" layoutX="580.0" layoutY="588.0" text="Esqueceu a senha?" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
             </children>
         </AnchorPane>
     </children>
