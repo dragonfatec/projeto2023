@@ -8,36 +8,50 @@ public class Usuario {
     private String senha;
     private String matricula;
     private String nome;
-    private String tipo;
+    private String cargo;
+    private Integer id_equipe;
     private static Usuario instancia;
 
     private Usuario(){
 
     }
-
-    private Usuario(String login, String senha, String matricula, String nome, String tipo){
+    private Usuario(String login, String senha, String matricula, String nome, String cargo, Integer id_equipe){
         this.login = login;
         this.senha = senha;
         this.matricula = matricula;
         this.nome = nome;
-        this.tipo = tipo;
+        this.cargo = cargo;
+        this.id_equipe = id_equipe;
     }
-
     public static Usuario getInstancia(){
         if (instancia == null){
             instancia = new Usuario();
         }
         return instancia;
     }
-
-    public static void criarInstancia(String login, String senha, String matricula, String nome, String tipo){
+    public static void criarInstancia(String login, String senha, String matricula, String nome, String cargo, Integer id_equipe){
         if (instancia == null){
-            instancia = new Usuario(login, senha, matricula, nome, tipo);
+            instancia = new Usuario(login, senha, matricula, nome, cargo, id_equipe);
         }
     }
+    public static Usuario criarUsuario(String login, String senha, String matricula, String nome, String cargo, Integer id_equipe){
+        return new Usuario(login, senha, matricula, nome, cargo, id_equipe);
+    }
 
-    public static Usuario criarUsuario(String login, String senha, String matricula, String nome, String tipo){
-        return new Usuario(login, senha, matricula, nome, tipo);
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getMatricula() {
@@ -56,24 +70,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getLogin() {
-        return login;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     @Override

@@ -14,7 +14,12 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class RegistraHora implements Initializable {
@@ -54,14 +59,31 @@ public class RegistraHora implements Initializable {
 
     @FXML
     void confirmarRegistroHora(){
+        ConnectionFactory conn = new ConnectionFactory();
 
+        String dataIn = dataInicio.getValue().toString();
+        String horaIn = horasInicio.getValue().toString();
+        String minutoIn = minutosInicio.getValue().toString();
+
+        String dataF = dataFim.getValue().toString();
+        String horaF = horasFim.getValue().toString();
+        String minutoF = minutosFim.getValue().toString();
+
+        String dtInicio = dataIn + " " + horaIn +":"+ minutoIn +":00";
+        String dtFim = dataF + " " + horaF +":"+ minutoF +":00";
+
+        System.out.println(dtInicio);
+
+        conn.apontarHoras(Usuario.getInstancia(),dtInicio,dtFim,campoEquipe.getValue(),campoTipo.getTypeSelector());
+
+//        conn.apontarHoras(Usuario.getInstancia(), horaInicio, horaFim, );
 //            try{
-                String horaInicio = horasInicio.getValue().toString();
-                String horaFim = horasFim.getValue().toString();
-                String dtInicio = dataInicio.getValue().toString();
-                String dtFim = dataFim.getValue().toString();
-                String tipoHora = campoTipo.getValue().toString();
-                String justificativa = campoJustificativa.getText();
+//                String horaInicio = horasInicio.getValue().toString();
+//                String horaFim = horasFim.getValue().toString();
+//                String dtInicio = dataInicio.getValue().toString();
+//                String dtFim = dataFim.getValue().toString();
+//                String tipoHora = campoTipo.getValue().toString();
+//                String justificativa = campoJustificativa.getText();
 
 //                ConnectionFactory.
     }
@@ -87,10 +109,16 @@ public class RegistraHora implements Initializable {
         ArrayList<String> minutosLista = new ArrayList<>();
         ArrayList<String> horasLista = new ArrayList<>();
         for (int i = 0; i < 60; i++) {
-            minutosLista.add(Integer.toString(i));
+            if (i < 10)
+                minutosLista.add("0" + Integer.toString(i));
+            else
+                minutosLista.add(Integer.toString(i));
 
             if (i <= 24){
-                horasLista.add(Integer.toString(i));
+                if (i < 10)
+                    horasLista.add("0" + Integer.toString(i));
+                else
+                    horasLista.add(Integer.toString(i));
             }
         }
 
@@ -106,7 +134,7 @@ public class RegistraHora implements Initializable {
         campoCliente.getItems().addAll(conn.getCliente());
 
         // TESTE
-        Usuario.criarInstancia("Lukas", "12345","23oj2","Lukas", "gestor");
+        Usuario.criarInstancia("Lukas", "12345","23oj2","Lukas", "gestor",1);
 
         Usuario usuario = Usuario.getInstancia();
 

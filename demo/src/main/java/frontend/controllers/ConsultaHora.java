@@ -62,7 +62,7 @@ public class ConsultaHora implements Initializable {
         tabela.setItems(tabelasObjetoLista);
 
         // TESTE
-        Usuario.criarInstancia("Lukas", "12345","23oj2","Lukas", "gestor");
+        Usuario.criarInstancia("Lukas", "12345","23oj2","Lukas", "gestor", 1);
 
         Usuario usuario = Usuario.getInstancia();
 
