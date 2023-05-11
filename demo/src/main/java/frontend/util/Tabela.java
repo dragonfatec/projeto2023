@@ -4,34 +4,28 @@ import javafx.scene.control.TableView;
 
 public class Tabela {
 
-    public String data;
-    public String horaInicio;
-    public String horaFim;
-    public String projeto;
+    public String dataInicio;
+    public String dataFim;
+    public String cliente;
     public String status;
 
-    public Tabela(String data, String horaInicio, String horaFim, String projeto, String status){
-        this.data = data;
-        this.horaInicio = horaInicio;
-        this.horaFim = horaFim;
-        this.projeto = projeto;
+    public Tabela(String dataInicio, String dataFim, String cliente, String status){
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.cliente = cliente;
         this.status = status;
     }
 
-    public String getData() {
-        return data;
+    public String getDataInicio() {
+        return dataInicio;
     }
 
-    public String getHoraInicio() {
-        return horaInicio;
+    public String getDataFim() {
+        return dataFim;
     }
 
-    public String getHoraFim() {
-        return horaFim;
-    }
-
-    public String getProjeto() {
-        return projeto;
+    public String getCliente() {
+        return cliente;
     }
 
     public String getStatus() {

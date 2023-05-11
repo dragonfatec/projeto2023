@@ -24,10 +24,9 @@ public class ConsultaHora implements Initializable {
 
     // Tabelas e Colunas
     @FXML TableView<Tabela> tabela;
-    @FXML TableColumn<Tabela, String> colunaData;
-    @FXML TableColumn<Tabela, String> colunaHoraInicio;
-    @FXML TableColumn<Tabela, String> colunaHoraFim;
-    @FXML TableColumn<Tabela, String> colunaProjeto;
+    @FXML TableColumn<Tabela, String> colunaDataHoraInicial;
+    @FXML TableColumn<Tabela, String> colunaDataHoraFinal;
+    @FXML TableColumn<Tabela, String> colunaCliente;
     @FXML TableColumn<Tabela, String> colunaStatus;
 
     // Botões
@@ -48,15 +47,14 @@ public class ConsultaHora implements Initializable {
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
 
         // TESTE
-        tabelasObjetoLista.add(new Tabela("02/05/2023","12:00","15:00","Projeto Batata","Aprovado"));
-        tabelasObjetoLista.add(new Tabela("02/02/2023","12:00","15:00","Projeto Macarrão","Em andamento"));
-        tabelasObjetoLista.add(new Tabela("02/04/2023","12:00","15:00","Projeto Sorvete","Reprovado"));
-        tabelasObjetoLista.add(new Tabela("02/05/2023","12:00","15:00","Projeto Pizza","Aprovado"));
+        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
+        tabelasObjetoLista.add(new Tabela("02/02/2023 12:00","02/02/2023 15:00","Cliente","Em andamento"));
+        tabelasObjetoLista.add(new Tabela("02/04/2023 12:00","02/04/2023 15:00","Cliente","Reprovado"));
+        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
 
-        colunaData.setCellValueFactory(new PropertyValueFactory<Tabela, String>("data"));
-        colunaHoraInicio.setCellValueFactory(new PropertyValueFactory<Tabela, String>("horaInicio"));
-        colunaHoraFim.setCellValueFactory(new PropertyValueFactory<Tabela, String>("horaFim"));
-        colunaProjeto.setCellValueFactory(new PropertyValueFactory<Tabela, String>("projeto"));
+        colunaDataHoraInicial.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataInicio"));
+        colunaDataHoraFinal.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataFim"));
+        colunaCliente.setCellValueFactory(new PropertyValueFactory<Tabela, String>("cliente"));
         colunaStatus.setCellValueFactory(new PropertyValueFactory<Tabela, String>("status"));
 
         tabela.setItems(tabelasObjetoLista);

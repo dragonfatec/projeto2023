@@ -230,4 +230,32 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
+
+    public Map<Integer, Usuario> getUsuarios(){
+        Connection conn = recuperaConexao();
+        Map<Integer, Usuario> listaUsuarios = new HashMap<>();
+
+        String sql = "SELECT * FROM usuario;";
+        int cont = 0;
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                Integer id = rs.getInt(1);
+                String login = rs.getString(2);
+                String senha = rs.getString(3);
+                String matricula = rs.getString(4);
+                String nome = rs.getString(5);
+                String cargo = rs.getString(6);
+                Integer id_equipe  =rs.getInt(7);
+
+                listaUsuarios.put(cont, Usuario.criarUsuario(login,senha,matricula,nome,cargo,id_equipe));
+                cont += 1;
+            }
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return listaUsuarios;
+    }
 }

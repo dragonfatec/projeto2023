@@ -1,20 +1,22 @@
 package backend.util;
 
+import backend.usuario.Usuario;
+import database.conexao.ConnectionFactory;
+
+import java.util.Map;
+
 public class Login {
-    public static boolean verificarLogin(String user, String senha) {
+    public static boolean verificarLogin(String user, String senha, boolean setInstanciaUsuario) {
+        ConnectionFactory conn = new ConnectionFactory();
+        Map<Integer, Usuario> usuarios = conn.getUsuarios();
 
-        return false;
-    }
+        boolean result =  user.equals("lukas") && senha.equals("12345");
 
-    private String[] consultarLoginNoBanco(String user, String senha){
-        String[] loginInfo = {};
+        if (result && setInstanciaUsuario){
+            Usuario usuario = usuarios.get(0);
+            Usuario.criarInstancia(usuario.getLogin(), usuario.getSenha(), usuario.getMatricula(), usuario.getNome(), usuario.getCargo(), usuario.getId_equipe());
+        }
 
-        // fazer a consulta e adicionar no loginInfo
-
-        // Jeito de usar o Criptografia...
-         String senhaTeste = "senhadeteste";
-         System.out.println(Criptografia.criptografar(senha));
-
-        return loginInfo;
+        return result;
     }
 }

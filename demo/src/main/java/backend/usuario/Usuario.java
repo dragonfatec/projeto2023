@@ -78,6 +78,14 @@ public class Usuario {
         this.cargo = cargo;
     }
 
+    public Integer getId_equipe() {
+        return id_equipe;
+    }
+
+    public void setId_equipe(Integer id_equipe) {
+        this.id_equipe = id_equipe;
+    }
+
     @Override
     public String toString() {
         return "Nome: " + getNome();
