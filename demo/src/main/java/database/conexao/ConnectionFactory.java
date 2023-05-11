@@ -51,20 +51,17 @@ public class ConnectionFactory {
             }
         }
     }
-    public void apontarHorasExtra(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente, String tipoHora){
-
-        if (     usuario      == null ||
-                 data_inicial == null ||
-                 data_final   == null ||
-                 equipe       == null ||
-                 equipe       == ""   ||
-                 tipo_hora    == null ||
-                 tipo_hora    == ""   ||
-                 justificativa == null||
-                 cliente       == null||
-                 justificativa.equals(""))
-                     Alerts.showAlert("Aviso!",null,"Preencher todos os campos!", Alert.AlertType.WARNING);
-        else {
+    public void apontarHorasExtra(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
+        if (usuario       == null ||
+            data_inicial  == null ||
+            data_final    == null ||
+            equipe        == null ||
+            equipe        == ""   ||
+            justificativa == null ||
+            cliente       == null ||
+            justificativa.equals("")) {
+            Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+        }else {
                 try {
                     Connection conn = recuperaConexao();
                     PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente) VALUES (?,?,?,?,?,?,?);");
@@ -91,7 +88,7 @@ public class ConnectionFactory {
                 }catch (SQLException e){
                     throw new RuntimeException(e);
                 }
-            }
+        }
     }
 
     public void apontarHorasSobreaviso(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora) {

@@ -76,8 +76,24 @@ public class RegistraHora implements Initializable {
         String tipoHora = campoTipo.getValue();
         String just = campoJustificativa.getText();
 
-        conn.apontarHorasSobreaviso(Usuario.getInstancia(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora);
-
+        if(tipoHora.equals("Extra")) {
+            if (dataIn                  == null ||
+                dataIn                  == ""   ||
+                dataF                   == null ||
+                dataF                   == ""   ||
+                campoEquipe.getValue()  == null ||
+                campoEquipe.getValue()  == ""   ||
+                just                    == null ||
+                just                    == ""   ||
+                campoCliente.getValue() == null ||
+                campoCliente.getValue() == ""     ) {
+                Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+            }else {
+                conn.apontarHorasSobreaviso(Usuario.getInstancia(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora);
+            }
+        }else {
+            conn.apontarHorasExtra(Usuario.getInstancia(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora, just, campoCliente.getValue());
+        }
 
 //        if (tipoHora.equals("Extra")){
 //            conn.apontarHorasExtra(Usuario.getInstancia(),dtInicio,dtFim,campoEquipe.getValue(),campoTipo.getTypeSelector(), just, campoCliente.getValue().toString(),tipoHora);
