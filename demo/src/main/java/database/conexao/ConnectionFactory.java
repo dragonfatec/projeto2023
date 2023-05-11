@@ -231,11 +231,11 @@ public class ConnectionFactory {
         }
     }
 
-    public Map<Integer, Usuario> getUsuarios(){
+    public Map<Integer, Usuario> getUsuario(String user, String passw){
         Connection conn = recuperaConexao();
         Map<Integer, Usuario> listaUsuarios = new HashMap<>();
 
-        String sql = "SELECT * FROM usuario;";
+        String sql = "SELECT * FROM usuario where login = '"+user+"' and senha = '"+passw+"'";
         int cont = 0;
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
