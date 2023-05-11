@@ -44,6 +44,9 @@ public class ConsultaHora implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // instancia do usuario
+        Usuario usuario = Usuario.getInstancia();
+
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
 
         // TESTE
@@ -58,11 +61,6 @@ public class ConsultaHora implements Initializable {
         colunaStatus.setCellValueFactory(new PropertyValueFactory<Tabela, String>("status"));
 
         tabela.setItems(tabelasObjetoLista);
-
-        // TESTE
-        Usuario.criarInstancia("Lukas", "12345","23oj2","Lukas", "gestor", 1);
-
-        Usuario usuario = Usuario.getInstancia();
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }

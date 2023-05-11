@@ -126,8 +126,10 @@ public class RegistraHora implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Pegando a instancia do usuario
+        Usuario usuario = Usuario.getInstancia();
 
-//        ConnectionFactory conn = new ConnectionFactory();
+        ConnectionFactory conn = new ConnectionFactory();
 
         ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
         campoTipo.setItems(tiposDeHora);
@@ -158,11 +160,6 @@ public class RegistraHora implements Initializable {
 
 //        campoEquipe.getItems().addAll(conn.getEquipe());
 //        campoCliente.getItems().addAll(conn.getCliente());
-
-        // TESTE
-        Usuario.criarInstancia("Lukas", "12345","23oj2","Lukas", "gestor",1);
-
-        Usuario usuario = Usuario.getInstancia();
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
 

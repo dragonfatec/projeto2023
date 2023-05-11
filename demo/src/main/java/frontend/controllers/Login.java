@@ -1,6 +1,7 @@
 package frontend.controllers;
 
 import backend.usuario.Usuario;
+import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.Map;
 
 
 public class Login {
@@ -27,12 +29,21 @@ public class Login {
     // Metodos
     @FXML
     public void fazerLogin(ActionEvent actionEvent) throws IOException {
-        boolean loginAceito = backend.util.Login.verificarLogin(campoUsuario.getText(), campoSenha.getText(), true);
-        if (loginAceito){
+        ConnectionFactory conn = new ConnectionFactory();
+        String user = campoUsuario.getText();
+        String senha = campoSenha.getText();
+
+        Map<Integer, Usuario> resultadoQuery = conn.getUsuario(user,senha);
+
+//        String senhaCriptografada = Criptografia.criptografar(senha);
+
+        if (resultadoQuery.size() == 1){
+            Usuario usuario = resultadoQuery.get(0);
+            Usuario.criarInstancia(usuario.getLogin(), usuario.getSenha(), usuario.getMatricula(), usuario.getNome(), usuario.getCargo(), usuario.getId_equipe());
             App.mudarTela("consultaHora.fxml");
         }
         else{
-            Alerts.showAlert("Erro", "","Usuario ou a senha está incorreto", Alert.AlertType.ERROR);
+            Alerts.showAlert("Erro", "","O usuario ou a senha está incorreto", Alert.AlertType.ERROR);
         }
     }
 }
