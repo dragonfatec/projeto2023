@@ -3,6 +3,7 @@ package frontend.controllers;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
+import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,7 +38,7 @@ public class RegistraHora implements Initializable {
     @FXML DatePicker dataFim;
 
     // ChoiceBox
-    @FXML ChoiceBox campoTipo;
+    @FXML ChoiceBox<String> campoTipo;
     @FXML ComboBox horasInicio;
     @FXML ComboBox minutosInicio;
     @FXML ComboBox horasFim;
@@ -72,20 +73,29 @@ public class RegistraHora implements Initializable {
         String dtInicio = dataIn + " " + horaIn +":"+ minutoIn +":00";
         String dtFim = dataF + " " + horaF +":"+ minutoF +":00";
 
-        System.out.println(dtInicio);
+        String tipoHora = campoTipo.getValue();
+        String just = campoJustificativa.getText();
 
-        conn.apontarHoras(Usuario.getInstancia(),dtInicio,dtFim,campoEquipe.getValue(),campoTipo.getTypeSelector());
+        conn.apontarHorasSobreaviso(Usuario.getInstancia(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora);
 
-//        conn.apontarHoras(Usuario.getInstancia(), horaInicio, horaFim, );
-//            try{
-//                String horaInicio = horasInicio.getValue().toString();
-//                String horaFim = horasFim.getValue().toString();
-//                String dtInicio = dataInicio.getValue().toString();
-//                String dtFim = dataFim.getValue().toString();
-//                String tipoHora = campoTipo.getValue().toString();
-//                String justificativa = campoJustificativa.getText();
 
-//                ConnectionFactory.
+//        if (tipoHora.equals("Extra")){
+//            conn.apontarHorasExtra(Usuario.getInstancia(),dtInicio,dtFim,campoEquipe.getValue(),campoTipo.getTypeSelector(), just, campoCliente.getValue().toString(),tipoHora);
+//            Alerts.showAlert("Aviso!",null,"Salvo com Sucesso!", Alert.AlertType.CONFIRMATION);
+//        }
+//        else
+//            conn.apontarHorasSobreaviso(Usuario.getInstancia(),dtInicio,dtFim,campoEquipe.getValue(),campoTipo.getTypeSelector(), tipoHora);
+
+        dataInicio.setValue(null);
+        horasInicio.setValue(null);
+        minutosInicio.setValue(null);
+        dataFim.setValue(null);
+        horasFim.setValue(null);
+        minutosFim.setValue(null);
+        campoJustificativa.clear();
+        campoEquipe.setValue(null);
+        campoTipo.setValue(null);
+        campoCliente.setValue(null);
     }
 
     public void consultarHoras(ActionEvent actionEvent) {

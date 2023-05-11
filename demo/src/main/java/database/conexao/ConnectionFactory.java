@@ -1,6 +1,9 @@
 package database.conexao;
 
 import backend.usuario.Usuario;
+import frontend.util.Alerts;
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -48,24 +51,67 @@ public class ConnectionFactory {
             }
         }
     }
-    public void apontarHoras(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora){
+    public void apontarHorasExtra(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente, String tipoHora){
+
+        if (     usuario      == null ||
+                 data_inicial == null ||
+                 data_final   == null ||
+                 equipe       == null ||
+                 equipe       == ""   ||
+                 tipo_hora    == null ||
+                 tipo_hora    == ""   ||
+                 justificativa == null||
+                 cliente       == null||
+                 justificativa.equals(""))
+                     Alerts.showAlert("Aviso!",null,"Preencher todos os campos!", Alert.AlertType.WARNING);
+        else {
+                try {
+                    Connection conn = recuperaConexao();
+                    PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente) VALUES (?,?,?,?,?,?,?);");
+
+                    Integer id_user = getListaUsuario().get(usuario);
+                    pr.setInt(1, id_user);
+
+                    String dtInicial = data_inicial;
+                    String dtFinal = data_final;
+                    pr.setTimestamp(2, Timestamp.valueOf(dtInicial));
+                    pr.setTimestamp(3, Timestamp.valueOf(dtFinal));
+
+                    pr.setString(4,justificativa);
+
+                    Integer id_equipe = getListaEquipe().get(equipe);
+                    pr.setInt(5, id_equipe);
+
+                    pr.setString(6, tipo_hora);
+
+                    Integer id_cliente = getListaCliente().get(cliente);
+                    pr.setInt(7,id_cliente);
+
+                    pr.execute();
+                }catch (SQLException e){
+                    throw new RuntimeException(e);
+                }
+            }
+    }
+
+    public void apontarHorasSobreaviso(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora) {
         if (usuario      == null ||
             data_inicial == null ||
             data_final   == null ||
-            equipe       == null || equipe    == "" ||
-            tipo_hora    == null || tipo_hora == "") {
-            System.out.println("Preencher todos os valores");
-        } else {
-            Connection conn = recuperaConexao();
-
+            equipe       == null ||
+            equipe       == ""   ||
+            tipo_hora    == null ||
+            tipo_hora    == "") {
+            Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+        }else {
             try {
+                Connection conn = recuperaConexao();
                 PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, id_equipe, tipo_hora) VALUES (?,?,?,?,?);");
 
                 Integer id_user = getListaUsuario().get(usuario);
                 pr.setInt(1, id_user);
 
                 String dtInicial = data_inicial;
-
                 String dtFinal = data_final;
                 pr.setTimestamp(2, Timestamp.valueOf(dtInicial));
                 pr.setTimestamp(3, Timestamp.valueOf(dtFinal));
@@ -121,6 +167,27 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
+    public HashMap<String, Integer> getListaCliente(){
+        HashMap<String, Integer> cliente = new HashMap<>();
+
+        String sql = "SELECT * FROM cliente";
+        Connection conn = recuperaConexao();
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                String cl = rs.getString(2);
+                Integer id_cliente = rs.getInt(1);
+
+                cliente.put(cl,id_cliente);
+            }
+
+            return cliente;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     public ArrayList<String> getCliente(){
         ArrayList<String> cliente = new ArrayList<>();
 
@@ -166,80 +233,4 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-
-
-//    public void apontamentoDeHoras(TextField campoHoraInicial, TextField campoHoraFinal, DatePicker campoData, ChoiceBox<String> campoTipo, TextField campoJustificativa){
-//        try{
-//                String horaInicial = campoHoraInicial.getText();
-//                String horaFinal = campoHoraFinal.getText();
-//                LocalDate data = campoData.getValue();
-//                Date sqlDate = java.sql.Date.valueOf(data);
-//                String tipoHora = campoTipo.getValue();
-//                String justificativa = campoJustificativa.getText();
-//
-//                String sql = "INSERT INTO hora(dt_init, hora_inicio, hora_fim, justificativa, tipo_hora) VALUES ('" +
-//                         sqlDate +"','"+
-//                         horaInicial +"','"+
-//                         horaFinal +"','"+
-//                         justificativa +"','"+
-//                        tipoHora +"'"+
-//                        ")";
-//
-//                Connection conn = recuperaConexao();
-//
-//            try {
-//                PreparedStatement preparedStatement = conn.prepareStatement(sql);
-//
-//                preparedStatement.setString(1, login);
-//                preparedStatement.setString(2, senha);
-//                preparedStatement.setString(3, matricula);
-//                preparedStatement.setString(4, nome);
-//                preparedStatement.setString(5, tipo);
-//
-//                preparedStatement.execute();
-//                Alerts.showAlert("ERRO", null, "Apontado com sucesso!\n ERRO:", Alert.AlertType.ERROR);
-//
-//            }
-//            catch (Exception e){
-//                Alerts.showAlert("ERRO", null, "Por favor, preencha corretamente todos os campos\n ERRO:"+e, Alert.AlertType.ERROR);
-//            }
-//    }
-
-    // Ideias de como pode ficar alguns metodos desta classe
-
-//    public Map<String, Arrays> consultar(String sql){
-//
-//        Map<String, Arrays> resultadoConsulta = new HashMap<>();
-//
-//        try {
-//            PreparedStatement ps = this.conn.prepareStatement(sql);
-//            ResultSet resultSet = ps.executeQuery();
-//
-//            String[] listaNomeColunas = {"id", "nome usuario"};
-//
-//            for (String nomeColuna : listaNomeColunas) {
-//                resultadoConsulta.put(nomeColuna, (Arrays) resultSet.getArray(nomeColuna));
-//            }
-//
-//        }catch (SQLException e){
-//            throw new RuntimeException(e);
-//        }
-//        return resultadoConsulta;
-//    }
-//
-//    public void inserirDados(String sql){
-//        /*
-//        Esse metodo vai rodar o sql que você passar como parametro e inserir registros nessa tabela
-//
-//        Exemplo de como o parametro sql tem que vir:
-//            INSERT INTO usuario(login, senha, matricula, nome, tipo) VALUES ('abc12', 12345, 12345678, Nome Teste,Colaborador);
-//        */
-//        try {
-//            PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
-//            preparedStatement.execute();
-//        }catch (SQLException e){
-//            Alerts.showAlert("ERRO", "Erro ao salvar no banco", "Erro ao salvar \nErro:\n"+e, Alert.AlertType.ERROR);
-//            throw new RuntimeException(e);
-//        }
-//    }
 }
