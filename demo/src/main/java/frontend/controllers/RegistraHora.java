@@ -1,5 +1,6 @@
 package frontend.controllers;
 
+import backend.datahora.RegistroDataHora;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
@@ -21,6 +22,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class RegistraHora implements Initializable {
@@ -62,73 +64,98 @@ public class RegistraHora implements Initializable {
     void confirmarRegistroHora(){
         ConnectionFactory conn = new ConnectionFactory();
 
-        String dataIn = dataInicio.getValue().toString();
-        String horaIn = horasInicio.getValue().toString();
-        String minutoIn = minutosInicio.getValue().toString();
-
-        String dataF = dataFim.getValue().toString();
-        String horaF = horasFim.getValue().toString();
-        String minutoF = minutosFim.getValue().toString();
-
-        String dtInicio = dataIn + " " + horaIn +":"+ minutoIn +":00";
-        String dtFim = dataF + " " + horaF +":"+ minutoF +":00";
-
-        String tipoHora = campoTipo.getValue();
-        String just = campoJustificativa.getText();
-
-//        if(tipoHora.equals("Extra")) {
-//            if (dataIn                  == null ||
-//                dataIn                  == ""   ||
-//                dataF                   == null ||
-//                dataF                   == ""   ||
-//                campoEquipe.getValue()  == null ||
-//                campoEquipe.getValue()  == ""   ||
-//                just                    == null ||
-//                just                    == ""   ||
-//                campoCliente.getValue() == null ||
-//                campoCliente.getValue() == ""     ) {
-//                Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
-//            }else {
-//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora, just, campoCliente.getValue());
-//            }
-//        }else {
-//            conn.apontarHorasSobreaviso();
+//        try{
+//            String dataIn = dataInicio.getValue().toString();
+//            String horaIn = horasInicio.getValue().toString();
+//            String minutoIn = minutosInicio.getValue().toString();
+//
+//            String dataF = dataFim.getValue().toString();
+//            String horaF = horasFim.getValue().toString();
+//            String minutoF = minutosFim.getValue().toString();
+//            String dtInicio = dataIn + " " + horaIn +":"+ minutoIn +":00";
+//            String dtFim = dataF + " " + horaF +":"+ minutoF +":00";
+//
+//            String cliente = campoCliente.getValue();
+//            String equipe = campoEquipe.getValue();
+//            String tipoHora = campoTipo.getValue();
+//            String justificativa = campoJustificativa.getText();
+//
+//            System.out.println("a data"+dataIn);
 //        }
+//        catch (Exception e){
+//           Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+//        }
+        RegistroDataHora dt = new RegistroDataHora();
+        if (verificarPreenchimentosDosCampos()){
+            String[] dataInicioSemFormatar = dataInicio.getValue().toString().split("-");
+            String dataIn = dataInicioSemFormatar[2] + "/" + dataInicioSemFormatar[1] + "/" + dataInicioSemFormatar[0] + " " + horasInicio.getValue().toString() + ":" + minutosInicio.getValue().toString();
+            String[] dataFimSemFormatar = dataFim.getValue().toString().split("-");
+            String dataFm = dataFimSemFormatar[2] + "/" + dataFimSemFormatar[1] + "/" + dataFimSemFormatar[0] + " " + horasFim.getValue().toString() + ":" + minutosFim.getValue().toString();
 
-//        dataInicio.setValue(null);
-//        horasInicio.setValue(null);
-//        minutosInicio.setValue(null);
-//        dataFim.setValue(null);
-//        horasFim.setValue(null);
-//        minutosFim.setValue(null);
-//        campoJustificativa.clear();
-//        campoEquipe.setValue(null);
-//        campoTipo.setValue(null);
-//        campoCliente.setValue(null);
+//            System.out.println(dataFm+"  :  "+dt.validarData(dataFm));
+
+            if (dt.vaidarDataESequencia(dataIn, dataFm)){
+                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+            }
+            else{
+                Alerts.showAlert("Aviso!", null, "As datas tem que ser sequenciais! \nA data inicio tem que ser menor que a data fim,\n e a data fim tem que ser menor ou igual agora.", Alert.AlertType.WARNING);
+            }
+        }
+        else{
+            Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+        }
     }
+
+    private boolean verificarPreenchimentosDosCampos(){
+        try{
+            dataInicio.getValue().toString();
+            horasInicio.getValue().toString();
+            minutosInicio.getValue().toString();
+            dataFim.getValue().toString();
+            horasFim.getValue().toString();
+            minutosFim.getValue().toString();
+
+            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && !campoJustificativa.getText().equals("");
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
+    private void limparCampos(){
+        dataInicio.setValue(null);
+        horasInicio.setValue(null);
+        minutosInicio.setValue(null);
+        dataFim.setValue(null);
+        horasFim.setValue(null);
+        minutosFim.setValue(null);
+        campoJustificativa.clear();
+        campoEquipe.setValue(null);
+        campoTipo.setValue(null);
+        campoCliente.setValue(null);
+    }
+
 
     public void consultarHoras(ActionEvent actionEvent) {
         try {
             App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
         } catch (IOException e) {
-            System.out.println("deu erro");
             throw new RuntimeException(e);
         }
     }
 
     public void atualizarCliente(ActionEvent actionEvent) {
-        ConnectionFactory conn = new ConnectionFactory();
-        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getCliente(campoEquipe.getValue()));
-       campoCliente.setItems(clientes);
+//        ConnectionFactory conn = new ConnectionFactory();
+//        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getCliente(campoEquipe.getValue()));
+//        campoCliente.setItems(clientes);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Pegando a instancia do usuario
         Usuario usuario = Usuario.getInstancia();
-        System.out.println(Usuario.getInstancia());
 
-        ConnectionFactory conn = new ConnectionFactory();
+//        ConnectionFactory conn = new ConnectionFactory();
 
         ArrayList<String> minutosLista = new ArrayList<>();
         ArrayList<String> horasLista = new ArrayList<>();
@@ -138,7 +165,7 @@ public class RegistraHora implements Initializable {
             else
                 minutosLista.add(Integer.toString(i));
 
-            if (i <= 24){
+            if (i < 24){
                 if (i < 10)
                     horasLista.add("0" + i);
                 else
@@ -157,11 +184,16 @@ public class RegistraHora implements Initializable {
         horasInicio.setItems(horas);
         horasFim.setItems(horas);
 
-        campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
+//        campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
 //        campoCliente.getItems().addAll(conn.getCliente("DRAGONS"));
+
+
+        campoEquipe.getItems().addAll(horas);
+        campoCliente.getItems().addAll(horas);
+
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
 
-        conn.getIdUsuario(Usuario.getInstancia().getLogin());
+//        conn.getIdUsuario(Usuario.getInstancia().getLogin());
     }
 }
