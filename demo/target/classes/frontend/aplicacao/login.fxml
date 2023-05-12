@@ -85,7 +85,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="campoSenha" layoutX="482.0" layoutY="368.0" prefHeight="47.0" prefWidth="316.0" promptText="Digite sua senha..." />
+            <PasswordField fx:id="campoSenha" layoutX="482.0" layoutY="368.0" prefHeight="47.0" prefWidth="316.0" promptText="Digite sua senha..." />
             <Label layoutX="482.0" layoutY="336.0" text="Senha" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
