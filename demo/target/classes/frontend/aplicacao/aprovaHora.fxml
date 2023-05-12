@@ -73,7 +73,7 @@
                         <TableColumn fx:id="colunaCliente" prefWidth="124.0" text="Cliente" />
                   <TableColumn fx:id="colunaTipo" prefWidth="100.0" text="Tipo" />
                   <TableColumn fx:id="colunaTotalDeHoras" prefWidth="104.0" text="Total de Horas" />
-                  <TableColumn fx:id="colunaSelecione" prefWidth="75.0" text="Check" />
+                  <TableColumn fx:id="colunaSelecione" prefWidth="75.0" text="Selecione" />
                     </columns>
                 </TableView>
                 <Label alignment="CENTER" layoutX="633.0" layoutY="75.0" prefHeight="30.0" prefWidth="197.0" text="Escolha a Equipe:">
