@@ -116,6 +116,12 @@ public class RegistraHora implements Initializable {
         }
     }
 
+    public void atualizarCliente(ActionEvent actionEvent) {
+        ConnectionFactory conn = new ConnectionFactory();
+        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getCliente(campoEquipe.getValue()));
+       campoCliente.setItems(clientes);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -153,13 +159,11 @@ public class RegistraHora implements Initializable {
         horasFim.setItems(horas);
 
         campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
-        campoCliente.getItems().addAll(conn.getCliente("DRAGONS"));
+//        campoCliente.getItems().addAll(conn.getCliente("DRAGONS"));
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
 
         conn.getIdUsuario(Usuario.getInstancia().getLogin());
 
     }
-
-
 }
