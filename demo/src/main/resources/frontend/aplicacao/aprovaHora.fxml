@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.AprovaHora">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="875.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="724.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
+                <Label fx:id="textoNomeUsuario" alignment="CENTER" layoutX="-1.0" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Registrar Hora" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font></Button>
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font></Button>
+                <Label alignment="CENTER" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <TableView fx:id="tabela" layoutX="539.0" layoutY="140.0" prefHeight="436.0" prefWidth="680.0">
+                    <columns>
+                  <TableColumn fx:id="colunaColaborador" prefWidth="118.0" text="Colaborador" />
+                        <TableColumn fx:id="colunaDataHoraInicial" prefWidth="135.0" text="Data Hora Inicial" />
+                        <TableColumn fx:id="colunaDataHoraFinal" prefWidth="130.0" text="Data Hora Final" />
+                        <TableColumn fx:id="colunaCliente" prefWidth="114.0" text="Cliente" />
+                  <TableColumn fx:id="colunaHoraExtra" prefWidth="83.0" text="Tipo" />
+                  <TableColumn fx:id="ColunaSobreaviso" prefWidth="101.0" text="Total de Horas" />
+                    </columns>
+                </TableView>
+                <Label alignment="CENTER" layoutX="633.0" layoutY="75.0" prefHeight="30.0" prefWidth="197.0" text="Escolha a Equipe:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            <ChoiceBox fx:id="campoEscolhaEquipe" layoutX="831.0" layoutY="76.0" prefHeight="30.0" prefWidth="169.0" />
+            <CheckBox fx:id="checkboxLinha1" layoutX="504.0" layoutY="174.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha2" layoutX="504.0" layoutY="199.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha3" layoutX="504.0" layoutY="222.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha4" layoutX="504.0" layoutY="247.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha5" layoutX="504.0" layoutY="273.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha6" layoutX="504.0" layoutY="298.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha7" layoutX="504.0" layoutY="321.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha8" layoutX="504.0" layoutY="346.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha9" layoutX="504.0" layoutY="373.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha10" layoutX="504.0" layoutY="398.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha11" layoutX="504.0" layoutY="421.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha12" layoutX="504.0" layoutY="446.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha13" layoutX="504.0" layoutY="472.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha14" layoutX="504.0" layoutY="497.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha15" layoutX="504.0" layoutY="520.0" mnemonicParsing="false" />
+            <CheckBox fx:id="checkboxLinha16" layoutX="504.0" layoutY="545.0" mnemonicParsing="false" />
+            <Button fx:id="btnAprovar" layoutX="953.0" layoutY="596.0" mnemonicParsing="false" onAction="#aprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSelecionarTudo" onAction="#selecionarTudo" layoutX="419.0" layoutY="140.0" mnemonicParsing="false" text="Selecionar Tudo" />
+            <Button fx:id="btnAprovaHora" layoutX="-1.0" layoutY="434.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar Hora" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReprovar" layoutX="1092.0" layoutY="596.0" mnemonicParsing="false" onAction="#reprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Reprovar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

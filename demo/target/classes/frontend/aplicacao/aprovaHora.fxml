@@ -43,7 +43,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.AprovaHora">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="875.0" VBox.vgrow="ALWAYS">
             <children>
@@ -53,11 +53,11 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Registrar Hora" textFill="WHITE">
+                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
-                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
@@ -98,18 +98,18 @@
             <CheckBox fx:id="checkboxLinha14" layoutX="504.0" layoutY="497.0" mnemonicParsing="false" />
             <CheckBox fx:id="checkboxLinha15" layoutX="504.0" layoutY="520.0" mnemonicParsing="false" />
             <CheckBox fx:id="checkboxLinha16" layoutX="504.0" layoutY="545.0" mnemonicParsing="false" />
-            <Button fx:id="btnAprovar" layoutX="953.0" layoutY="596.0" mnemonicParsing="false" onAction="#aprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@style_aprovaHora.css" text="Aprovar" textFill="WHITE">
+            <Button fx:id="btnAprovar" layoutX="953.0" layoutY="596.0" mnemonicParsing="false" onAction="#aprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnSelecionarTudo" layoutX="419.0" layoutY="140.0" mnemonicParsing="false" text="Selecionar Tudo" />
-            <Button fx:id="btnAprovaHora" layoutX="-1.0" layoutY="434.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Aprovar Hora" textFill="WHITE">
+            <Button fx:id="btnSelecionarTudo" onAction="#selecionarTudo" layoutX="419.0" layoutY="140.0" mnemonicParsing="false" text="Selecionar Tudo" />
+            <Button fx:id="btnAprovaHora" layoutX="-1.0" layoutY="434.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar Hora" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btnReprovar" layoutX="1092.0" layoutY="596.0" mnemonicParsing="false" onAction="#reprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@style_aprovaHora.css" text="Reprovar" textFill="WHITE">
+            <Button fx:id="btnReprovar" layoutX="1092.0" layoutY="596.0" mnemonicParsing="false" onAction="#reprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Reprovar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
