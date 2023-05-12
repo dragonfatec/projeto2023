@@ -11,16 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class RegistraHora implements Initializable {
@@ -123,6 +118,18 @@ public class RegistraHora implements Initializable {
         }
     }
 
+    public void atualizarCliente(ActionEvent actionEvent) {
+        // Esse metodo atualiza o campo cliente quando o usuario seleciona uma equipe
+//        ConnectionFactory conn = new ConnectionFactory();
+//        ObservableList<String> cliente = FXCollections.observableArrayList(conn.getCliente(campoEquipe.getValue().toUpperCase()));
+//        campoCliente.setItems(cliente);
+
+        // teste
+        ArrayList<String> minutosLista = new ArrayList<>();
+        minutosLista.add(campoEquipe.getValue());
+        ObservableList<String> horas = FXCollections.observableArrayList(minutosLista);
+        campoCliente.setItems(horas);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -158,12 +165,11 @@ public class RegistraHora implements Initializable {
         horasInicio.setItems(horas);
         horasFim.setItems(horas);
 
-//        campoEquipe.getItems().addAll(conn.getEquipe());
+        campoEquipe.getItems().addAll(horas);
 //        campoCliente.getItems().addAll(conn.getCliente());
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
 
     }
-
 
 }
