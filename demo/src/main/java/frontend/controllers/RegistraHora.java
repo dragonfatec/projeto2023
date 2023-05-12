@@ -131,24 +131,24 @@ public class RegistraHora implements Initializable {
 
         ConnectionFactory conn = new ConnectionFactory();
 
-        ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
-        campoTipo.setItems(tiposDeHora);
-
         ArrayList<String> minutosLista = new ArrayList<>();
         ArrayList<String> horasLista = new ArrayList<>();
         for (int i = 0; i < 60; i++) {
             if (i < 10)
-                minutosLista.add("0" + Integer.toString(i));
+                minutosLista.add("0" + i);
             else
                 minutosLista.add(Integer.toString(i));
 
             if (i <= 24){
                 if (i < 10)
-                    horasLista.add("0" + Integer.toString(i));
+                    horasLista.add("0" + i);
                 else
                     horasLista.add(Integer.toString(i));
             }
         }
+
+        ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
+        campoTipo.setItems(tiposDeHora);
 
         ObservableList<String> minutos = FXCollections.observableArrayList(minutosLista);
         minutosInicio.setItems(minutos);
@@ -164,6 +164,5 @@ public class RegistraHora implements Initializable {
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
 
         conn.getIdUsuario(Usuario.getInstancia().getLogin());
-
     }
 }
