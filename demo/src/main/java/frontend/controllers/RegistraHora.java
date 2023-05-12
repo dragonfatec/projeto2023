@@ -122,7 +122,6 @@ public class RegistraHora implements Initializable {
        campoCliente.setItems(clientes);
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Pegando a instancia do usuario
