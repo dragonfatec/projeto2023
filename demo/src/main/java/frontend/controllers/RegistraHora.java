@@ -76,42 +76,35 @@ public class RegistraHora implements Initializable {
         String tipoHora = campoTipo.getValue();
         String just = campoJustificativa.getText();
 
-        if(tipoHora.equals("Extra")) {
-            if (dataIn                  == null ||
-                dataIn                  == ""   ||
-                dataF                   == null ||
-                dataF                   == ""   ||
-                campoEquipe.getValue()  == null ||
-                campoEquipe.getValue()  == ""   ||
-                just                    == null ||
-                just                    == ""   ||
-                campoCliente.getValue() == null ||
-                campoCliente.getValue() == ""     ) {
-                Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
-            }else {
-                conn.apontarHorasSobreaviso(Usuario.getInstancia(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora);
-            }
-        }else {
-            conn.apontarHorasExtra(Usuario.getInstancia(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora, just, campoCliente.getValue());
-        }
-
-//        if (tipoHora.equals("Extra")){
-//            conn.apontarHorasExtra(Usuario.getInstancia(),dtInicio,dtFim,campoEquipe.getValue(),campoTipo.getTypeSelector(), just, campoCliente.getValue().toString(),tipoHora);
-//            Alerts.showAlert("Aviso!",null,"Salvo com Sucesso!", Alert.AlertType.CONFIRMATION);
+//        if(tipoHora.equals("Extra")) {
+//            if (dataIn                  == null ||
+//                dataIn                  == ""   ||
+//                dataF                   == null ||
+//                dataF                   == ""   ||
+//                campoEquipe.getValue()  == null ||
+//                campoEquipe.getValue()  == ""   ||
+//                just                    == null ||
+//                just                    == ""   ||
+//                campoCliente.getValue() == null ||
+//                campoCliente.getValue() == ""     ) {
+//                Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+//            }else {
+//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dtInicio, dtFim, campoEquipe.getValue(), tipoHora, just, campoCliente.getValue());
+//            }
+//        }else {
+//            conn.apontarHorasSobreaviso();
 //        }
-//        else
-//            conn.apontarHorasSobreaviso(Usuario.getInstancia(),dtInicio,dtFim,campoEquipe.getValue(),campoTipo.getTypeSelector(), tipoHora);
 
-        dataInicio.setValue(null);
-        horasInicio.setValue(null);
-        minutosInicio.setValue(null);
-        dataFim.setValue(null);
-        horasFim.setValue(null);
-        minutosFim.setValue(null);
-        campoJustificativa.clear();
-        campoEquipe.setValue(null);
-        campoTipo.setValue(null);
-        campoCliente.setValue(null);
+//        dataInicio.setValue(null);
+//        horasInicio.setValue(null);
+//        minutosInicio.setValue(null);
+//        dataFim.setValue(null);
+//        horasFim.setValue(null);
+//        minutosFim.setValue(null);
+//        campoJustificativa.clear();
+//        campoEquipe.setValue(null);
+//        campoTipo.setValue(null);
+//        campoCliente.setValue(null);
     }
 
     public void consultarHoras(ActionEvent actionEvent) {
@@ -128,6 +121,7 @@ public class RegistraHora implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Pegando a instancia do usuario
         Usuario usuario = Usuario.getInstancia();
+        System.out.println(Usuario.getInstancia());
 
         ConnectionFactory conn = new ConnectionFactory();
 
@@ -158,10 +152,12 @@ public class RegistraHora implements Initializable {
         horasInicio.setItems(horas);
         horasFim.setItems(horas);
 
-//        campoEquipe.getItems().addAll(conn.getEquipe());
-//        campoCliente.getItems().addAll(conn.getCliente());
+        campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
+        campoCliente.getItems().addAll(conn.getCliente("DRAGONS"));
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
+
+        conn.getIdUsuario(Usuario.getInstancia().getLogin());
 
     }
 

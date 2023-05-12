@@ -5,11 +5,6 @@ import frontend.util.Alerts;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ConnectionFactory {
@@ -51,8 +46,8 @@ public class ConnectionFactory {
             }
         }
     }
-    public void apontarHorasExtra(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
-        if (usuario       == null ||
+    public void apontarHorasExtra(String login, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
+        if (login         == null ||
             data_inicial  == null ||
             data_final    == null ||
             equipe        == null ||
@@ -66,7 +61,7 @@ public class ConnectionFactory {
                     Connection conn = recuperaConexao();
                     PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente) VALUES (?,?,?,?,?,?,?);");
 
-                    Integer id_user = getListaUsuario().get(usuario);
+                    Integer id_user = getIdEquipe(login);
                     pr.setInt(1, id_user);
 
                     String dtInicial = data_inicial;
@@ -76,7 +71,7 @@ public class ConnectionFactory {
 
                     pr.setString(4,justificativa);
 
-                    Integer id_equipe = getListaEquipe().get(equipe);
+                    Integer id_equipe = getIdEquipe(equipe);
                     pr.setInt(5, id_equipe);
 
                     pr.setString(6, tipo_hora);
@@ -113,7 +108,7 @@ public class ConnectionFactory {
                 pr.setTimestamp(2, Timestamp.valueOf(dtInicial));
                 pr.setTimestamp(3, Timestamp.valueOf(dtFinal));
 
-                Integer id_equipe = getListaEquipe().get(equipe);
+                Integer id_equipe = getIdEquipe(equipe);
                 pr.setInt(4, id_equipe);
 
                 pr.setString(5, tipo_hora);
@@ -125,37 +120,34 @@ public class ConnectionFactory {
             }
         }
     }
-    public HashMap<String, Integer> getListaEquipe(){
-        HashMap<String, Integer> equipe = new HashMap<>();
-
-        String sql = "SELECT * FROM equipe;";
+    public Integer getIdEquipe(String equipe){
+        Integer id_equipe = 0;
+        String sql = "SELECT id_equipe FROM equipe WHERE nome_equipe = '" + equipe + "'";
         Connection conn = recuperaConexao();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                Integer id = rs.getInt(1);
-                String equipeNome = rs.getString(2);
-                equipe.put(equipeNome,id);
+                id_equipe = rs.getInt(1);
             }
-            return equipe;
+            return id_equipe;
 
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<String> getEquipe(){
+    public ArrayList<String> getEquipe(String login){
         ArrayList<String> equipes = new ArrayList<>();
 
-        String sql = "SELECT * FROM equipe;";
+        String sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.id_usuario = eu.id_usuario WHERE us.login = '" + login + "';";
         Connection conn = recuperaConexao();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                String equipeNome = rs.getString(2);
+                String equipeNome = rs.getString(1);
                 equipes.add(equipeNome);
             }
             return equipes;
@@ -185,10 +177,11 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<String> getCliente(){
+    public ArrayList<String> getCliente(String nomeEquipe){
         ArrayList<String> cliente = new ArrayList<>();
 
-        String sql = "SELECT * FROM cliente;";
+        String sql = "SELECT cl.nome_cliente FROM equipe_cliente AS ec INNER JOIN equipe AS eq ON ec.id_equipe = eq.id_equipe INNER JOIN cliente AS cl ON cl.id_cliente = ec.id_cliente \n" +
+                "WHERE eq.nome_equipe = '"+ nomeEquipe + "'";
 
         Connection conn = recuperaConexao();
         try {
@@ -196,7 +189,7 @@ public class ConnectionFactory {
             ResultSet rs = pr.executeQuery();
 
             while (rs.next()){
-                String empresa = rs.getString(2);
+                String empresa = rs.getString(1);
                 cliente.add(empresa);
             }
             return cliente;
@@ -220,17 +213,33 @@ public class ConnectionFactory {
                 String matricula = rs.getString(4);
                 String nome = rs.getString(5);
                 String cargo = rs.getString(6);
-                Integer id_equipe  =rs.getInt(7);
+                Integer id_equipe = rs.getInt(7);
 
-                Usuario.criarInstancia(login,senha,matricula,nome,cargo,id_equipe);
-                user.put(Usuario.getInstancia(),id);
+                user.put(Usuario.criarUsuario(login,senha,matricula,nome,cargo,id_equipe),id);
             }
             return user;
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
+    public Integer getIdUsuario(String loginUsuario){
+        Connection conn = recuperaConexao();
+        String sql = "SELECT id_usuario FROM usuario WHERE login = '"+ loginUsuario +"';";
+        Integer id = 0;
+        try{
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
 
+            while (rs.next()){
+                id =  rs.getInt(1);
+            }
+            System.out.println(id);
+            return id;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     public Map<Integer, Usuario> getUsuario(String user, String passw){
         Connection conn = recuperaConexao();
         Map<Integer, Usuario> listaUsuarios = new HashMap<>();
