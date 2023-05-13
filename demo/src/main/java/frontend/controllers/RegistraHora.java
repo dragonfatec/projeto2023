@@ -89,17 +89,18 @@ public class RegistraHora implements Initializable {
 
         RegistroDataHora dt = new RegistroDataHora();
         if (verificarPreenchimentosDosCampos()){
-            String[] dataInicioSemFormatar = dataInicio.getValue().toString().split("-");
-            String dataIn = dataInicioSemFormatar[2] + "/" + dataInicioSemFormatar[1] + "/" + dataInicioSemFormatar[0] + " " + horasInicio.getValue().toString() + ":" + minutosInicio.getValue().toString();
-            String[] dataFimSemFormatar = dataFim.getValue().toString().split("-");
-            String dataFm = dataFimSemFormatar[2] + "/" + dataFimSemFormatar[1] + "/" + dataFimSemFormatar[0] + " " + horasFim.getValue().toString() + ":" + minutosFim.getValue().toString();
+//            String[] dataInicioSemFormatar = dataInicio.getValue().toString().split("-");
+//            String dataIn = dataInicioSemFormatar[2] + "/" + dataInicioSemFormatar[1] + "/" + dataInicioSemFormatar[0] + " " + horasInicio.getValue().toString() + ":" + minutosInicio.getValue().toString();
+//            String[] dataFimSemFormatar = dataFim.getValue().toString().split("-");
+//            String dataFm = dataFimSemFormatar[2] + "/" + dataFimSemFormatar[1] + "/" + dataFimSemFormatar[0] + " " + horasFim.getValue().toString() + ":" + minutosFim.getValue().toString();
 
-//            System.out.println(dataFm+"  :  "+dt.validarData(dataFm));
+            String dataIn = dataInicio.getValue() + " " + horasInicio.getValue() + ":" + minutosInicio.getValue();
+            String dataFm = dataFim.getValue() + " " + horasFim.getValue() + ":" + minutosFim.getValue();
 
             if (dt.vaidarDataESequencia(dataIn, dataFm)){
 
-//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
-                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), "2023-05-11 01:00:00", "2023-05-11 05:00:00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), "2023-05-11 01:00:00", "2023-05-11 05:00:00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
                 Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
                 limparCampos();
             }

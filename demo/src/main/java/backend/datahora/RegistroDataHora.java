@@ -10,7 +10,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class RegistroDataHora {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+//    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public double calcularHorasExtras(String dataHoraInicio, String dataHoraFim){
         if (vaidarDataESequencia(dataHoraInicio, dataHoraFim)){
@@ -31,7 +32,8 @@ public class RegistroDataHora {
 
     public boolean validarData(String data){
         try {
-            String dateFormat = "dd/MM/uuuu HH:mm";
+//            String dateFormat = "dd/MM/uuuu HH:mm";
+            String dateFormat = "uuuu-MM-dd HH:mm";
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter
                     .ofPattern(dateFormat)
                     .withResolverStyle(ResolverStyle.STRICT);
