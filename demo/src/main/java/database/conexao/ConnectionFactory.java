@@ -3,6 +3,7 @@ package database.conexao;
 import backend.usuario.Usuario;
 import frontend.util.Alerts;
 import frontend.util.Tabela;
+import frontend.util.TabelaAprova;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
@@ -297,4 +298,7 @@ public class ConnectionFactory {
         }
 
     }
+//    public ArrayList<TabelaAprova> getHoraEquipe(String equipe){
+//
+//    }
 }

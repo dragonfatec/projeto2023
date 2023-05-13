@@ -1,6 +1,7 @@
 package frontend.controllers;
 
 import backend.usuario.Usuario;
+import database.conexao.ConnectionFactory;
 import frontend.util.Alerts;
 import frontend.util.TabelaAprova;
 import javafx.collections.FXCollections;
@@ -62,10 +63,15 @@ public class AprovaHora implements Initializable {
 
         ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
 
+        ConnectionFactory conn = new ConnectionFactory();
+
+//        listaHorasPendentes.addAll();
+
+
         //Dados para Teste
-        listaHorasPendentes.add(new TabelaAprova("Alec", "12/05/2023 18:00", "12/05/2023 19:00", "Americanas", "Sobreaviso", "01:00"));
-        listaHorasPendentes.add(new TabelaAprova("Pedro", "12/05/2023 18:00", "12/05/2023 20:00", "Apple", "Hora Extra", "02:00"));
-        listaHorasPendentes.add(new TabelaAprova("Lucas", "12/05/2023 18:00", "12/05/2023 18:30", "Americanas", "Sobreaviso", "00:30"));
+//        listaHorasPendentes.add(new TabelaAprova("Alec", "12/05/2023 18:00", "12/05/2023 19:00", "Americanas", "Sobreaviso", "01:00"));
+//        listaHorasPendentes.add(new TabelaAprova("Pedro", "12/05/2023 18:00", "12/05/2023 20:00", "Apple", "Hora Extra", "02:00"));
+//        listaHorasPendentes.add(new TabelaAprova("Lucas", "12/05/2023 18:00", "12/05/2023 18:30", "Americanas", "Sobreaviso", "00:30"));
 
         //Atribuição
         colunaColaborador.setCellValueFactory(new PropertyValueFactory<TabelaAprova, String>("colaborador"));
