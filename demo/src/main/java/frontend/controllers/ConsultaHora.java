@@ -1,6 +1,7 @@
 package frontend.controllers;
 
 import backend.usuario.Usuario;
+import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.NomesArquivosFXML;
 import frontend.util.Tabela;
@@ -16,6 +17,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ConsultaHora implements Initializable {
@@ -49,11 +52,16 @@ public class ConsultaHora implements Initializable {
 
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
 
+        ConnectionFactory conn = new ConnectionFactory();
+
+        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getLogin()));
+
         // TESTE
-        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
-        tabelasObjetoLista.add(new Tabela("02/02/2023 12:00","02/02/2023 15:00","Cliente","Em andamento"));
-        tabelasObjetoLista.add(new Tabela("02/04/2023 12:00","02/04/2023 15:00","Cliente","Reprovado"));
-        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
+//        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
+//        tabelasObjetoLista.add(new Tabela("02/02/2023 12:00","02/02/2023 15:00","Cliente","Em andamento"));
+//        tabelasObjetoLista.add(new Tabela("02/04/2023 12:00","02/04/2023 15:00","Cliente","Reprovado"));
+//        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
+
 
         colunaDataHoraInicial.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataInicio"));
         colunaDataHoraFinal.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataFim"));

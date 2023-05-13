@@ -85,6 +85,8 @@ public class RegistraHora implements Initializable {
 //        catch (Exception e){
 //           Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
 //        }
+
+
         RegistroDataHora dt = new RegistroDataHora();
         if (verificarPreenchimentosDosCampos()){
             String[] dataInicioSemFormatar = dataInicio.getValue().toString().split("-");
@@ -95,7 +97,11 @@ public class RegistraHora implements Initializable {
 //            System.out.println(dataFm+"  :  "+dt.validarData(dataFm));
 
             if (dt.vaidarDataESequencia(dataIn, dataFm)){
-                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+
+//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), "2023-05-11 01:00:00", "2023-05-11 05:00:00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+                Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
+                limparCampos();
             }
             else{
                 Alerts.showAlert("Aviso!", null, "As datas tem que ser sequenciais! \nA data inicio tem que ser menor que a data fim,\n e a data fim tem que ser menor ou igual agora.", Alert.AlertType.WARNING);
@@ -145,9 +151,9 @@ public class RegistraHora implements Initializable {
     }
 
     public void atualizarCliente(ActionEvent actionEvent) {
-//        ConnectionFactory conn = new ConnectionFactory();
-//        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getCliente(campoEquipe.getValue()));
-//        campoCliente.setItems(clientes);
+        ConnectionFactory conn = new ConnectionFactory();
+        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getCliente(campoEquipe.getValue()));
+        campoCliente.setItems(clientes);
     }
 
     @Override
@@ -155,7 +161,7 @@ public class RegistraHora implements Initializable {
         // Pegando a instancia do usuario
         Usuario usuario = Usuario.getInstancia();
 
-//        ConnectionFactory conn = new ConnectionFactory();
+        ConnectionFactory conn = new ConnectionFactory();
 
         ArrayList<String> minutosLista = new ArrayList<>();
         ArrayList<String> horasLista = new ArrayList<>();
@@ -184,12 +190,12 @@ public class RegistraHora implements Initializable {
         horasInicio.setItems(horas);
         horasFim.setItems(horas);
 
-//        campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
+        campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
 //        campoCliente.getItems().addAll(conn.getCliente("DRAGONS"));
 
 
-        campoEquipe.getItems().addAll(horas);
-        campoCliente.getItems().addAll(horas);
+//        campoEquipe.getItems().addAll(horas);
+//        campoCliente.getItems().addAll(horas);
 
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");

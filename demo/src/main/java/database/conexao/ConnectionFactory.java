@@ -2,6 +2,7 @@ package database.conexao;
 
 import backend.usuario.Usuario;
 import frontend.util.Alerts;
+import frontend.util.Tabela;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
@@ -61,7 +62,7 @@ public class ConnectionFactory {
                     Connection conn = recuperaConexao();
                     PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente) VALUES (?,?,?,?,?,?,?);");
 
-                    Integer id_user = getIdEquipe(login);
+                    Integer id_user = getIdUsuario(login);
                     pr.setInt(1, id_user);
 
                     String dtInicial = data_inicial;
@@ -85,7 +86,6 @@ public class ConnectionFactory {
                 }
         }
     }
-
     public void apontarHorasSobreaviso(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora) {
         if (usuario      == null ||
             data_inicial == null ||
@@ -266,5 +266,35 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
         return listaUsuarios;
+    }
+    public ArrayList<Tabela> getHorasUsuario(String login){
+        ArrayList<Tabela> tabela = new ArrayList<>();
+        String sql =  "SELECT data_hora_inicial    AS Data_Inicial," +
+                        "data_hora_final      AS Data_Final," +
+                        "CASE WHEN cliente.nome_cliente IS NULL THEN '-' ELSE cliente.nome_cliente END," +
+                        "CASE WHEN aprovacao IS NULL THEN 'Em andamento' ELSE aprovacao END AS status " +
+                        "FROM hora "+
+                        "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
+                        "JOIN usuario ON usuario.id_usuario = hora.id_usuario " +
+                        "WHERE usuario.login = '"+ login+"'";
+        Connection conn = recuperaConexao();
+        try{
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                String dataInicio = rs.getString(1);
+                String dataFim = rs.getString(2);
+                String cliente = rs.getString(3);
+                String status = rs.getString(4);
+
+                Tabela tb = new Tabela(dataInicio, dataFim, cliente, status);
+                tabela.add(tb);
+            }
+            return tabela;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
     }
 }
