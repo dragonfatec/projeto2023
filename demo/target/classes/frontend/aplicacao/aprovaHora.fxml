@@ -81,7 +81,7 @@
                         <Font size="20.0" />
                     </font>
                 </Label>
-            <ChoiceBox fx:id="campoEscolhaEquipe" layoutX="831.0" layoutY="76.0" prefHeight="30.0" prefWidth="169.0" />
+            <ChoiceBox fx:id="campoEscolhaEquipe" onAction="#atualizarTabela" layoutX="831.0" layoutY="76.0" prefHeight="30.0" prefWidth="169.0" />
             <Button fx:id="btnAprovar" layoutX="973.0" layoutY="595.0" mnemonicParsing="false" onAction="#aprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar" textFill="WHITE">
                <font>
                   <Font size="20.0" />

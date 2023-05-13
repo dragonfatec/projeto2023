@@ -298,7 +298,39 @@ public class ConnectionFactory {
         }
 
     }
-//    public ArrayList<TabelaAprova> getHoraEquipe(String equipe){
-//
-//    }
+    public ArrayList<TabelaAprova> getHoraEquipe(Integer id_equipe){
+          String sql = "SELECT usuario.nome, " +
+            	   "hora.data_hora_inicial, " +
+            	   "hora.data_hora_final, " +
+            	   "CASE WHEN cliente.nome_cliente IS NULL THEN '-' ELSE cliente.nome_cliente END, " +
+            	   "hora.tipo_hora " +
+                   "FROM hora " +
+            	   "LEFT JOIN usuario ON usuario.id_usuario = hora.id_usuario " +
+            	   "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
+//            	   "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe "+
+            	   "WHERE hora.id_equipe = '" + id_equipe + "'";
+
+          Connection conn = recuperaConexao();
+          ArrayList<TabelaAprova> tb = new ArrayList<>();
+          try{
+              PreparedStatement pr = conn.prepareStatement(sql);
+              ResultSet rs = pr.executeQuery();
+              while (rs.next()){
+                  String colaborador = rs.getString(1);
+                  String dataHoraInicial = rs.getString(2);
+                  String dataHoraFinal = rs.getString(3);
+                  String cliente = rs.getString(4);
+                  String tipo = rs.getString(5);
+                  String totalDeHoras = "10";
+
+                  TabelaAprova tabela = new TabelaAprova(colaborador,dataHoraInicial, dataHoraFinal, cliente, tipo, totalDeHoras);
+                  tb.add(tabela);
+              }
+              return tb;
+
+          }catch (SQLException e){
+              throw new RuntimeException(e);
+          }
+
+    }
 }
