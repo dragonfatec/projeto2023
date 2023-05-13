@@ -51,7 +51,7 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#registrarHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Registrar Hora" textFill="WHITE">
+                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
