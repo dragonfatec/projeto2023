@@ -41,7 +41,7 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
 | 12 | Administrador | Ter um perfil para cadastrar Colaborador e cadastrar perfil Gestor | 9 | Sprint 4 | Iniciado | 
 | 13 | Administrador | Eu quero cadastrar/excluir colaborador e gestor | 11 | Sprint 4 | Aguardando | 
 | 14 | Administrador | Visualizar histórico onde serão armazenados as horas extras realizadas por cada colaborador | 12 | Sprint 4 | Iniciado | 
-| 15 | Administrador | Avaliar o desempenho da Squad | 13 | Sprint 3 | Iniciado | 
+| 15 | Administrador | Avaliar o desempenho da Squad | 13 | Sprint 4 | Iniciado | 
 | 16 | Administrador | Visualizar dashboards para acompanhamento das Squads, Gestor e Colaborador | 14 | Sprint 4 | Aguardando | 
 
 
