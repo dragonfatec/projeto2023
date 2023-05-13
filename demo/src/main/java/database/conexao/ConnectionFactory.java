@@ -331,6 +331,26 @@ public class ConnectionFactory {
           }catch (SQLException e){
               throw new RuntimeException(e);
           }
+    }
 
+    public void atualizarInformacao(String nomeTabela, String nomeCampo, String novoValor, String condicao){
+        String sql = "UPDATE "+nomeTabela+" SET "+nomeCampo+" = '"+novoValor+"' WHERE "+condicao;
+        run(sql);
+    }
+
+    public void atualizarInformacao(String nomeTabela, String nomeCampo, int novoValor, String condicao){
+        String sql = "UPDATE "+nomeTabela+" SET "+nomeCampo+" = "+novoValor+" WHERE "+condicao;
+        run(sql);
+    }
+
+    private void run(String sql){
+        Connection conn = recuperaConexao();
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            pr.executeQuery();
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 }

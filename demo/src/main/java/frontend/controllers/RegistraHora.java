@@ -141,13 +141,12 @@ public class RegistraHora implements Initializable {
         campoCliente.setValue(null);
     }
 
+    public void irParaAprovaHora() throws IOException {
+        App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
+    }
 
-    public void consultarHoras(ActionEvent actionEvent) {
-        try {
-            App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void irParaConsultaHora() throws IOException {
+        App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
     }
 
     public void atualizarCliente(ActionEvent actionEvent) {
@@ -191,15 +190,7 @@ public class RegistraHora implements Initializable {
         horasFim.setItems(horas);
 
         campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
-//        campoCliente.getItems().addAll(conn.getCliente("DRAGONS"));
-
-
-//        campoEquipe.getItems().addAll(horas);
-//        campoCliente.getItems().addAll(horas);
-
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
-
-//        conn.getIdUsuario(Usuario.getInstancia().getLogin());
     }
 }

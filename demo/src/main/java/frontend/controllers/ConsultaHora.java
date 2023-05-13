@@ -37,12 +37,12 @@ public class ConsultaHora implements Initializable {
     @FXML Button btnConsultar;
 
     // Metodos
-    public void registrarHora(ActionEvent actionEvent) {
-        try {
-            App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void irParaAprovaHora() throws IOException {
+        App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
+    }
+
+    public void irParaRegistraHora() throws IOException {
+        App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
     }
 
     @Override
