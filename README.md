@@ -131,6 +131,8 @@ Acesso de administrador para o departamento de RH, gestor para aprovação e lan
  
   ![image](https://user-images.githubusercontent.com/111617449/233748126-17df1127-3dea-43ae-9a98-37b34e8d0478.png)
  
+  ![image](https://github.com/lucasjonathangomes/teste/assets/111617449/7e94c003-5817-4a77-b63d-15718956d09a)
+ 
  </div>
  
 <div align="center">
