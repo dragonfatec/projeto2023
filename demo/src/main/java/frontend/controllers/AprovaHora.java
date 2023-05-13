@@ -94,21 +94,21 @@ public class AprovaHora implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
 
-        Usuario.criarInstancia("lukas", "lukas321", "54321", "Lukas Fernando","Usuario",1);
+//        Usuario.criarInstancia("lukas", "lukas321", "54321", "Lukas Fernando","Usuario",1);
 
         Usuario usuario = Usuario.getInstancia();
 
-//        ConnectionFactory conn = new ConnectionFactory();
+        ConnectionFactory conn = new ConnectionFactory();
 
         // Para preencher o campo de equipe
-//        campoEscolhaEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
+        campoEscolhaEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
 
         //Dados para Teste
-        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
-        listaHorasPendentes.add(new TabelaAprova("Alec", "12/05/2023 18:00", "12/05/2023 19:00", "Americanas", "Sobreaviso", "01:00"));
-        listaHorasPendentes.add(new TabelaAprova("Pedro", "12/05/2023 18:00", "12/05/2023 20:00", "Apple", "Hora Extra", "02:00"));
-        listaHorasPendentes.add(new TabelaAprova("Lucas", "12/05/2023 18:00", "12/05/2023 18:30", "Americanas", "Sobreaviso", "00:30"));
-        tabela.setItems(listaHorasPendentes);
+//        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
+//        listaHorasPendentes.add(new TabelaAprova("Alec", "12/05/2023 18:00", "12/05/2023 19:00", "Americanas", "Sobreaviso", "01:00"));
+//        listaHorasPendentes.add(new TabelaAprova("Pedro", "12/05/2023 18:00", "12/05/2023 20:00", "Apple", "Hora Extra", "02:00"));
+//        listaHorasPendentes.add(new TabelaAprova("Lucas", "12/05/2023 18:00", "12/05/2023 18:30", "Americanas", "Sobreaviso", "00:30"));
+//        tabela.setItems(listaHorasPendentes);
 
         // Atribuição
         colunaColaborador.setCellValueFactory(new PropertyValueFactory<TabelaAprova, String>("colaborador"));
