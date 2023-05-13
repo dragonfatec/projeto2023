@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ConsultaHora implements Initializable {
+    public Button btnAprovaHora;
     // Texto
     @FXML Label textoNomeUsuario;
 
@@ -47,8 +48,13 @@ public class ConsultaHora implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         // instancia do usuario
         Usuario usuario = Usuario.getInstancia();
+        if (usuario.getCargo().equals("Usuario")){
+            btnAprovaHora.setVisible(false);
+        }
+
 
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
 

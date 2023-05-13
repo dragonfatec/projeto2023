@@ -26,6 +26,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class RegistraHora implements Initializable {
+    public Button btnAprovaHora;
     // Texto
     @FXML Label textoNomeUsuario;
 
@@ -160,6 +161,9 @@ public class RegistraHora implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Pegando a instancia do usuario
         Usuario usuario = Usuario.getInstancia();
+        if (usuario.getCargo().equals("Usuario")){
+            btnAprovaHora.setVisible(false);
+        }
 
         ConnectionFactory conn = new ConnectionFactory();
 
