@@ -40,7 +40,7 @@ public class Login {
         if (resultadoQuery.size() == 1){
             Usuario usuario = resultadoQuery.get(0);
             Usuario.criarInstancia(usuario.getLogin(), usuario.getSenha(), usuario.getMatricula(), usuario.getNome(), usuario.getCargo(), usuario.getId_equipe());
-            App.mudarTela("consultaHora.fxml");
+            App.mudarTela("registraHora.fxml");
         }
         else{
             Alerts.showAlert("Erro", "","O usuario ou a senha está incorreto", Alert.AlertType.ERROR);
