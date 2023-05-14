@@ -53,11 +53,11 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Registrar Hora" textFill="WHITE">
+                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_registraHora.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
-                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Consultar Minhas Horas" textFill="WHITE">
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_registraHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
@@ -70,11 +70,11 @@
                 </Label>
                 <ChoiceBox fx:id="campoTipo" layoutX="742.0" layoutY="496.0" prefHeight="50.0" prefWidth="202.0" />
 
-                <Button fx:id="btnConfirmar" layoutX="657.0" layoutY="612.0" mnemonicParsing="false" onAction="#confirmarRegistroHora" prefHeight="50.0" prefWidth="186.0" stylesheets="@style.css" text="Confirmar" textFill="#180cff">
+                <Button fx:id="btnConfirmar" layoutX="657.0" layoutY="612.0" mnemonicParsing="false" onAction="#confirmarRegistroHora" prefHeight="50.0" prefWidth="186.0" stylesheets="@style_registraHora.css" text="Confirmar" textFill="#180cff">
                     <font>
                         <Font size="20.0" />
                     </font></Button>
-                <Button fx:id="btnCancelar" layoutX="921.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancelarRegistroHora" prefHeight="50.0" prefWidth="186.0" stylesheets="@style.css" text="Cancelar" textFill="#ff2828">
+                <Button fx:id="btnCancelar" layoutX="921.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancelarRegistroHora" prefHeight="50.0" prefWidth="186.0" stylesheets="@style_registraHora.css" text="Cancelar" textFill="#ff2828">
                     <font>
                         <Font size="20.0" />
                     </font></Button>
@@ -125,7 +125,7 @@
                     </font>
                 </Label>
             <ChoiceBox fx:id="campoEquipe" layoutX="494.0" layoutY="496.0" onAction="#atualizarCliente" prefHeight="50.0" prefWidth="202.0" />
-            <Button fx:id="btnAprovaHora" layoutX="-1.0" layoutY="435.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar Hora" textFill="WHITE" onAction="#irParaAprovaHora">
+            <Button fx:id="btnAprovaHora" layoutX="-1.0" layoutY="435.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_registraHora.css" text="Aprovar Hora" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
