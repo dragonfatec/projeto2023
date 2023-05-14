@@ -1,92 +1,109 @@
 package frontend.controllers;
 
-import database.conexao.ConnectionFactory;
-import frontend.util.Alerts;
+import frontend.aplicacao.App;
 import frontend.util.Contraints;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
+import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class TelaController implements Initializable {
+// packages
+import backend.usuario.Usuario;
 
-    @FXML
-    private Button btnCancelar;
+public class TelaController implements Initializable {
+    // Objetos
+    Usuario usuario = Usuario.getInstancia();
+
+    // Label
+    
+    // Input - Texto
+    @FXML private TextField campoHoraFinal;
+    @FXML private TextField campoHoraInicial;
+    @FXML private TextField campoJustificativa;
+
+    // Input - Data
+    @FXML private DatePicker campoData;
+
+    // Input - Select
+    @FXML private ChoiceBox<String> campoTipo;
+
+    // Button
+    @FXML private Button btnConsultar;
+    @FXML private Button btnRegistrarHora;
+    @FXML private Button btnCancelar;
+    @FXML private Button btnConfirmar;
+
+    // Metodos
     @FXML
     private void cancelarRegistroHora() {
-        btnCancelar.setOnAction(actionEvent -> Platform.exit());
+//        btnCancelar.setOnAction(actionEvent -> Platform.exit());
+        try {
+            App.mudarTela("colaborador_consulta.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-
-    @FXML
-    private Button btnConfirmar;
-
 
     @FXML
     void confirmarRegistroHora(){
-            String horaInicial = campoHoraInicial.getText();
-            String horaFinal = campoHoraFinal.getText();
-            LocalDate data = campoData.getValue();
-            Date sqlDate = Date.valueOf(data);
-            String tipoHora = campoTipo.getValue();
-            String justificativa = campoJustificativa.getText();
 
-            try {
-                ConnectionFactory conn = new ConnectionFactory();
+//            try{
+//                String horaInicial = campoHoraInicial.getText();
+//                String horaFinal = campoHoraFinal.getText();
+//                LocalDate data = campoData.getValue();
+//                Date sqlDate = Date.valueOf(data);
+//                String tipoHora = campoTipo.getValue();
+//                String justificativa = campoJustificativa.getText();
+//
+//                String sql = "INSERT INTO hora(dt_init, hora_inicio, hora_fim, justificativa, tipo_hora) VALUES ('" +
+//                         sqlDate +"','"+
+//                         horaInicial +"','"+
+//                         horaFinal +"','"+
+//                         justificativa +"','"+
+//                        tipoHora +"'"+
+//                        ")";
+//                System.out.println(sql);
+//
+//                ConexaoDAO con = new ConexaoDAO();
+//                con.inserirDados(sql);
+//                Alerts.showAlert("ERRO", null, "Apontado com sucesso!\n ERRO:", Alert.AlertType.ERROR);
+//
+//            }
+//            catch (Exception e){
+//                Alerts.showAlert("ERRO", null, "Por favor, preencha corretamente todos os campos\n ERRO:"+e, Alert.AlertType.ERROR);
+//            }
 
-                PreparedStatement statement = conn.recuperaConexao().prepareStatement("INSERT INTO hora(data_registro, hora_inicio, hora_fim, justificativa, tipo) VALUES (?, ?, ?, ?, ?)");
-                statement.setDate(1, sqlDate);
-                statement.setString(2, horaInicial);
-                statement.setString(3, horaFinal);
-                statement.setString(4, justificativa);
-                statement.setString(5, tipoHora);
+//            try {
+//                ConnectionFactory conn = new ConnectionFactory();
+//
+//                PreparedStatement statement = conn.recuperaConexao().prepareStatement("INSERT INTO hora(data_registro, hora_inicio, hora_fim, justificativa, tipo) VALUES (?, ?, ?, ?, ?)");
+//                statement.setDate(1, sqlDate);
+//                statement.setString(2, horaInicial);
+//                statement.setString(3, horaFinal);
+//                statement.setString(4, justificativa);
+//                statement.setString(5, tipoHora);
+//
+//                boolean confirmado = Alerts.showAlert("Confirma", null, "Deseja confirmar?", Alert.AlertType.CONFIRMATION);
+//                if (confirmado) {
+//                    statement.executeUpdate();
+//                    statement.close();
+//
+//                    campoData.setValue(null);
+//                    campoTipo.setValue(null);
+//                    campoHoraFinal.clear();
+//                    campoHoraInicial.clear();
+//                    campoJustificativa.clear();
+//                }
+//            } catch (SQLException e) {
+//                throw new RuntimeException(e);
+//            }
 
-                boolean confirmado = Alerts.showAlert("Confirma", null, "Deseja confirmar?", Alert.AlertType.CONFIRMATION);
-                if (confirmado) {
-                    statement.executeUpdate();
-                    statement.close();
 
-                    campoData.setValue(null);
-                    campoTipo.setValue(null);
-                    campoHoraFinal.clear();
-                    campoHoraInicial.clear();
-                    campoJustificativa.clear();
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
     }
-
-    @FXML
-    private Button btnConsultar;
-
-    @FXML
-    private Button btnRegistrarHora;
-
-    @FXML
-    private DatePicker campoData;
-
-    @FXML
-    private TextField campoHoraFinal;
-
-    @FXML
-    private TextField campoHoraInicial;
-
-    @FXML
-    private TextField campoJustificativa;
-
-    @FXML
-    private ChoiceBox<String> campoTipo;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

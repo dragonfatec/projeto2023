@@ -10,25 +10,33 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class RegistroDataHora {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+//    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public double calcularHorasExtras(String dataHoraInicio, String dataHoraFim){
-        if (validarData(dataHoraInicio) && validarData(dataHoraFim)){
-            if (verificarSequenciaDatas(dataHoraInicio, dataHoraFim)){
-                int minutos = pegarDiferencaMinutos(dataHoraInicio, dataHoraFim);
-                // minutos dividido por 60 (quantidade de minutos me 1 hora) vezes o valor (em reais) da hora
-                return minutos;
-            }
+        if (vaidarDataESequencia(dataHoraInicio, dataHoraFim)){
+            int minutos = pegarDiferencaMinutos(dataHoraInicio, dataHoraFim);
+            // minutos dividido por 60 (quantidade de minutos me 1 hora) vezes o valor (em reais) da hora
+            return minutos;
+
         }
         return 0;
     }
 
+    public boolean vaidarDataESequencia(String dataHoraInicio, String dataHoraFim){
+        if (validarData(dataHoraInicio) && validarData(dataHoraFim)){
+            return verificarSequenciaDatas(dataHoraInicio, dataHoraFim);
+        }
+        return false;
+    }
+
     public boolean validarData(String data){
-        String dateFormat = "dd/MM/uuuu HH:mm";
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
-                .ofPattern(dateFormat)
-                .withResolverStyle(ResolverStyle.STRICT);
         try {
+//            String dateFormat = "dd/MM/uuuu HH:mm";
+            String dateFormat = "uuuu-MM-dd HH:mm";
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                    .ofPattern(dateFormat)
+                    .withResolverStyle(ResolverStyle.STRICT);
             LocalDate.parse(data, dateTimeFormatter);
             return true;
         }
@@ -45,7 +53,6 @@ public class RegistroDataHora {
             return (int) diferencaMinutos;
         }
         catch (ParseException e) {
-            e.printStackTrace();
             return -1;
         }
     }
@@ -54,13 +61,7 @@ public class RegistroDataHora {
         try {
             Date dataInicioFormatada = simpleDateFormat.parse(dataInicio);
             Date dataFimFormatadata = simpleDateFormat.parse(dataFim);
-
-            if (dataFimFormatadata.compareTo(dataInicioFormatada) > 0 && new Date().compareTo(dataFimFormatadata) > 0){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return dataFimFormatadata.compareTo(dataInicioFormatada) > 0 && new Date().compareTo(dataFimFormatadata) > 0;
         }
         catch(ParseException e){
             return false;
