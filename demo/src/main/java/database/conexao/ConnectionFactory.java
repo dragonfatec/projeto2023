@@ -1,5 +1,6 @@
 package database.conexao;
 
+import backend.datahora.RegistroDataHora;
 import backend.usuario.Usuario;
 import frontend.util.Alerts;
 import frontend.util.Tabela;
@@ -7,9 +8,12 @@ import frontend.util.TabelaAprova;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ConnectionFactory {
+    RegistroDataHora reg = new RegistroDataHora();
 
     public Connection recuperaConexao() {
 
@@ -321,7 +325,12 @@ public class ConnectionFactory {
                   String dataHoraFinal = rs.getString(3);
                   String cliente = rs.getString(4);
                   String tipo = rs.getString(5);
-                  String totalDeHoras = "10";
+//                  String totalDeHoras = Integer.toString(reg.pegarDiferencaMinutos(dataHoraInicial, dataHoraFinal));
+                  int minutosTotal = (reg.pegarDiferencaMinutos(dataHoraInicial, dataHoraFinal));
+                  int horas = minutosTotal / 60;
+                  int minutos = minutosTotal - (horas * 60);
+//                  String totalDeHoras = horas + ":" + minutos;
+                  String totalDeHoras = (horas < 10? "0" + horas: Integer.toString(horas)) + ":" + (minutos < 10? "0" + minutos: Integer.toString(minutos));
 
                   TabelaAprova tabela = new TabelaAprova(colaborador,dataHoraInicial, dataHoraFinal, cliente, tipo, totalDeHoras);
                   tb.add(tabela);
