@@ -342,24 +342,50 @@ public class ConnectionFactory {
           }
     }
 
-    public void atualizarInformacao(String nomeTabela, String nomeCampo, String novoValor, String condicao){
-        String sql = "UPDATE "+nomeTabela+" SET "+nomeCampo+" = '"+novoValor+"' WHERE "+condicao;
+    public void atualizarInformacao(String nomeTabela, String nomeCampo, String novoValor, String condicao, boolean novoValorEhNumero){
+        /*
+         * A condicao é o filtro para atualizar apenas 1 linha.
+         * Exemplo de String que deve vir na variavel condicao:
+         *   id = 1
+         *   nome = 'Teste'
+         */
+        novoValor = novoValorEhNumero ? novoValor : "'" + novoValor + "'";
+        String sql = String.format("UPDATE %s SET %s = %s WHERE %s", nomeTabela, nomeCampo, novoValor, condicao);
         run(sql);
     }
 
-    public void atualizarInformacao(String nomeTabela, String nomeCampo, int novoValor, String condicao){
-        String sql = "UPDATE "+nomeTabela+" SET "+nomeCampo+" = "+novoValor+" WHERE "+condicao;
-        run(sql);
-    }
-
-    private void run(String sql){
+    private ResultSet run(String sql){
         Connection conn = recuperaConexao();
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
-            pr.executeQuery();
+            return pr.executeQuery();
         }
         catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
+
+    public ArrayList<String> dontUseThis(String valorId, String equipeOuCliente) throws SQLException {
+        /*
+         * Esse metodo vai procurar na tabela e vai retornar todos as equipes, usuarios, ... o que o usuario escolher
+        */
+
+        String sql = "";
+        switch (equipeOuCliente.toLowerCase()){
+            case "equipe":
+                sql = String.format("Select equipe_nome from equipe where id_equipe = '%s'", valorId);
+            case "cliente":
+                sql = "";
+        }
+
+        ArrayList<String> lista = new ArrayList<>();
+
+        while (run(sql).next()){
+
+        }
+
+        return lista;
+    }
+
+
 }
