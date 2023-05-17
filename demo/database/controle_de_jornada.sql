@@ -197,8 +197,8 @@ CREATE TABLE equipe_usuario(
 
 );
 -- INSERINDO INFORMAÇÕES NA TABELA EQUIPE_USUARIO
-INSERT INTO equipe_usuario(id_equipe, id_usuario) VALUES (2,1);
 INSERT INTO equipe_usuario(id_equipe, id_usuario) VALUES (2,2);
+INSERT INTO equipe_usuario(id_equipe, id_usuario) VALUES (2,4);
 INSERT INTO equipe_usuario(id_equipe, id_usuario) VALUES (3,3);
 -- COMANDOS NA TABELA EQUIPE_USUARIO
 SELECT * FROM usuario;

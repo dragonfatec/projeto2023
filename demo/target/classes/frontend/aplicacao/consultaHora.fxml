@@ -41,7 +41,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.ConsultaHora">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.ConsultaHora">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="875.0" VBox.vgrow="ALWAYS">
             <children>
@@ -51,11 +51,11 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Registrar Hora" textFill="WHITE">
+                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
-                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style.css" text="Consultar Minhas Horas" textFill="WHITE">
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
@@ -77,7 +77,7 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-            <Button fx:id="btnAprovaHora" layoutY="435.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../../naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar Hora" textFill="WHITE" onAction="#irParaAprovaHora">
+            <Button fx:id="btnAprovaHora" layoutY="435.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Aprovar Hora" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
