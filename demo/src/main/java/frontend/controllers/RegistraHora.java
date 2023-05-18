@@ -65,35 +65,8 @@ public class RegistraHora implements Initializable {
     void confirmarRegistroHora(){
         ConnectionFactory conn = new ConnectionFactory();
 
-//        try{
-//            String dataIn = dataInicio.getValue().toString();
-//            String horaIn = horasInicio.getValue().toString();
-//            String minutoIn = minutosInicio.getValue().toString();
-//
-//            String dataF = dataFim.getValue().toString();
-//            String horaF = horasFim.getValue().toString();
-//            String minutoF = minutosFim.getValue().toString();
-//            String dtInicio = dataIn + " " + horaIn +":"+ minutoIn +":00";
-//            String dtFim = dataF + " " + horaF +":"+ minutoF +":00";
-//
-//            String cliente = campoCliente.getValue();
-//            String equipe = campoEquipe.getValue();
-//            String tipoHora = campoTipo.getValue();
-//            String justificativa = campoJustificativa.getText();
-//
-//            System.out.println("a data"+dataIn);
-//        }
-//        catch (Exception e){
-//           Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
-//        }
-
-
         RegistroDataHora dt = new RegistroDataHora();
         if (verificarPreenchimentosDosCampos()){
-//            String[] dataInicioSemFormatar = dataInicio.getValue().toString().split("-");
-//            String dataIn = dataInicioSemFormatar[2] + "/" + dataInicioSemFormatar[1] + "/" + dataInicioSemFormatar[0] + " " + horasInicio.getValue().toString() + ":" + minutosInicio.getValue().toString();
-//            String[] dataFimSemFormatar = dataFim.getValue().toString().split("-");
-//            String dataFm = dataFimSemFormatar[2] + "/" + dataFimSemFormatar[1] + "/" + dataFimSemFormatar[0] + " " + horasFim.getValue().toString() + ":" + minutosFim.getValue().toString();
 
             String dataIn = dataInicio.getValue() + " " + horasInicio.getValue() + ":" + minutosInicio.getValue();
             String dataFm = dataFim.getValue() + " " + horasFim.getValue() + ":" + minutosFim.getValue();
@@ -101,7 +74,7 @@ public class RegistraHora implements Initializable {
             if (dt.vaidarDataESequencia(dataIn, dataFm)){
 
                 conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
-//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), "2023-05-11 01:00:00", "2023-05-11 05:00:00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+
                 Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
                 limparCampos();
             }
