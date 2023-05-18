@@ -12,21 +12,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class RegistraHora implements Initializable {
-    public Button btnAprovaHora;
+    // Objetos
+    ConnectionFactory conn = new ConnectionFactory();
+    RegistroDataHora hora = new RegistroDataHora();
+
     // Texto
     @FXML Label textoNomeUsuario;
 
@@ -54,6 +49,7 @@ public class RegistraHora implements Initializable {
     @FXML Button btnConsultar;
     @FXML Button btnConfirmar;
     @FXML Button btnCancelar;
+    @FXML public Button btnAprovaHora;
 
     // Metodos
     @FXML
@@ -65,13 +61,12 @@ public class RegistraHora implements Initializable {
     void confirmarRegistroHora(){
         ConnectionFactory conn = new ConnectionFactory();
 
-        RegistroDataHora dt = new RegistroDataHora();
         if (verificarPreenchimentosDosCampos()){
 
             String dataIn = dataInicio.getValue() + " " + horasInicio.getValue() + ":" + minutosInicio.getValue();
             String dataFm = dataFim.getValue() + " " + horasFim.getValue() + ":" + minutosFim.getValue();
 
-            if (dt.vaidarDataESequencia(dataIn, dataFm)){
+            if (hora.vaidarDataESequencia(dataIn, dataFm)){
 
                 conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
 
@@ -96,8 +91,8 @@ public class RegistraHora implements Initializable {
             horasFim.getValue().toString();
             minutosFim.getValue().toString();
             // Se for Hora Extra então é obrigatório o campo Justificativa
-            boolean just = campoJustificativa.getText().equals("") && campoTipo.getValue().equals("Extra") ? false : true;
-            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && just;
+//            boolean just = campoJustificativa.getText().equals("") && campoTipo.getValue().equals("Extra") ? false : true;
+            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && campoJustificativa.getText().equals("");
         }
         catch (Exception e){
             return false;
@@ -135,11 +130,10 @@ public class RegistraHora implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Pegando a instancia do usuario
         Usuario usuario = Usuario.getInstancia();
-        if (usuario.getCargo().equals("Usuario")){
-            btnAprovaHora.setVisible(false);
-        }
+//        if (usuario.getCargo().equalsIgnoreCase("usuario")){
+//            btnAprovaHora.setVisible(false);
+//        }
 
-        ConnectionFactory conn = new ConnectionFactory();
 
         ArrayList<String> minutosLista = new ArrayList<>();
         ArrayList<String> horasLista = new ArrayList<>();

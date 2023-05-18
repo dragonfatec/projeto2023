@@ -5,6 +5,7 @@ import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.NomesArquivosFXML;
 import frontend.util.Tabela;
+import frontend.util.VerificaAcesso;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +23,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ConsultaHora implements Initializable {
-    public Button btnAprovaHora;
+    // Objetos
+    ConnectionFactory conn = new ConnectionFactory();
+
     // Texto
     @FXML Label textoNomeUsuario;
 
@@ -36,6 +39,7 @@ public class ConsultaHora implements Initializable {
     // Botões
     @FXML Button btnRegistrarHora;
     @FXML Button btnConsultar;
+    @FXML Button btnAprovaHora;
 
     // Metodos
     public void irParaAprovaHora() throws IOException {
@@ -57,8 +61,6 @@ public class ConsultaHora implements Initializable {
 
 
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
-
-        ConnectionFactory conn = new ConnectionFactory();
 
         tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getLogin()));
 

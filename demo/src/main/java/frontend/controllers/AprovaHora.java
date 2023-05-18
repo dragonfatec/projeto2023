@@ -3,10 +3,7 @@ package frontend.controllers;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
-import frontend.util.Alerts;
-import frontend.util.NomesArquivosFXML;
-import frontend.util.Tabela;
-import frontend.util.TabelaAprova;
+import frontend.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +18,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AprovaHora implements Initializable {
+    // Objetos
+    ConnectionFactory conn = new ConnectionFactory();
+
     // Label
     @FXML public Label textoNomeUsuario;
 
@@ -74,8 +74,6 @@ public class AprovaHora implements Initializable {
     }
 
     public void atualizarTabela(ActionEvent event) {
-        ConnectionFactory conn = new ConnectionFactory();
-
         Integer id_equipe = conn.getIdEquipe(campoEscolhaEquipe.getValue().toString());
 
         ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
@@ -93,12 +91,11 @@ public class AprovaHora implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-
-//        Usuario.criarInstancia("lukas", "lukas321", "54321", "Lukas Fernando","Usuario",1);
-
+        // Usuario
         Usuario usuario = Usuario.getInstancia();
 
-        ConnectionFactory conn = new ConnectionFactory();
+        // Escondendo os botões
+
 
         // Para preencher o campo de equipe
         campoEscolhaEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));

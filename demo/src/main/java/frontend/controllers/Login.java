@@ -1,6 +1,7 @@
 package frontend.controllers;
 
 import backend.usuario.Usuario;
+import backend.util.Criptografia;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
@@ -16,6 +17,9 @@ import java.util.Map;
 
 
 public class Login {
+    // Objetos
+    ConnectionFactory conn = new ConnectionFactory();
+
     // Label
     @FXML public Label textoNomeUsuario;
 
@@ -29,17 +33,15 @@ public class Login {
     // Metodos
     @FXML
     public void fazerLogin(ActionEvent actionEvent) throws IOException {
-        ConnectionFactory conn = new ConnectionFactory();
+
         String user = campoUsuario.getText();
         String senha = campoSenha.getText();
 
         Map<Integer, Usuario> resultadoQuery = conn.getUsuario(user,senha);
 
-//        String senhaCriptografada = Criptografia.criptografar(senha);
-
         if (resultadoQuery.size() == 1){
             Usuario usuario = resultadoQuery.get(0);
-            Usuario.criarInstancia(usuario.getLogin(), usuario.getSenha(), usuario.getMatricula(), usuario.getNome(), usuario.getCargo(), usuario.getId_equipe());
+            Usuario.criarInstancia(usuario.getLogin(), Criptografia.criptografar(senha), usuario.getMatricula(), usuario.getNome(), usuario.getCargo(), usuario.getId_equipe());
             App.mudarTela("registraHora.fxml");
         }
         else{
