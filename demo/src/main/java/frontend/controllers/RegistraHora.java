@@ -122,8 +122,9 @@ public class RegistraHora implements Initializable {
             dataFim.getValue().toString();
             horasFim.getValue().toString();
             minutosFim.getValue().toString();
-
-            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && !campoJustificativa.getText().equals("");
+            // Se for Hora Extra então é obrigatório o campo Justificativa
+            boolean just = campoJustificativa.getText().equals("") && campoTipo.getValue().equals("Extra") ? false : true;
+            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && just;
         }
         catch (Exception e){
             return false;
