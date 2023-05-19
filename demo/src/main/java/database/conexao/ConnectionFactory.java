@@ -216,7 +216,7 @@ public class ConnectionFactory {
                 sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + idUsuarioOuEquipe + "';";
                 break;
             case "cliente":
-                sql = "";
+                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '"+ idUsuarioOuEquipe +"';";
                 break;
         }
 

@@ -61,25 +61,25 @@ public class RegistraHora implements Initializable {
     @FXML
     void confirmarRegistroHora(){
 
-//        if (verificarPreenchimentosDosCampos()){
-//
-//            String dataIn = dataInicio.getValue() + " " + horasInicio.getValue() + ":" + minutosInicio.getValue();
-//            String dataFm = dataFim.getValue() + " " + horasFim.getValue() + ":" + minutosFim.getValue();
-//
-//            if (hora.vaidarDataESequencia(dataIn, dataFm)){
-//
-//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
-//
-//                Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
-//                limparCampos();
-//            }
-//            else{
-//                Alerts.showAlert("Aviso!", null, "As datas tem que ser sequenciais! \nA data inicio tem que ser menor que a data fim,\n e a data fim tem que ser menor ou igual agora.", Alert.AlertType.WARNING);
-//            }
-//        }
-//        else{
-//            Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
-//        }
+        if (verificarPreenchimentosDosCampos()){
+
+            String dataIn = dataInicio.getValue() + " " + horasInicio.getValue() + ":" + minutosInicio.getValue();
+            String dataFm = dataFim.getValue() + " " + horasFim.getValue() + ":" + minutosFim.getValue();
+
+            if (hora.vaidarDataESequencia(dataIn, dataFm)){
+
+                conn.apontarHorasExtra(Usuario.getInstancia().getMatricula(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+
+                Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
+                limparCampos();
+            }
+            else{
+                Alerts.showAlert("Aviso!", null, "As datas tem que ser sequenciais! \nA data inicio tem que ser menor que a data fim,\n e a data fim tem que ser menor ou igual agora.", Alert.AlertType.WARNING);
+            }
+        }
+        else{
+            Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+        }
     }
 
     private boolean verificarPreenchimentosDosCampos(){
