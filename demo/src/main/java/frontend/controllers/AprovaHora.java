@@ -74,11 +74,11 @@ public class AprovaHora implements Initializable {
     }
 
     public void atualizarTabela(ActionEvent event) {
-        Integer id_equipe = conn.getIdEquipe(campoEscolhaEquipe.getValue().toString());
-
-        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
-        listaHorasPendentes.addAll(conn.getHoraEquipe(id_equipe));
-        tabela.setItems(listaHorasPendentes);
+//        Integer id_equipe = conn.getListaColuna(campoEscolhaEquipe.getValue().toString(),"equipe");
+//
+//        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
+//        listaHorasPendentes.addAll(conn.getHoraEquipe(id_equipe));
+//        tabela.setItems(listaHorasPendentes);
     }
 
     public void irParaConsultaHora() throws IOException {
@@ -98,7 +98,7 @@ public class AprovaHora implements Initializable {
 
 
         // Para preencher o campo de equipe
-        campoEscolhaEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
+//        campoEscolhaEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
 
         //Dados para Teste
 //        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();

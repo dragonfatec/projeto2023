@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -59,27 +60,26 @@ public class RegistraHora implements Initializable {
 
     @FXML
     void confirmarRegistroHora(){
-        ConnectionFactory conn = new ConnectionFactory();
 
-        if (verificarPreenchimentosDosCampos()){
-
-            String dataIn = dataInicio.getValue() + " " + horasInicio.getValue() + ":" + minutosInicio.getValue();
-            String dataFm = dataFim.getValue() + " " + horasFim.getValue() + ":" + minutosFim.getValue();
-
-            if (hora.vaidarDataESequencia(dataIn, dataFm)){
-
-                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
-
-                Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
-                limparCampos();
-            }
-            else{
-                Alerts.showAlert("Aviso!", null, "As datas tem que ser sequenciais! \nA data inicio tem que ser menor que a data fim,\n e a data fim tem que ser menor ou igual agora.", Alert.AlertType.WARNING);
-            }
-        }
-        else{
-            Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
-        }
+//        if (verificarPreenchimentosDosCampos()){
+//
+//            String dataIn = dataInicio.getValue() + " " + horasInicio.getValue() + ":" + minutosInicio.getValue();
+//            String dataFm = dataFim.getValue() + " " + horasFim.getValue() + ":" + minutosFim.getValue();
+//
+//            if (hora.vaidarDataESequencia(dataIn, dataFm)){
+//
+//                conn.apontarHorasExtra(Usuario.getInstancia().getLogin(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+//
+//                Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
+//                limparCampos();
+//            }
+//            else{
+//                Alerts.showAlert("Aviso!", null, "As datas tem que ser sequenciais! \nA data inicio tem que ser menor que a data fim,\n e a data fim tem que ser menor ou igual agora.", Alert.AlertType.WARNING);
+//            }
+//        }
+//        else{
+//            Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
+//        }
     }
 
     private boolean verificarPreenchimentosDosCampos(){
@@ -122,12 +122,12 @@ public class RegistraHora implements Initializable {
 
     public void atualizarCliente(ActionEvent actionEvent) {
         ConnectionFactory conn = new ConnectionFactory();
-        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getCliente(campoEquipe.getValue()));
+        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getListaColuna(campoEquipe.getValue(), "cliente"));
         campoCliente.setItems(clientes);
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
         // Pegando a instancia do usuario
         Usuario usuario = Usuario.getInstancia();
 //        if (usuario.getCargo().equalsIgnoreCase("usuario")){
@@ -162,7 +162,7 @@ public class RegistraHora implements Initializable {
         horasInicio.setItems(horas);
         horasFim.setItems(horas);
 
-        campoEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
+        campoEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }

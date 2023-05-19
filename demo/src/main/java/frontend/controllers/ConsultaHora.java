@@ -62,7 +62,7 @@ public class ConsultaHora implements Initializable {
 
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
 
-        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getLogin()));
+        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
 
         // TESTE
 //        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));

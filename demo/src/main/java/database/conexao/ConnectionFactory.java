@@ -15,17 +15,14 @@ public class ConnectionFactory {
     private static Connection conn;
     RegistroDataHora reg = new RegistroDataHora();
 
-    public Connection getInstancia() {
+    public static void setInstancia() {
         if(conn == null) {
             try {
-                return DriverManager
-                        .getConnection("jdbc:postgresql://localhost:5432/controle-de-ponto", "postgres", "123456");
+               conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/controle-de-ponto", "postgres", "123456");
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-        }else {
-            return conn;
         }
     }
     public void cadastrarUsuario(String matricula, String senha, String nome, String cargo, Integer id_equipe) {
@@ -36,70 +33,54 @@ public class ConnectionFactory {
     }
     public void apontarHorasExtra(String matricula, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
 
-                try {
-
-                    PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente) VALUES (?,?,?,?,?,?,?);");
-
-                    String dtInicial = data_inicial;
-                    String dtFinal = data_final;
-                    pr.setTimestamp(2, Timestamp.valueOf(dtInicial));
-                    pr.setTimestamp(3, Timestamp.valueOf(dtFinal));
-
-                    pr.setString(4,justificativa);
-
-                    Integer id_equipe = getIdEquipe(equipe);
-                    pr.setInt(5, id_equipe);
-
-                    pr.setString(6, tipo_hora);
-
-                    Integer id_cliente = getListaCliente().get(cliente);
-                    pr.setInt(7,id_cliente);
-
-                    pr.execute();
-                }catch (SQLException e){
-                    throw new RuntimeException(e);
-                }
-        }
-    public void apontarHorasSobreaviso(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora) {
-
-            try {
-                Connection conn = getInstancia();
-                PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, id_equipe, tipo_hora) VALUES (?,?,?,?,?);");
-
-                Integer id_user = getListaUsuario().get(usuario);
-                pr.setInt(1, id_user);
-
-                String dtInicial = data_inicial;
-                String dtFinal = data_final;
-                pr.setTimestamp(2, Timestamp.valueOf(dtInicial));
-                pr.setTimestamp(3, Timestamp.valueOf(dtFinal));
-
-                Integer id_equipe = getIdEquipe(equipe);
-                pr.setInt(4, id_equipe);
-
-                pr.setString(5, tipo_hora);
-
-                pr.execute();
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-    }
-    public Integer getIdEquipe(String equipe){
-        Integer id_equipe = 0;
-        String sql = "SELECT id_equipe FROM equipe WHERE nome_equipe = '" + equipe + "'";
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (matricula, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente)\n" +
+                                                             "VALUES (?,?,?,?,?,?,?);");
+            pr.setString(1,matricula);
+            Timestamp dt_inicial = Timestamp.valueOf(data_inicial);
+            pr.setTimestamp(2, dt_inicial);
+            Timestamp dt_final = Timestamp.valueOf(data_final);
+            pr.setTimestamp(3, dt_final);
+            pr.setString(4,justificativa);
+            pr.setInt(5, Integer.valueOf(getColuna("equipe","id_equipe", "nome_equipe",equipe)));
+            pr.setString(6,tipo_hora);
+            pr.setInt(7, Integer.valueOf(getColuna("cliente", "id_cliente","empresa",cliente)));
 
-            while (rs.next()){
-                id_equipe = rs.getInt(1);
-            }
-            return id_equipe;
-
+            pr.execute();
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
+    }
+    public String getColuna(String tabela, String coluna, String campoFiltro, String valorFiltro) throws SQLException {
+        String id = "";
+        String sql = "SELECT " + coluna + " FROM " + tabela + " WHERE "+ campoFiltro + " = " + valorFiltro +";" ;
+        ResultSet rs = run(sql);
+        while(rs.next()){
+            id = rs.getString(1);
+        }
+        return id;
+    }
+    public void apontarHorasSobreaviso(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora) {
+//
+//            try {
+//                Connection conn = getInstancia();
+//                PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, id_equipe, tipo_hora) VALUES (?,?,?,?,?);");
+//
+//                String dtInicial = data_inicial;
+//                String dtFinal = data_final;
+//                pr.setTimestamp(2, Timestamp.valueOf(dtInicial));
+//                pr.setTimestamp(3, Timestamp.valueOf(dtFinal));
+//
+//                Integer id_equipe = getIdEquipe(equipe);
+//                pr.setInt(4, id_equipe);
+//
+//                pr.setString(5, tipo_hora);
+//
+//                pr.execute();
+//
+//            } catch (SQLException e) {
+//                throw new RuntimeException(e);
+//            }
     }
     public ArrayList<String> getEquipe(String login){
         ArrayList<String> equipes = new ArrayList<>();
@@ -120,103 +101,31 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public HashMap<String, Integer> getListaCliente(){
-        HashMap<String, Integer> cliente = new HashMap<>();
-
-        String sql = "SELECT * FROM cliente";
-        Connection conn = getInstancia();
+    public Boolean validarAcessoUsuario(String matricula, String passw){
+        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"';";
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
             while (rs.next()){
-                String cl = rs.getString(2);
-                Integer id_cliente = rs.getInt(1);
+                String mat = rs.getString(1);
+                String senha = rs.getString(2);
+                String nome = rs.getString(3);
+                String cargo = rs.getString(4);
 
-                cliente.put(cl,id_cliente);
+                Usuario.criarInstancia(mat,senha,nome,cargo);
+                return true;
             }
-
-            return cliente;
-
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-    public ArrayList<String> getCliente(String nomeEquipe){
-        ArrayList<String> cliente = new ArrayList<>();
-
-        String sql = "SELECT cl.nome_cliente FROM equipe_cliente AS ec INNER JOIN equipe AS eq ON ec.id_equipe = eq.id_equipe INNER JOIN cliente AS cl ON cl.id_cliente = ec.id_cliente \n" +
-                "WHERE eq.nome_equipe = '"+ nomeEquipe + "'";
-
-        Connection conn = getInstancia();
-        try {
-            PreparedStatement pr = conn.prepareStatement(sql);
-            ResultSet rs = pr.executeQuery();
-
-            while (rs.next()){
-                String empresa = rs.getString(1);
-                cliente.add(empresa);
-            }
-            return cliente;
-
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-    public HashMap<Usuario,Integer> getListaUsuario(){
-        Connection conn = getInstancia();
-        HashMap<Usuario,Integer> user = new HashMap<>();
-
-        String sql = "SELECT * FROM usuario;";
-        try {
-            PreparedStatement pr = conn.prepareStatement(sql);
-            ResultSet rs = pr.executeQuery();
-            while (rs.next()){
-                Integer id = rs.getInt(1);
-                String login = rs.getString(2);
-                String senha = rs.getString(3);
-                String matricula = rs.getString(4);
-                String nome = rs.getString(5);
-                String cargo = rs.getString(6);
-                Integer id_equipe = rs.getInt(7);
-
-                user.put(Usuario.criarUsuario(login,senha,matricula,nome,cargo,id_equipe),id);
-            }
-            return user;
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-    public Map<Integer, Usuario> getUsuario(String user, String passw){
-        Map<Integer, Usuario> listaUsuarios = new HashMap<>();
-
-        String sql = "SELECT * FROM usuario where login = '"+user+"' and senha = '"+passw+"'";
-        int cont = 0;
-        try {
-            PreparedStatement pr = conn.prepareStatement(sql);
-            ResultSet rs = pr.executeQuery();
-            while (rs.next()){
-                Integer id = rs.getInt(1);
-                String login = rs.getString(2);
-                String senha = rs.getString(3);
-                String matricula = rs.getString(4);
-                String nome = rs.getString(5);
-                String cargo = rs.getString(6);
-                Integer id_equipe  =rs.getInt(7);
-
-                listaUsuarios.put(cont, Usuario.criarUsuario(login,senha,matricula,nome,cargo,id_equipe));
-                cont += 1;
-            }
+        return false;
         }
         catch (SQLException e){
             throw new RuntimeException(e);
         }
-        return listaUsuarios;
     }
     public ArrayList<Tabela> getHorasUsuario(String matricula){
         ArrayList<Tabela> tabela = new ArrayList<>();
         String sql =  "SELECT data_hora_inicial    AS Data_Inicial," +
                         "data_hora_final      AS Data_Final," +
-                        "CASE WHEN cliente.nome_cliente IS NULL THEN '-' ELSE cliente.nome_cliente END," +
+                        "CASE WHEN cliente.empresa IS NULL THEN '-' ELSE cliente.empresa END," +
                         "CASE WHEN status IS NULL THEN 'Em andamento' ELSE status END AS status " +
                         "FROM hora "+
                         "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
@@ -241,17 +150,15 @@ public class ConnectionFactory {
     }
     public ArrayList<TabelaAprova> getHoraEquipe(Integer id_equipe){
           String sql = "SELECT usuario.nome, " +
-            	   "hora.data_hora_inicial, " +
-            	   "hora.data_hora_final, " +
-            	   "CASE WHEN cliente.nome_cliente IS NULL THEN '-' ELSE cliente.nome_cliente END, " +
-            	   "hora.tipo_hora " +
+                  "hora.data_hora_inicial, " +
+                  "hora.data_hora_final, " +
+                  "CASE WHEN cliente.empresa IS NULL THEN '-' ELSE cliente.empresa END, " +
+                  "hora.tipo_hora " +
                    "FROM hora " +
-            	   "LEFT JOIN usuario ON usuario.id_usuario = hora.id_usuario " +
-            	   "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
+                  "LEFT JOIN usuario ON usuario.id_usuario = hora.id_usuario " +
+                  "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
 //            	   "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe "+
-            	   "WHERE hora.id_equipe = '" + id_equipe + "'";
-
-          Connection conn = getInstancia();
+                  "WHERE hora.id_equipe = '" + id_equipe + "'";
           ArrayList<TabelaAprova> tb = new ArrayList<>();
           try{
               PreparedStatement pr = conn.prepareStatement(sql);
@@ -299,15 +206,14 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<String> dontUseThis(String id_usuarioOuEquipe, String equipeOuCliente) throws SQLException {
+    public ArrayList<String> getListaColuna(String idUsuarioOuEquipe, String equipeOuCliente) {
         /*
          * Esse metodo vai procurar na tabela e vai retornar todos as equipes, usuarios, ... o que o usuario escolher
         */
-
         String sql = "";
         switch (equipeOuCliente.toLowerCase()){
             case "equipe":
-                sql = String.format("Select equipe_nome from equipe where id_equipe = '%s'", id_usuarioOuEquipe);
+                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + idUsuarioOuEquipe + "';";
                 break;
             case "cliente":
                 sql = "";
@@ -316,12 +222,14 @@ public class ConnectionFactory {
 
         ArrayList<String> lista = new ArrayList<>();
 
-        while (run(sql).next()){
-
-        }
-
+            try {
+                ResultSet rs = run(sql);
+                while (rs.next()){
+                    lista.add(rs.getString(1));
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         return lista;
     }
-
-
 }
