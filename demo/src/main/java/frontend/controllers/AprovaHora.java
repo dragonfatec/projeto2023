@@ -5,13 +5,11 @@ import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +17,8 @@ import java.util.ResourceBundle;
 
 public class AprovaHora implements Initializable {
     // Objetos
-    ConnectionFactory conn = new ConnectionFactory();
+    private final ConnectionFactory conn = new ConnectionFactory();
+    private final Usuario usuario = Usuario.getInstancia();
 
     // Label
     @FXML public Label textoNomeUsuario;
@@ -70,15 +69,15 @@ public class AprovaHora implements Initializable {
     }
 
     public void selecionarTudo(ActionEvent actionEvent) {
-        
+        ArrayList<TabelaAprova> listaHorasSelecionadas = getHorasSelecionada();
     }
 
     public void atualizarTabela(ActionEvent event) {
 //        Integer id_equipe = conn.getListaColuna(campoEscolhaEquipe.getValue().toString(),"equipe");
-//
-//        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
+        int id_equipe = Integer.parseInt(conn.getColuna("equipe", "id_equipe", "equipe_nome", campoEscolhaEquipe.getValue().toString()));
+//        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList(conn.getHoraEquipe(id_equipe));
 //        listaHorasPendentes.addAll(conn.getHoraEquipe(id_equipe));
-//        tabela.setItems(listaHorasPendentes);
+        tabela.setItems(FXCollections.observableArrayList(conn.getHoraEquipe(id_equipe)));
     }
 
     public void irParaConsultaHora() throws IOException {
@@ -91,16 +90,16 @@ public class AprovaHora implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        // Usuario
-        Usuario usuario = Usuario.getInstancia();
-
-        // Escondendo os botões
-
+        // Verificando acesso para todas as telas
+        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
+//        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
+        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
+        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
 
         // Para preencher o campo de equipe
-//        campoEscolhaEquipe.getItems().addAll(conn.getEquipe(usuario.getLogin()));
+        campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
 
-        //Dados para Teste
+        // mDados para Teste
 //        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
 //        listaHorasPendentes.add(new TabelaAprova("Alec", "12/05/2023 18:00", "12/05/2023 19:00", "Americanas", "Sobreaviso", "01:00"));
 //        listaHorasPendentes.add(new TabelaAprova("Pedro", "12/05/2023 18:00", "12/05/2023 20:00", "Apple", "Hora Extra", "02:00"));

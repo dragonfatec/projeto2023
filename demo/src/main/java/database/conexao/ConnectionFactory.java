@@ -2,10 +2,8 @@ package database.conexao;
 
 import backend.datahora.RegistroDataHora;
 import backend.usuario.Usuario;
-import frontend.util.Alerts;
 import frontend.util.Tabela;
 import frontend.util.TabelaAprova;
-import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.*;
@@ -13,7 +11,7 @@ import java.util.*;
 public class ConnectionFactory {
 
     private static Connection conn;
-    RegistroDataHora reg = new RegistroDataHora();
+    private final RegistroDataHora hora = new RegistroDataHora();
 
     public static void setInstancia() {
         if(conn == null) {
@@ -51,12 +49,16 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public String getColuna(String tabela, String coluna, String campoFiltro, String valorFiltro) throws SQLException {
+    public String getColuna(String tabela, String coluna, String campoFiltro, String valorFiltro){
         String id = "";
         String sql = "SELECT " + coluna + " FROM " + tabela + " WHERE "+ campoFiltro + " = " + valorFiltro +";" ;
-        ResultSet rs = run(sql);
-        while(rs.next()){
-            id = rs.getString(1);
+        try{
+            ResultSet rs = run(sql);
+            while(rs.next()){
+                id = rs.getString(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }
@@ -169,11 +171,9 @@ public class ConnectionFactory {
                   String dataHoraFinal = rs.getString(3);
                   String cliente = rs.getString(4);
                   String tipo = rs.getString(5);
-//                  String totalDeHoras = Integer.toString(reg.pegarDiferencaMinutos(dataHoraInicial, dataHoraFinal));
-                  int minutosTotal = (reg.pegarDiferencaMinutos(dataHoraInicial, dataHoraFinal));
+                  int minutosTotal = (hora.pegarDiferencaMinutos(dataHoraInicial, dataHoraFinal));
                   int horas = minutosTotal / 60;
                   int minutos = minutosTotal - (horas * 60);
-//                  String totalDeHoras = horas + ":" + minutos;
                   String totalDeHoras = (horas < 10? "0" + horas: Integer.toString(horas)) + ":" + (minutos < 10? "0" + minutos: Integer.toString(minutos));
 
                   TabelaAprova tabela = new TabelaAprova(colaborador,dataHoraInicial, dataHoraFinal, cliente, tipo, totalDeHoras);

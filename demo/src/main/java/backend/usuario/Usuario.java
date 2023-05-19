@@ -6,16 +6,25 @@ public class Usuario {
     private String matricula;
     private String senha;
     private String nome;
-    private String cargo;
+    private TiposDeUsuario cargo;
     private static Usuario instancia;
     private Usuario(){
-
     }
     private Usuario(String matricula, String senha, String nome, String cargo){
         this.matricula = matricula;
         this.senha = senha;
         this.nome = nome;
-        this.cargo = cargo;
+        switch (cargo.toLowerCase()){
+            case "colaborador":
+                this.cargo = TiposDeUsuario.Colaborador;
+                break;
+            case "gerente":
+                this.cargo = TiposDeUsuario.Gerente;
+                break;
+            case "rh":
+                this.cargo = TiposDeUsuario.RH;
+                break;
+        }
     }
     public static Usuario getInstancia(){
         if (instancia == null){
@@ -34,26 +43,14 @@ public class Usuario {
     public String getSenha() {
         return senha;
     }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
     public String getMatricula() {
         return matricula;
-    }
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
     }
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public String getCargo() {
+    public TiposDeUsuario getCargo() {
         return cargo;
-    }
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
     }
     @Override
     public String toString() {

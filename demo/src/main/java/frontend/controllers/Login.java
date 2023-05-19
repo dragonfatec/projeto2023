@@ -36,13 +36,8 @@ public class Login implements Initializable {
     // Metodos
     @FXML
     public void fazerLogin(ActionEvent actionEvent) throws IOException {
-
-        String user = campoUsuario.getText();
-        String senha = campoSenha.getText();
-
-        if (conn.validarAcessoUsuario(user,Criptografia.criptografar(senha))){
+        if (conn.validarAcessoUsuario(campoUsuario.getText(),Criptografia.criptografar(campoSenha.getText()))){
             App.mudarTela("registraHora.fxml");
-
         }
         else{
             Alerts.showAlert("Erro", "","O usuario ou a senha está incorreto", Alert.AlertType.ERROR);

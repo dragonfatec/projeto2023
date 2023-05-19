@@ -1,5 +1,6 @@
 package frontend.util;
 
+import backend.usuario.TiposDeUsuario;
 import javafx.scene.control.Button;
 
 public class VerificaAcesso {
@@ -17,7 +18,7 @@ public class VerificaAcesso {
     }
 
     public static void verificarAcesso(Button button, TiposDeUsuario tipoUsuario, NomesArquivosFXML telaNome){
-        if (verificarRegraDeAcesso(tipoUsuario, telaNome)){
+        if (!verificarRegraDeAcesso(tipoUsuario, telaNome)){
             button.setVisible(false);
         }
     }

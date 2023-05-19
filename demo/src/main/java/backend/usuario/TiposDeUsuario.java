@@ -1,4 +1,4 @@
-package frontend.util;
+package backend.usuario;
 
 public enum TiposDeUsuario {
     Colaborador,

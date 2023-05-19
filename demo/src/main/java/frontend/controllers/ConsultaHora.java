@@ -24,7 +24,8 @@ import java.util.ResourceBundle;
 
 public class ConsultaHora implements Initializable {
     // Objetos
-    ConnectionFactory conn = new ConnectionFactory();
+    private final ConnectionFactory conn = new ConnectionFactory();
+    private final Usuario usuario = Usuario.getInstancia();
 
     // Texto
     @FXML Label textoNomeUsuario;
@@ -52,16 +53,14 @@ public class ConsultaHora implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Verificando acesso para todas as telas
+        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
+//        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
+        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
+        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
 
-        // instancia do usuario
-        Usuario usuario = Usuario.getInstancia();
-        if (usuario.getCargo().equals("Usuario")){
-            btnAprovaHora.setVisible(false);
-        }
-
-
+        // Preenchendo a tabela com as horas lançadas do usuario
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
-
         tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
 
         // TESTE
@@ -70,12 +69,11 @@ public class ConsultaHora implements Initializable {
 //        tabelasObjetoLista.add(new Tabela("02/04/2023 12:00","02/04/2023 15:00","Cliente","Reprovado"));
 //        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
 
-
+        // Para cada campo da tabela vamos "conectar" com um parametro da classe Tabela
         colunaDataHoraInicial.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataInicio"));
         colunaDataHoraFinal.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataFim"));
         colunaCliente.setCellValueFactory(new PropertyValueFactory<Tabela, String>("cliente"));
         colunaStatus.setCellValueFactory(new PropertyValueFactory<Tabela, String>("status"));
-
         tabela.setItems(tabelasObjetoLista);
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");

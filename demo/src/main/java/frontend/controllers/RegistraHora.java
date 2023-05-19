@@ -6,6 +6,7 @@ import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
+import frontend.util.VerificaAcesso;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,14 +15,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegistraHora implements Initializable {
     // Objetos
-    ConnectionFactory conn = new ConnectionFactory();
-    RegistroDataHora hora = new RegistroDataHora();
+    private final ConnectionFactory conn = new ConnectionFactory();
+    private final RegistroDataHora hora = new RegistroDataHora();
+    private final Usuario usuario = Usuario.getInstancia();
 
     // Texto
     @FXML Label textoNomeUsuario;
@@ -68,7 +69,7 @@ public class RegistraHora implements Initializable {
 
             if (hora.vaidarDataESequencia(dataIn, dataFm)){
 
-                conn.apontarHorasExtra(Usuario.getInstancia().getMatricula(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+                conn.apontarHorasExtra(usuario.getMatricula(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
 
                 Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
                 limparCampos();
@@ -91,8 +92,7 @@ public class RegistraHora implements Initializable {
             horasFim.getValue().toString();
             minutosFim.getValue().toString();
             // Se for Hora Extra então é obrigatório o campo Justificativa
-//            boolean just = campoJustificativa.getText().equals("") && campoTipo.getValue().equals("Extra") ? false : true;
-            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && campoJustificativa.getText().equals("");
+            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && !campoJustificativa.getText().equals("");
         }
         catch (Exception e){
             return false;
@@ -121,19 +121,16 @@ public class RegistraHora implements Initializable {
     }
 
     public void atualizarCliente(ActionEvent actionEvent) {
-        ConnectionFactory conn = new ConnectionFactory();
-        ObservableList<String> clientes = FXCollections.observableArrayList(conn.getListaColuna(campoEquipe.getValue(), "cliente"));
-        campoCliente.setItems(clientes);
+        campoCliente.setItems(FXCollections.observableArrayList(conn.getListaColuna(campoEquipe.getValue(), "cliente")));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        // Pegando a instancia do usuario
-        Usuario usuario = Usuario.getInstancia();
-//        if (usuario.getCargo().equalsIgnoreCase("usuario")){
-//            btnAprovaHora.setVisible(false);
-//        }
-
+        // Verificando acesso para todas as telas
+        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
+//        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
+        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
+        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
 
         ArrayList<String> minutosLista = new ArrayList<>();
         ArrayList<String> horasLista = new ArrayList<>();
@@ -151,17 +148,16 @@ public class RegistraHora implements Initializable {
             }
         }
 
-        ObservableList<String> tiposDeHora = FXCollections.observableArrayList("Extra","Sobreaviso");
-        campoTipo.setItems(tiposDeHora);
+        campoTipo.setItems(FXCollections.observableArrayList("Extra","Sobreaviso"));
 
-        ObservableList<String> minutos = FXCollections.observableArrayList(minutosLista);
-        minutosInicio.setItems(minutos);
-        minutosFim.setItems(minutos);
+        // Select dos campos data
+        minutosInicio.setItems(FXCollections.observableArrayList(minutosLista));
+        minutosFim.setItems(FXCollections.observableArrayList(minutosLista));
 
-        ObservableList<String> horas = FXCollections.observableArrayList(horasLista);
-        horasInicio.setItems(horas);
-        horasFim.setItems(horas);
+        horasInicio.setItems(FXCollections.observableArrayList(horasLista));
+        horasFim.setItems(FXCollections.observableArrayList(horasLista));
 
+        // Preenchendo o campo equipe
         campoEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
