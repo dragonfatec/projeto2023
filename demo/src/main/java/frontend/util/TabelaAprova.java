@@ -3,7 +3,7 @@ package frontend.util;
 import javafx.scene.control.CheckBox;
 
 public class TabelaAprova {
-
+    private int id;
     private String colaborador;
     private String dataHoraInicial;
     private String dataHoraFinal;
@@ -23,6 +23,9 @@ public class TabelaAprova {
         this.selecione = new CheckBox();
     }
 
+    public int getId(){
+        return id;
+    }
     public String getColaborador() {
         return colaborador;
     }

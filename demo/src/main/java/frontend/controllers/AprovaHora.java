@@ -23,6 +23,9 @@ public class AprovaHora implements Initializable {
     // Label
     @FXML public Label textoNomeUsuario;
 
+    // TextArea
+    @FXML public TextArea campoJustificativa;
+
     // Table
     @FXML public TableView<TabelaAprova> tabela;
     @FXML public TableColumn<TabelaAprova, String> colunaColaborador;
@@ -57,19 +60,32 @@ public class AprovaHora implements Initializable {
         return horasSelecionada;
     }
 
-    public void pegarJustificativa(){
-
+    private void salvarHorasAvaliadas(String status, String justificativa){
+        for (TabelaAprova tb : tabela.getItems()){
+            if (tb.getSelecione().isSelected()){
+                conn.atualizarStatus("hora", "status", status, "id_hora = " + tb.getId(), false);
+                conn.atualizarStatus("hora", "justificativa", justificativa, "id_hora = " + tb.getId(), false);
+            }
+        }
     }
 
     public void aprovarHoras(ActionEvent actionEvent) {
-        getHorasSelecionada();
+        salvarHorasAvaliadas("Aprovada", campoJustificativa.getText().trim().equals("") ? "-" : campoJustificativa.getText());
     }
 
     public void reprovarHoras(ActionEvent actionEvent) {
+        if(!campoJustificativa.getText().trim().equals("")){
+            salvarHorasAvaliadas("Reprovada", campoJustificativa.getText());
+        }
+        else{
+            Alerts.showAlert("Erro", null, "O campo Justificativa é obrigatório quando as horas é reprovada", Alert.AlertType.WARNING);
+        }
     }
 
     public void selecionarTudo(ActionEvent actionEvent) {
-        ArrayList<TabelaAprova> listaHorasSelecionadas = getHorasSelecionada();
+        for (TabelaAprova tb : tabela.getItems()){
+            tb.getSelecione().setSelected(true);
+        }
     }
 
     public void atualizarTabela(ActionEvent event) {

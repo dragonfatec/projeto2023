@@ -11,7 +11,7 @@ public class VerificaAcesso {
             case "gerente":
                 return telaNome == NomesArquivosFXML.consultaHora || telaNome == NomesArquivosFXML.registraHora || telaNome == NomesArquivosFXML.aprovaHora;
             case "rh":
-                return telaNome == NomesArquivosFXML.aprovaHora || telaNome == NomesArquivosFXML.cadastrarUsuario;
+                return telaNome == NomesArquivosFXML.aprovaHora || telaNome == NomesArquivosFXML.cadastraUsuario;
             default:
                 return false;
         }
