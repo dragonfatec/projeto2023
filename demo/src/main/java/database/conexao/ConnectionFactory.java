@@ -1,6 +1,7 @@
 package database.conexao;
 
 import backend.datahora.RegistroDataHora;
+import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
 import frontend.util.Tabela;
 import frontend.util.TabelaAprova;
@@ -24,7 +25,7 @@ public class ConnectionFactory {
             }
         }
     }
-    public void cadastrarUsuario(String matricula, String senha, String nome, String cargo, Integer id_equipe) {
+    public void cadastrarUsuario(String matricula, String senha, String nome, TiposDeUsuario cargo, Integer id_equipe) {
 
             String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, id_equipe) VALUES ('%s','%s','%s','%s',%s);",matricula, senha, nome,cargo,id_equipe);
 
@@ -160,7 +161,9 @@ public class ConnectionFactory {
                            "FROM hora " +
                           "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
                           "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
-                          "WHERE hora.id_equipe = " + id_equipe + " AND status = 'Em andamento';";
+                          "WHERE hora.id_equipe = " + id_equipe + " AND status = 'Em andamento' AND cargo = 'Colaborador';";
+
+
           ArrayList<TabelaAprova> tb = new ArrayList<>();
           try{
               PreparedStatement pr = conn.prepareStatement(sql);

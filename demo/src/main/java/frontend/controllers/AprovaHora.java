@@ -35,7 +35,6 @@ public class AprovaHora implements Initializable {
     @FXML public TableColumn<TabelaAprova, String> colunaTipo;
     @FXML public TableColumn<TabelaAprova, String> colunaTotalDeHoras;
     @FXML public TableColumn<TabelaAprova, CheckBox> colunaSelecione;
-
     // Button
     @FXML public Button btnRegistrarHora;
     @FXML public Button btnConsultar;
