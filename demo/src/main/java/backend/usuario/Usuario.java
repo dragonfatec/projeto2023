@@ -1,7 +1,5 @@
 package backend.usuario;
 
-import java.sql.SQLException;
-
 public class Usuario {
     private String matricula;
     private String senha;

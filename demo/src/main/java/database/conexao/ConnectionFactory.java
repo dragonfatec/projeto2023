@@ -152,18 +152,32 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<TabelaAprova> getHoraEquipe(Integer id_equipe){
-          String sql = "SELECT usuario.nome, " +
+    public ArrayList<TabelaAprova> getHoraEquipe(Integer id_equipe, TiposDeUsuario cargo){
+          String sql = "";
+          switch (cargo){
+              case Gerente:
+                  sql = "SELECT usuario.nome, " +
                           "hora.data_hora_inicial, " +
                           "hora.data_hora_final, " +
                           "CASE WHEN cliente.empresa IS NULL THEN '-' ELSE cliente.empresa END, " +
                           "hora.tipo_hora, hora.id_hora " +
-                           "FROM hora " +
+                          "FROM hora " +
                           "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
                           "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
                           "WHERE hora.id_equipe = " + id_equipe + " AND status = 'Em andamento' AND cargo = 'Colaborador';";
-
-
+                  break;
+              case RH:
+                  sql = "SELECT usuario.nome, " +
+                          "hora.data_hora_inicial, " +
+                          "hora.data_hora_final, " +
+                          "CASE WHEN cliente.empresa IS NULL THEN '-' ELSE cliente.empresa END, " +
+                          "hora.tipo_hora, hora.id_hora " +
+                          "FROM hora " +
+                          "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
+                          "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
+                          "WHERE hora.id_equipe = " + id_equipe + " AND status = 'Em andamento';";
+                  break;
+          }
           ArrayList<TabelaAprova> tb = new ArrayList<>();
           try{
               PreparedStatement pr = conn.prepareStatement(sql);
