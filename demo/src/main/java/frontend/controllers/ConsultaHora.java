@@ -42,7 +42,8 @@ public class ConsultaHora implements Initializable {
     @FXML Button btnConsultar;
     @FXML Button btnAprovaHora;
 
-    // Metodos
+
+    /////     Metodos Publicos     /////
     public void irParaAprovaHora() throws IOException {
         App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
     }
@@ -51,6 +52,8 @@ public class ConsultaHora implements Initializable {
         App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
     }
 
+
+    /////     Metodo Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Verificando acesso para todas as telas

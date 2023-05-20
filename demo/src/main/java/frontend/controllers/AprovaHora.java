@@ -46,30 +46,8 @@ public class AprovaHora implements Initializable {
     // ChoiceBox
     @FXML public ChoiceBox campoEscolhaEquipe;
 
-    // Metodos
-    private ArrayList<TabelaAprova> getHorasSelecionada(){
-        ArrayList<TabelaAprova> horasSelecionada = new ArrayList<>();
 
-        for (TabelaAprova tb : tabela.getItems()){
-            if (tb.getSelecione().isSelected()){
-                horasSelecionada.add(tb);
-                System.out.println(tb.getColaborador()+" foi selecionado para aprovar/reprovar as horas");
-            }
-        }
-        return horasSelecionada;
-    }
-
-    private void salvarHorasAvaliadas(String status, String justificativa){
-        for (TabelaAprova tb : tabela.getItems()){
-            if (tb.getSelecione().isSelected()){
-                conn.atualizarStatus("hora", "status", status, "id_hora = " + tb.getId(), false);
-                conn.atualizarStatus("hora", "justificativa_status", justificativa, "id_hora = " + tb.getId(), false);
-            }
-        }
-        Alerts.showAlert("Avaliação alterada!", null, "Avaliação foi "+ status + " com sucesso!", Alert.AlertType.INFORMATION);
-        atualizarTabela(new ActionEvent());
-    }
-
+    /////     Metodos Publicos     /////
     public void aprovarHoras(ActionEvent actionEvent) {
         salvarHorasAvaliadas("Aprovada", campoJustificativa.getText().trim().equals("") ? "-" : campoJustificativa.getText());
     }
@@ -105,6 +83,33 @@ public class AprovaHora implements Initializable {
         App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
     }
 
+
+    /////     Metodos Privados     /////
+    private ArrayList<TabelaAprova> getHorasSelecionada(){
+        ArrayList<TabelaAprova> horasSelecionada = new ArrayList<>();
+
+        for (TabelaAprova tb : tabela.getItems()){
+            if (tb.getSelecione().isSelected()){
+                horasSelecionada.add(tb);
+                System.out.println(tb.getColaborador()+" foi selecionado para aprovar/reprovar as horas");
+            }
+        }
+        return horasSelecionada;
+    }
+
+    private void salvarHorasAvaliadas(String status, String justificativa){
+        for (TabelaAprova tb : tabela.getItems()){
+            if (tb.getSelecione().isSelected()){
+                conn.atualizarStatus("hora", "status", status, "id_hora = " + tb.getId(), false);
+                conn.atualizarStatus("hora", "justificativa_status", justificativa, "id_hora = " + tb.getId(), false);
+            }
+        }
+        Alerts.showAlert("Avaliação alterada!", null, "Avaliação foi "+ status + " com sucesso!", Alert.AlertType.INFORMATION);
+        atualizarTabela(new ActionEvent());
+    }
+
+
+    /////     Metodo Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         // Verificando acesso para todas as telas

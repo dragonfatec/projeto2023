@@ -53,14 +53,9 @@ public class RegistraHora implements Initializable {
     @FXML Button btnCancelar;
     @FXML public Button btnAprovaHora;
 
-    // Metodos
-    @FXML
-    private void cancelarRegistroHora() {
-        App.sair();
-    }
 
-    @FXML
-    void confirmarRegistroHora(){
+    /////     Metodos Publicos     /////
+    public void confirmarRegistroHora(){
 
         if (verificarPreenchimentosDosCampos()){
 
@@ -81,6 +76,25 @@ public class RegistraHora implements Initializable {
         else{
             Alerts.showAlert("Aviso!", null, "Preencher todos os campos!", Alert.AlertType.WARNING);
         }
+    }
+
+    public void irParaAprovaHora() throws IOException {
+        App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
+    }
+
+    public void irParaConsultaHora() throws IOException {
+        App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
+    }
+
+    public void atualizarCliente(ActionEvent actionEvent) {
+        campoCliente.setItems(FXCollections.observableArrayList(conn.getListaColuna(campoEquipe.getValue(), "cliente")));
+    }
+
+
+    /////     Metodos Privados     /////
+    @FXML
+    private void cancelarRegistroHora() {
+        App.sair();
     }
 
     private boolean verificarPreenchimentosDosCampos(){
@@ -112,18 +126,8 @@ public class RegistraHora implements Initializable {
         campoCliente.setValue(null);
     }
 
-    public void irParaAprovaHora() throws IOException {
-        App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
-    }
 
-    public void irParaConsultaHora() throws IOException {
-        App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
-    }
-
-    public void atualizarCliente(ActionEvent actionEvent) {
-        campoCliente.setItems(FXCollections.observableArrayList(conn.getListaColuna(campoEquipe.getValue(), "cliente")));
-    }
-
+    /////     Metodo Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         // Verificando acesso para todas as telas

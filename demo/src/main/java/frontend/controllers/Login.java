@@ -33,8 +33,8 @@ public class Login implements Initializable {
     // Button
     @FXML public Button btnEntrar;
 
-    // Metodos
-    @FXML
+
+    /////     Metodos Publicos     /////
     public void fazerLogin(ActionEvent actionEvent) throws IOException {
         if (conn.validarAcessoUsuario(campoUsuario.getText(),Criptografia.criptografar(campoSenha.getText()))){
             App.mudarTela("registraHora.fxml");
@@ -44,6 +44,8 @@ public class Login implements Initializable {
         }
     }
 
+
+    /////     Metodo Override     /////
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ConnectionFactory.setInstancia();

@@ -2,4 +2,4 @@
 /demo/.idea/
 
 # Maven
-/demo/target/
+/demo/target/*

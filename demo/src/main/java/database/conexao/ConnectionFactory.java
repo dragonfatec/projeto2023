@@ -229,7 +229,6 @@ public class ConnectionFactory {
         catch (SQLException e){
             throw new RuntimeException(e);
         }
-//        return conn.prepareStatement("SELECT * FROM usuario LIMIT 1;").executeQuery();
     }
     public ArrayList<String> getListaColuna(String matriculaUserOuEquipe, String equipeOuCliente) {
         /*
