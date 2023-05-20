@@ -5,6 +5,7 @@ import backend.usuario.Usuario;
 import frontend.util.Tabela;
 import frontend.util.TabelaAprova;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.*;
 
@@ -51,7 +52,7 @@ public class ConnectionFactory {
     }
     public String getColuna(String tabela, String coluna, String campoFiltro, String valorFiltro){
         String id = "";
-        String sql = "SELECT " + coluna + " FROM " + tabela + " WHERE "+ campoFiltro + " = " + valorFiltro +";" ;
+        String sql = "SELECT " + coluna + " FROM " + tabela + " WHERE "+ campoFiltro + " = '" + valorFiltro +"';" ;
         try{
             ResultSet rs = run(sql);
             while(rs.next()){
@@ -152,15 +153,14 @@ public class ConnectionFactory {
     }
     public ArrayList<TabelaAprova> getHoraEquipe(Integer id_equipe){
           String sql = "SELECT usuario.nome, " +
-                  "hora.data_hora_inicial, " +
-                  "hora.data_hora_final, " +
-                  "CASE WHEN cliente.empresa IS NULL THEN '-' ELSE cliente.empresa END, " +
-                  "hora.tipo_hora " +
-                   "FROM hora " +
-                  "LEFT JOIN usuario ON usuario.id_usuario = hora.id_usuario " +
-                  "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
-//            	   "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe "+
-                  "WHERE hora.id_equipe = '" + id_equipe + "'";
+                          "hora.data_hora_inicial, " +
+                          "hora.data_hora_final, " +
+                          "CASE WHEN cliente.empresa IS NULL THEN '-' ELSE cliente.empresa END, " +
+                          "hora.tipo_hora, hora.id_hora " +
+                           "FROM hora " +
+                          "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
+                          "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
+                          "WHERE hora.id_equipe = " + id_equipe;
           ArrayList<TabelaAprova> tb = new ArrayList<>();
           try{
               PreparedStatement pr = conn.prepareStatement(sql);
@@ -171,12 +171,13 @@ public class ConnectionFactory {
                   String dataHoraFinal = rs.getString(3);
                   String cliente = rs.getString(4);
                   String tipo = rs.getString(5);
+                  Integer id_hora = rs.getInt(6);
                   int minutosTotal = (hora.pegarDiferencaMinutos(dataHoraInicial, dataHoraFinal));
                   int horas = minutosTotal / 60;
                   int minutos = minutosTotal - (horas * 60);
                   String totalDeHoras = (horas < 10? "0" + horas: Integer.toString(horas)) + ":" + (minutos < 10? "0" + minutos: Integer.toString(minutos));
 
-                  TabelaAprova tabela = new TabelaAprova(colaborador,dataHoraInicial, dataHoraFinal, cliente, tipo, totalDeHoras);
+                  TabelaAprova tabela = new TabelaAprova(id_hora,colaborador,dataHoraInicial, dataHoraFinal, cliente, tipo, totalDeHoras);
                   tb.add(tabela);
               }
               return tb;
@@ -194,10 +195,16 @@ public class ConnectionFactory {
          */
         novoValor = novoValorEhNumero ? novoValor : "'" + novoValor + "'";
         String sql = String.format("UPDATE %s SET %s = %s WHERE %s", nomeTabela, nomeCampo, novoValor, condicao);
-        run(sql);
+        System.out.println(sql);
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            pr.execute();
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
     private ResultSet run(String sql){
-
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             return pr.executeQuery();
@@ -205,18 +212,19 @@ public class ConnectionFactory {
         catch (SQLException e){
             throw new RuntimeException(e);
         }
+//        return conn.prepareStatement("SELECT * FROM usuario LIMIT 1;").executeQuery();
     }
-    public ArrayList<String> getListaColuna(String idUsuarioOuEquipe, String equipeOuCliente) {
+    public ArrayList<String> getListaColuna(String matriculaUserOuEquipe, String equipeOuCliente) {
         /*
          * Esse metodo vai procurar na tabela e vai retornar todos as equipes, usuarios, ... o que o usuario escolher
         */
         String sql = "";
         switch (equipeOuCliente.toLowerCase()){
             case "equipe":
-                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + idUsuarioOuEquipe + "';";
+                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + matriculaUserOuEquipe + "';";
                 break;
             case "cliente":
-                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '"+ idUsuarioOuEquipe +"';";
+                sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ matriculaUserOuEquipe +"' AND status = 'Em andamento';";
                 break;
         }
 

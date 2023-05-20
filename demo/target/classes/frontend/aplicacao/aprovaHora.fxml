@@ -104,7 +104,7 @@
                </font>
             </Label>
             <TextArea fx:id="campoJustificativa" layoutX="406.0" layoutY="603.0" prefHeight="76.0" prefWidth="383.0" promptText="Digite aqui a justificativa da Aprovação/Reprovação" />
-            <Button fx:id="btnSelecionarTudo" layoutX="1165.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Selecionar Tudo">
+            <Button fx:id="btnSelecionarTudo" onAction="#selecionarTudo" layoutX="1165.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Selecionar Tudo">
                <font>
                   <Font size="10.0" />
                </font>
