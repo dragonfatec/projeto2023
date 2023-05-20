@@ -64,10 +64,11 @@ public class AprovaHora implements Initializable {
         for (TabelaAprova tb : tabela.getItems()){
             if (tb.getSelecione().isSelected()){
                 conn.atualizarStatus("hora", "status", status, "id_hora = " + tb.getId(), false);
-                conn.atualizarStatus("hora", "justificativa", justificativa, "id_hora = " + tb.getId(), false);
+                conn.atualizarStatus("hora", "justificativa_status", justificativa, "id_hora = " + tb.getId(), false);
             }
         }
         Alerts.showAlert("Avaliação alterada!", null, "Avaliação foi "+ status + " com sucesso!", Alert.AlertType.INFORMATION);
+        atualizarTabela(new ActionEvent());
     }
 
     public void aprovarHoras(ActionEvent actionEvent) {

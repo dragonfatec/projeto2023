@@ -33,8 +33,8 @@ public class ConnectionFactory {
     public void apontarHorasExtra(String matricula, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
 
         try {
-            PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (matricula, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente)\n" +
-                                                             "VALUES (?,?,?,?,?,?,?);");
+            PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (matricula, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente, status)\n" +
+                                                             "VALUES (?,?,?,?,?,?,?,'Em andamento');");
             pr.setString(1,matricula);
             Timestamp dt_inicial = Timestamp.valueOf(data_inicial);
             pr.setTimestamp(2, dt_inicial);
@@ -160,7 +160,7 @@ public class ConnectionFactory {
                            "FROM hora " +
                           "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
                           "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
-                          "WHERE hora.id_equipe = " + id_equipe;
+                          "WHERE hora.id_equipe = " + id_equipe + " AND status = 'Em andamento';";
           ArrayList<TabelaAprova> tb = new ArrayList<>();
           try{
               PreparedStatement pr = conn.prepareStatement(sql);
@@ -224,7 +224,7 @@ public class ConnectionFactory {
                 sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + matriculaUserOuEquipe + "';";
                 break;
             case "cliente":
-                sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ matriculaUserOuEquipe +"' AND status = 'Em andamento';";
+                sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ matriculaUserOuEquipe +"';";
                 break;
         }
 
