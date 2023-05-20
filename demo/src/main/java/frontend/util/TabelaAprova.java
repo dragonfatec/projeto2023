@@ -24,7 +24,7 @@ public class TabelaAprova {
         this.selecione = new CheckBox();
     }
 
-    public int getId(){
+    public Integer getId(){
         return id;
     }
     public String getColaborador() {

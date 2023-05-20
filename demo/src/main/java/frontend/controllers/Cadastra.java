@@ -46,7 +46,7 @@ public class Cadastra implements Initializable {
         ArrayList<String> listaMatriculaExistente = conn.getListaColuna(null, "usuario");
         while (true){
             // Criar uma matricula aleatoria com 8 digitos
-            String matricula = String.format("%0" + 8 + "d", new Random().nextInt(0, 100000000));
+            String matricula = String.format("%0" + 8 + "d", new Random().nextInt(1, 100000000));
             if(!listaMatriculaExistente.contains(matricula)){
                 // Aqui vai o preenchimento do TextField com a matricula
                 break;

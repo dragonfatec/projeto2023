@@ -1,10 +1,12 @@
 package frontend.controllers;
 
+import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
 import backend.util.Criptografia;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
+import frontend.util.NomesArquivosFXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,7 +39,11 @@ public class Login implements Initializable {
     /////     Metodos Publicos     /////
     public void fazerLogin(ActionEvent actionEvent) throws IOException {
         if (conn.validarAcessoUsuario(campoUsuario.getText(),Criptografia.criptografar(campoSenha.getText()))){
-            App.mudarTela("registraHora.fxml");
+            if(Usuario.getInstancia().getCargo() == TiposDeUsuario.RH){
+                App.mudarTela(NomesArquivosFXML.aprovaHora+".fxml");
+            }else {
+                App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
+            }
         }
         else{
             Alerts.showAlert("Erro", "","O usuario ou a senha está incorreto", Alert.AlertType.ERROR);

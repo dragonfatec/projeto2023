@@ -8,7 +8,6 @@ import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
 import frontend.util.VerificaAcesso;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -64,7 +63,7 @@ public class RegistraHora implements Initializable {
 
             if (hora.vaidarDataESequencia(dataIn, dataFm)){
 
-                conn.apontarHorasExtra(usuario.getMatricula(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
+                conn.apontarHoras(usuario.getMatricula(), dataIn+":00", dataFm+":00", campoEquipe.getValue(), campoTipo.getValue(), campoJustificativa.getText(), campoCliente.getValue());
 
                 Alerts.showAlert("Sucesso!",null,"Apontamento realizado com Sucesso!", Alert.AlertType.INFORMATION);
                 limparCampos();

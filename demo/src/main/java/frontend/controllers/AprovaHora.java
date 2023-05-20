@@ -69,7 +69,7 @@ public class AprovaHora implements Initializable {
 
     public void atualizarTabela(ActionEvent event) {
 //        Integer id_equipe = conn.getListaColuna(campoEscolhaEquipe.getValue().toString(),"equipe");
-        int id_equipe = Integer.parseInt(conn.getColuna("equipe", "id_equipe", "nome_equipe", campoEscolhaEquipe.getValue().toString()));
+        Integer id_equipe = Integer.parseInt(conn.getColuna("equipe", "id_equipe", "nome_equipe", campoEscolhaEquipe.getValue().toString()));
 //        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList(conn.getHoraEquipe(id_equipe));
 //        listaHorasPendentes.addAll(conn.getHoraEquipe(id_equipe));
         tabela.setItems(FXCollections.observableArrayList(conn.getHoraEquipe(id_equipe,Usuario.getInstancia().getCargo())));

@@ -6,7 +6,6 @@ import backend.usuario.Usuario;
 import frontend.util.Tabela;
 import frontend.util.TabelaAprova;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.*;
 
@@ -14,7 +13,6 @@ public class ConnectionFactory {
 
     private static Connection conn;
     private final RegistroDataHora hora = new RegistroDataHora();
-
     public static void setInstancia() {
         if(conn == null) {
             try {
@@ -28,28 +26,11 @@ public class ConnectionFactory {
     public void cadastrarUsuario(String matricula, String senha, String nome, TiposDeUsuario cargo, Integer id_equipe) {
 
             String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, id_equipe) VALUES ('%s','%s','%s','%s',%s);",matricula, senha, nome,cargo,id_equipe);
-
-            run(sql);
+            runAtualizar(sql);
     }
-    public void apontarHorasExtra(String matricula, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
+    public void apontarHoras(String matricula, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
 
-        try {
-            PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (matricula, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente, status)\n" +
-                                                             "VALUES (?,?,?,?,?,?,?,'Em andamento');");
-            pr.setString(1,matricula);
-            Timestamp dt_inicial = Timestamp.valueOf(data_inicial);
-            pr.setTimestamp(2, dt_inicial);
-            Timestamp dt_final = Timestamp.valueOf(data_final);
-            pr.setTimestamp(3, dt_final);
-            pr.setString(4,justificativa);
-            pr.setInt(5, Integer.valueOf(getColuna("equipe","id_equipe", "nome_equipe",equipe)));
-            pr.setString(6,tipo_hora);
-            pr.setInt(7, Integer.valueOf(getColuna("cliente", "id_cliente","empresa",cliente)));
-
-            pr.execute();
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
+        runAtualizar(String.format("INSERT INTO hora (matricula, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente, status) VALUES ('%s','%s','%s','%s',%s,'%s',%s,'Em andamento');",matricula,data_inicial,data_final,justificativa,Integer.valueOf(getColuna("equipe","id_equipe", "nome_equipe",equipe)),tipo_hora, Integer.valueOf(getColuna("cliente", "id_cliente","empresa",cliente))));
     }
     public String getColuna(String tabela, String coluna, String campoFiltro, String valorFiltro){
         String id = "";
@@ -63,47 +44,6 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
         return id;
-    }
-    public void apontarHorasSobreaviso(Usuario usuario, String data_inicial, String data_final, String equipe, String tipo_hora) {
-//
-//            try {
-//                Connection conn = getInstancia();
-//                PreparedStatement pr = conn.prepareStatement("INSERT INTO hora (id_usuario, data_hora_inicial, data_hora_final, id_equipe, tipo_hora) VALUES (?,?,?,?,?);");
-//
-//                String dtInicial = data_inicial;
-//                String dtFinal = data_final;
-//                pr.setTimestamp(2, Timestamp.valueOf(dtInicial));
-//                pr.setTimestamp(3, Timestamp.valueOf(dtFinal));
-//
-//                Integer id_equipe = getIdEquipe(equipe);
-//                pr.setInt(4, id_equipe);
-//
-//                pr.setString(5, tipo_hora);
-//
-//                pr.execute();
-//
-//            } catch (SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-    }
-    public ArrayList<String> getEquipe(String login){
-        ArrayList<String> equipes = new ArrayList<>();
-
-        String sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.id_usuario = eu.id_usuario WHERE us.login = '" + login + "';";
-
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()){
-                String equipeNome = rs.getString(1);
-                equipes.add(equipeNome);
-            }
-            return equipes;
-
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
     }
     public Boolean validarAcessoUsuario(String matricula, String passw){
         String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"';";
@@ -175,7 +115,7 @@ public class ConnectionFactory {
                           "FROM hora " +
                           "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
                           "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente "+
-                          "WHERE hora.id_equipe = " + id_equipe + " AND status = 'Em andamento';";
+                          "WHERE hora.id_equipe = " + id_equipe + " AND status = 'Em andamento'AND cargo = 'Gerente';";
                   break;
           }
           ArrayList<TabelaAprova> tb = new ArrayList<>();
@@ -194,7 +134,7 @@ public class ConnectionFactory {
                   int minutos = minutosTotal - (horas * 60);
                   String totalDeHoras = (horas < 10? "0" + horas: Integer.toString(horas)) + ":" + (minutos < 10? "0" + minutos: Integer.toString(minutos));
 
-                  TabelaAprova tabela = new TabelaAprova(id_hora,colaborador,dataHoraInicial, dataHoraFinal, cliente, tipo, totalDeHoras);
+                  TabelaAprova tabela = new TabelaAprova(id_hora,colaborador,dataHoraInicial,dataHoraFinal,cliente,tipo,totalDeHoras);
                   tb.add(tabela);
               }
               return tb;
@@ -212,14 +152,7 @@ public class ConnectionFactory {
          */
         novoValor = novoValorEhNumero ? novoValor : "'" + novoValor + "'";
         String sql = String.format("UPDATE %s SET %s = %s WHERE %s", nomeTabela, nomeCampo, novoValor, condicao);
-        System.out.println(sql);
-        try {
-            PreparedStatement pr = conn.prepareStatement(sql);
-            pr.execute();
-        }
-        catch (SQLException e){
-            throw new RuntimeException(e);
-        }
+        runAtualizar(sql);
     }
     private ResultSet run(String sql){
         try {
@@ -230,19 +163,32 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<String> getListaColuna(String matriculaUserOuEquipe, String equipeOuCliente) {
+    private void runAtualizar(String sql){
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            pr.execute();
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<String> getListaColuna(String id, String equipeOuCliente) {
         /*
          * Esse metodo vai procurar na tabela e vai retornar todos as equipes, usuarios, ... o que o usuario escolher
         */
         String sql = "";
         switch (equipeOuCliente.toLowerCase()){
             case "equipe":
-                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + matriculaUserOuEquipe + "';";
+                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + id + "';";
                 break;
             case "cliente":
-                sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ matriculaUserOuEquipe +"';";
+                sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ id +"';";
+                break;
+            case "usuario":
+                sql = "SELECT matricula FROM usuario";
                 break;
         }
+
 
         ArrayList<String> lista = new ArrayList<>();
 
