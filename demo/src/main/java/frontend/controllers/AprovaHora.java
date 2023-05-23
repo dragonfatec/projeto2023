@@ -121,7 +121,7 @@ public class AprovaHora implements Initializable {
         // Para preencher o campo de equipe
         campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
 
-        // mDados para Teste
+        // Dados para Teste
 //        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
 //        listaHorasPendentes.add(new TabelaAprova("Alec", "12/05/2023 18:00", "12/05/2023 19:00", "Americanas", "Sobreaviso", "01:00"));
 //        listaHorasPendentes.add(new TabelaAprova("Pedro", "12/05/2023 18:00", "12/05/2023 20:00", "Apple", "Hora Extra", "02:00"));

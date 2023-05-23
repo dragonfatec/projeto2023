@@ -10,7 +10,6 @@ import frontend.util.VerificaAcesso;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -74,8 +73,6 @@ public class Cadastra implements Initializable {
     public void irParaRegistraHora() throws IOException {
         App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
     }
-
-
 
 
     /////     Metodo Privados     /////
