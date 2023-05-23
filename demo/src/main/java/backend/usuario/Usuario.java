@@ -5,13 +5,15 @@ public class Usuario {
     private String senha;
     private String nome;
     private TiposDeUsuario cargo;
+    private Situacao situacao;
     private static Usuario instancia;
     private Usuario(){
     }
-    private Usuario(String matricula, String senha, String nome, String cargo){
+    private Usuario(String matricula, String senha, String nome, String cargo, Situacao situacao){
         this.matricula = matricula;
         this.senha = senha;
         this.nome = nome;
+        this.situacao = situacao;
         switch (cargo.toLowerCase()){
             case "colaborador":
                 this.cargo = TiposDeUsuario.Colaborador;
@@ -30,13 +32,13 @@ public class Usuario {
         }
         return instancia;
     }
-    public static void criarInstancia(String matricula, String senha,  String nome, String cargo){
+    public static void criarInstancia(String matricula, String senha,  String nome, String cargo, Situacao situacao){
         if (instancia == null){
-            instancia = new Usuario(matricula, senha,  nome, cargo);
+            instancia = new Usuario(matricula, senha,  nome, cargo, situacao);
         }
     }
-    public static Usuario criarUsuario(String matricula, String senha,  String nome, String cargo){
-        return new Usuario(matricula, senha,  nome, cargo);
+    public static Usuario criarUsuario(String matricula, String senha,  String nome, String cargo, Situacao situacao){
+        return new Usuario(matricula, senha,  nome, cargo, situacao);
     }
     public String getSenha() {
         return senha;
@@ -50,6 +52,7 @@ public class Usuario {
     public TiposDeUsuario getCargo() {
         return cargo;
     }
+    public Situacao situacao(){return situacao;}
     @Override
     public String toString() {
         return "Nome: " + getNome();
