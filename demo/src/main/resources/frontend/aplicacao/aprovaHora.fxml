@@ -53,11 +53,11 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/naoEstaoSendoUsado/style_aprovaHora.css" text="Registrar Hora" textFill="WHITE">
+                <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
-                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/naoEstaoSendoUsado/style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
@@ -83,17 +83,17 @@
                     </font>
                 </Label>
             <ChoiceBox fx:id="campoEscolhaEquipe" layoutX="831.0" layoutY="56.0" onAction="#atualizarTabela" prefHeight="30.0" prefWidth="169.0" />
-            <Button fx:id="btnAprovar" layoutX="973.0" layoutY="633.0" mnemonicParsing="false" onAction="#aprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar" textFill="WHITE">
+            <Button fx:id="btnAprovar" layoutX="973.0" layoutY="633.0" mnemonicParsing="false" onAction="#aprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@style_aprovaHora.css" text="Aprovar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnAprovaHora" layoutX="-1.0" layoutY="434.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/naoEstaoSendoUsado/style_aprovaHora.css" text="Aprovar Hora" textFill="WHITE">
+            <Button fx:id="btnAprovaHora" layoutX="-1.0" layoutY="434.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Aprovar Hora" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btnReprovar" layoutX="1112.0" layoutY="633.0" mnemonicParsing="false" onAction="#reprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/naoEstaoSendoUsado/style_aprovaHora.css" text="Reprovar" textFill="WHITE">
+            <Button fx:id="btnReprovar" layoutX="1112.0" layoutY="633.0" mnemonicParsing="false" onAction="#reprovarHoras" prefHeight="44.0" prefWidth="127.0" stylesheets="@style_aprovaHora.css" text="Reprovar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -104,7 +104,7 @@
                </font>
             </Label>
             <TextArea fx:id="campoJustificativa" layoutX="406.0" layoutY="603.0" prefHeight="76.0" prefWidth="383.0" promptText="Digite aqui a justificativa da Aprovação/Reprovação" />
-            <Button fx:id="btnSelecionarTudo" onAction="#selecionarTudo" layoutX="1165.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Selecionar Tudo">
+            <Button fx:id="btnSelecionarTudo" layoutX="1165.0" layoutY="90.0" mnemonicParsing="false" onAction="#selecionarTudo" prefHeight="25.0" prefWidth="95.0" text="Selecionar Tudo">
                <font>
                   <Font size="10.0" />
                </font>
