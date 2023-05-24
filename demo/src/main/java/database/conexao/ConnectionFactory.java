@@ -1,6 +1,7 @@
 package database.conexao;
 
 import backend.datahora.RegistroDataHora;
+import backend.usuario.Situacao;
 import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
 import frontend.util.Tabela;
@@ -46,7 +47,8 @@ public class ConnectionFactory {
         return id;
     }
     public Boolean validarAcessoUsuario(String matricula, String passw){
-        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"';";
+        setInstancia();
+        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"' AND situacao ='ATIVO';";
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
@@ -56,10 +58,10 @@ public class ConnectionFactory {
                 String nome = rs.getString(3);
                 String cargo = rs.getString(4);
 
-                Usuario.criarInstancia(mat,senha,nome,cargo);
+                Usuario.criarInstancia(mat, senha, nome, cargo, Situacao.ATIVO);
                 return true;
             }
-        return false;
+            return false;
         }
         catch (SQLException e){
             throw new RuntimeException(e);
