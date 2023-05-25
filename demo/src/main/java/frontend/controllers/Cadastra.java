@@ -7,9 +7,13 @@ import frontend.aplicacao.App;
 import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
 import frontend.util.VerificaAcesso;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,22 +25,57 @@ public class Cadastra implements Initializable {
     private final ConnectionFactory conn = new ConnectionFactory();
     private final Usuario usuario = Usuario.getInstancia();
 
-    // Texto
-
+    // Label
+    public Label labelMatricula;
+    public Label labelCadastroUsuarioRealizado;
+    public Label textoNomeUsuario121;
+    public Label labelCadastroEquipeRealizado;
+    public Label textoNomeUsuario1;
+    public Label labelCadastroClienteRealizado;
 
     // Input - TextField
+    public TextField campoNomeUsuario;
+    public TextField campoSenhaUsuario;
+    public TextField campoEmpresaCliente;
+    public TextField campoResponsavelCliente;
+    public TextField campoEmailCliente;
+    public TextField campoTelefoneCliente;
+    public TextField campoProjetoCliente;
+    public TextField campoNomeEquipe;
 
+    // Button
+    public Button btnRegistrarHora121;
+    public Button btnConsultar131;
+    public Button btnCadastrarUsuario;
+    public Button btnCadastrarCliente;
+    public Button btnCadastrarEquipe;
+    public Button btnAreaCadastro;
+    public Button btnAprovaHora1;
+    public Button btnAprovaHora121;
 
-    // input - TextArea
-
-
-    // Input - Data
-
+    // Button - RadioButton
+    public RadioButton radioColaborador;
+    public RadioButton radioGestor;
+    public RadioButton radioAdmin;
 
     // ChoiceBox
+    public ChoiceBox campoEscolhaCadastro;
+    public ChoiceBox campoClienteEquipe;
 
+    // AnchorPane
+    public AnchorPane anchorpaneCadastroCliente;
+    public AnchorPane anchorpaneAreaEdicao;
+    public AnchorPane anchorpaneCadastroUsuario;
+    public AnchorPane anchorpaneCadastroEquipe;
+    public AnchorPane anchorpaneAdmin;
+    public AnchorPane anchorpaneAreaCadastro;
+    public AnchorPane anchorpaneEscolhaCadastro;
 
-    // Botão
+    // Table
+    public TableView tabelaColaboradoresEquipe;
+    public TableColumn colunaMatriculaEquipe;
+    public TableColumn colunaNomeEquipe;
+    public TableColumn colunaSelectEquipe;
 
 
     /////     Metodos Publicos     /////
@@ -70,8 +109,16 @@ public class Cadastra implements Initializable {
         App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
     }
 
-    public void irParaRegistraHora() throws IOException {
-        App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
+    public void irParaConsultaHora(ActionEvent actionEvent) {
+    }
+
+    public void cadastrarUsuario(MouseEvent mouseEvent) {
+    }
+
+    public void cadastrarEquipe(MouseEvent mouseEvent) {
+    }
+
+    public void cadastrarCliente(MouseEvent mouseEvent) {
     }
 
 
