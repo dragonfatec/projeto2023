@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="anchorpaneAdmin" prefHeight="721.0" prefWidth="1280.0">
+         <children>
+            <AnchorPane fx:id="anchorpaneAreaCadastro" prefHeight="720.0" prefWidth="1280.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" layoutX="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
+                  <Label fx:id="textoNomeUsuario1" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAreaCadastro" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Área de Cadastro" textFill="#fdffff">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAprovaHora1" layoutX="1.0" layoutY="373.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Aprovar Hora" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <AnchorPane fx:id="anchorpaneEscolhaCadastro" layoutX="369.0" layoutY="1.0" prefHeight="99.0" prefWidth="909.0">
+                     <children>
+                        <ChoiceBox fx:id="campoEscolhaCadastro" layoutX="470.0" layoutY="30.0" prefHeight="40.0" prefWidth="217.0" />
+                        <Label contentDisplay="CENTER" layoutX="150.0" layoutY="33.0" prefHeight="34.0" prefWidth="320.0" text="O que gostaria de cadastrar?">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorpaneCadastroUsuario" disable="true" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false">
+                     <children>
+                        <Button fx:id="btnCadastrarUsuario" layoutX="393.0" layoutY="450.0" mnemonicParsing="false" onMousePressed="#cadastrarUsuario" prefHeight="38.0" prefWidth="123.0" text="CADASTRAR" />
+                        <Label fx:id="labelCadastroUsuarioRealizado" alignment="CENTER" contentDisplay="CENTER" layoutY="521.0" prefHeight="27.0" prefWidth="909.0" text="Cadastro realizado! Matrícula gerada: " textAlignment="CENTER" textFill="#007c23">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutX="232.0" layoutY="69.0" prefHeight="34.0" prefWidth="88.0" text="Nome">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoNomeUsuario" layoutX="232.0" layoutY="113.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o nome do Colaborador..." />
+                        <Label contentDisplay="CENTER" layoutX="232.0" layoutY="187.0" prefHeight="34.0" prefWidth="88.0" text="Senha">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoSenhaUsuario" layoutX="232.0" layoutY="231.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira a senha..." />
+                        <Label contentDisplay="CENTER" layoutX="232.0" layoutY="311.0" prefHeight="34.0" prefWidth="88.0" text="Cargo">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="radioColaborador" layoutX="232.0" layoutY="369.0" mnemonicParsing="false" text="Colaborador">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="radioGestor" layoutX="393.0" layoutY="369.0" mnemonicParsing="false" text="Gestor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="radioAdmin" layoutX="508.0" layoutY="369.0" mnemonicParsing="false" text="Administrador">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <Label fx:id="labelMatricula" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutY="550.0" prefHeight="27.0" prefWidth="909.0" text="nº matricula" textAlignment="CENTER" textFill="#979797">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="11.0" prefHeight="40.0" prefWidth="909.0" text="Cadastro de Usuário" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorpaneCadastroEquipe" disable="true" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="36.0" prefHeight="40.0" prefWidth="909.0" text="Cadastro de Equipe" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnCadastrarEquipe" layoutX="393.0" layoutY="510.0" mnemonicParsing="false" onMousePressed="#cadastrarEquipe" prefHeight="38.0" prefWidth="123.0" text="CADASTRAR" />
+                        <Label fx:id="labelCadastroEquipeRealizado" alignment="CENTER" contentDisplay="CENTER" layoutY="562.0" prefHeight="27.0" prefWidth="909.0" text="Cadastro realizado!" textAlignment="CENTER" textFill="#007c23">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutX="202.0" layoutY="100.0" prefHeight="34.0" prefWidth="88.0" text="Nome">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoNomeEquipe" layoutX="202.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome da Equipe..." />
+                        <Label contentDisplay="CENTER" layoutX="516.0" layoutY="99.0" prefHeight="34.0" prefWidth="88.0" text="Cliente">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="campoClienteEquipe" layoutX="516.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TableView fx:id="tabelaColaboradoresEquipe" layoutX="201.0" layoutY="248.0" prefHeight="237.0" prefWidth="517.0">
+                           <columns>
+                              <TableColumn fx:id="colunaMatriculaEquipe" prefWidth="120.0" text="Matrícula" />
+                              <TableColumn fx:id="colunaNomeEquipe" prefWidth="286.0" text="Nome" />
+                              <TableColumn fx:id="colunaSelectEquipe" prefWidth="109.0" text="Select" />
+                           </columns>
+                        </TableView>
+                        <Label contentDisplay="CENTER" layoutX="202.0" layoutY="204.0" prefHeight="34.0" prefWidth="171.0" text="Colaboradores:">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorpaneCadastroCliente" disable="true" layoutX="369.0" layoutY="110.0" prefHeight="611.0" prefWidth="909.0" visible="false">
+                     <children>
+                        <Label fx:id="labelCadastroClienteRealizado" alignment="CENTER" contentDisplay="CENTER" layoutY="553.0" prefHeight="27.0" prefWidth="909.0" text="Cadastro realizado!" textAlignment="CENTER" textFill="#007c23">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnCadastrarCliente" layoutX="393.0" layoutY="500.0" mnemonicParsing="false" onMousePressed="#cadastrarCliente" prefHeight="38.0" prefWidth="123.0" text="CADASTRAR" />
+                        <Label contentDisplay="CENTER" layoutX="232.0" layoutY="68.0" prefHeight="34.0" prefWidth="88.0" text="Empresa">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEmpresaCliente" layoutX="232.0" layoutY="112.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o nome da Empresa..." />
+                        <Label contentDisplay="CENTER" layoutX="232.0" layoutY="172.0" prefHeight="34.0" prefWidth="155.0" text="Responsável">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoResponsavelCliente" layoutX="232.0" layoutY="216.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o nome do responsável..." />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="40.0" prefWidth="909.0" text="Cadastro de Cliente" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutX="232.0" layoutY="276.0" prefHeight="34.0" prefWidth="155.0" text="E-mail">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEmailCliente" layoutX="232.0" layoutY="320.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o email de contato..." />
+                        <Label contentDisplay="CENTER" layoutX="232.0" layoutY="384.0" prefHeight="34.0" prefWidth="132.0" text="Telefone">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoTelefoneCliente" layoutX="232.0" layoutY="428.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o telefone de contato..." />
+                        <Label contentDisplay="CENTER" layoutX="516.0" layoutY="386.0" prefHeight="34.0" prefWidth="132.0" text="Projeto">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoProjetoCliente" layoutX="516.0" layoutY="430.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome do projeto..." />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anchorpaneAreaEdicao" disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
+                  <Label fx:id="textoNomeUsuario121" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="84.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnRegistrarHora121" layoutY="257.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Área de Cadastro" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnConsultar131" layoutY="350.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Área de Edição" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAprovaHora121" layoutY="443.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Aprovar Hora" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false" />
+            <AnchorPane disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
