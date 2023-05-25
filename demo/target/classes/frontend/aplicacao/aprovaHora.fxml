@@ -56,7 +56,8 @@
                 <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
-                    </font></Button>
+                    </font>
+                </Button>
                 <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />

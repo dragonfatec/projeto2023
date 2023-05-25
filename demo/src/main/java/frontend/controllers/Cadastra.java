@@ -163,5 +163,7 @@ public class Cadastra implements Initializable {
 //        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
 //        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
 //        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
+        anchorpaneCadastroUsuario.setVisible(true);
+        anchorpaneCadastroUsuario.setDisable(false);
     }
 }

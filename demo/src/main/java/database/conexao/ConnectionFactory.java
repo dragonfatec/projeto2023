@@ -48,7 +48,7 @@ public class ConnectionFactory {
     }
     public Boolean validarAcessoUsuario(String matricula, String passw){
         setInstancia();
-        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"' AND situacao ='ATIVO';";
+        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"' AND situacao ='Ativo';";
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
