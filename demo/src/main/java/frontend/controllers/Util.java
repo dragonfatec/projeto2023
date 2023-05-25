@@ -16,7 +16,7 @@ public class Util {
     }
 
     public void irParaCadastraUsuario() throws IOException {
-        App.mudarTela(NomesArquivosFXML.cadastraUsuario + ".fxml");
+        App.mudarTela(NomesArquivosFXML.cadastra + ".fxml");
     }
 
     public void irParaConsultaHoraHora() throws IOException {
