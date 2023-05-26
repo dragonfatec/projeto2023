@@ -8,7 +8,6 @@ import frontend.util.Tabela;
 import frontend.util.VerificaAcesso;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,8 +17,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ConsultaHora implements Initializable {
@@ -59,7 +56,7 @@ public class ConsultaHora implements Initializable {
         // Verificando acesso para todas as telas
         VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
 //        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
-        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
+        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.admin);
         VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
 
         // Preenchendo a tabela com as horas lançadas do usuario

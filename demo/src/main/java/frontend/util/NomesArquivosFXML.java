@@ -3,7 +3,7 @@ package frontend.util;
 public enum NomesArquivosFXML {
     aprovaHora,
     cadastra,
-    consultaHora,
+    admin,
     login,
     registraHora
 }

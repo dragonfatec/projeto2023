@@ -7,9 +7,9 @@ public class VerificaAcesso {
     private static boolean verificarRegraDeAcesso(TiposDeUsuario tipoUsuario, NomesArquivosFXML telaNome) {
         switch (tipoUsuario.toString().toLowerCase()){
             case "colaborador":
-                return telaNome == NomesArquivosFXML.consultaHora || telaNome == NomesArquivosFXML.registraHora;
+                return telaNome == NomesArquivosFXML.admin || telaNome == NomesArquivosFXML.registraHora;
             case "gerente":
-                return telaNome == NomesArquivosFXML.consultaHora || telaNome == NomesArquivosFXML.registraHora || telaNome == NomesArquivosFXML.aprovaHora;
+                return telaNome == NomesArquivosFXML.admin || telaNome == NomesArquivosFXML.registraHora || telaNome == NomesArquivosFXML.aprovaHora;
             case "rh":
                 return telaNome == NomesArquivosFXML.aprovaHora || telaNome == NomesArquivosFXML.cadastra;
             default:

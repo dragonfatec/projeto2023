@@ -20,7 +20,7 @@ public class Util {
     }
 
     public void irParaConsultaHoraHora() throws IOException {
-        App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
+        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
     }
 
     public void irParaRegistraHora() throws IOException {
