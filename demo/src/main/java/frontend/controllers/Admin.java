@@ -23,10 +23,13 @@ public class Admin implements Initializable {
     // Label
     public Label labelMatricula;
     public Label labelCadastroUsuarioRealizado;
-    public Label textoNomeUsuario121;
+    public Label textoNomeUsuario;
     public Label labelCadastroEquipeRealizado;
-    public Label textoNomeUsuario1;
     public Label labelCadastroClienteRealizado;
+    public Label textoNomeUsuario2;
+    public Label labelUsuarioEditar;
+    public Label labelClienteEditor;
+    public Label labelEquipeEditar;
 
     // Input - TextField
     public TextField campoNomeUsuario;
@@ -37,25 +40,53 @@ public class Admin implements Initializable {
     public TextField campoTelefoneCliente;
     public TextField campoProjetoCliente;
     public TextField campoNomeEquipe;
+    public TextField campoEditaEmpresaCliente;
+    public TextField campoEditaResponsavelCliente;
+    public TextField campoEditaEmailCliente;
+    public TextField campoEditaTelefoneCliente;
+    public TextField campoEditaProjetoCliente;
+    public TextField campoEditaNomeUsuario1;
+    public TextField campoEditaNomeUsuario;
+    public TextField campoEditaSenhaUsuario;
 
     // Button
-    public Button btnRegistrarHora121;
-    public Button btnConsultar131;
+    public Button btnRegistrarHora;
+    public Button btnConsultar;
     public Button btnCadastrarUsuario;
     public Button btnCadastrarCliente;
     public Button btnCadastrarEquipe;
     public Button btnAreaCadastro;
-    public Button btnAprovaHora1;
-    public Button btnAprovaHora121;
+    public Button btnAprovaHora;
+    public Button btnAreaEdicao;
+    public Button btnAreaCadastro2;
+    public Button btnAreaEdicao2;
+    public Button btnAprovaHora2;
+    public Button btnEditarNomeUsuario;
+    public Button btnEditarSenhaUsuario;
+    public Button btnSalvarUsuario;
+    public Button btnEditarTelefoneCliente;
+    public Button btnEditarProjetoCliente;
+    public Button btnEditarEmailCliente;
+    public Button btnEditarResponsavelCliente;
+    public Button btnSalvarCliente;
+    public Button btnEditarNomeEquipe;
+    public Button btnSalvarEquipe;
+    public Button btnEditarClienteEquipe;
 
     // Button - RadioButton
     public RadioButton radioColaborador;
     public RadioButton radioGestor;
     public RadioButton radioAdmin;
+    public RadioButton radioColaboradorEdita;
+    public RadioButton radioGestorEdita;
+    public RadioButton radioAdminEdita;
 
-    // ChoiceBox
+    // ChoiceBox / CheckBox
     public ChoiceBox campoEscolhaCadastro;
     public ChoiceBox campoClienteEquipe;
+    public ChoiceBox campoEscolhaEdicao;
+    public ChoiceBox campoEscolhaParaEditar;
+    public CheckBox checkboxUsuarioAtivo;
 
     // AnchorPane
     public AnchorPane anchorpaneCadastroCliente;
@@ -65,12 +96,21 @@ public class Admin implements Initializable {
     public AnchorPane anchorpaneAdmin;
     public AnchorPane anchorpaneAreaCadastro;
     public AnchorPane anchorpaneEscolhaCadastro;
+    public AnchorPane anchorpaneEditarUsuario;
+    public AnchorPane anchorpaneEscolhaCadastro11;
+    public AnchorPane anchorpaneEscolhaCadastro1;
+    public AnchorPane anchorpaneEditarCliente;
+    public AnchorPane anchorpaneEditorEquipe;
 
     // Table
     public TableView tabelaColaboradoresEquipe;
     public TableColumn colunaMatriculaEquipe;
     public TableColumn colunaNomeEquipe;
     public TableColumn colunaSelectEquipe;
+    public TableView tabelaColaboradoresEditarEquipe;
+    public TableColumn colunaMatriculaEditarEquipe;
+    public TableColumn colunaNomeEditarEquipe;
+    public TableColumn colunaSelectEditarEquipe;
 
 
     /////     Metodos Publicos     /////
@@ -153,12 +193,7 @@ public class Admin implements Initializable {
     /////     Metodos Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Verificando acesso para todas as telas
-//        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
-//        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
-//        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
-//        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
-        anchorpaneCadastroUsuario.setVisible(true);
-        anchorpaneCadastroUsuario.setDisable(false);
+        textoNomeUsuario.setText(usuario.getNome());
+        
     }
 }
