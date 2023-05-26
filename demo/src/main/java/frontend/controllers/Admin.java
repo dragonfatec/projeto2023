@@ -1,14 +1,10 @@
 package frontend.controllers;
 
-import backend.cliente.Cliente;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
-import frontend.util.Tabela;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -119,7 +115,6 @@ public class Admin implements Initializable {
 
     // Variaveis para uso
     private AnchorPane ultimaTelaUsada = new AnchorPane();
-    private AnchorPane ultimaAnchorPaneUsada = new AnchorPane();
 
 
     /////     Metodos Publicos     /////
@@ -153,9 +148,6 @@ public class Admin implements Initializable {
         App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
     }
 
-    public void irParaConsultaHora(ActionEvent actionEvent) {
-    }
-
     public void cadastrarUsuario(MouseEvent mouseEvent) {
     }
 
@@ -165,15 +157,65 @@ public class Admin implements Initializable {
     public void cadastrarCliente(MouseEvent mouseEvent) {
     }
 
+    public void mudarParaCadastra(){
+        ultimaTelaUsada.setVisible(false);
+        anchorpaneAreaEdicao.setVisible(false);
+        anchorpaneAreaCadastro.setVisible(true);
+    }
+
+    public void mudarParaEdita(){
+        ultimaTelaUsada.setVisible(false);
+        anchorpaneAreaCadastro.setVisible(false);
+        anchorpaneAreaEdicao.setVisible(true);
+    }
+
+    public void mudarDeTela(){
+        ultimaTelaUsada.setVisible(false);
+        switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
+            case "usuario" -> {
+                anchorpaneEditarUsuario.setVisible(true);
+                ultimaTelaUsada = anchorpaneEditarUsuario;
+            }
+            case "equipe" -> {
+                anchorpaneEditorEquipe.setVisible(true);
+                ultimaTelaUsada = anchorpaneEditorEquipe;
+            }
+            case "cliente" -> {
+                anchorpaneEditarCliente.setVisible(true);
+                ultimaTelaUsada = anchorpaneEditarCliente;
+            }
+        }
+    }
+
+    public void preencherDados(){
+        switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
+            case "usuario" -> {
+                preencherEditaUsuario();
+            }
+            case "equipe" -> {
+                preencherEditaEquipe();
+            }
+            case "cliente" -> {
+                preencherEditaCliente();
+            }
+        }
+    }
+
     public void preencherEditaUsuario(){
 //        Usuario userSelecionado = conn.
 //        campoEditaNomeUsuario.setText();
 //        campoEditaSenhaUsuario.setText();
         // selecionar o cargo do usuario
 //        switch (userSelecionado.getCargo()){
-//            case Colaborador -> {radioColaboradorEdita.setSelected(true);}
-//            case Gerente -> {radioGestorEdita.setSelected(true);}
-//            case RH -> {radioAdminEdita.setSelected(true);}
+//            case Colaborador -> {
+//                radioColaboradorEdita.setSelected(true);
+//            }
+//            case Gerente -> {
+//                radioGestorEdita.setSelected(true);
+//            }
+//            case RH -> {
+//                radioAdminEdita.setSelected(true);
+//            }
 //        }
     }
 
@@ -265,25 +307,6 @@ public class Admin implements Initializable {
 //        campoCliente.setValue(null);
     }
 
-    private void mudarDeTela(String oqFazer){
-        AnchorPane a = new AnchorPane();
-        boolean telaEdita = true;
-        switch (oqFazer.toLowerCase()){
-            case "usuario":
-                a = anchorpaneEditarUsuario;
-                break;
-            case "equipe":
-                a = anchorpaneEditorEquipe;
-                break;
-            case "cliente":
-                a = anchorpaneEditarCliente;
-                break;
-        }
-        ultimaTelaUsada.setVisible(false);
-        a.setVisible(true);
-        ultimaTelaUsada = a;
-    }
-
 
 
 
@@ -291,12 +314,10 @@ public class Admin implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textoNomeUsuario.setText(usuario.getNome());
-
-        anchorpaneAreaEdicao.setVisible(true);
-        anchorpaneEditarUsuario.setVisible(true);
-        anchorpaneEditarUsuario.setDisable(false);
-        anchorpaneAreaEdicao.setDisable(false);
-
+//        ArrayList<String> listaOpcoes = {"usuario", "cliente", "equipe"};
+        String[] listaOpcoes = {"usuario", "cliente", "equipe"};
+        campoEscolhaEdicao.getItems().addAll(listaOpcoes);
+        campoEscolhaCadastro.getItems().addAll(listaOpcoes);
 
 
     }

@@ -5,6 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.control.skin.SplitPaneSkin.Content?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.Admin">
    <children>
       <AnchorPane fx:id="anchorpaneAdmin" prefHeight="721.0" prefWidth="1280.0">
@@ -215,7 +216,7 @@
                   </Button>
                   <AnchorPane fx:id="anchorpaneEscolhaCadastro1" layoutX="368.0" layoutY="1.0" prefHeight="124.0" prefWidth="428.0">
                      <children>
-                        <ChoiceBox fx:id="campoEscolhaEdicao" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
+                        <ChoiceBox fx:id="campoEscolhaEdicao" onAction="#mudarDeTela" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
                         <Label contentDisplay="CENTER" layoutX="85.0" layoutY="28.0" prefHeight="34.0" prefWidth="272.0" text="O que gostaria de editar?">
                            <font>
                               <Font size="23.0" />
@@ -225,7 +226,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="anchorpaneEscolhaCadastro11" layoutX="796.0" layoutY="1.0" prefHeight="124.0" prefWidth="484.0">
                      <children>
-                        <ChoiceBox fx:id="campoEscolhaParaEditar" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
+                        <ChoiceBox fx:id="campoEscolhaParaEditar" onAction="#preencherDados" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="28.0" prefHeight="34.0" prefWidth="310.0" text="Escolha quem será editado:">
                            <font>
                               <Font size="23.0" />
