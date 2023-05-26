@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,7 +21,7 @@
             <AnchorPane fx:id="anchorpaneAreaCadastro" prefHeight="720.0" prefWidth="1280.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" layoutX="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
-                  <Label fx:id="textoNomeUsuario1" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                  <Label fx:id="textoNomeUsuario" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -34,7 +36,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAprovaHora1" layoutX="1.0" layoutY="373.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Aprovar Hora" textFill="WHITE">
+                  <Button fx:id="btnAprovaHora" layoutX="1.0" layoutY="428.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -185,12 +187,17 @@
                         <TextField fx:id="campoProjetoCliente" layoutX="516.0" layoutY="430.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome do projeto..." />
                      </children>
                   </AnchorPane>
+                  <Button fx:id="btnAreaEdicao" layoutX="1.0" layoutY="355.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="anchorpaneAreaEdicao" disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
-                  <Label fx:id="textoNomeUsuario121" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                  <Label fx:id="textoNomeUsuario2" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -200,23 +207,244 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnRegistrarHora121" layoutY="257.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Área de Cadastro" textFill="WHITE">
+                  <Button fx:id="btnAreaCadastro2" layoutY="257.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="#00a5d9">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnConsultar131" layoutY="350.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Área de Edição" textFill="WHITE">
+                  <Button fx:id="btnAreaEdicao2" layoutY="350.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" text="Área de Edição" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAprovaHora121" layoutY="443.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Aprovar Hora" textFill="WHITE">
+                  <Button fx:id="btnAprovaHora2" layoutY="443.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="#00a5d9">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
+                  <AnchorPane fx:id="anchorpaneEscolhaCadastro1" layoutX="368.0" layoutY="1.0" prefHeight="124.0" prefWidth="428.0">
+                     <children>
+                        <ChoiceBox fx:id="campoEscolhaEdicao" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
+                        <Label contentDisplay="CENTER" layoutX="85.0" layoutY="28.0" prefHeight="34.0" prefWidth="272.0" text="O que gostaria de editar?">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorpaneEscolhaCadastro11" layoutX="796.0" layoutY="1.0" prefHeight="124.0" prefWidth="484.0">
+                     <children>
+                        <ChoiceBox fx:id="campoEscolhaParaEditar" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="28.0" prefHeight="34.0" prefWidth="310.0" text="Escolha quem será editado:">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorpaneEditarUsuario" disable="true" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
+                     <children>
+                        <Label contentDisplay="CENTER" layoutX="151.0" layoutY="123.0" prefHeight="34.0" prefWidth="75.0" text="Nome">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaNomeUsuario" editable="false" layoutX="245.0" layoutY="123.0" prefHeight="40.0" prefWidth="420.0" />
+                        <Label contentDisplay="CENTER" layoutX="151.0" layoutY="208.0" prefHeight="34.0" prefWidth="88.0" text="Senha">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaSenhaUsuario" editable="false" layoutX="245.0" layoutY="205.0" prefHeight="40.0" prefWidth="420.0" />
+                        <Label contentDisplay="CENTER" layoutX="151.0" layoutY="290.0" prefHeight="34.0" prefWidth="88.0" text="Cargo">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="radioColaboradorEdita" layoutX="245.0" layoutY="294.0" mnemonicParsing="false" text="Colaborador">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="radioGestorEdita" layoutX="406.0" layoutY="294.0" mnemonicParsing="false" text="Gestor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="radioAdminEdita" layoutX="521.0" layoutY="294.0" mnemonicParsing="false" text="Administrador">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <Label fx:id="labelUsuarioEditar" alignment="CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="909.0" text="Usuário: " textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnEditarNomeUsuario" layoutX="677.0" layoutY="123.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
+                        <Button fx:id="btnEditarSenhaUsuario" layoutX="677.0" layoutY="204.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
+                        <Button fx:id="btnSalvarUsuario" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
+                        <Label contentDisplay="CENTER" layoutX="151.0" layoutY="360.0" prefHeight="34.0" prefWidth="155.0" text="Usuário Ativo:">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="checkboxUsuarioAtivo" layoutX="312.0" layoutY="365.0" mnemonicParsing="false">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorpaneEditarEquipe" disable="true" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
+                     <children>
+                        <Label contentDisplay="CENTER" layoutX="171.0" layoutY="83.0" prefHeight="34.0" prefWidth="75.0" text="Nome">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaNomeUsuario1" editable="false" layoutX="245.0" layoutY="83.0" prefHeight="34.0" prefWidth="406.0" />
+                        <Label fx:id="labelEquipeEditar" alignment="CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="909.0" text="Equipe: " textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnEditarNomeEquipe" layoutX="665.0" layoutY="84.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" text="EDITAR" />
+                        <Button fx:id="btnSalvarEquipe" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
+                        <TableView fx:id="tabelaColaboradoresEditarEquipe" layoutX="166.0" layoutY="224.0" prefHeight="237.0" prefWidth="570.0">
+                           <columns>
+                              <TableColumn fx:id="colunaMatriculaEditarEquipe" prefWidth="123.0" text="Matrícula" />
+                              <TableColumn fx:id="colunaNomeEditarEquipe" prefWidth="361.0" text="Nome" />
+                              <TableColumn fx:id="colunaSelectEditarEquipe" prefWidth="84.0" text="Select" />
+                           </columns>
+                        </TableView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="182.0" prefHeight="34.0" prefWidth="909.0" text="Atualizar Colaboradores:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutX="171.0" layoutY="130.0" prefHeight="34.0" prefWidth="75.0" text="Cliente">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox disable="true" layoutX="245.0" layoutY="133.0" prefHeight="30.0" prefWidth="163.0" />
+                        <Button fx:id="btnEditarClienteEquipe" layoutX="424.0" layoutY="133.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="EDITAR" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorpaneEditarCliente" disable="true" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="133.0" layoutY="103.0" prefHeight="34.0" prefWidth="97.0" text="Empresa">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaEmpresaCliente" editable="false" layoutX="245.0" layoutY="102.0" prefHeight="40.0" prefWidth="420.0" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="95.0" layoutY="177.0" prefHeight="34.0" prefWidth="138.0" text="Responsável">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaResponsavelCliente" editable="false" layoutX="245.0" layoutY="174.0" prefHeight="40.0" prefWidth="420.0" />
+                        <Label fx:id="labelClienteEditar" alignment="CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="909.0" text="Cliente: " textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnEditarResponsavelCliente" layoutX="677.0" layoutY="173.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
+                        <Button fx:id="btnSalvarCliente" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="148.0" layoutY="247.0" prefHeight="34.0" prefWidth="85.0" text="E-mail">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaEmailCliente" editable="false" layoutX="245.0" layoutY="244.0" prefHeight="40.0" prefWidth="420.0" />
+                        <Button fx:id="btnEditarEmailCliente" layoutX="677.0" layoutY="243.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="124.0" layoutY="320.0" prefHeight="34.0" prefWidth="109.0" text="Telefone">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaTelefoneCliente" editable="false" layoutX="245.0" layoutY="317.0" prefHeight="40.0" prefWidth="420.0" />
+                        <Button fx:id="btnEditarTelefoneCliente" layoutX="677.0" layoutY="316.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="124.0" layoutY="393.0" prefHeight="34.0" prefWidth="109.0" text="Projeto">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="campoEditaProjetoCliente" editable="false" layoutX="245.0" layoutY="390.0" prefHeight="40.0" prefWidth="420.0" />
+                        <Button fx:id="btnEditarProjetoCliente" layoutX="677.0" layoutY="389.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="anchorpaneAprovarHoraAdmin" disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
+                  <Label fx:id="textoNomeUsuario3" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="84.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAreaCadastro3" layoutY="257.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAreaEdicao3" layoutY="350.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAprovaHora3" layoutY="443.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" text="Aprovar Hora" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="tabela" layoutX="397.0" layoutY="109.0" prefHeight="436.0" prefWidth="856.0">
+                     <columns>
+                        <TableColumn fx:id="colunaColaborador" prefWidth="133.0" text="Colaborador" />
+                        <TableColumn fx:id="colunaDataHoraInicial" prefWidth="144.0" text="Data Hora Inicial" />
+                        <TableColumn fx:id="colunaDataHoraFinal" prefWidth="138.0" text="Data Hora Final" />
+                        <TableColumn fx:id="colunaCliente" prefWidth="124.0" text="Cliente" />
+                        <TableColumn fx:id="colunaTipo" prefWidth="115.0" text="Tipo" />
+                        <TableColumn fx:id="colunaTotalDeHoras" prefWidth="108.0" text="Total de Horas" />
+                        <TableColumn fx:id="colunaSelecione" prefWidth="92.0" text="Selecione" />
+                     </columns>
+                  </TableView>
+                  <Label alignment="CENTER" layoutX="626.0" layoutY="38.0" prefHeight="30.0" prefWidth="197.0" text="Escolha a Equipe:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="campoEscolhaEquipe" layoutX="824.0" layoutY="39.0" onAction="#atualizarTabela" prefHeight="30.0" prefWidth="169.0" />
+                  <Button fx:id="btnAprovar" layoutX="966.0" layoutY="616.0" mnemonicParsing="false" onAction="#aprovarHoras" prefHeight="44.0" prefWidth="127.0" text="Aprovar" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnReprovar" layoutX="1105.0" layoutY="616.0" mnemonicParsing="false" onAction="#reprovarHoras" prefHeight="44.0" prefWidth="127.0" text="Reprovar" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="373.0" layoutY="558.0" prefHeight="30.0" prefWidth="127.0" text="Justificativa:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="campoJustificativa" layoutX="399.0" layoutY="586.0" prefHeight="76.0" prefWidth="383.0" promptText="Digite aqui a justificativa da Aprovação/Reprovação" />
+                  <Button fx:id="btnSelecionarTudo" layoutX="1158.0" layoutY="73.0" mnemonicParsing="false" onAction="#selecionarTudo" prefHeight="25.0" prefWidth="95.0" text="Selecionar Tudo">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
             <AnchorPane disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false" />
             <AnchorPane disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false" />
          </children>
