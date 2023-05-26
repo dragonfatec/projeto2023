@@ -191,6 +191,8 @@ public class Admin implements Initializable {
         switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
             case "usuario" -> {
                 preencherEditaUsuario();
+                campoEditaNomeUsuario.setEditable(true);
+                campoEditaSenhaUsuario.setText("2rp");
             }
             case "equipe" -> {
                 preencherEditaEquipe();
@@ -306,8 +308,6 @@ public class Admin implements Initializable {
 //        campoTipo.setValue(null);
 //        campoCliente.setValue(null);
     }
-
-
 
 
     /////     Metodos Override     /////
