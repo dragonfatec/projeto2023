@@ -1,19 +1,16 @@
 package frontend.controllers;
 
-import backend.datahora.RegistroDataHora;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
-import frontend.util.VerificaAcesso;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
