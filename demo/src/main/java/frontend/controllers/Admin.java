@@ -1,9 +1,14 @@
 package frontend.controllers;
 
+import backend.cliente.Cliente;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
+import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
+import frontend.util.Tabela;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -45,7 +50,7 @@ public class Admin implements Initializable {
     public TextField campoEditaEmailCliente;
     public TextField campoEditaTelefoneCliente;
     public TextField campoEditaProjetoCliente;
-    public TextField campoEditaNomeUsuario1;
+    public TextField campoEditaNomeEquipe;
     public TextField campoEditaNomeUsuario;
     public TextField campoEditaSenhaUsuario;
 
@@ -112,6 +117,10 @@ public class Admin implements Initializable {
     public TableColumn colunaNomeEditarEquipe;
     public TableColumn colunaSelectEditarEquipe;
 
+    // Variaveis para uso
+    private AnchorPane ultimaTelaUsada = new AnchorPane();
+    private AnchorPane ultimaAnchorPaneUsada = new AnchorPane();
+
 
     /////     Metodos Publicos     /////
     public void gerarMatricula(){
@@ -156,6 +165,73 @@ public class Admin implements Initializable {
     public void cadastrarCliente(MouseEvent mouseEvent) {
     }
 
+    public void preencherEditaUsuario(){
+//        Usuario userSelecionado = conn.
+//        campoEditaNomeUsuario.setText();
+//        campoEditaSenhaUsuario.setText();
+        // selecionar o cargo do usuario
+//        switch (userSelecionado.getCargo()){
+//            case Colaborador -> {radioColaboradorEdita.setSelected(true);}
+//            case Gerente -> {radioGestorEdita.setSelected(true);}
+//            case RH -> {radioAdminEdita.setSelected(true);}
+//        }
+    }
+
+    public void salvarEditaUsuario(){
+
+        String filtro = "'" + campoEscolhaParaEditar.getValue() + "'";
+        conn.atualizarStatus("usuario", "nome", campoEditaNomeUsuario.getText(), "matricula = "+filtro, false);
+        conn.atualizarStatus("usuario", "senha", campoEditaSenhaUsuario.getText(), "matricula = "+filtro, false);
+//        conn.atualizarStatus("usuario", "cargo", carg, "matricula = "+filtro, false);
+        conn.atualizarStatus("usuario", "status", checkboxUsuarioAtivo.isSelected() ? "Ativado" : "Desativado", "matricula = "+filtro, false);
+
+        Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
+    }
+
+    public void preencherEditaEquipe(){
+        campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
+        /*
+            * Se o primeiro não der certo então o segundo deve dar
+        select us.matricula, us.nome, case when eq.nome = 'Equipe teste' then 1 else 2 as prioridade from equipe_usuario eu inner join usario us on eu.matricula = us.matricula inner join equipe eq on eu.id_equipe = eq.id_equipe order by prioridade
+        select * from (select us.matricula, us.nome, case when eq.nome = 'Equipe teste' then 1 else 2 as prioridade from equipe_usuario eu inner join usario us on eu.matricula = us.matricula inner join equipe eq on eu.id_equipe = eq.id_equipe) order by prioridade
+        */
+        // Para colocar tudo na tabela
+//        ObservableList<TabelaUsuario> tabelasObjetoLista = FXCollections.observableArrayList();
+//        tabelasObjetoLista.addAll(conn......);
+//        tabelaColaboradoresEditarEquipe.setItems(tabelasObjetoLista);
+    }
+
+    public void salvarEditarEquipe(){
+//        String id_equipe = conn.getColuna("equipe", "id_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString());
+//        for (TabelaUsuario tb : tabelaColaboradoresEditarEquipe.getItems()){
+//            // salvar usando a matricula e o id_equipe
+//        }
+
+        // apos salvar tudo agora vai atualizar o nome da equipe
+        String filtro = "'" + campoEscolhaParaEditar.getValue() + "'";
+         conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText(), "equipe = "+filtro, false);
+        Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
+    }
+
+    public void preencherEditaCliente(){
+//        Cliente cliente = conn.getCliente(campoEscolhaParaEditar.getValue().toString());
+//        campoEditaEmpresaCliente.setText(cliente.getEmpresa());
+//        campoEditaResponsavelCliente.setText(cliente.getResponsavel());
+//        campoEditaEmailCliente.setText(cliente.getEmail());
+//        campoEditaTelefoneCliente.setText(cliente.getTelefone());
+//        campoEditaProjetoCliente
+    }
+
+    public void salvarEditaCliente(){
+        String filtro = "'" + campoEscolhaParaEditar.getValue() + "'";
+        conn.atualizarStatus("cliente", "empresa", campoEditaEmpresaCliente.getText(), "empresa = "+filtro, false);
+        conn.atualizarStatus("cliente", "responsavel", campoEditaResponsavelCliente.getText(), "empresa = "+filtro, false);
+        conn.atualizarStatus("cliente", "email", campoEditaEmailCliente.getText(), "empresa = "+filtro, false);
+        conn.atualizarStatus("cliente", "telefone", campoEditaTelefoneCliente.getText(), "empresa = "+filtro, false);
+//        conn.atualizarStatus("cliente", "projeto", campoEditaProjetoCliente.getText(), "empresa = "+filtro, false);
+        Alerts.showAlert("Atualizado!", null, "O cliente foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
+    }
+
 
     /////     Metodo Privados     /////
     private boolean verificarPreenchimentosDosCampos(){
@@ -189,11 +265,39 @@ public class Admin implements Initializable {
 //        campoCliente.setValue(null);
     }
 
+    private void mudarDeTela(String oqFazer){
+        AnchorPane a = new AnchorPane();
+        boolean telaEdita = true;
+        switch (oqFazer.toLowerCase()){
+            case "usuario":
+                a = anchorpaneEditarUsuario;
+                break;
+            case "equipe":
+                a = anchorpaneEditorEquipe;
+                break;
+            case "cliente":
+                a = anchorpaneEditarCliente;
+                break;
+        }
+        ultimaTelaUsada.setVisible(false);
+        a.setVisible(true);
+        ultimaTelaUsada = a;
+    }
+
+
+
 
     /////     Metodos Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textoNomeUsuario.setText(usuario.getNome());
-        
+
+        anchorpaneAreaEdicao.setVisible(true);
+        anchorpaneEditarUsuario.setVisible(true);
+        anchorpaneEditarUsuario.setDisable(false);
+        anchorpaneAreaEdicao.setDisable(false);
+
+
+
     }
 }
