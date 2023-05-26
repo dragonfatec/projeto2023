@@ -16,11 +16,11 @@ public class Util {
     }
 
     public void irParaCadastraUsuario() throws IOException {
-        App.mudarTela(NomesArquivosFXML.cadastra + ".fxml");
+        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
     }
 
     public void irParaConsultaHoraHora() throws IOException {
-        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
+        App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
     }
 
     public void irParaRegistraHora() throws IOException {

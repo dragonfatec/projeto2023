@@ -82,7 +82,7 @@ public class RegistraHora implements Initializable {
     }
 
     public void irParaConsultaHora() throws IOException {
-        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
+        App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
     }
 
     public void atualizarCliente(ActionEvent actionEvent) {
@@ -132,7 +132,7 @@ public class RegistraHora implements Initializable {
         // Verificando acesso para todas as telas
         VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
 //        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
-        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.admin);
+        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
         VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
 
         ArrayList<String> minutosLista = new ArrayList<>();

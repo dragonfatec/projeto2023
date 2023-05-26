@@ -2,8 +2,8 @@ package frontend.util;
 
 public enum NomesArquivosFXML {
     aprovaHora,
-    cadastra,
     admin,
+    consultaHora,
     login,
     registraHora
 }
