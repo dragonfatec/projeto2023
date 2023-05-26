@@ -3,10 +3,8 @@ package frontend.controllers;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
-import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class Cadastra implements Initializable {
+public class Admin implements Initializable {
     // Objetos
     private final ConnectionFactory conn = new ConnectionFactory();
     private final Usuario usuario = Usuario.getInstancia();
