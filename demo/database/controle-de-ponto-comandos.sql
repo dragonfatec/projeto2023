@@ -37,12 +37,11 @@ UPDATE equipe_usuario SET id_equipe = 2 WHERE matricula = '123456';
 UPDATE hora SET justificativa_status = 'Não autorizado' WHERE matricula = '123456';
 
 -- QUERY
-SELECT equipe_usuario.matricula,
-	   equipe.nome_equipe 
-FROM equipe_usuario
+
+SELECT usuario.matricula,
+	   usuario.nome
+FROM usuario
+LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula
 LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe
-ORDER BY nome_equipe
-
-
-
-
+WHERE nome_equipe != ''
+ORDER BY equipe.nome_equipe LIKE 'DRAGONS' DESC

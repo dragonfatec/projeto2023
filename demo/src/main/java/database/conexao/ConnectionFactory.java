@@ -204,4 +204,17 @@ public class ConnectionFactory {
             }
         return lista;
     }
+    public ArrayList<String> getUserOrderByEquipe(String nomeEquipe){
+        ArrayList<String> list = new ArrayList<>();
+
+//        String sql = String.format("SELECT usuario.matricula, " +
+//                                   "usuario.nome " +
+//                                   "FROM usuario " +
+//                                   "LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula " +
+//                                   "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
+//                                   "WHERE nome_equipe != '' " +
+//                                   "ORDER BY equipe.nome_equipe LIKE '%s' DESC", nomeEquipe);
+
+        return list;
+    }
 }
