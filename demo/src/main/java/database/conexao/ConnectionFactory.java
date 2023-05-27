@@ -24,9 +24,9 @@ public class ConnectionFactory {
             }
         }
     }
-    public void cadastrarUsuario(String matricula, String senha, String nome, TiposDeUsuario cargo, Integer id_equipe) {
+    public void cadastrarUsuario(String matricula, String senha, String nome, TiposDeUsuario cargo, Situacao situacao) {
 
-            String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, id_equipe) VALUES ('%s','%s','%s','%s',%s);",matricula, senha, nome,cargo,id_equipe);
+            String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, situacao) VALUES ('%s','%s','%s','%s','%s');",matricula, senha, nome,cargo,situacao);
             runAtualizar(sql);
     }
     public void apontarHoras(String matricula, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
