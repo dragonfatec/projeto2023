@@ -23,7 +23,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAreaCadastro" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Área de Cadastro" textFill="#fdffff">
+                  <Button fx:id="btnAreaCadastro" layoutY="283.0" mnemonicParsing="false" onAction="#mudarParaCadastra" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" stylesheets="@../api_repositorio/projeto2023/demo/src/main/resources/frontend/aplicacao/style_registraHora.css" text="Área de Cadastro" textFill="#fdffff">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -35,7 +35,7 @@
                   </Button>
                   <AnchorPane fx:id="anchorpaneEscolhaCadastro" layoutX="369.0" layoutY="1.0" prefHeight="99.0" prefWidth="909.0">
                      <children>
-                        <ChoiceBox fx:id="campoEscolhaCadastro" layoutX="470.0" layoutY="30.0" prefHeight="40.0" prefWidth="217.0" />
+                        <ChoiceBox fx:id="campoEscolhaCadastro" onAction="#mudarDeTelaCadastro" layoutX="470.0" layoutY="30.0" prefHeight="40.0" prefWidth="217.0" />
                         <Label contentDisplay="CENTER" layoutX="150.0" layoutY="33.0" prefHeight="34.0" prefWidth="320.0" text="O que gostaria de cadastrar?">
                            <font>
                               <Font size="23.0" />
@@ -43,7 +43,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorpaneCadastroUsuario" disable="true" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false">
+                  <AnchorPane fx:id="anchorpaneCadastroUsuario" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false">
                      <children>
                         <Button fx:id="btnCadastrarUsuario" layoutX="393.0" layoutY="450.0" mnemonicParsing="false" onMousePressed="#cadastrarUsuario" prefHeight="38.0" prefWidth="123.0" text="CADASTRAR" />
                         <Label fx:id="labelCadastroUsuarioRealizado" alignment="CENTER" contentDisplay="CENTER" layoutY="521.0" prefHeight="27.0" prefWidth="909.0" text="Cadastro realizado! Matrícula gerada: " textAlignment="CENTER" textFill="#007c23">
@@ -56,7 +56,7 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoNomeUsuario" layoutX="232.0" layoutY="113.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o nome do Colaborador..." />
+                        <TextField fx:id="campoNomeUsuario" layoutX="232.0" layoutY="113.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o nome do Colaborador..."/>
                         <Label contentDisplay="CENTER" layoutX="232.0" layoutY="187.0" prefHeight="34.0" prefWidth="88.0" text="Senha">
                            <font>
                               <Font size="23.0" />

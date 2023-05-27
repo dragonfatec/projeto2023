@@ -40,7 +40,7 @@ public class Login implements Initializable {
     public void fazerLogin(ActionEvent actionEvent) throws IOException {
         if (conn.validarAcessoUsuario(campoUsuario.getText(),Criptografia.criptografar(campoSenha.getText()))){
             if(Usuario.getInstancia().getCargo() == TiposDeUsuario.RH){
-                App.mudarTela(NomesArquivosFXML.aprovaHora+".fxml");
+                App.mudarTela(NomesArquivosFXML.admin+".fxml");
             }else {
                 App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
             }

@@ -169,6 +169,24 @@ public class Admin implements Initializable {
         anchorpaneAreaEdicao.setVisible(true);
     }
 
+    public void mudarDeTelaCadastro(){
+        ultimaTelaUsada.setVisible(false);
+        switch (campoEscolhaCadastro.getValue().toString().toLowerCase()){
+            case "usuario":
+                anchorpaneCadastroUsuario.setVisible(true);
+                ultimaTelaUsada = anchorpaneCadastroUsuario;
+                break;
+            case "equipe":
+                anchorpaneCadastroEquipe.setVisible(true);
+                ultimaTelaUsada = anchorpaneCadastroEquipe;
+                break;
+            case "cliente":
+                anchorpaneCadastroCliente.setVisible(true);
+                ultimaTelaUsada = anchorpaneCadastroCliente;
+                break;
+
+        }
+    }
     public void mudarDeTela(){
         ultimaTelaUsada.setVisible(false);
         switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
