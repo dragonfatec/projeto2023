@@ -206,7 +206,8 @@ public class Admin implements Initializable {
 
     public void mudarDeTela(){
         ultimaTelaUsada.setVisible(false);
-        switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
+        String selecionado = campoEscolhaEdicao.getValue().toString().toLowerCase();
+        switch (selecionado) {
             case "usuario" -> {
                 anchorpaneEditarUsuario.setVisible(true);
                 ultimaTelaUsada = anchorpaneEditarUsuario;
@@ -220,6 +221,8 @@ public class Admin implements Initializable {
                 ultimaTelaUsada = anchorpaneEditarCliente;
             }
         }
+        campoEscolhaParaEditar.getItems().clear();
+        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna("a", selecionado+"-matriculas"));
     }
 
     public void preencherDados(){

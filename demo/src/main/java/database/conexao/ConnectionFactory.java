@@ -193,8 +193,14 @@ public class ConnectionFactory {
             case "cliente":
                 sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ id +"';";
                 break;
-            case "usuario":
+            case "usuario-matriculas":
                 sql = "SELECT matricula FROM usuario";
+                break;
+            case "cliente-matriculas":
+                sql = "SELECT empresa FROM cliente";
+                break;
+            case "equipe-matriculas":
+                sql = "SELECT nome_equipe FROM equipe";
                 break;
         }
 
