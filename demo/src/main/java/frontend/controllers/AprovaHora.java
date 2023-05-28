@@ -136,7 +136,7 @@ public class AprovaHora implements Initializable {
         VerificaAcesso.verificarAcesso(btnEdita, usuario.getCargo(), NomesArquivosFXML.admin);
 
         // Para preencher o campo de equipe
-//        campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
+        campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
 
         // Dados para Teste
 //        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
@@ -154,6 +154,6 @@ public class AprovaHora implements Initializable {
         colunaTotalDeHoras.setCellValueFactory(new PropertyValueFactory<TabelaAprova, String>("totalDeHoras"));
         colunaSelecione.setCellValueFactory(new PropertyValueFactory<TabelaAprova, CheckBox>("selecione"));
 
-//        textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
+        textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }
 }
