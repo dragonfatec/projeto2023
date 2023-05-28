@@ -134,7 +134,7 @@ public class Admin implements Initializable {
     /////     Metodos Publicos     /////
     public String gerarMatricula(){
         // Esse metodo vai gerar (aleatoriamente) e preencher o campo de matricula
-        ArrayList<String> listaMatriculaExistente = conn.getListaColuna(null, "usuario-matriculas");
+        ArrayList<String> listaMatriculaExistente = conn.getListaColuna(null, "usuario");
         while (true){
             // Criar uma matricula aleatoria com 8 digitos
             String matricula = String.format("%0" + 8 + "d", new Random().nextInt(1, 100000000));
