@@ -195,7 +195,6 @@ public class ConnectionFactory {
                 break;
             case "usuario-matriculas":
                 sql = "SELECT matricula FROM usuario";
-                System.out.println("ola");
                 break;
             case "cliente-matriculas":
                 sql = "SELECT empresa FROM cliente";
