@@ -1,11 +1,15 @@
 package frontend.controllers;
 
+import backend.usuario.Situacao;
+import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
+import backend.util.Criptografia;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -75,6 +79,8 @@ public class Admin implements Initializable {
     public Button btnEditarClienteEquipe;
 
     // Button - RadioButton
+    @FXML
+    ToggleGroup toggleGroup;
     public RadioButton radioColaborador;
     public RadioButton radioGestor;
     public RadioButton radioAdmin;
@@ -118,7 +124,7 @@ public class Admin implements Initializable {
 
 
     /////     Metodos Publicos     /////
-    public void gerarMatricula(){
+    public String gerarMatricula(){
         // Esse metodo vai gerar (aleatoriamente) e preencher o campo de matricula
         ArrayList<String> listaMatriculaExistente = conn.getListaColuna(null, "usuario");
         while (true){
@@ -126,7 +132,7 @@ public class Admin implements Initializable {
             String matricula = String.format("%0" + 8 + "d", new Random().nextInt(1, 100000000));
             if(!listaMatriculaExistente.contains(matricula)){
                 // Aqui vai o preenchimento do TextField com a matricula
-                break;
+                return matricula;
             }
         }
     }
@@ -149,6 +155,14 @@ public class Admin implements Initializable {
     }
 
     public void cadastrarUsuario(MouseEvent mouseEvent) {
+        RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
+        toggleGroup.getToggles().forEach(toggle -> {
+            RadioButton radioButton = (RadioButton) toggle;
+            if (!radioButton.equals(selectedRadioButton)) {
+                radioButton.setSelected(false);
+            }
+        });
+        conn.cadastrarUsuario(gerarMatricula(), Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.Ativo);
     }
 
     public void cadastrarEquipe(MouseEvent mouseEvent) {
@@ -184,7 +198,6 @@ public class Admin implements Initializable {
                 anchorpaneCadastroCliente.setVisible(true);
                 ultimaTelaUsada = anchorpaneCadastroCliente;
                 break;
-
         }
     }
     public void mudarDeTela(){

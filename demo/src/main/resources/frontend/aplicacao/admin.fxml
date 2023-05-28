@@ -68,17 +68,22 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="radioColaborador" layoutX="232.0" layoutY="369.0" mnemonicParsing="false" text="Colaborador">
+
+                        <fx:define>
+                           <ToggleGroup fx:id="toggleGroup"/>
+                        </fx:define>
+
+                        <RadioButton fx:id="radioColaborador" toggleGroup="$toggleGroup" layoutX="232.0" layoutY="369.0" mnemonicParsing="false" text="Colaborador">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioGestor" layoutX="393.0" layoutY="369.0" mnemonicParsing="false" text="Gestor">
+                        <RadioButton fx:id="radioGestor" toggleGroup="$toggleGroup" layoutX="393.0" layoutY="369.0" mnemonicParsing="false" text="Gestor">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioAdmin" layoutX="508.0" layoutY="369.0" mnemonicParsing="false" text="Administrador">
+                        <RadioButton fx:id="radioAdmin" toggleGroup="$toggleGroup" layoutX="508.0" layoutY="369.0" mnemonicParsing="false" text="Administrador">
                            <font>
                               <Font size="18.0" />
                            </font>

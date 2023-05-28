@@ -48,7 +48,7 @@ public class ConnectionFactory {
     }
     public Boolean validarAcessoUsuario(String matricula, String passw){
         setInstancia();
-        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"' AND situacao ='Ativo';";
+        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"' AND situacao ='Ativo'";
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
@@ -58,7 +58,7 @@ public class ConnectionFactory {
                 String nome = rs.getString(3);
                 String cargo = rs.getString(4);
 
-                Usuario.criarInstancia(mat, senha, nome, cargo, Situacao.ATIVO);
+                Usuario.criarInstancia(mat, senha, nome, cargo, Situacao.Ativo);
                 return true;
             }
             return false;
