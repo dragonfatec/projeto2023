@@ -46,7 +46,7 @@
                   <AnchorPane fx:id="anchorpaneCadastroUsuario" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false">
                      <children>
                         <Button fx:id="btnCadastrarUsuario" layoutX="393.0" layoutY="450.0" mnemonicParsing="false" onMousePressed="#cadastrarUsuario" prefHeight="38.0" prefWidth="123.0" text="CADASTRAR" />
-                        <Label fx:id="labelCadastroUsuarioRealizado" alignment="CENTER" contentDisplay="CENTER" layoutY="521.0" prefHeight="27.0" prefWidth="909.0" text="Cadastro realizado! Matrícula gerada: " textAlignment="CENTER" textFill="#007c23">
+                        <Label fx:id="labelCadastroUsuarioRealizado" alignment="CENTER" contentDisplay="CENTER" layoutY="521.0" prefHeight="27.0" prefWidth="909.0" text="Cadastro realizado! Matrícula gerada: " textAlignment="CENTER" textFill="#007c23" visible="false">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -83,7 +83,7 @@
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioAdmin" toggleGroup="$toggleGroup" layoutX="508.0" layoutY="369.0" mnemonicParsing="false" text="Administrador">
+                        <RadioButton fx:id="radioAdmin" toggleGroup="$toggleGroup" layoutX="508.0" layoutY="369.0" mnemonicParsing="false" text="RH">
                            <font>
                               <Font size="18.0" />
                            </font>

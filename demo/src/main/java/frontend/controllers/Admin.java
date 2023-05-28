@@ -162,7 +162,10 @@ public class Admin implements Initializable {
                 radioButton.setSelected(false);
             }
         });
-        conn.cadastrarUsuario(gerarMatricula(), Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.Ativo);
+        String matricula = gerarMatricula();
+        conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.Ativo);
+        labelCadastroUsuarioRealizado.setVisible(true);
+        labelMatricula.setText(matricula);
     }
 
     public void cadastrarEquipe(MouseEvent mouseEvent) {
