@@ -222,7 +222,7 @@ public class Admin implements Initializable {
             }
         }
         campoEscolhaParaEditar.getItems().clear();
-        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna("a", selecionado+"-matriculas"));
+        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, selecionado+"-matriculas"));
     }
 
     public void preencherDados(){
