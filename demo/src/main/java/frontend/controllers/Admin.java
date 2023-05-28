@@ -180,7 +180,6 @@ public class Admin implements Initializable {
         anchorpaneAreaCadastro.setVisible(true);
     }
 
-
     public void mudarParaEdita(){
         ultimaTelaUsada.setVisible(false);
         anchorpaneAreaCadastro.setVisible(false);
@@ -204,6 +203,7 @@ public class Admin implements Initializable {
                 break;
         }
     }
+
     public void mudarDeTela(){
         ultimaTelaUsada.setVisible(false);
         switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
@@ -226,8 +226,6 @@ public class Admin implements Initializable {
         switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
             case "usuario" -> {
                 preencherEditaUsuario();
-                campoEditaNomeUsuario.setEditable(true);
-                campoEditaSenhaUsuario.setText("2rp");
             }
             case "equipe" -> {
                 preencherEditaEquipe();
@@ -309,6 +307,19 @@ public class Admin implements Initializable {
         conn.atualizarStatus("cliente", "telefone", campoEditaTelefoneCliente.getText(), "empresa = "+filtro, false);
 //        conn.atualizarStatus("cliente", "projeto", campoEditaProjetoCliente.getText(), "empresa = "+filtro, false);
         Alerts.showAlert("Atualizado!", null, "O cliente foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
+    }
+
+    public void mudarSenha(ActionEvent actionEvent) {
+        switch (btnEditarSenhaUsuario.getText()){
+            case "Mudar senha" -> {
+                campoEditaSenhaUsuario.setText("2rp");
+                btnEditarSenhaUsuario.setText("Cancelar");
+            }
+            case "Cancelar" -> {
+                campoEditaSenhaUsuario.setText("**********");
+                btnEditarSenhaUsuario.setText("Mudar senha");
+            }
+        }
     }
 
 
