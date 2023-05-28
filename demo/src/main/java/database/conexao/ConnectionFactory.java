@@ -33,6 +33,42 @@ public class ConnectionFactory {
 
         runAtualizar(String.format("INSERT INTO hora (matricula, data_hora_inicial, data_hora_final, justificativa, id_equipe, tipo_hora, id_cliente, status) VALUES ('%s','%s','%s','%s',%s,'%s',%s,'Em andamento');",matricula,data_inicial,data_final,justificativa,Integer.valueOf(getColuna("equipe","id_equipe", "nome_equipe",equipe)),tipo_hora, Integer.valueOf(getColuna("cliente", "id_cliente","empresa",cliente))));
     }
+    public void cadastrarEquipe(String nomeEquipe){
+        String sql = String.format("INSERT INTO equipe (nome_equipe) VALUES ('%s');", nomeEquipe);
+        runSet(sql);
+    }
+    public void cadastrarCliente(String empresa, String responsavel, String email, String telefone, String projeto){
+        String sql = String.format("INSERT INTO cliente (empresa, responsavel, email, telefone, projeto) VALUES ('%s','%s','%s','%s','%s');", empresa,responsavel, email, telefone, projeto);
+        runSet(sql);
+    }
+    public void atualizarStatus(String nomeTabela, String nomeCampo, String novoValor, String condicao, boolean novoValorEhNumero){
+        /*
+         * A condicao é o filtro para atualizar apenas 1 linha.
+         * Exemplo de String que deve vir na variavel condicao:
+         *   id = 1
+         *   nome = 'Teste'
+         */
+        novoValor = novoValorEhNumero ? novoValor : "'" + novoValor + "'";
+        String sql = String.format("UPDATE %s SET %s = %s WHERE %s", nomeTabela, nomeCampo, novoValor, condicao);
+        runAtualizar(sql);
+    }
+    private void runSet(String sql){
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            pr.execute();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    private void runAtualizar(String sql){
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            pr.execute();
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     public String getColuna(String tabela, String coluna, String campoFiltro, String valorFiltro){
         String id = "";
         String sql = "SELECT " + coluna + " FROM " + tabela + " WHERE "+ campoFiltro + " = '" + valorFiltro +"';" ;
@@ -48,7 +84,7 @@ public class ConnectionFactory {
     }
     public Boolean validarAcessoUsuario(String matricula, String passw){
         setInstancia();
-        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"' AND situacao ='Ativo'";
+        String sql = "SELECT * FROM usuario WHERE matricula = '"+matricula+"' and senha = '"+passw+"' AND situacao ='ATIVO'";
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
@@ -145,35 +181,6 @@ public class ConnectionFactory {
               throw new RuntimeException(e);
           }
     }
-    public void atualizarStatus(String nomeTabela, String nomeCampo, String novoValor, String condicao, boolean novoValorEhNumero){
-        /*
-         * A condicao é o filtro para atualizar apenas 1 linha.
-         * Exemplo de String que deve vir na variavel condicao:
-         *   id = 1
-         *   nome = 'Teste'
-         */
-        novoValor = novoValorEhNumero ? novoValor : "'" + novoValor + "'";
-        String sql = String.format("UPDATE %s SET %s = %s WHERE %s", nomeTabela, nomeCampo, novoValor, condicao);
-        runAtualizar(sql);
-    }
-    private ResultSet run(String sql){
-        try {
-            PreparedStatement pr = conn.prepareStatement(sql);
-            return pr.executeQuery();
-        }
-        catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-    private void runAtualizar(String sql){
-        try {
-            PreparedStatement pr = conn.prepareStatement(sql);
-            pr.execute();
-        }
-        catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
     public ArrayList<String> getListaColuna(String id, String equipeOuCliente) {
         /*
          * Esse metodo vai procurar na tabela e vai retornar todos as equipes, usuarios, ... o que o usuario escolher
@@ -216,5 +223,14 @@ public class ConnectionFactory {
 //                                   "ORDER BY equipe.nome_equipe LIKE '%s' DESC", nomeEquipe);
 
         return list;
+    }
+    private ResultSet run(String sql){
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            return pr.executeQuery();
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 }
