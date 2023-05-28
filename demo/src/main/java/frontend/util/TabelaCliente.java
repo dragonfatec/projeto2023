@@ -6,6 +6,11 @@ public class TabelaCliente {
     private String empresa;
     private String responsavel;
     private CheckBox selecione;
+    public TabelaCliente(String empresa, String responsavel) {
+        this.empresa = empresa;
+        this.responsavel = responsavel;
+        this.selecione = new CheckBox();
+    }
 
     public String getempresa() {
         return empresa;
