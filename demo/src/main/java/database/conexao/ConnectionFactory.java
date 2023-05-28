@@ -290,7 +290,7 @@ public class ConnectionFactory {
                 sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ id +"';";
                 break;
             case "usuario-matriculas":
-                sql = "SELECT matricula,nome FROM usuario";
+                sql = "SELECT CONCAT (matricula, ' - ', nome) FROM usuario";
                 break;
             case "cliente-matriculas":
                 sql = "SELECT empresa FROM cliente";
