@@ -78,7 +78,7 @@
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioGestor" toggleGroup="$toggleGroup" layoutX="393.0" layoutY="369.0" mnemonicParsing="false" text="Gestor">
+                        <RadioButton fx:id="radioGestor" toggleGroup="$toggleGroup" layoutX="393.0" layoutY="369.0" mnemonicParsing="false" text="Gerente">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -88,7 +88,7 @@
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <Label fx:id="labelMatricula" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutY="550.0" prefHeight="27.0" prefWidth="909.0" text="nº matricula" textAlignment="CENTER" textFill="#979797">
+                        <Label fx:id="labelMatricula" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutY="550.0" prefHeight="27.0" prefWidth="909.0" text="nº matricula" textAlignment="CENTER" textFill="#000000">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -263,12 +263,12 @@
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioGestorEdita" layoutX="406.0" layoutY="294.0" mnemonicParsing="false" text="Gestor">
+                        <RadioButton fx:id="radioGestorEdita" layoutX="406.0" layoutY="294.0" mnemonicParsing="false" text="Gerente">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioAdminEdita" layoutX="521.0" layoutY="294.0" mnemonicParsing="false" text="Administrador">
+                        <RadioButton fx:id="radioAdminEdita" layoutX="521.0" layoutY="294.0" mnemonicParsing="false" text="RH">
                            <font>
                               <Font size="18.0" />
                            </font>
