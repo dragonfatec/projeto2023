@@ -21,7 +21,7 @@ public class TabelaUsuario {
         return nome;
     }
 
-    public boolean getSelecione() {
+    public boolean estaSelecionado() {
         return selecione.isSelected();
     }
 
