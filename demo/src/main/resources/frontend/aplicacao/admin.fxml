@@ -10,7 +10,7 @@
    <children>
       <AnchorPane fx:id="anchorpaneAdmin" prefHeight="721.0" prefWidth="1280.0">
          <children>
-            <AnchorPane fx:id="anchorpaneAreaCadastro" prefHeight="720.0" prefWidth="1280.0">
+            <AnchorPane fx:id="anchorpaneAreaCadastro" visible="false" prefHeight="720.0" prefWidth="1280.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" layoutX="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
                   <Label fx:id="textoNomeUsuario" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
@@ -191,7 +191,12 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchorpaneAreaEdicao" prefHeight="720.0" prefWidth="1280.0" visible="false">
+            <AnchorPane fx:id="anchorpaneAreaEdicao" visible="false" prefHeight="720.0" prefWidth="1280.0">
+
+               <fx:define>
+                  <ToggleGroup fx:id="toggleGroup2"/>
+               </fx:define>
+
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
 <!--                  <Label fx:id="textoNomeUsuario2" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">-->
@@ -258,17 +263,17 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="radioColaboradorEdita" layoutX="245.0" layoutY="294.0" mnemonicParsing="false" text="Colaborador">
+                        <RadioButton fx:id="radioColaboradorEdita" toggleGroup="$toggleGroup2" layoutX="245.0" layoutY="294.0" mnemonicParsing="false" text="Colaborador">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioGestorEdita" layoutX="406.0" layoutY="294.0" mnemonicParsing="false" text="Gerente">
+                        <RadioButton fx:id="radioGestorEdita" toggleGroup="$toggleGroup2"  layoutX="406.0" layoutY="294.0" mnemonicParsing="false" text="Gerente">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioAdminEdita" layoutX="521.0" layoutY="294.0" mnemonicParsing="false" text="RH">
+                        <RadioButton fx:id="radioAdminEdita" toggleGroup="$toggleGroup2" layoutX="521.0" layoutY="294.0" mnemonicParsing="false" text="RH">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -280,7 +285,7 @@
                         </Label>
 <!--                        <Button fx:id="btnEditarNomeUsuario" layoutX="677.0" layoutY="123.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />-->
                         <Button fx:id="btnEditarSenhaUsuario" onAction="#mudarSenha" layoutX="677.0" layoutY="204.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="Mudar senha" />
-                        <Button fx:id="btnSalvarUsuario" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
+                        <Button fx:id="btnSalvarUsuario" onAction="#salvarEditaUsuario" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="360.0" prefHeight="34.0" prefWidth="155.0" text="Usuário Ativo:">
                            <font>
                               <Font size="23.0" />

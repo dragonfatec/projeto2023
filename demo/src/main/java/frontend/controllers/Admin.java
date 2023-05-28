@@ -8,10 +8,15 @@ import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
 import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
+import frontend.util.Tabela;
+import frontend.util.TabelaUsuario;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -81,6 +86,8 @@ public class Admin implements Initializable {
     // Button - RadioButton
     @FXML
     ToggleGroup toggleGroup;
+    @FXML
+    ToggleGroup toggleGroup2;
     public RadioButton radioColaborador;
     public RadioButton radioGestor;
     public RadioButton radioAdmin;
@@ -121,6 +128,7 @@ public class Admin implements Initializable {
 
     // Variaveis para uso
     private AnchorPane ultimaTelaUsada = new AnchorPane();
+    public static String qualTelaIniciar = "cadastra";
 
 
     /////     Metodos Publicos     /////
@@ -135,19 +143,6 @@ public class Admin implements Initializable {
                 return matricula;
             }
         }
-    }
-
-    public void salvarUsuario(){
-        // Para salvar o usario
-//        conn.cadastrarUsuario();
-
-        // Colocar no banco
-//        if(){
-//            Alerts.showAlert("Usuario salvo", null, "Usuario foi salvo com sucesso. \n\nLembre-se, a senha é padrão. \nSenha: 2rp", Alert.AlertType.INFORMATION);
-//        }
-//        else{
-//            Alerts.showAlert("Erro", null, "Erro ao salvar o usuario. \nErro:\n"+erro, Alert.AlertType.ERROR);
-//        }
     }
 
     public void irParaAprovaHora() throws IOException {
@@ -241,8 +236,8 @@ public class Admin implements Initializable {
 
     public void preencherEditaUsuario(){
 //        Usuario userSelecionado = conn.
-//        campoEditaNomeUsuario.setText();
-//        campoEditaSenhaUsuario.setText();
+//        campoEditaNomeUsuario.setText(userSelecionado.getNome);
+        campoEditaSenhaUsuario.setText("**********");
         // selecionar o cargo do usuario
 //        switch (userSelecionado.getCargo()){
 //            case Colaborador -> {
@@ -258,23 +253,17 @@ public class Admin implements Initializable {
     }
 
     public void salvarEditaUsuario(){
-
         String filtro = "'" + campoEscolhaParaEditar.getValue() + "'";
         conn.atualizarStatus("usuario", "nome", campoEditaNomeUsuario.getText(), "matricula = "+filtro, false);
         conn.atualizarStatus("usuario", "senha", campoEditaSenhaUsuario.getText(), "matricula = "+filtro, false);
-//        conn.atualizarStatus("usuario", "cargo", carg, "matricula = "+filtro, false);
-        conn.atualizarStatus("usuario", "status", checkboxUsuarioAtivo.isSelected() ? "Ativado" : "Desativado", "matricula = "+filtro, false);
+        conn.atualizarStatus("usuario", "cargo", ((ToggleButton) toggleGroup2.getSelectedToggle()).getText(), "matricula = "+filtro, false);
+        conn.atualizarStatus("usuario", "status", checkboxUsuarioAtivo.isSelected() ? "Ativo" : "Inativo", "matricula = "+filtro, false);
 
         Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
 
     public void preencherEditaEquipe(){
         campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
-        /*
-            * Se o primeiro não der certo então o segundo deve dar
-        select us.matricula, us.nome, case when eq.nome = 'Equipe teste' then 1 else 2 as prioridade from equipe_usuario eu inner join usario us on eu.matricula = us.matricula inner join equipe eq on eu.id_equipe = eq.id_equipe order by prioridade
-        select * from (select us.matricula, us.nome, case when eq.nome = 'Equipe teste' then 1 else 2 as prioridade from equipe_usuario eu inner join usario us on eu.matricula = us.matricula inner join equipe eq on eu.id_equipe = eq.id_equipe) order by prioridade
-        */
         // Para colocar tudo na tabela
 //        ObservableList<TabelaUsuario> tabelasObjetoLista = FXCollections.observableArrayList();
 //        tabelasObjetoLista.addAll(conn......);
@@ -327,47 +316,39 @@ public class Admin implements Initializable {
 
 
     /////     Metodo Privados     /////
-    private boolean verificarPreenchimentosDosCampos(){
-        try{
-//            dataInicio.getValue().toString();
-//            horasInicio.getValue().toString();
-//            minutosInicio.getValue().toString();
-//            dataFim.getValue().toString();
-//            horasFim.getValue().toString();
-//            minutosFim.getValue().toString();
-//            // Se for Hora Extra então é obrigatório o campo Justificativa
-//            return !campoCliente.getValue().equals("") && !campoEquipe.getValue().equals("") && !campoTipo.getValue().equals("") && !campoJustificativa.getText().equals("");
 
-            return true; // so para nao dar erro enquanto não é implementado a tela
-        }
-        catch (Exception e){
-            return false;
-        }
-    }
-
-    private void limparCampos(){
-//        dataInicio.setValue(null);
-//        horasInicio.setValue(null);
-//        minutosInicio.setValue(null);
-//        dataFim.setValue(null);
-//        horasFim.setValue(null);
-//        minutosFim.setValue(null);
-//        campoJustificativa.clear();
-//        campoEquipe.setValue(null);
-//        campoTipo.setValue(null);
-//        campoCliente.setValue(null);
-    }
 
 
     /////     Metodos Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textoNomeUsuario.setText(usuario.getNome());
-//        ArrayList<String> listaOpcoes = {"usuario", "cliente", "equipe"};
         String[] listaOpcoes = {"usuario", "cliente", "equipe"};
         campoEscolhaEdicao.getItems().addAll(listaOpcoes);
         campoEscolhaCadastro.getItems().addAll(listaOpcoes);
 
+        // Iniciando a tabela de Usuario quando for editar a Equipe
+//        ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
+//        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
+        colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
+        colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
+        colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
+//        tabelaColaboradoresEditarEquipe.setItems(tabelasObjetoLista);
+//        tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getHorasUsuario(usuario.getMatricula())));
 
+
+        // Iniciando a tabela de Cliente quando for editar a Equipe
+////        ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
+////        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
+//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
+//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("responsavel"));
+//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
+////        tabelaColaboradoresEditarEquipe.setItems(tabelasObjetoLista);
+//        .setItems(FXCollections.observableArrayList(conn.getHorasUsuario(usuario.getMatricula())));
+
+        switch (qualTelaIniciar) {
+            case "cadastra" -> mudarParaCadastra();
+            case "edita" -> mudarParaEdita();
+        }
     }
 }

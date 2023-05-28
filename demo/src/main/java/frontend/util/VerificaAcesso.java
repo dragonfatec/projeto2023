@@ -18,8 +18,9 @@ public class VerificaAcesso {
     }
 
     public static void verificarAcesso(Button button, TiposDeUsuario tipoUsuario, NomesArquivosFXML telaNome){
-        if (!verificarRegraDeAcesso(tipoUsuario, telaNome)){
-            button.setVisible(false);
-        }
+//        if (!verificarRegraDeAcesso(tipoUsuario, telaNome)){
+//            button.setVisible(false);
+//        }
+        button.setVisible(verificarRegraDeAcesso(tipoUsuario, telaNome));
     }
 }
