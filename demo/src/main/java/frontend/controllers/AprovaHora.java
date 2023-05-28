@@ -128,14 +128,12 @@ public class AprovaHora implements Initializable {
     /////     Metodo Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        Usuario usuario2 = Usuario.criarUsuario("","","", "rh", Situacao.Ativo);
         // Verificando acesso para todas as telas
-        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario2.getCargo(), NomesArquivosFXML.aprovaHora);
-//        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
-        VerificaAcesso.verificarAcesso(btnConsultar, usuario2.getCargo(), NomesArquivosFXML.consultaHora);
-        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario2.getCargo(), NomesArquivosFXML.registraHora);
-        VerificaAcesso.verificarAcesso(btnCadastra, usuario2.getCargo(), NomesArquivosFXML.admin);
-        VerificaAcesso.verificarAcesso(btnEdita, usuario2.getCargo(), NomesArquivosFXML.admin);
+        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
+        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
+        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
+        VerificaAcesso.verificarAcesso(btnCadastra, usuario.getCargo(), NomesArquivosFXML.admin);
+        VerificaAcesso.verificarAcesso(btnEdita, usuario.getCargo(), NomesArquivosFXML.admin);
 
         // Para preencher o campo de equipe
 //        campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));

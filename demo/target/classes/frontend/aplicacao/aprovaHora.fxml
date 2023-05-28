@@ -58,10 +58,25 @@
                         <Font size="24.0" />
                     </font>
                 </Button>
+
+                <Button fx:id="btnCadastra" layoutY="283.0" visible="false" mnemonicParsing="false" onAction="#irParaCadastra" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Cadastro" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+
                 <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
-                    </font></Button>
+                    </font>
+                </Button>
+
+                <Button fx:id="btnEdita" visible="false" layoutY="361.0" mnemonicParsing="false" onAction="#irParaEdita" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Edição" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+
                 <Label alignment="CENTER" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
