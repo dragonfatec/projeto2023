@@ -19,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stagePrincipal = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(NomesArquivosFXML.login+".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(NomesArquivosFXML.admin+".fxml"));
         Parent root = fxmlLoader.load();
         Scene tela = new Scene(root);
         stagePrincipal.setTitle("2rpnet");

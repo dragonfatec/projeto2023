@@ -1,5 +1,7 @@
 package frontend.controllers;
 
+import backend.usuario.Situacao;
+import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
@@ -37,6 +39,7 @@ public class AprovaHora implements Initializable {
     @FXML public TableColumn<TabelaAprova, String> colunaTipo;
     @FXML public TableColumn<TabelaAprova, String> colunaTotalDeHoras;
     @FXML public TableColumn<TabelaAprova, CheckBox> colunaSelecione;
+
     // Button
     @FXML public Button btnRegistrarHora;
     @FXML public Button btnConsultar;
@@ -44,6 +47,8 @@ public class AprovaHora implements Initializable {
     @FXML public Button btnSelecionarTudo;
     @FXML public Button btnAprovaHora;
     @FXML public Button btnReprovar;
+    @FXML public Button btnCadastra;
+    @FXML public Button btnEdita;
 
     // ChoiceBox
     @FXML public ChoiceBox campoEscolhaEquipe;
@@ -85,6 +90,15 @@ public class AprovaHora implements Initializable {
         App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
     }
 
+    public void irParaCadastra() throws IOException {
+        Admin.qualTelaIniciar = "cadastra";
+        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
+    }
+
+    public void irParaEdita() throws IOException {
+        Admin.qualTelaIniciar = "edita";
+        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
+    }
 
     /////     Metodos Privados     /////
     private ArrayList<TabelaAprova> getHorasSelecionada(){
@@ -114,14 +128,17 @@ public class AprovaHora implements Initializable {
     /////     Metodo Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        Usuario usuario2 = Usuario.criarUsuario("","","", "rh", Situacao.Ativo);
         // Verificando acesso para todas as telas
-        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario.getCargo(), NomesArquivosFXML.aprovaHora);
+        VerificaAcesso.verificarAcesso(btnAprovaHora, usuario2.getCargo(), NomesArquivosFXML.aprovaHora);
 //        VerificaAcesso.verificarAcesso(, usuario.getCargo(), NomesArquivosFXML.cadastrarUsuario);
-        VerificaAcesso.verificarAcesso(btnConsultar, usuario.getCargo(), NomesArquivosFXML.consultaHora);
-        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario.getCargo(), NomesArquivosFXML.registraHora);
+        VerificaAcesso.verificarAcesso(btnConsultar, usuario2.getCargo(), NomesArquivosFXML.consultaHora);
+        VerificaAcesso.verificarAcesso(btnRegistrarHora, usuario2.getCargo(), NomesArquivosFXML.registraHora);
+        VerificaAcesso.verificarAcesso(btnCadastra, usuario2.getCargo(), NomesArquivosFXML.admin);
+        VerificaAcesso.verificarAcesso(btnEdita, usuario2.getCargo(), NomesArquivosFXML.admin);
 
         // Para preencher o campo de equipe
-        campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
+//        campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
 
         // Dados para Teste
 //        ObservableList<TabelaAprova> listaHorasPendentes = FXCollections.observableArrayList();
@@ -139,10 +156,6 @@ public class AprovaHora implements Initializable {
         colunaTotalDeHoras.setCellValueFactory(new PropertyValueFactory<TabelaAprova, String>("totalDeHoras"));
         colunaSelecione.setCellValueFactory(new PropertyValueFactory<TabelaAprova, CheckBox>("selecione"));
 
-        textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
-    }
-
-    public void irParaCadastra(MouseEvent mouseEvent) {
-        
+//        textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }
 }
