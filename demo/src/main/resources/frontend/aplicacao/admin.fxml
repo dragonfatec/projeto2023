@@ -191,7 +191,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchorpaneAreaEdicao" disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false">
+            <AnchorPane fx:id="anchorpaneAreaEdicao" prefHeight="720.0" prefWidth="1280.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
 <!--                  <Label fx:id="textoNomeUsuario2" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">-->
@@ -239,14 +239,14 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorpaneEditarUsuario" disable="true" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
+                  <AnchorPane fx:id="anchorpaneEditarUsuario" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
                      <children>
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="123.0" prefHeight="34.0" prefWidth="75.0" text="Nome">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaNomeUsuario" editable="false" layoutX="245.0" layoutY="123.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaNomeUsuario" layoutX="245.0" layoutY="123.0" prefHeight="40.0" prefWidth="420.0" />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="208.0" prefHeight="34.0" prefWidth="88.0" text="Senha">
                            <font>
                               <Font size="23.0" />
@@ -278,8 +278,8 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnEditarNomeUsuario" layoutX="677.0" layoutY="123.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
-                        <Button fx:id="btnEditarSenhaUsuario" layoutX="677.0" layoutY="204.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
+<!--                        <Button fx:id="btnEditarNomeUsuario" layoutX="677.0" layoutY="123.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />-->
+                        <Button fx:id="btnEditarSenhaUsuario" onAction="#mudarSenha" layoutX="677.0" layoutY="204.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="Mudar senha" />
                         <Button fx:id="btnSalvarUsuario" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="360.0" prefHeight="34.0" prefWidth="155.0" text="Usuário Ativo:">
                            <font>
@@ -293,14 +293,14 @@
                         </CheckBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorpaneEditorEquipe" disable="true" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
+                  <AnchorPane fx:id="anchorpaneEditorEquipe" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
                      <children>
                         <Label contentDisplay="CENTER" layoutX="171.0" layoutY="83.0" prefHeight="34.0" prefWidth="75.0" text="Nome">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaNomeEquipe" editable="false" layoutX="245.0" layoutY="83.0" prefHeight="34.0" prefWidth="406.0" />
+                        <TextField fx:id="campoEditaNomeEquipe" layoutX="245.0" layoutY="83.0" prefHeight="34.0" prefWidth="406.0" />
                         <Label fx:id="labelEquipeEditar" alignment="CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="909.0" text="Equipe: " textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="24.0" />
@@ -325,24 +325,24 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ChoiceBox disable="true" layoutX="245.0" layoutY="133.0" prefHeight="30.0" prefWidth="163.0" />
+                        <ChoiceBox layoutX="245.0" layoutY="133.0" prefHeight="30.0" prefWidth="163.0" />
                         <Button fx:id="btnEditarClienteEquipe" layoutX="424.0" layoutY="133.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="EDITAR" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorpaneEditarCliente" disable="true" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
+                  <AnchorPane fx:id="anchorpaneEditarCliente" layoutX="368.0" layoutY="143.0" prefHeight="571.0" prefWidth="909.0" visible="false">
                      <children>
                         <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="133.0" layoutY="103.0" prefHeight="34.0" prefWidth="97.0" text="Empresa">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaEmpresaCliente" editable="false" layoutX="245.0" layoutY="102.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaEmpresaCliente" layoutX="245.0" layoutY="102.0" prefHeight="40.0" prefWidth="420.0" />
                         <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="95.0" layoutY="177.0" prefHeight="34.0" prefWidth="138.0" text="Responsável">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaResponsavelCliente" editable="false" layoutX="245.0" layoutY="174.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaResponsavelCliente" layoutX="245.0" layoutY="174.0" prefHeight="40.0" prefWidth="420.0" />
                         <Label fx:id="labelClienteEditor" alignment="CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="909.0" text="Cliente: " textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="24.0" />
@@ -355,28 +355,28 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaEmailCliente" editable="false" layoutX="245.0" layoutY="244.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaEmailCliente" layoutX="245.0" layoutY="244.0" prefHeight="40.0" prefWidth="420.0" />
                         <Button fx:id="btnEditarEmailCliente" layoutX="677.0" layoutY="243.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
                         <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="124.0" layoutY="320.0" prefHeight="34.0" prefWidth="109.0" text="Telefone">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaTelefoneCliente" editable="false" layoutX="245.0" layoutY="317.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaTelefoneCliente" layoutX="245.0" layoutY="317.0" prefHeight="40.0" prefWidth="420.0" />
                         <Button fx:id="btnEditarTelefoneCliente" layoutX="677.0" layoutY="316.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
                         <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="124.0" layoutY="393.0" prefHeight="34.0" prefWidth="109.0" text="Projeto">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaProjetoCliente" editable="false" layoutX="245.0" layoutY="390.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaProjetoCliente" layoutX="245.0" layoutY="390.0" prefHeight="40.0" prefWidth="420.0" />
                         <Button fx:id="btnEditarProjetoCliente" layoutX="677.0" layoutY="389.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
 
-<!--            <AnchorPane fx:id="anchorpaneAprovarHoraAdmin" disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false">-->
+<!--            <AnchorPane fx:id="anchorpaneAprovarHoraAdmin" prefHeight="720.0" prefWidth="1280.0" visible="false">-->
 <!--               <children>-->
 <!--                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />-->
 <!--                  <Label fx:id="textoNomeUsuario3" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">-->
