@@ -1,9 +1,9 @@
 package backend.usuario;
 
 public enum Situacao {
-    Ativo{
+    ATIVO{
         public Boolean verificaSituacao(String situacao){
-            if (Situacao.Ativo.toString() == situacao){
+            if (Situacao.ATIVO.toString() == situacao){
                 return true;
             }else {
                 return false;

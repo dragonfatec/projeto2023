@@ -1,11 +1,11 @@
 package database.conexao;
 
+import backend.cliente.Cliente;
 import backend.datahora.RegistroDataHora;
 import backend.usuario.Situacao;
 import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
-import frontend.util.Tabela;
-import frontend.util.TabelaAprova;
+import frontend.util.*;
 
 import java.sql.*;
 import java.util.*;
@@ -69,6 +69,102 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
+    public Cliente getCliente(String nomeEmpresa){
+        String sql = String.format("SELECT empresa, responsavel, email, telefone, projeto FROM cliente WHERE empresa = %s;", nomeEmpresa);
+        Cliente cl = null;
+        try{
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                String empresa = rs.getString(1);
+                String resp = rs.getString(2);
+                String email = rs.getString(3);
+                String telefone = rs.getString(4);
+                String projeto = rs.getString(5);
+
+                cl = new Cliente(empresa,resp,email,telefone,projeto);
+            }
+            return cl;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public Usuario getUsuario(String matricula){
+        String sql = String.format("SELECT * FROM usuario WHERE matricula = %s;", matricula);
+        Usuario user = null;
+        try{
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                String mat = rs.getString(1);
+                String senha = rs.getString(2);
+                String nome = rs.getString(3);
+                String cargo = rs.getString(4);
+                String situacao = rs.getString(5);
+
+                if (Situacao.ATIVO.verificaSituacao(situacao)) {
+                    user = Usuario.criarUsuario(mat, senha, nome, cargo, Situacao.ATIVO);
+                }
+            }
+            return user;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<TabelaCliente> getTabelaCliente(){
+        ArrayList<TabelaCliente> list = new ArrayList<>();
+        String sql = "SELECT empresa, responsavel FROM cliente;";
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                String emp = rs.getString(1);
+                String resp = rs.getString(2);
+
+                TabelaCliente tb = new TabelaCliente(emp,resp);
+                list.add(tb);
+            }
+            return list;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<TabelaEquipe> getTabelaEquipe(){
+        ArrayList<TabelaEquipe> list = new ArrayList<>();
+        String sql = "SELECT * FROM equipe;";
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                int id = rs.getInt(1);
+                String nome = rs.getString(2);
+
+                TabelaEquipe tb = new TabelaEquipe(id,nome);
+                list.add(tb);
+            }
+            return list;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<TabelaUsuario> getTabelaUsuario(){
+        ArrayList<TabelaUsuario> list = new ArrayList<>();
+        String sql = "SELECT matricula, nome FROM usuario;";
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                String matr = rs.getString(1);
+                String nome = rs.getString(2);
+
+                TabelaUsuario tb = new TabelaUsuario(matr,nome);
+                list.add(tb);
+            }
+            return list;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     public String getColuna(String tabela, String coluna, String campoFiltro, String valorFiltro){
         String id = "";
         String sql = "SELECT " + coluna + " FROM " + tabela + " WHERE "+ campoFiltro + " = '" + valorFiltro +"';" ;
@@ -94,7 +190,7 @@ public class ConnectionFactory {
                 String nome = rs.getString(3);
                 String cargo = rs.getString(4);
 
-                Usuario.criarInstancia(mat, senha, nome, cargo, Situacao.Ativo);
+                Usuario.criarInstancia(mat, senha, nome, cargo, Situacao.ATIVO);
                 return true;
             }
             return false;
@@ -194,7 +290,7 @@ public class ConnectionFactory {
                 sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ id +"';";
                 break;
             case "usuario-matriculas":
-                sql = "SELECT matricula FROM usuario";
+                sql = "SELECT matricula,nome FROM usuario";
                 break;
             case "cliente-matriculas":
                 sql = "SELECT empresa FROM cliente";
@@ -216,7 +312,6 @@ public class ConnectionFactory {
             }
         return lista;
     }
-
     public ArrayList<String> getUserOrderByEquipe(String nomeEquipe){
         ArrayList<String> list = new ArrayList<>();
 
@@ -230,7 +325,6 @@ public class ConnectionFactory {
 
         return list;
     }
-
     private ResultSet run(String sql){
         try {
             PreparedStatement pr = conn.prepareStatement(sql);

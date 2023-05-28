@@ -158,7 +158,7 @@ public class Admin implements Initializable {
             }
         });
         String matricula = gerarMatricula();
-        conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.Ativo);
+        conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.ATIVO);
         labelCadastroUsuarioRealizado.setVisible(true);
         labelMatricula.setText(matricula);
     }

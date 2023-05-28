@@ -7,6 +7,12 @@ public class TabelaUsuario {
     private String nome;
     private CheckBox selecione;
 
+    public TabelaUsuario(String matricula, String nome) {
+        this.matricula = matricula;
+        this.nome = nome;
+        this.selecione = new CheckBox();
+    }
+
     public String getMatricula() {
         return matricula;
     }
