@@ -204,7 +204,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAreaCadastro2" layoutY="257.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="#00a5d9">
+                  <Button fx:id="btnAreaCadastro2" onAction="#mudarParaCadastra" layoutY="257.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="#00a5d9">
                      <font>
                         <Font size="24.0" />
                      </font>
