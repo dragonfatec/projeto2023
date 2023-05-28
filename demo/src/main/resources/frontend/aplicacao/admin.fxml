@@ -100,7 +100,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorpaneCadastroEquipe" disable="true" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false">
+                  <AnchorPane fx:id="anchorpaneCadastroEquipe" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false" >
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutY="36.0" prefHeight="40.0" prefWidth="909.0" text="Cadastro de Equipe" textAlignment="CENTER">
                            <font>
@@ -139,7 +139,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorpaneCadastroCliente" disable="true" layoutX="369.0" layoutY="110.0" prefHeight="611.0" prefWidth="909.0" visible="false">
+                  <AnchorPane fx:id="anchorpaneCadastroCliente" layoutX="369.0" layoutY="110.0" prefHeight="611.0" prefWidth="909.0" visible="false">
                      <children>
                         <Label fx:id="labelCadastroClienteRealizado" alignment="CENTER" contentDisplay="CENTER" layoutY="553.0" prefHeight="27.0" prefWidth="909.0" text="Cadastro realizado!" textAlignment="CENTER" textFill="#007c23">
                            <font>

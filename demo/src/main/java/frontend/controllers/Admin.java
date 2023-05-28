@@ -180,6 +180,7 @@ public class Admin implements Initializable {
         anchorpaneAreaCadastro.setVisible(true);
     }
 
+
     public void mudarParaEdita(){
         ultimaTelaUsada.setVisible(false);
         anchorpaneAreaCadastro.setVisible(false);
