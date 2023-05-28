@@ -204,7 +204,6 @@ public class ConnectionFactory {
                 break;
         }
 
-
         ArrayList<String> lista = new ArrayList<>();
 
             try {
@@ -217,6 +216,7 @@ public class ConnectionFactory {
             }
         return lista;
     }
+
     public ArrayList<String> getUserOrderByEquipe(String nomeEquipe){
         ArrayList<String> list = new ArrayList<>();
 
@@ -230,6 +230,7 @@ public class ConnectionFactory {
 
         return list;
     }
+
     private ResultSet run(String sql){
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
