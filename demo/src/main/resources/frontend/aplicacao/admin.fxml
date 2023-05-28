@@ -184,7 +184,7 @@
                         <TextField fx:id="campoProjetoCliente" layoutX="516.0" layoutY="430.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome do projeto..." />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnAreaEdicao" layoutX="1.0" layoutY="355.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
+                  <Button fx:id="btnAreaEdicao" onAction="#mudarParaEdita" layoutX="1.0" layoutY="355.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
