@@ -165,9 +165,12 @@ public class Admin implements Initializable {
     }
 
     public void cadastrarEquipe(MouseEvent mouseEvent) {
+        conn.cadastrarEquipe(campoNomeEquipe.getText());
     }
 
     public void cadastrarCliente(MouseEvent mouseEvent) {
+        conn.cadastrarCliente(campoEmpresaCliente.getText(), campoResponsavelCliente.getText(), campoEmailCliente.getText(), campoTelefoneCliente.getText(), campoProjetoCliente.getText());
+
     }
 
     public void mudarParaCadastra(){
@@ -376,5 +379,6 @@ public class Admin implements Initializable {
             case "cadastra" -> mudarParaCadastra();
             case "edita" -> mudarParaEdita();
         }
+
     }
 }
