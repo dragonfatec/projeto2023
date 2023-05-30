@@ -25,8 +25,8 @@ public class ConnectionFactory {
         }
     }
     public void cadastrarUsuario(String matricula, String senha, String nome, TiposDeUsuario cargo, Situacao situacao) {
-
-            String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, situacao) VALUES ('%s','%s','%s','%s','%s');",matricula, senha, nome,cargo,situacao);
+            String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, situacao) VALUES ('%s','%s','%s','%s','%s');" +
+                                       "INSERT INTO equipe_usuario (id_equipe, matricula) VALUES (3,%s); ",matricula, senha, nome,cargo,situacao, matricula);
             runAtualizar(sql);
     }
     public void apontarHoras(String matricula, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
@@ -40,6 +40,14 @@ public class ConnectionFactory {
     public void cadastrarCliente(String empresa, String responsavel, String email, String telefone, String projeto){
         String sql = String.format("INSERT INTO cliente (empresa, responsavel, email, telefone, projeto) VALUES ('%s','%s','%s','%s','%s');", empresa,responsavel, email, telefone, projeto);
         runSet(sql);
+    }
+    public void cadastrarEquipeUsuario(String matricula, Integer id_equipe){
+        String sql = String.format("INSERT INTO equipe_usuario (id_equipe, matricula) VALUES (%s,%s);", id_equipe, matricula);
+        run(sql);
+    }
+    public void cadastrarEquipeCliente(Integer id_equipe, Integer id_cliente){
+        String sql = String.format("INSERT INTO equipe_cliente (id_equipe, id_cliente) VALUES (%s,%s)",id_equipe, id_cliente);
+        run(sql);
     }
     public void atualizarStatus(String nomeTabela, String nomeCampo, String novoValor, String condicao, boolean novoValorEhNumero){
         /*
@@ -107,6 +115,34 @@ public class ConnectionFactory {
                 }
             }
             return user;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public Integer getIdEquipe(String nomeEquipe){
+        String sql = String.format("SELECT id_equipe FROM equipe WHERE nome_equipe = %s", nomeEquipe);
+        Integer id = 0;
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                id = rs.getInt(1);
+            }
+            return id;
+        }catch (SQLException e){
+            throw new RuntimeException();
+        }
+    }
+    public Integer getIdCliente(String empresa){
+        String sql = String.format("SELECT id_cliente FROM cliente WHERE empresa = %s", empresa);
+        Integer id = 0;
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                id = rs.getInt(1);
+            }
+            return id;
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
@@ -327,13 +363,12 @@ public class ConnectionFactory {
     public ArrayList<String> getUserOrderByEquipe(String nomeEquipe){
         ArrayList<String> list = new ArrayList<>();
 
-        String sql = String.format("SELECT usuario.matricula, " +
-                                   "usuario.nome " +
-                                   "FROM usuario " +
-                                   "LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula " +
-                                   "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
-                                   "WHERE nome_equipe != '' " +
-                                   "ORDER BY equipe.nome_equipe LIKE '%s' DESC", nomeEquipe);
+        String sql = String.format("SELECT CASE WHEN equipe.nome_equipe IS NULL THEN 'SEM EQUIPE' ELSE equipe.nome_equipe END, " +
+                                    "usuario.nome " +
+                                    "FROM equipe_usuario " +
+                                    "FULL JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
+                                    "FULL JOIN usuario ON usuario.matricula = equipe_usuario.matricula " +
+                                    "ORDER BY nome_equipe LIKE '%s' DESC", nomeEquipe);
 
         return list;
     }
