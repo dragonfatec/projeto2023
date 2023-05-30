@@ -257,7 +257,7 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaSenhaUsuario" editable="false" layoutX="245.0" layoutY="205.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaSenhaUsuario" layoutX="245.0" layoutY="205.0" prefHeight="40.0" prefWidth="420.0" />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="290.0" prefHeight="34.0" prefWidth="88.0" text="Cargo">
                            <font>
                               <Font size="23.0" />
@@ -284,7 +284,7 @@
                            </font>
                         </Label>
 <!--                        <Button fx:id="btnEditarNomeUsuario" layoutX="677.0" layoutY="123.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />-->
-                        <Button fx:id="btnEditarSenhaUsuario" onAction="#mudarSenha" layoutX="677.0" layoutY="204.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="Mudar" />
+<!--                        <Button fx:id="btnEditarSenhaUsuario" onAction="#mudarSenha" layoutX="677.0" layoutY="204.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="Mudar" />-->
                         <Button fx:id="btnSalvarUsuario" onAction="#salvarEditaUsuario" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="360.0" prefHeight="34.0" prefWidth="155.0" text="Usuário Ativo:">
                            <font>

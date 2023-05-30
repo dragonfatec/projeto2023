@@ -204,7 +204,7 @@ public class Admin implements Initializable {
     }
 
     public void mudarDeTela(){
-//        campoEscolhaParaEditar.getItems().clear();
+        campoEscolhaParaEditar.setItems(FXCollections.observableArrayList());
         ultimaTelaUsada.setVisible(false);
         String selecionado = campoEscolhaEdicao.getValue().toString().toLowerCase();
         switch (selecionado) {
@@ -221,8 +221,6 @@ public class Admin implements Initializable {
                 ultimaTelaUsada = anchorpaneEditarCliente;
             }
         }
-
-//        campoEscolhaParaEditar.getItems().clear();
         campoEscolhaParaEditar.setItems(FXCollections.observableArrayList(conn.getListaColuna(null, selecionado+"-matriculas")));
     }
 
@@ -243,7 +241,7 @@ public class Admin implements Initializable {
     public void preencherEditaUsuario(){
         Usuario userSelecionado = conn.getUsuario(campoEscolhaParaEditar.getValue().toString().split("-")[0].trim());
         campoEditaNomeUsuario.setText(userSelecionado.getNome());
-        campoEditaSenhaUsuario.setText("**********");
+        campoEditaSenhaUsuario.setText("");
         // selecionar o cargo do usuario
         switch (userSelecionado.getCargo()){
             case Colaborador -> {
@@ -263,8 +261,8 @@ public class Admin implements Initializable {
         conn.atualizarStatus("usuario", "nome", campoEditaNomeUsuario.getText(), "matricula = "+filtro, false);
         conn.atualizarStatus("usuario", "cargo", ((ToggleButton) toggleGroup2.getSelectedToggle()).getText(), "matricula = "+filtro, false);
         conn.atualizarStatus("usuario", "status", checkboxUsuarioAtivo.isSelected() ? "Ativo" : "Inativo", "matricula = "+filtro, false);
-        if (campoEditaSenhaUsuario.getText().equals("2rp")){
-            conn.atualizarStatus("usuario", "senha", Criptografia.criptografar("2rp"), "matricula = "+filtro, false);
+        if (!campoEditaSenhaUsuario.getText().trim().equals("")){
+            conn.atualizarStatus("usuario", "senha", Criptografia.criptografar(campoEditaSenhaUsuario.getText()), "matricula = "+filtro, false);
         }
         Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
@@ -289,7 +287,8 @@ public class Admin implements Initializable {
     }
 
     public void salvarEditarEquipe(){
-//        String id_equipe = conn.getColuna("equipe", "id_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString());
+        int idEquipe = Integer.parseInt(conn.getColuna("equipe", "id_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
+
         for (TabelaUsuario tb : tabelaColaboradoresEditarEquipe.getItems()){
             if(tb.estaSelecionado()){
                 // salvar usando a matricula e o id_equipe
@@ -308,9 +307,11 @@ public class Admin implements Initializable {
             }
         }
 
+        // fazer outro for para o cliente
+
         // apos salvar tudo agora vai atualizar o nome da equipe
         String filtro = "'" + campoEscolhaParaEditar.getValue() + "'";
-        conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText().trim(), "empresa = "+filtro, false);
+        conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText().trim(), "nome_equipe = "+filtro, false);
         Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
 
@@ -328,11 +329,13 @@ public class Admin implements Initializable {
         conn.atualizarStatus("cliente", "responsavel", campoEditaResponsavelCliente.getText(), "empresa = "+filtro, false);
         conn.atualizarStatus("cliente", "email", campoEditaEmailCliente.getText(), "empresa = "+filtro, false);
         conn.atualizarStatus("cliente", "telefone", campoEditaTelefoneCliente.getText(), "empresa = "+filtro, false);
-//        conn.atualizarStatus("cliente", "projeto", campoEditaProjetoCliente.getText(), "empresa = "+filtro, false);
         Alerts.showAlert("Atualizado!", null, "O cliente foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
 
     public void mudarSenha(ActionEvent actionEvent) {
+
+        // Se não estover usando pode apagar
+
         switch (btnEditarSenhaUsuario.getText()){
             case "Mudar senha" -> {
                 campoEditaSenhaUsuario.setText("2rp");
@@ -348,9 +351,6 @@ public class Admin implements Initializable {
 
     /////     Metodo Privados     /////
 
-    public void limpa(){
-        campoEscolhaParaEditar.setValue(null);
-    }
 
     /////     Metodos Override     /////
     @Override
@@ -358,17 +358,12 @@ public class Admin implements Initializable {
         textoNomeUsuario.setText(usuario.getNome());
         String[] listaOpcoes = {"usuario", "cliente", "equipe"};
         campoEscolhaEdicao.getItems().addAll(listaOpcoes);
-
         campoEscolhaCadastro.getItems().addAll(listaOpcoes);
 
         // Iniciando a tabela de Usuario quando for editar a Equipe
-//        ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
-//        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
         colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
         colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
         colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
-//        tabelaColaboradoresEditarEquipe.setItems(tabelasObjetoLista);
-//        tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getHorasUsuario(usuario.getMatricula())));
 
 
         // Iniciando a tabela de Cliente quando for editar a Equipe
