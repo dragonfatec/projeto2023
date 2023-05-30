@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.skin.SplitPaneSkin.Content?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.Admin">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style_admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.Admin">
    <children>
       <AnchorPane fx:id="anchorpaneAdmin" prefHeight="721.0" prefWidth="1280.0">
          <children>
-            <AnchorPane fx:id="anchorpaneAreaCadastro" visible="false" prefHeight="720.0" prefWidth="1280.0">
+            <AnchorPane fx:id="anchorpaneAreaCadastro" prefHeight="720.0" prefWidth="1280.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" layoutX="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
                   <Label fx:id="textoNomeUsuario" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
@@ -35,7 +43,7 @@
                   </Button>
                   <AnchorPane fx:id="anchorpaneEscolhaCadastro" layoutX="369.0" layoutY="1.0" prefHeight="99.0" prefWidth="909.0">
                      <children>
-                        <ChoiceBox fx:id="campoEscolhaCadastro" onAction="#mudarDeTelaCadastro" layoutX="470.0" layoutY="30.0" prefHeight="40.0" prefWidth="217.0" />
+                        <ChoiceBox fx:id="campoEscolhaCadastro" layoutX="470.0" layoutY="30.0" onAction="#mudarDeTelaCadastro" prefHeight="40.0" prefWidth="217.0" />
                         <Label contentDisplay="CENTER" layoutX="150.0" layoutY="33.0" prefHeight="34.0" prefWidth="320.0" text="O que gostaria de cadastrar?">
                            <font>
                               <Font size="23.0" />
@@ -56,7 +64,7 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoNomeUsuario" layoutX="232.0" layoutY="113.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o nome do Colaborador..."/>
+                        <TextField fx:id="campoNomeUsuario" layoutX="232.0" layoutY="113.0" prefHeight="40.0" prefWidth="320.0" promptText="Insira o nome do Colaborador..." />
                         <Label contentDisplay="CENTER" layoutX="232.0" layoutY="187.0" prefHeight="34.0" prefWidth="88.0" text="Senha">
                            <font>
                               <Font size="23.0" />
@@ -70,20 +78,23 @@
                         </Label>
 
                         <fx:define>
-                           <ToggleGroup fx:id="toggleGroup"/>
+                           <ToggleGroup fx:id="toggleGroup" />
                         </fx:define>
 
-                        <RadioButton fx:id="radioColaborador" toggleGroup="$toggleGroup" layoutX="232.0" layoutY="369.0" mnemonicParsing="false" text="Colaborador">
+                        <RadioButton fx:id="radioColaborador" layoutX="232.0" layoutY="369.0" mnemonicParsing="false" text="Colaborador">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioGestor" layoutX="393.0" layoutY="369.0" mnemonicParsing="false" text="Gerente" toggleGroup="$toggleGroup">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioGestor" toggleGroup="$toggleGroup" layoutX="393.0" layoutY="369.0" mnemonicParsing="false" text="Gerente">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton fx:id="radioAdmin" toggleGroup="$toggleGroup" layoutX="508.0" layoutY="369.0" mnemonicParsing="false" text="RH">
+                        <RadioButton fx:id="radioAdmin" layoutX="508.0" layoutY="369.0" mnemonicParsing="false" text="RH" toggleGroup="$toggleGroup">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -100,7 +111,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorpaneCadastroEquipe" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false" >
+                  <AnchorPane fx:id="anchorpaneCadastroEquipe" layoutX="369.0" layoutY="100.0" prefHeight="620.0" prefWidth="909.0" visible="false">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutY="36.0" prefHeight="40.0" prefWidth="909.0" text="Cadastro de Equipe" textAlignment="CENTER">
                            <font>
@@ -184,17 +195,17 @@
                         <TextField fx:id="campoProjetoCliente" layoutX="516.0" layoutY="430.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome do projeto..." />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnAreaEdicao" onAction="#mudarParaEdita" layoutX="1.0" layoutY="355.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
+                  <Button fx:id="btnAreaEdicao" layoutX="1.0" layoutY="355.0" mnemonicParsing="false" onAction="#mudarParaEdita" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchorpaneAreaEdicao" visible="false" prefHeight="720.0" prefWidth="1280.0">
+            <AnchorPane fx:id="anchorpaneAreaEdicao" prefHeight="720.0" prefWidth="1280.0" visible="false">
 
                <fx:define>
-                  <ToggleGroup fx:id="toggleGroup2"/>
+                  <ToggleGroup fx:id="toggleGroup2" />
                </fx:define>
 
                <children>
@@ -209,7 +220,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAreaCadastro2" onAction="#mudarParaCadastra" layoutY="257.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="#00a5d9">
+                  <Button fx:id="btnAreaCadastro2" layoutY="257.0" mnemonicParsing="false" onAction="#mudarParaCadastra" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -226,7 +237,7 @@
                   </Button>
                   <AnchorPane fx:id="anchorpaneEscolhaCadastro1" layoutX="368.0" layoutY="1.0" prefHeight="124.0" prefWidth="428.0">
                      <children>
-                        <ChoiceBox fx:id="campoEscolhaEdicao" onAction="#mudarDeTela" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
+                        <ChoiceBox fx:id="campoEscolhaEdicao" layoutX="107.0" layoutY="72.0" onAction="#mudarDeTela" prefHeight="40.0" prefWidth="217.0" />
                         <Label contentDisplay="CENTER" layoutX="85.0" layoutY="28.0" prefHeight="34.0" prefWidth="272.0" text="O que gostaria de editar?">
                            <font>
                               <Font size="23.0" />
@@ -236,7 +247,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="anchorpaneEscolhaCadastro11" layoutX="796.0" layoutY="1.0" prefHeight="124.0" prefWidth="484.0">
                      <children>
-                        <ChoiceBox fx:id="campoEscolhaParaEditar" onAction="#preencherDados" layoutX="107.0" layoutY="72.0" prefHeight="40.0" prefWidth="217.0" />
+                        <ChoiceBox fx:id="campoEscolhaParaEditar" layoutX="107.0" layoutY="72.0" onAction="#preencherDados" prefHeight="40.0" prefWidth="217.0" />
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="28.0" prefHeight="34.0" prefWidth="310.0" text="Escolha quem será editado:">
                            <font>
                               <Font size="23.0" />
@@ -263,17 +274,20 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="radioColaboradorEdita" toggleGroup="$toggleGroup2" layoutX="245.0" layoutY="294.0" mnemonicParsing="false" text="Colaborador">
+                        <RadioButton fx:id="radioColaboradorEdita" layoutX="245.0" layoutY="294.0" mnemonicParsing="false" text="Colaborador">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleGroup2" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioGestorEdita" layoutX="406.0" layoutY="294.0" mnemonicParsing="false" text="Gerente" toggleGroup="$toggleGroup2">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="radioGestorEdita" toggleGroup="$toggleGroup2"  layoutX="406.0" layoutY="294.0" mnemonicParsing="false" text="Gerente">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton fx:id="radioAdminEdita" toggleGroup="$toggleGroup2" layoutX="521.0" layoutY="294.0" mnemonicParsing="false" text="RH">
+                        <RadioButton fx:id="radioAdminEdita" layoutX="521.0" layoutY="294.0" mnemonicParsing="false" text="RH" toggleGroup="$toggleGroup2">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -285,7 +299,7 @@
                         </Label>
 <!--                        <Button fx:id="btnEditarNomeUsuario" layoutX="677.0" layoutY="123.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />-->
 <!--                        <Button fx:id="btnEditarSenhaUsuario" onAction="#mudarSenha" layoutX="677.0" layoutY="204.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="Mudar" />-->
-                        <Button fx:id="btnSalvarUsuario" onAction="#salvarEditaUsuario" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
+                        <Button fx:id="btnSalvarUsuario" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" onAction="#salvarEditaUsuario" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="360.0" prefHeight="34.0" prefWidth="155.0" text="Usuário Ativo:">
                            <font>
                               <Font size="23.0" />
@@ -312,7 +326,7 @@
                            </font>
                         </Label>
 <!--                        <Button fx:id="btnEditarNomeEquipe" layoutX="665.0" layoutY="84.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" text="EDITAR" />-->
-                        <Button fx:id="btnSalvarEquipe" onAction="#salvarEditarEquipe" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
+                        <Button fx:id="btnSalvarEquipe" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" onAction="#salvarEditarEquipe" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
                         <TableView fx:id="tabelaColaboradoresEditarEquipe" layoutX="166.0" layoutY="224.0" prefHeight="237.0" prefWidth="570.0">
                            <columns>
                               <TableColumn fx:id="colunaMatriculaEditarEquipe" prefWidth="123.0" text="Matrícula" />
@@ -354,7 +368,7 @@
                            </font>
                         </Label>
 <!--                        <Button fx:id="btnEditarResponsavelCliente" layoutX="677.0" layoutY="173.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />-->
-                        <Button fx:id="btnSalvarCliente" onAction="#salvarEditaCliente" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
+                        <Button fx:id="btnSalvarCliente" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" onAction="#salvarEditaCliente" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
                         <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="148.0" layoutY="247.0" prefHeight="34.0" prefWidth="85.0" text="E-mail">
                            <font>
                               <Font size="23.0" />
