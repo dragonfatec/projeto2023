@@ -12,19 +12,18 @@ public class TabelaUsuario {
         this.nome = nome;
         this.selecione = new CheckBox();
     }
-
     public String getMatricula() {
         return matricula;
     }
-
     public String getNome() {
         return nome;
     }
-
+    public CheckBox getSelecione(){
+        return selecione;
+    }
     public boolean estaSelecionado() {
         return selecione.isSelected();
     }
-
     public void selecionarUsuario() {
         this.selecione.setSelected(true);
     }

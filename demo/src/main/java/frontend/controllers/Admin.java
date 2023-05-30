@@ -204,6 +204,7 @@ public class Admin implements Initializable {
     }
 
     public void mudarDeTela(){
+//        campoEscolhaParaEditar.getItems().clear();
         ultimaTelaUsada.setVisible(false);
         String selecionado = campoEscolhaEdicao.getValue().toString().toLowerCase();
         switch (selecionado) {
@@ -220,8 +221,9 @@ public class Admin implements Initializable {
                 ultimaTelaUsada = anchorpaneEditarCliente;
             }
         }
-        campoEscolhaParaEditar.getItems().clear();
-        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, selecionado+"-matriculas"));
+
+//        campoEscolhaParaEditar.getItems().clear();
+        campoEscolhaParaEditar.setItems(FXCollections.observableArrayList(conn.getListaColuna(null, selecionado+"-matriculas")));
     }
 
     public void preencherDados(){
@@ -268,16 +270,16 @@ public class Admin implements Initializable {
     }
 
     public void preencherEditaEquipe(){
-//        campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
+        campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
         // Para colocar tudo na tabela
 
-        String nomeEquipe = campoEscolhaParaEditar.getItems().toString();
+        String nomeEquipe = campoEscolhaParaEditar.getValue().toString();
 
         // Tabela de Usuario
         colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
         colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
         colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
-        tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario()));
+        tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
 
         // Tabela de Cliente
 //        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
@@ -346,7 +348,9 @@ public class Admin implements Initializable {
 
     /////     Metodo Privados     /////
 
-
+    public void limpa(){
+        campoEscolhaParaEditar.setValue(null);
+    }
 
     /////     Metodos Override     /////
     @Override
@@ -354,6 +358,7 @@ public class Admin implements Initializable {
         textoNomeUsuario.setText(usuario.getNome());
         String[] listaOpcoes = {"usuario", "cliente", "equipe"};
         campoEscolhaEdicao.getItems().addAll(listaOpcoes);
+
         campoEscolhaCadastro.getItems().addAll(listaOpcoes);
 
         // Iniciando a tabela de Usuario quando for editar a Equipe

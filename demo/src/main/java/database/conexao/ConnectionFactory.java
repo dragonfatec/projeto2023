@@ -90,7 +90,7 @@ public class ConnectionFactory {
         }
     }
     public Usuario getUsuario(String matricula){
-        String sql = String.format("SELECT * FROM usuario WHERE matricula = %s;", matricula);
+        String sql = String.format("SELECT * FROM usuario WHERE matricula = '%s';", matricula);
         Usuario user = null;
         try{
             PreparedStatement pr = conn.prepareStatement(sql);
@@ -147,9 +147,15 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<TabelaUsuario> getTabelaUsuario(){
+    public ArrayList<TabelaUsuario> getTabelaUsuario(String nomeEquipe){
         ArrayList<TabelaUsuario> list = new ArrayList<>();
-        String sql = "SELECT matricula, nome FROM usuario;";
+        String sql =String.format("SELECT usuario.matricula, " +
+                                    "usuario.nome, equipe.nome_equipe " +
+                                    "FROM usuario " +
+                                    "LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula " +
+                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
+//                                    "WHERE nome_equipe != '' " +
+                                    "ORDER BY equipe.nome_equipe LIKE '%s' DESC", nomeEquipe.toUpperCase());
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
@@ -158,6 +164,9 @@ public class ConnectionFactory {
                 String nome = rs.getString(2);
 
                 TabelaUsuario tb = new TabelaUsuario(matr,nome);
+                if (nomeEquipe.toUpperCase().equals(rs.getString(3))){
+                    tb.selecionarUsuario();
+                }
                 list.add(tb);
             }
             return list;
@@ -318,13 +327,13 @@ public class ConnectionFactory {
     public ArrayList<String> getUserOrderByEquipe(String nomeEquipe){
         ArrayList<String> list = new ArrayList<>();
 
-//        String sql = String.format("SELECT usuario.matricula, " +
-//                                   "usuario.nome " +
-//                                   "FROM usuario " +
-//                                   "LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula " +
-//                                   "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
-//                                   "WHERE nome_equipe != '' " +
-//                                   "ORDER BY equipe.nome_equipe LIKE '%s' DESC", nomeEquipe);
+        String sql = String.format("SELECT usuario.matricula, " +
+                                   "usuario.nome " +
+                                   "FROM usuario " +
+                                   "LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula " +
+                                   "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
+                                   "WHERE nome_equipe != '' " +
+                                   "ORDER BY equipe.nome_equipe LIKE '%s' DESC", nomeEquipe);
 
         return list;
     }

@@ -13,11 +13,11 @@ DROP TABLE equipe_cliente;
 DROP TABLE equipe_usuario;
 
 INSERT INTO usuario (matricula, senha, nome, cargo, situacao)  
-VALUES ('123456', 'CAF1A3DFB505FFED0D024130F58C5CFA', 'Lucas Oliveira', 'RH', 'ATIVO');
+VALUES ('123456', 'CAF1A3DFB505FFED0D024130F58C5CFA', 'Lucas Oliveira', 'RH', 'Ativo');
 INSERT INTO usuario (matricula, senha, nome, cargo, situacao)  
-VALUES ('12345', 'CAF1A3DFB505FFED0D024130F58C5CFA', 'Lukas Fernando', 'Gestor', 'ATIVO');
+VALUES ('12345', 'CAF1A3DFB505FFED0D024130F58C5CFA', 'Lukas Fernando', 'Gestor', 'Ativo');
 INSERT INTO usuario (matricula, senha, nome, cargo, situacao)  
-VALUES ('1234', 'CAF1A3DFB505FFED0D024130F58C5CFA', 'Pablo Cunha', 'Colaborador', 'ATIVO');
+VALUES ('1234', 'CAF1A3DFB505FFED0D024130F58C5CFA', 'Pablo Cunha', 'Colaborador', 'Ativo');
 INSERT INTO equipe (nome_equipe)
 VALUES ('ALPHA');
 INSERT INTO cliente (empresa, responsavel, email, telefone, projeto)
@@ -35,6 +35,9 @@ VALUES ('123456', '2023/05/21 08:00', '2023/05/21 15:00', 'Trabalhando', 1, 'Sob
 
 UPDATE equipe_usuario SET id_equipe = 2 WHERE matricula = '123456';
 UPDATE hora SET justificativa_status = 'Não autorizado' WHERE matricula = '123456';
+UPDATE usuario SET situacao = 'Ativo' WHERE matricula = '123456';
+
+
 
 -- QUERY
 
@@ -45,3 +48,7 @@ LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula
 LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe
 WHERE nome_equipe != ''
 ORDER BY equipe.nome_equipe LIKE 'DRAGONS' DESC
+
+SELECT matricula, nome FROM usuario 
+LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usario.matricula
+LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe
