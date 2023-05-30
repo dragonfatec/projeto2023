@@ -365,7 +365,6 @@ public class Admin implements Initializable {
         colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
         colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
 
-
         // Iniciando a tabela de Cliente quando for editar a Equipe
 ////        ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
 ////        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
