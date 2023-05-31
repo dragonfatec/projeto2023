@@ -221,7 +221,10 @@ public class Admin implements Initializable {
                 ultimaTelaUsada = anchorpaneEditarCliente;
             }
         }
-        campoEscolhaParaEditar.setItems(FXCollections.observableArrayList(conn.getListaColuna(null, selecionado+"-matriculas")));
+//        ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
+//        tabelasObjetoLista.add;
+        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, selecionado+"-matriculas"));
+//        campoEscolhaParaEditar.setItems(FXCollections.observableArrayList(conn.getListaColuna(null, selecionado+"-matriculas")));
     }
 
     public void preencherDados(){
@@ -239,21 +242,26 @@ public class Admin implements Initializable {
     }
 
     public void preencherEditaUsuario(){
-        Usuario userSelecionado = conn.getUsuario(campoEscolhaParaEditar.getValue().toString().split("-")[0].trim());
-        campoEditaNomeUsuario.setText(userSelecionado.getNome());
-        campoEditaSenhaUsuario.setText("");
-        // selecionar o cargo do usuario
-        switch (userSelecionado.getCargo()){
-            case Colaborador -> {
-                radioColaboradorEdita.setSelected(true);
+        try {
+            Usuario userSelecionado = conn.getUsuario(campoEscolhaParaEditar.getValue().toString().split("-")[0].trim());
+            campoEditaNomeUsuario.setText(userSelecionado.getNome());
+            campoEditaSenhaUsuario.setText("");
+            // selecionar o cargo do usuario
+            switch (userSelecionado.getCargo()){
+                case Colaborador -> {
+                    radioColaboradorEdita.setSelected(true);
+                }
+                case Gerente -> {
+                    radioGestorEdita.setSelected(true);
+                }
+                case RH -> {
+                    radioAdminEdita.setSelected(true);
+                }
             }
-            case Gerente -> {
-                radioGestorEdita.setSelected(true);
-            }
-            case RH -> {
-                radioAdminEdita.setSelected(true);
-            }
+        }catch (Exception ignored){
+
         }
+
     }
 
     public void salvarEditaUsuario(){
@@ -268,16 +276,20 @@ public class Admin implements Initializable {
     }
 
     public void preencherEditaEquipe(){
-        campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
-        // Para colocar tudo na tabela
+        try {
+            campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
+            // Para colocar tudo na tabela
 
-        String nomeEquipe = campoEscolhaParaEditar.getValue().toString();
+            String nomeEquipe = campoEscolhaParaEditar.getValue().toString();
 
-        // Tabela de Usuario
-        colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
-        colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
-        colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
-        tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
+            // Tabela de Usuario
+            colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
+            colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
+            colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
+            tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
+        }catch (Exception ignored){
+
+        }
 
         // Tabela de Cliente
 //        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
@@ -316,11 +328,16 @@ public class Admin implements Initializable {
     }
 
     public void preencherEditaCliente(){
-        Cliente cliente = conn.getCliente(campoEscolhaParaEditar.getValue().toString().trim());
-        campoEditaEmpresaCliente.setText(cliente.getEmpresa());
-        campoEditaResponsavelCliente.setText(cliente.getResponsavel());
-        campoEditaEmailCliente.setText(cliente.getEmail());
-        campoEditaTelefoneCliente.setText(cliente.getTelefone());
+        try {
+            Cliente cliente = conn.getCliente(campoEscolhaParaEditar.getValue().toString().trim());
+            campoEditaEmpresaCliente.setText(cliente.getEmpresa());
+            campoEditaResponsavelCliente.setText(cliente.getResponsavel());
+            campoEditaEmailCliente.setText(cliente.getEmail());
+            campoEditaTelefoneCliente.setText(cliente.getTelefone());
+        }catch (Exception ignored){
+
+        }
+
     }
 
     public void salvarEditaCliente(){
@@ -359,6 +376,7 @@ public class Admin implements Initializable {
         String[] listaOpcoes = {"usuario", "cliente", "equipe"};
         campoEscolhaEdicao.getItems().addAll(listaOpcoes);
         campoEscolhaCadastro.getItems().addAll(listaOpcoes);
+        campoEscolhaParaEditar.getItems().addAll(listaOpcoes);
 
         // Iniciando a tabela de Usuario quando for editar a Equipe
         colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
