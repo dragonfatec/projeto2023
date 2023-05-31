@@ -77,10 +77,6 @@
                            </font>
                         </Label>
 
-                        <fx:define>
-                           <ToggleGroup fx:id="toggleGroup" />
-                        </fx:define>
-
                         <RadioButton fx:id="radioColaborador" layoutX="232.0" layoutY="369.0" mnemonicParsing="false" text="Colaborador">
                            <font>
                               <Font size="18.0" />
