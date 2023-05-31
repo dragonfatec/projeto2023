@@ -278,9 +278,9 @@ public class Admin implements Initializable {
             String nomeEquipe = campoEscolhaParaEditar.getValue().toString();
 
             // Tabela de Usuario
-            colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
-            colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
-            colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
+//            colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
+//            colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
+//            colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
             tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
 
             // Tabela de Cliente
@@ -371,6 +371,5 @@ public class Admin implements Initializable {
             case "cadastra" -> mudarParaCadastra();
             case "edita" -> mudarParaEdita();
         }
-
     }
 }
