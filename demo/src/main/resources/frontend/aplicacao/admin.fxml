@@ -124,31 +124,26 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label contentDisplay="CENTER" layoutX="281.0" layoutY="90.0" prefHeight="34.0" prefWidth="88.0" text="Nome">
+                        <Label contentDisplay="CENTER" layoutX="202.0" layoutY="100.0" prefHeight="34.0" prefWidth="88.0" text="Nome">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoNomeEquipe" layoutX="279.0" layoutY="134.0" prefHeight="40.0" prefWidth="357.0" promptText="Insira o nome da Equipe..." />
-                        <TableView fx:id="tabelaColaboradoresEquipe" layoutX="51.0" layoutY="248.0" prefHeight="237.0" prefWidth="406.0">
-                           <columns>
-                              <TableColumn fx:id="colunaMatriculaEquipe" prefWidth="106.0" text="Matrícula" />
-                              <TableColumn fx:id="colunaNomeEquipe" prefWidth="227.0" text="Nome" />
-                              <TableColumn fx:id="colunaSelectEquipe" prefWidth="72.0" text="Select" />
-                           </columns>
-                        </TableView>
-                        <Label contentDisplay="CENTER" layoutX="52.0" layoutY="204.0" prefHeight="34.0" prefWidth="171.0" text="Colaboradores:">
+                        <TextField fx:id="campoNomeEquipe" layoutX="202.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome da Equipe..." />
+                        <Label contentDisplay="CENTER" layoutX="516.0" layoutY="99.0" prefHeight="34.0" prefWidth="88.0" text="Cliente">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tabelaClientesEquipe" layoutX="532.0" layoutY="248.0" prefHeight="237.0" prefWidth="320.0">
+                        <ChoiceBox fx:id="campoClienteEquipe" layoutX="516.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TableView fx:id="tabelaColaboradoresEquipe" layoutX="201.0" layoutY="248.0" prefHeight="237.0" prefWidth="517.0">
                            <columns>
-                              <TableColumn fx:id="colunaEmpresaEquipe" prefWidth="260.0" text="Empresa" />
-                              <TableColumn fx:id="colunaSelectClientesDaEquipe" prefWidth="59.0" text="Select" />
+                              <TableColumn fx:id="colunaMatriculaEquipe" prefWidth="120.0" text="Matrícula" />
+                              <TableColumn fx:id="colunaNomeEquipe" prefWidth="286.0" text="Nome" />
+                              <TableColumn fx:id="colunaSelectEquipe" prefWidth="109.0" text="Select" />
                            </columns>
                         </TableView>
-                        <Label contentDisplay="CENTER" layoutX="533.0" layoutY="204.0" prefHeight="34.0" prefWidth="171.0" text="Clientes:">
+                        <Label contentDisplay="CENTER" layoutX="202.0" layoutY="204.0" prefHeight="34.0" prefWidth="171.0" text="Colaboradores:">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -215,11 +210,11 @@
 
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
-                  <Label fx:id="textoNomeUsuario2" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
+<!--                  <Label fx:id="textoNomeUsuario2" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">-->
+<!--                     <font>-->
+<!--                        <Font name="System Bold" size="20.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
                   <Label alignment="CENTER" layoutY="84.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -235,7 +230,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAprovaHora2" layoutY="443.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
+                  <Button fx:id="btnAprovaHora2" layoutY="443.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="#00a5d9">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -273,7 +268,7 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaSenhaUsuario" layoutX="245.0" layoutY="205.0" prefHeight="40.0" prefWidth="420.0" promptText="Digite a nova senha..." />
+                        <TextField fx:id="campoEditaSenhaUsuario" layoutX="245.0" layoutY="205.0" prefHeight="40.0" prefWidth="420.0" />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="290.0" prefHeight="34.0" prefWidth="88.0" text="Cargo">
                            <font>
                               <Font size="23.0" />
@@ -332,29 +327,24 @@
                         </Label>
 <!--                        <Button fx:id="btnEditarNomeEquipe" layoutX="665.0" layoutY="84.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" text="EDITAR" />-->
                         <Button fx:id="btnSalvarEquipe" layoutX="400.0" layoutY="493.0" mnemonicParsing="false" onAction="#salvarEditarEquipe" prefHeight="38.0" prefWidth="109.0" text="SALVAR" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="152.0" prefHeight="34.0" prefWidth="210.0" text="Atualizar Colaboradores:">
+                        <TableView fx:id="tabelaColaboradoresEditarEquipe" layoutX="166.0" layoutY="224.0" prefHeight="237.0" prefWidth="570.0">
+                           <columns>
+                              <TableColumn fx:id="colunaMatriculaEditarEquipe" prefWidth="123.0" text="Matrícula" />
+                              <TableColumn fx:id="colunaNomeEditarEquipe" prefWidth="361.0" text="Nome" />
+                              <TableColumn fx:id="colunaSelectEditarEquipe" prefWidth="84.0" text="Select" />
+                           </columns>
+                        </TableView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="182.0" prefHeight="34.0" prefWidth="909.0" text="Atualizar Colaboradores:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="525.0" layoutY="152.0" prefHeight="34.0" prefWidth="163.0" text="Atualizar Clientes:">
+                        <Label contentDisplay="CENTER" layoutX="171.0" layoutY="130.0" prefHeight="34.0" prefWidth="75.0" text="Cliente">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tabelaColaboradoresEditarEquipe" layoutX="53.0" layoutY="198.0" prefHeight="237.0" prefWidth="406.0">
-                           <columns>
-                              <TableColumn fx:id="colunaMatriculaEditarEquipe" prefWidth="106.0" text="Matrícula" />
-                              <TableColumn fx:id="colunaNomeEditarEquipe" prefWidth="227.0" text="Nome" />
-                              <TableColumn fx:id="colunaSelectEditarEquipe" prefWidth="72.0" text="Select" />
-                           </columns>
-                        </TableView>
-                        <TableView fx:id="tabelaClientesEditarEquipe" layoutX="535.0" layoutY="198.0" prefHeight="237.0" prefWidth="320.0">
-                           <columns>
-                              <TableColumn fx:id="colunaEmpresaEditarEquipe" prefWidth="254.0" text="Empresa" />
-                              <TableColumn fx:id="colunaSelectClientesEditarEquipe" prefWidth="65.0" text="Select" />
-                           </columns>
-                        </TableView>
+                        <ChoiceBox layoutX="245.0" layoutY="133.0" prefHeight="30.0" prefWidth="163.0" />
 <!--                        <Button fx:id="btnEditarClienteEquipe" layoutX="424.0" layoutY="133.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="EDITAR" />-->
                      </children>
                   </AnchorPane>

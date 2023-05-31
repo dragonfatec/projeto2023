@@ -166,11 +166,12 @@ public class Admin implements Initializable {
 
     public void cadastrarEquipe(MouseEvent mouseEvent) {
         conn.cadastrarEquipe(campoNomeEquipe.getText());
+        labelCadastroEquipeRealizado.setVisible(true);
     }
 
     public void cadastrarCliente(MouseEvent mouseEvent) {
         conn.cadastrarCliente(campoEmpresaCliente.getText(), campoResponsavelCliente.getText(), campoEmailCliente.getText(), campoTelefoneCliente.getText(), campoProjetoCliente.getText());
-
+        labelCadastroClienteRealizado.setVisible(true);
     }
 
     public void mudarParaCadastra(){
@@ -221,9 +222,7 @@ public class Admin implements Initializable {
                 ultimaTelaUsada = anchorpaneEditarCliente;
             }
         }
-
-        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, selecionado+"-matriculas"));
-//        campoEscolhaParaEditar.setItems(FXCollections.observableArrayList(conn.getListaColuna(null, selecionado+"-matriculas")));
+        campoEscolhaParaEditar.setItems(FXCollections.observableArrayList(conn.getListaColuna(null, selecionado+"-matriculas")));
     }
 
     public void preencherDados(){
@@ -241,23 +240,21 @@ public class Admin implements Initializable {
     }
 
     public void preencherEditaUsuario(){
-        try {
-            Usuario userSelecionado = conn.getUsuario(campoEscolhaParaEditar.getValue().toString().split("-")[0].trim());
-            campoEditaNomeUsuario.setText(userSelecionado.getNome());
-            campoEditaSenhaUsuario.setText("");
-            // selecionar o cargo do usuario
-            switch (userSelecionado.getCargo()){
-                case Colaborador -> {
-                    radioColaboradorEdita.setSelected(true);
-                }
-                case Gerente -> {
-                    radioGestorEdita.setSelected(true);
-                }
-                case RH -> {
-                    radioAdminEdita.setSelected(true);
-                }
+        Usuario userSelecionado = conn.getUsuario(campoEscolhaParaEditar.getValue().toString().split("-")[0].trim());
+        campoEditaNomeUsuario.setText(userSelecionado.getNome());
+        campoEditaSenhaUsuario.setText("");
+        // selecionar o cargo do usuario
+        switch (userSelecionado.getCargo()){
+            case Colaborador -> {
+                radioColaboradorEdita.setSelected(true);
             }
-        }catch (Exception ignored){}
+            case Gerente -> {
+                radioGestorEdita.setSelected(true);
+            }
+            case RH -> {
+                radioAdminEdita.setSelected(true);
+            }
+        }
     }
 
     public void salvarEditaUsuario(){
@@ -272,64 +269,59 @@ public class Admin implements Initializable {
     }
 
     public void preencherEditaEquipe(){
-        try {
-            campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
+        campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
+        // Para colocar tudo na tabela
 
-            String nomeEquipe = campoEscolhaParaEditar.getValue().toString();
+        String nomeEquipe = campoEscolhaParaEditar.getValue().toString();
 
-            // Tabela de Usuario
-//            colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
-//            colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
-//            colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
-            tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
+        // Tabela de Usuario
+        colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
+        colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
+        colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
+        tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
 
-            // Tabela de Cliente
-//            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
-//            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("responsavel"));
-//            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
-//            .setItems(FXCollections.observableArrayList(conn.getTabelaCliente()));
-
-        }catch (Exception ignored){}
+        // Tabela de Cliente
+//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
+//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("responsavel"));
+//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
+//        .setItems(FXCollections.observableArrayList(conn.getTabelaCliente()));
     }
 
     public void salvarEditarEquipe(){
         int idEquipe = Integer.parseInt(conn.getColuna("equipe", "id_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
 
-        int count = Integer.max(tabelaColaboradoresEditarEquipe.getItems().size(), tabelaColaboradoresEditarEquipe.getItems().size());
-        for (int i = 0; i < count; i++) {
-            try{
-                // tabela de colaborador
-                TabelaUsuario t = tabelaColaboradoresEditarEquipe.getItems().get(i);
-            }catch (Exception ignored){}
-
-            try{
-                // tabela de cliente
-                TabelaUsuario c = tabelaColaboradoresEditarEquipe.getItems().get(i);
-            }catch (Exception ignored){}
-        }
-
         for (TabelaUsuario tb : tabelaColaboradoresEditarEquipe.getItems()){
             if(tb.estaSelecionado()){
                 // salvar usando a matricula e o id_equipe
-//                conn.insertTabelaParametro("equipe_usuario", idEquipe, tb.getMatricula(), true, false);
+
+                // Criar um metodo para fazer insert into
+                // parametros
+                // sql
+                // ou outra forma de fazer
+
+                /*
+                Tenho para passar como parametro:
+                    * nome tabela
+                    * nome das colunas
+                    * valores das colunas
+                */
             }
         }
 
         // fazer outro for para o cliente
 
         // apos salvar tudo agora vai atualizar o nome da equipe
-        conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText().trim(), "id_equipe = " + idEquipe, false);
+        String filtro = "'" + campoEscolhaParaEditar.getValue() + "'";
+        conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText().trim(), "nome_equipe = "+filtro, false);
         Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
 
     public void preencherEditaCliente(){
-        try {
-            Cliente cliente = conn.getCliente(campoEscolhaParaEditar.getValue().toString().trim());
-            campoEditaEmpresaCliente.setText(cliente.getEmpresa());
-            campoEditaResponsavelCliente.setText(cliente.getResponsavel());
-            campoEditaEmailCliente.setText(cliente.getEmail());
-            campoEditaTelefoneCliente.setText(cliente.getTelefone());
-        }catch (Exception ignored){}
+        Cliente cliente = conn.getCliente(campoEscolhaParaEditar.getValue().toString().trim());
+        campoEditaEmpresaCliente.setText(cliente.getEmpresa());
+        campoEditaResponsavelCliente.setText(cliente.getResponsavel());
+        campoEditaEmailCliente.setText(cliente.getEmail());
+        campoEditaTelefoneCliente.setText(cliente.getTelefone());
     }
 
     public void salvarEditaCliente(){
@@ -341,17 +333,33 @@ public class Admin implements Initializable {
         Alerts.showAlert("Atualizado!", null, "O cliente foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
 
+    public void mudarSenha(ActionEvent actionEvent) {
+
+        // Se não estover usando pode apagar
+
+        switch (btnEditarSenhaUsuario.getText()){
+            case "Mudar senha" -> {
+                campoEditaSenhaUsuario.setText("2rp");
+                btnEditarSenhaUsuario.setText("Cancelar");
+            }
+            case "Cancelar" -> {
+                campoEditaSenhaUsuario.setText("**********");
+                btnEditarSenhaUsuario.setText("Mudar senha");
+            }
+        }
+    }
+
+
+    /////     Metodo Privados     /////
+
 
     /////     Metodos Override     /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textoNomeUsuario.setText(usuario.getNome());
-        textoNomeUsuario2.setText(usuario.getNome());
-
         String[] listaOpcoes = {"usuario", "cliente", "equipe"};
         campoEscolhaEdicao.getItems().addAll(listaOpcoes);
         campoEscolhaCadastro.getItems().addAll(listaOpcoes);
-        campoEscolhaParaEditar.getItems().addAll(listaOpcoes);
 
         // Iniciando a tabela de Usuario quando for editar a Equipe
         colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
@@ -371,5 +379,6 @@ public class Admin implements Initializable {
             case "cadastra" -> mudarParaCadastra();
             case "edita" -> mudarParaEdita();
         }
+
     }
 }
