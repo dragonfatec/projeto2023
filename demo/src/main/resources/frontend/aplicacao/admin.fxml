@@ -124,8 +124,8 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoNomeEquipe" layoutX="202.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome da Equipe..." />
-                        <Label contentDisplay="CENTER" layoutX="516.0" layoutY="99.0" prefHeight="34.0" prefWidth="88.0" text="Cliente">
+                        <TextField fx:id="campoNomeEquipe" layoutX="202.0" layoutY="144.0" prefHeight="40.0" prefWidth="500.0" promptText="Insira o nome da Equipe..." />
+                        <!--<Label contentDisplay="CENTER" layoutX="516.0" layoutY="99.0" prefHeight="34.0" prefWidth="88.0" text="Cliente">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -142,7 +142,7 @@
                            <font>
                               <Font size="23.0" />
                            </font>
-                        </Label>
+                        </Label>-->
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="anchorpaneCadastroCliente" layoutX="369.0" layoutY="110.0" prefHeight="611.0" prefWidth="909.0" visible="false">
