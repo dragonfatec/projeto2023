@@ -185,22 +185,23 @@ public class ConnectionFactory {
     }
     public ArrayList<TabelaUsuario> getTabelaUsuario(String nomeEquipe){
         ArrayList<TabelaUsuario> list = new ArrayList<>();
-        String sql =String.format("SELECT usuario.matricula, " +
-                                    "usuario.nome, equipe.nome_equipe " +
-                                    "FROM usuario " +
-                                    "LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula " +
-                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
-//                                    "WHERE nome_equipe != '' " +
-                                    "ORDER BY equipe.nome_equipe LIKE '%s' DESC", nomeEquipe.toUpperCase());
+        String sql =String.format("SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
+                                    "usuario.nome, " +
+                                    "usuario.matricula " +
+                                    "FROM equipe_usuario " +
+                                    "FULL JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
+                                    "FULL JOIN usuario ON usuario.matricula = equipe_usuario.matricula " +
+                                    "WHERE usuario.situacao = 'Ativo' "+
+                                    "ORDER BY prioridade,nome", nomeEquipe.toUpperCase());
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
             while (rs.next()){
-                String matr = rs.getString(1);
+                String matr = rs.getString(3);
                 String nome = rs.getString(2);
 
                 TabelaUsuario tb = new TabelaUsuario(matr,nome);
-                if (nomeEquipe.toUpperCase().equals(rs.getString(3))){
+                if (rs.getString(1).equals("1")){
                     tb.selecionarUsuario();
                 }
                 list.add(tb);
@@ -360,16 +361,14 @@ public class ConnectionFactory {
             }
         return lista;
     }
-    public ArrayList<String> getUserOrderByEquipe(String nomeEquipe){
+    public ArrayList<String> getUserOrderUsuarioByEquipe(String nomeEquipe){
         ArrayList<String> list = new ArrayList<>();
-
-        String sql = String.format("SELECT CASE WHEN equipe.nome_equipe IS NULL THEN 'SEM EQUIPE' ELSE equipe.nome_equipe END, " +
+        String sql = String.format("SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
                                     "usuario.nome " +
                                     "FROM equipe_usuario " +
                                     "FULL JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
                                     "FULL JOIN usuario ON usuario.matricula = equipe_usuario.matricula " +
-                                    "ORDER BY nome_equipe LIKE '%s' DESC", nomeEquipe);
-
+                                    "ORDER BY prioridade,nome", nomeEquipe);
         return list;
     }
     private ResultSet run(String sql){
