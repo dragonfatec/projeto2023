@@ -76,7 +76,6 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-
                         <RadioButton fx:id="radioColaborador" layoutX="232.0" layoutY="369.0" mnemonicParsing="false" text="Colaborador">
                            <font>
                               <Font size="18.0" />
