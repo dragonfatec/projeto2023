@@ -210,11 +210,11 @@
 
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
-<!--                  <Label fx:id="textoNomeUsuario2" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">-->
-<!--                     <font>-->
-<!--                        <Font name="System Bold" size="20.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
+                  <Label fx:id="textoNomeUsuario2" alignment="CENTER" layoutY="48.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
                   <Label alignment="CENTER" layoutY="84.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -268,7 +268,7 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="campoEditaSenhaUsuario" layoutX="245.0" layoutY="205.0" prefHeight="40.0" prefWidth="420.0" />
+                        <TextField fx:id="campoEditaSenhaUsuario" layoutX="245.0" layoutY="205.0" prefHeight="40.0" prefWidth="420.0" promptText="Digite a nova senha..." />
                         <Label contentDisplay="CENTER" layoutX="151.0" layoutY="290.0" prefHeight="34.0" prefWidth="88.0" text="Cargo">
                            <font>
                               <Font size="23.0" />
