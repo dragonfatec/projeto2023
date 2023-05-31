@@ -147,17 +147,30 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<TabelaCliente> getTabelaCliente(){
+    public ArrayList<TabelaCliente> getTabelaCliente(String nomeEquipe){
         ArrayList<TabelaCliente> list = new ArrayList<>();
-        String sql = "SELECT empresa, responsavel FROM cliente;";
+        String sql = String.format( "SELECT " +
+                                    "CASE WHEN equipe.nome_equipe = '%s' THEN 1 ELSE 2 END AS prioridade, " +
+                                    "cliente.empresa, " +
+                                    "cliente.responsavel " +
+                                    "FROM " +
+                                    "equipe_cliente " +
+                                    "FULL JOIN cliente ON cliente.id_cliente = equipe_cliente.id_cliente " +
+                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_cliente.id_equipe " +
+                                    "ORDER BY " +
+                                    "prioridade",nomeEquipe);
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
             while (rs.next()){
-                String emp = rs.getString(1);
-                String resp = rs.getString(2);
+                Integer pri = rs.getInt(1);
+                String emp = rs.getString(2);
+                String resp = rs.getString(3);
 
                 TabelaCliente tb = new TabelaCliente(emp,resp);
+                if (pri.equals(1)){
+                    tb.getSeEstaSelecionado();
+                }
                 list.add(tb);
             }
             return list;

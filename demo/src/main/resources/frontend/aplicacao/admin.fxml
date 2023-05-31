@@ -352,6 +352,7 @@
                         <TableView fx:id="tabelaClientesEditarEquipe" layoutX="535.0" layoutY="198.0" prefHeight="237.0" prefWidth="320.0">
                            <columns>
                               <TableColumn fx:id="colunaEmpresaEditarEquipe" prefWidth="254.0" text="Empresa" />
+                              <TableColumn fx:id="colunaResponsavelClientesEditarEquipe" prefWidth="72.0" text="Responsavel" />
                               <TableColumn fx:id="colunaSelectClientesEditarEquipe" prefWidth="65.0" text="Select" />
                            </columns>
                         </TableView>

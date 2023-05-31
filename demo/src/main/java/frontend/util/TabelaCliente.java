@@ -13,18 +13,18 @@ public class TabelaCliente {
         this.selecione = new CheckBox();
     }
 
-    public String getempresa() {
+    public String getEmpresa() {
         return empresa;
     }
-
-    public String getresponsavel() {
+    public String getResponsavel() {
         return responsavel;
     }
-
-    public boolean getSelecione() {
+    public CheckBox getSelecione() {
+        return selecione;
+    }
+    public boolean getSeEstaSelecionado() {
         return selecione.isSelected();
     }
-
     public void selecionarUsuario() {
         this.selecione.setSelected(true);
     }
