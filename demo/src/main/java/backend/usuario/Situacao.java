@@ -1,18 +1,18 @@
 package backend.usuario;
 
 public enum Situacao {
-    ATIVO{
+    Ativo {
         public Boolean verificaSituacao(String situacao){
-            if (Situacao.ATIVO.toString() == situacao){
+            if (Situacao.Ativo.toString() == situacao){
                 return true;
             }else {
                 return false;
             }
         }
     },
-    INATIVO{
+    Inativo {
         public Boolean verificaSituacao(String situacao){
-            if (Situacao.INATIVO.toString() == situacao){
+            if (Situacao.Inativo.toString() == situacao){
                 return true;
             }else {
                 return false;

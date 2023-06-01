@@ -7,13 +7,8 @@ import backend.usuario.Usuario;
 import backend.util.Criptografia;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
-import frontend.util.Alerts;
-import frontend.util.NomesArquivosFXML;
-import frontend.util.Tabela;
-import frontend.util.TabelaUsuario;
+import frontend.util.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -83,6 +78,14 @@ public class Admin implements Initializable {
     public Button btnEditarNomeEquipe;
     public Button btnSalvarEquipe;
     public Button btnEditarClienteEquipe;
+    public TableView<TabelaCliente> tabelaClientesEquipe;
+    public TableColumn colunaEmpresaEquipe;
+    public TableColumn colunaSelectClientesDaEquipe;
+    public TableView<TabelaCliente> tabelaClientesEditarEquipe;
+    public TableColumn colunaEmpresaEditarEquipe;
+    public TableColumn colunaSelectClientesEditarEquipe;
+    public TableColumn colunaResponsavelClientesEditarEquipe;
+
 
     // Button - RadioButton
     @FXML
@@ -159,17 +162,29 @@ public class Admin implements Initializable {
             }
         });
         String matricula = gerarMatricula();
-        conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.ATIVO);
+        conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.Ativo);
         labelCadastroUsuarioRealizado.setVisible(true);
         labelMatricula.setText(matricula);
+
+        campoNomeUsuario.clear();
+        campoSenhaUsuario.clear();
+        selectedRadioButton.setSelected(false);
     }
 
     public void cadastrarEquipe(MouseEvent mouseEvent) {
         conn.cadastrarEquipe(campoNomeEquipe.getText());
+        labelCadastroEquipeRealizado.setVisible(true);
+        campoNomeEquipe.clear();
     }
 
     public void cadastrarCliente(MouseEvent mouseEvent) {
         conn.cadastrarCliente(campoEmpresaCliente.getText(), campoResponsavelCliente.getText(), campoEmailCliente.getText(), campoTelefoneCliente.getText(), campoProjetoCliente.getText());
+        labelCadastroClienteRealizado.setVisible(true);
+        campoEmpresaCliente.clear();
+        campoResponsavelCliente.clear();
+        campoEmailCliente.clear();
+        campoTelefoneCliente.clear();
+        campoProjetoCliente.clear();
     }
 
     public void mudarParaCadastra(){
@@ -228,6 +243,7 @@ public class Admin implements Initializable {
     public void preencherDados(){
         switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
             case "usuario" -> {
+                System.out.println("usuario");
                 preencherEditaUsuario();
             }
             case "equipe" -> {
@@ -256,14 +272,16 @@ public class Admin implements Initializable {
                     radioAdminEdita.setSelected(true);
                 }
             }
-        }catch (Exception ignored){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void salvarEditaUsuario(){
         String filtro = "'" + campoEscolhaParaEditar.getValue().toString().split("-")[0].trim() + "'";
         conn.atualizarStatus("usuario", "nome", campoEditaNomeUsuario.getText(), "matricula = "+filtro, false);
         conn.atualizarStatus("usuario", "cargo", ((ToggleButton) toggleGroup2.getSelectedToggle()).getText(), "matricula = "+filtro, false);
-        conn.atualizarStatus("usuario", "status", checkboxUsuarioAtivo.isSelected() ? "Ativo" : "Inativo", "matricula = "+filtro, false);
+        conn.atualizarStatus("usuario", "situacao", checkboxUsuarioAtivo.isSelected() ? Situacao.Ativo.toString() : Situacao.Inativo.toString(), "matricula = "+filtro, false);
         if (!campoEditaSenhaUsuario.getText().trim().equals("")){
             conn.atualizarStatus("usuario", "senha", Criptografia.criptografar(campoEditaSenhaUsuario.getText()), "matricula = "+filtro, false);
         }
@@ -281,6 +299,7 @@ public class Admin implements Initializable {
 //            colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
 //            colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
             tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
+            tabelaClientesEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaCliente(nomeEquipe)));
 
             // Tabela de Cliente
 //            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
@@ -288,7 +307,9 @@ public class Admin implements Initializable {
 //            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
 //            .setItems(FXCollections.observableArrayList(conn.getTabelaCliente()));
 
-        }catch (Exception ignored){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void salvarEditarEquipe(){
@@ -297,24 +318,33 @@ public class Admin implements Initializable {
         int count = Integer.max(tabelaColaboradoresEditarEquipe.getItems().size(), tabelaColaboradoresEditarEquipe.getItems().size());
         for (int i = 0; i < count; i++) {
             try{
+                String insertOuDrop="";
                 // tabela de colaborador
                 TabelaUsuario t = tabelaColaboradoresEditarEquipe.getItems().get(i);
+                if (t.estaSelecionado()){
+                    insertOuDrop = "insert";
+                }
+                else{
+                    insertOuDrop = "drop";
+                }
+                conn.cadastrarEquipeUsuario(t.getMatricula(),conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()),insertOuDrop);
             }catch (Exception ignored){}
+
 
             try{
+                String insertOuDrop="";
                 // tabela de cliente
-                TabelaUsuario c = tabelaColaboradoresEditarEquipe.getItems().get(i);
-            }catch (Exception ignored){}
-        }
+                TabelaCliente c = tabelaClientesEditarEquipe.getItems().get(i);
+                if(c.getSeEstaSelecionado()){
+                    insertOuDrop = "insert";
+                }else {
+                    insertOuDrop = "drop";
+                }
+                conn.cadastrarEquipeCliente(conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()),conn.getIdCliente(c.getEmpresa()),insertOuDrop);
+            }catch (Exception ignored){
 
-        for (TabelaUsuario tb : tabelaColaboradoresEditarEquipe.getItems()){
-            if(tb.estaSelecionado()){
-                // salvar usando a matricula e o id_equipe
-//                conn.insertTabelaParametro("equipe_usuario", idEquipe, tb.getMatricula(), true, false);
             }
         }
-
-        // fazer outro for para o cliente
 
         // apos salvar tudo agora vai atualizar o nome da equipe
         conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText().trim(), "id_equipe = " + idEquipe, false);
@@ -328,7 +358,8 @@ public class Admin implements Initializable {
             campoEditaResponsavelCliente.setText(cliente.getResponsavel());
             campoEditaEmailCliente.setText(cliente.getEmail());
             campoEditaTelefoneCliente.setText(cliente.getTelefone());
-        }catch (Exception ignored){}
+            campoEditaProjetoCliente.setText(cliente.getProjeto());
+        }catch (Exception e){e.printStackTrace();}
     }
 
     public void salvarEditaCliente(){
@@ -337,6 +368,7 @@ public class Admin implements Initializable {
         conn.atualizarStatus("cliente", "responsavel", campoEditaResponsavelCliente.getText(), "empresa = "+filtro, false);
         conn.atualizarStatus("cliente", "email", campoEditaEmailCliente.getText(), "empresa = "+filtro, false);
         conn.atualizarStatus("cliente", "telefone", campoEditaTelefoneCliente.getText(), "empresa = "+filtro, false);
+        conn.atualizarStatus("cliente", "projeto", campoEditaProjetoCliente.getText(), "empresa = "+filtro, false);
         Alerts.showAlert("Atualizado!", null, "O cliente foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
 
@@ -357,14 +389,15 @@ public class Admin implements Initializable {
         colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
         colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
 
+//        tabelaClientesEquipe;
+
+
         // Iniciando a tabela de Cliente quando for editar a Equipe
-////        ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
-////        tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
-//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
-//        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("responsavel"));
+
+        colunaEmpresaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaCliente, String>("empresa"));
+        colunaSelectClientesEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaCliente, String>("selecione"));
+        colunaResponsavelClientesEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaCliente, String>("responsavel"));
 //        .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
-////        tabelaColaboradoresEditarEquipe.setItems(tabelasObjetoLista);
-//        .setItems(FXCollections.observableArrayList(conn.getHorasUsuario(usuario.getMatricula())));
 
         switch (qualTelaIniciar) {
             case "cadastra" -> mudarParaCadastra();
