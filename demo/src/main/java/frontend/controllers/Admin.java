@@ -78,14 +78,6 @@ public class Admin implements Initializable {
     public Button btnEditarNomeEquipe;
     public Button btnSalvarEquipe;
     public Button btnEditarClienteEquipe;
-    public TableView<TabelaCliente> tabelaClientesEquipe;
-    public TableColumn colunaEmpresaEquipe;
-    public TableColumn colunaSelectClientesDaEquipe;
-    public TableView<TabelaCliente> tabelaClientesEditarEquipe;
-    public TableColumn colunaEmpresaEditarEquipe;
-    public TableColumn colunaSelectClientesEditarEquipe;
-    public TableColumn colunaResponsavelClientesEditarEquipe;
-
 
     // Button - RadioButton
     @FXML
@@ -129,6 +121,13 @@ public class Admin implements Initializable {
     public TableColumn colunaMatriculaEditarEquipe;
     public TableColumn colunaNomeEditarEquipe;
     public TableColumn colunaSelectEditarEquipe;
+    public TableView<TabelaCliente> tabelaClientesEquipe;
+    public TableColumn colunaEmpresaEquipe;
+    public TableColumn colunaSelectClientesDaEquipe;
+    public TableView<TabelaCliente> tabelaClientesEditarEquipe;
+    public TableColumn colunaEmpresaEditarEquipe;
+    public TableColumn colunaSelectClientesEditarEquipe;
+    public TableColumn colunaResponsavelClientesEditarEquipe;
 
     // Variaveis para uso
     private AnchorPane ultimaTelaUsada = new AnchorPane();
