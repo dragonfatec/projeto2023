@@ -57,11 +57,13 @@ public class AprovaHora implements Initializable {
     /////     Metodos Publicos     /////
     public void aprovarHoras(ActionEvent actionEvent) {
         salvarHorasAvaliadas("Aprovada", campoJustificativa.getText().trim().equals("") ? "-" : campoJustificativa.getText());
+        campoJustificativa.clear();
     }
 
     public void reprovarHoras(ActionEvent actionEvent) {
         if(!campoJustificativa.getText().trim().equals("")){
             salvarHorasAvaliadas("Reprovada", campoJustificativa.getText());
+            campoJustificativa.clear();
         }
         else{
             Alerts.showAlert("Erro", null, "O campo Justificativa é obrigatório quando as horas é reprovada", Alert.AlertType.WARNING);
