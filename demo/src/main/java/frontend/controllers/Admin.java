@@ -237,7 +237,6 @@ public class Admin implements Initializable {
         }
 
         campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, selecionado+"-matriculas"));
-//        campoEscolhaParaEditar.setItems(FXCollections.observableArrayList(conn.getListaColuna(null, selecionado+"-matriculas")));
     }
 
     public void preencherDados(){
@@ -286,26 +285,24 @@ public class Admin implements Initializable {
             conn.atualizarStatus("usuario", "senha", Criptografia.criptografar(campoEditaSenhaUsuario.getText()), "matricula = "+filtro, false);
         }
         Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
+
+        // Limpando os campos
+        campoEditaNomeUsuario.setText("");
+        campoEditaSenhaUsuario.setText("");
+        ((ToggleButton) toggleGroup2.getSelectedToggle()).setSelected(false);
+        checkboxUsuarioAtivo.setSelected(false);
+
+        // Recarregar os dados para atualizar o ChoiceBox
+        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "usuario-matriculas"));
     }
 
     public void preencherEditaEquipe(){
         try {
             campoEditaNomeEquipe.setText(conn.getColuna("equipe", "nome_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
-
             String nomeEquipe = campoEscolhaParaEditar.getValue().toString();
 
-            // Tabela de Usuario
-//            colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
-//            colunaNomeEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("nome"));
-//            colunaSelectEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
             tabelaColaboradoresEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaUsuario(nomeEquipe)));
             tabelaClientesEditarEquipe.setItems(FXCollections.observableArrayList(conn.getTabelaCliente(nomeEquipe)));
-
-            // Tabela de Cliente
-//            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("empresa"));
-//            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("responsavel"));
-//            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
-//            .setItems(FXCollections.observableArrayList(conn.getTabelaCliente()));
 
         }catch (Exception e){
             e.printStackTrace();
@@ -315,7 +312,7 @@ public class Admin implements Initializable {
     public void salvarEditarEquipe(){
         int idEquipe = Integer.parseInt(conn.getColuna("equipe", "id_equipe", "nome_equipe", campoEscolhaParaEditar.getValue().toString()));
 
-        int count = Integer.max(tabelaColaboradoresEditarEquipe.getItems().size(), tabelaColaboradoresEditarEquipe.getItems().size());
+        int count = Integer.max(tabelaColaboradoresEditarEquipe.getItems().size(), tabelaClientesEditarEquipe.getItems().size());
         for (int i = 0; i < count; i++) {
             try{
                 String insertOuDrop="";
@@ -329,7 +326,6 @@ public class Admin implements Initializable {
                 }
                 conn.cadastrarEquipeUsuario(t.getMatricula(),conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()),insertOuDrop);
             }catch (Exception ignored){}
-
 
             try{
                 String insertOuDrop="";
@@ -349,6 +345,14 @@ public class Admin implements Initializable {
         // apos salvar tudo agora vai atualizar o nome da equipe
         conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText().trim(), "id_equipe = " + idEquipe, false);
         Alerts.showAlert("Atualizado!", null, "A empresa foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
+
+        // Limpando os campos
+        campoEditaNomeEquipe.setText("");
+        tabelaColaboradoresEditarEquipe.getItems().clear();
+        tabelaClientesEditarEquipe.getItems().clear();
+
+        // Recarregar os dados para atualizar o ChoiceBox
+        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "equipe-matriculas"));
     }
 
     public void preencherEditaCliente(){
@@ -370,6 +374,16 @@ public class Admin implements Initializable {
         conn.atualizarStatus("cliente", "telefone", campoEditaTelefoneCliente.getText(), "empresa = "+filtro, false);
         conn.atualizarStatus("cliente", "projeto", campoEditaProjetoCliente.getText(), "empresa = "+filtro, false);
         Alerts.showAlert("Atualizado!", null, "O cliente foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
+
+        // Limpando os campos
+        campoEditaEmpresaCliente.setText("");
+        campoEditaResponsavelCliente.setText("");
+        campoEditaEmailCliente.setText("");
+        campoEditaTelefoneCliente.setText("");
+        campoEditaProjetoCliente.setText("");
+
+        // Recarregar os dados para atualizar o ChoiceBox
+        campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "cliente-matriculas"));
     }
 
 
@@ -382,7 +396,6 @@ public class Admin implements Initializable {
         String[] listaOpcoes = {"usuario", "cliente", "equipe"};
         campoEscolhaEdicao.getItems().addAll(listaOpcoes);
         campoEscolhaCadastro.getItems().addAll(listaOpcoes);
-        campoEscolhaParaEditar.getItems().addAll(listaOpcoes);
 
         // Iniciando a tabela de Usuario quando for editar a Equipe
         colunaMatriculaEditarEquipe.setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("matricula"));
