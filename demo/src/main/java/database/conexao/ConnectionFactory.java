@@ -163,12 +163,17 @@ public class ConnectionFactory {
     }
     public ArrayList<TabelaCliente> getTabelaCliente(String nomeEquipe){
         ArrayList<TabelaCliente> list = new ArrayList<>();
-        String sql = String.format( "SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
-                                    "usuario.nome " +
-                                    "FROM usuario " +
-                                    "LEFT JOIN equipe_usuario ON usuario.matricula = equipe_usuario.matricula " +
-                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
-                                    "ORDER BY prioridade,nome",nomeEquipe);
+        String sql = String.format("""
+                SELECT 
+                  	CASE WHEN equipe.nome_equipe = '%s' THEN 1 ELSE 2 END AS prioridade, 
+                    cliente.empresa, 
+                    cliente.responsavel 
+                FROM 
+                    cliente
+                LEFT JOIN equipe_cliente ON cliente.id_cliente = equipe_cliente.id_cliente 
+                LEFT JOIN equipe ON equipe.id_equipe = equipe_cliente.id_equipe 
+                ORDER BY 
+                    prioridade""",nomeEquipe);
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
@@ -188,28 +193,11 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<TabelaEquipe> getTabelaEquipe(){
-        ArrayList<TabelaEquipe> list = new ArrayList<>();
-        String sql = "SELECT * FROM equipe;";
-        try {
-            PreparedStatement pr = conn.prepareStatement(sql);
-            ResultSet rs = pr.executeQuery();
-            while (rs.next()){
-                int id = rs.getInt(1);
-                String nome = rs.getString(2);
-
-                TabelaEquipe tb = new TabelaEquipe(id,nome);
-                list.add(tb);
-            }
-            return list;
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
     public ArrayList<TabelaUsuario> getTabelaUsuario(String nomeEquipe){
         ArrayList<TabelaUsuario> list = new ArrayList<>();
         String sql =String.format("SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
-                                    "usuario.nome " +
+                                    "usuario.nome, " +
+                                    "usuario.matricula " +
                                     "FROM usuario " +
                                     "LEFT JOIN equipe_usuario ON usuario.matricula = equipe_usuario.matricula " +
                                     "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
