@@ -311,7 +311,7 @@ public class Admin implements Initializable {
                 else{
                     insertOuDrop = "drop";
                 }
-                conn.cadastrarEquipeUsuario(t.getMatricula(),conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()));
+                conn.cadastrarEquipeUsuario(t.getMatricula(),conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()),insertOuDrop);
             }catch (Exception ignored){}
 
 
