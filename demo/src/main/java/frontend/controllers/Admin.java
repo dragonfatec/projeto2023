@@ -170,7 +170,6 @@ public class Admin implements Initializable {
 
     public void cadastrarCliente(MouseEvent mouseEvent) {
         conn.cadastrarCliente(campoEmpresaCliente.getText(), campoResponsavelCliente.getText(), campoEmailCliente.getText(), campoTelefoneCliente.getText(), campoProjetoCliente.getText());
-
     }
 
     public void mudarParaCadastra(){
