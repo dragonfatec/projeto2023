@@ -41,12 +41,28 @@ public class ConnectionFactory {
         String sql = String.format("INSERT INTO cliente (empresa, responsavel, email, telefone, projeto) VALUES ('%s','%s','%s','%s','%s');", empresa,responsavel, email, telefone, projeto);
         runSet(sql);
     }
-    public void cadastrarEquipeUsuario(String matricula, Integer id_equipe){
-        String sql = String.format("INSERT INTO equipe_usuario (id_equipe, matricula) VALUES (%s,%s);", id_equipe, matricula);
+    public void cadastrarEquipeUsuario(String matricula, Integer id_equipe, String insertOuDrop){
+        String sql = "";
+        switch (insertOuDrop){
+            case "insert" -> {
+                sql = String.format("INSERT INTO equipe_usuario (id_equipe, matricula) VALUES (%s,'%s');", id_equipe, matricula);
+            }
+            default -> {
+                sql = String.format("DELETE FROM equipe_usuario WHERE id_equipe = %s AND matricula = '%s';", id_equipe,matricula);
+            }
+        }
         run(sql);
     }
-    public void cadastrarEquipeCliente(Integer id_equipe, Integer id_cliente){
-        String sql = String.format("INSERT INTO equipe_cliente (id_equipe, id_cliente) VALUES (%s,%s)",id_equipe, id_cliente);
+    public void cadastrarEquipeCliente(Integer id_equipe, Integer id_cliente, String insertOrDrop){
+        String sql = "";
+        switch (insertOrDrop){
+            case "insert" -> {
+                sql = String.format("INSERT INTO equipe_cliente (id_equipe, id_cliente) VALUES (%s,%s)",id_equipe, id_cliente);
+            }
+            default -> {
+                sql = String.format("DELETE FROM equipe_cliente WHERE id_equipe = %s AND id_cliente = %s;",id_equipe, id_cliente);
+            }
+        }
         run(sql);
     }
     public void atualizarStatus(String nomeTabela, String nomeCampo, String novoValor, String condicao, boolean novoValorEhNumero){
@@ -120,7 +136,7 @@ public class ConnectionFactory {
         }
     }
     public Integer getIdEquipe(String nomeEquipe){
-        String sql = String.format("SELECT id_equipe FROM equipe WHERE nome_equipe = %s", nomeEquipe);
+        String sql = String.format("SELECT id_equipe FROM equipe WHERE nome_equipe = '%s'", nomeEquipe);
         Integer id = 0;
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
@@ -134,7 +150,7 @@ public class ConnectionFactory {
         }
     }
     public Integer getIdCliente(String empresa){
-        String sql = String.format("SELECT id_cliente FROM cliente WHERE empresa = %s", empresa);
+        String sql = String.format("SELECT id_cliente FROM cliente WHERE empresa = '%s'", empresa);
         Integer id = 0;
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
@@ -169,7 +185,7 @@ public class ConnectionFactory {
 
                 TabelaCliente tb = new TabelaCliente(emp,resp);
                 if (pri.equals(1)){
-                    tb.getSeEstaSelecionado();
+                    tb.selecionarUsuario();
                 }
                 list.add(tb);
             }

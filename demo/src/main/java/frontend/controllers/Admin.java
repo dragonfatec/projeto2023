@@ -302,31 +302,33 @@ public class Admin implements Initializable {
         int count = Integer.max(tabelaColaboradoresEditarEquipe.getItems().size(), tabelaColaboradoresEditarEquipe.getItems().size());
         for (int i = 0; i < count; i++) {
             try{
+                String insertOuDrop="";
                 // tabela de colaborador
-
                 TabelaUsuario t = tabelaColaboradoresEditarEquipe.getItems().get(i);
                 if (t.estaSelecionado()){
-                    conn.cadastrarEquipeUsuario(t.getMatricula(),conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()));
+                    insertOuDrop = "insert";
                 }
+                else{
+                    insertOuDrop = "drop";
+                }
+                conn.cadastrarEquipeUsuario(t.getMatricula(),conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()));
             }catch (Exception ignored){}
 
+
             try{
+                String insertOuDrop="";
                 // tabela de cliente
                 TabelaCliente c = tabelaClientesEditarEquipe.getItems().get(i);
                 if(c.getSeEstaSelecionado()){
-                    conn.cadastrarEquipeCliente(conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()),conn.getIdCliente(c.getEmpresa()));
+                    insertOuDrop = "insert";
+                }else {
+                    insertOuDrop = "drop";
                 }
-            }catch (Exception ignored){}
-        }
-
-        for (TabelaUsuario tb : tabelaColaboradoresEditarEquipe.getItems()){
-            if(tb.estaSelecionado()){
-                // salvar usando a matricula e o id_equipe
-//                conn.insertTabelaParametro("equipe_usuario", idEquipe, tb.getMatricula(), true, false);
+                conn.cadastrarEquipeCliente(conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()),conn.getIdCliente(c.getEmpresa()),insertOuDrop);
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }
-
-        // fazer outro for para o cliente
 
         // apos salvar tudo agora vai atualizar o nome da equipe
         conn.atualizarStatus("equipe", "nome_equipe", campoEditaNomeEquipe.getText().trim(), "id_equipe = " + idEquipe, false);
