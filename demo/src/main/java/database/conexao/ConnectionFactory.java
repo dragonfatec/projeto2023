@@ -25,8 +25,7 @@ public class ConnectionFactory {
         }
     }
     public void cadastrarUsuario(String matricula, String senha, String nome, TiposDeUsuario cargo, Situacao situacao) {
-            String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, situacao) VALUES ('%s','%s','%s','%s','%s');" +
-                                       "INSERT INTO equipe_usuario (id_equipe, matricula) VALUES (3,%s); ",matricula, senha, nome,cargo,situacao, matricula);
+            String sql = String.format("INSERT INTO usuario(matricula,senha, nome, cargo, situacao) VALUES ('%s','%s','%s','%s','%s');",matricula, senha, nome,cargo,situacao);
             runAtualizar(sql);
     }
     public void apontarHoras(String matricula, String data_inicial, String data_final, String equipe, String tipo_hora, String justificativa, String cliente){
@@ -94,7 +93,7 @@ public class ConnectionFactory {
         }
     }
     public Cliente getCliente(String nomeEmpresa){
-        String sql = String.format("SELECT empresa, responsavel, email, telefone, projeto FROM cliente WHERE empresa = %s;", nomeEmpresa);
+        String sql = String.format("SELECT empresa, responsavel, email, telefone, projeto FROM cliente WHERE empresa = '%s';", nomeEmpresa);
         Cliente cl = null;
         try{
             PreparedStatement pr = conn.prepareStatement(sql);
@@ -124,11 +123,10 @@ public class ConnectionFactory {
                 String senha = rs.getString(2);
                 String nome = rs.getString(3);
                 String cargo = rs.getString(4);
-                String situacao = rs.getString(5);
 
-                if (Situacao.ATIVO.verificaSituacao(situacao)) {
-                    user = Usuario.criarUsuario(mat, senha, nome, cargo, Situacao.ATIVO);
-                }
+
+                user = Usuario.criarUsuario(mat, senha, nome, cargo, Situacao.Ativo);
+
             }
             return user;
         }catch (SQLException e){
@@ -165,16 +163,12 @@ public class ConnectionFactory {
     }
     public ArrayList<TabelaCliente> getTabelaCliente(String nomeEquipe){
         ArrayList<TabelaCliente> list = new ArrayList<>();
-        String sql = String.format( "SELECT " +
-                                    "CASE WHEN equipe.nome_equipe = '%s' THEN 1 ELSE 2 END AS prioridade, " +
-                                    "cliente.empresa, " +
-                                    "cliente.responsavel " +
-                                    "FROM " +
-                                    "equipe_cliente " +
-                                    "FULL JOIN cliente ON cliente.id_cliente = equipe_cliente.id_cliente " +
-                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_cliente.id_equipe " +
-                                    "ORDER BY " +
-                                    "prioridade",nomeEquipe);
+        String sql = String.format( "SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
+                                    "usuario.nome " +
+                                    "FROM usuario " +
+                                    "LEFT JOIN equipe_usuario ON usuario.matricula = equipe_usuario.matricula " +
+                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
+                                    "ORDER BY prioridade,nome",nomeEquipe);
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
@@ -215,12 +209,10 @@ public class ConnectionFactory {
     public ArrayList<TabelaUsuario> getTabelaUsuario(String nomeEquipe){
         ArrayList<TabelaUsuario> list = new ArrayList<>();
         String sql =String.format("SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
-                                    "usuario.nome, " +
-                                    "usuario.matricula " +
-                                    "FROM equipe_usuario " +
-                                    "FULL JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
-                                    "FULL JOIN usuario ON usuario.matricula = equipe_usuario.matricula " +
-                                    "WHERE usuario.situacao = 'Ativo' "+
+                                    "usuario.nome " +
+                                    "FROM usuario " +
+                                    "LEFT JOIN equipe_usuario ON usuario.matricula = equipe_usuario.matricula " +
+                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
                                     "ORDER BY prioridade,nome", nomeEquipe.toUpperCase());
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
@@ -265,7 +257,7 @@ public class ConnectionFactory {
                 String nome = rs.getString(3);
                 String cargo = rs.getString(4);
 
-                Usuario.criarInstancia(mat, senha, nome, cargo, Situacao.ATIVO);
+                Usuario.criarInstancia(mat, senha, nome, cargo, Situacao.Ativo);
                 return true;
             }
             return false;
@@ -389,16 +381,6 @@ public class ConnectionFactory {
                 throw new RuntimeException(e);
             }
         return lista;
-    }
-    public ArrayList<String> getUserOrderUsuarioByEquipe(String nomeEquipe){
-        ArrayList<String> list = new ArrayList<>();
-        String sql = String.format("SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
-                                    "usuario.nome " +
-                                    "FROM equipe_usuario " +
-                                    "FULL JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
-                                    "FULL JOIN usuario ON usuario.matricula = equipe_usuario.matricula " +
-                                    "ORDER BY prioridade,nome", nomeEquipe);
-        return list;
     }
     private ResultSet run(String sql){
         try {

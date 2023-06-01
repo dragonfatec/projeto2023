@@ -162,7 +162,7 @@ public class Admin implements Initializable {
             }
         });
         String matricula = gerarMatricula();
-        conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.ATIVO);
+        conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.Ativo);
         labelCadastroUsuarioRealizado.setVisible(true);
         labelMatricula.setText(matricula);
 
@@ -243,6 +243,7 @@ public class Admin implements Initializable {
     public void preencherDados(){
         switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
             case "usuario" -> {
+                System.out.println("usuario");
                 preencherEditaUsuario();
             }
             case "equipe" -> {
@@ -271,14 +272,16 @@ public class Admin implements Initializable {
                     radioAdminEdita.setSelected(true);
                 }
             }
-        }catch (Exception ignored){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void salvarEditaUsuario(){
         String filtro = "'" + campoEscolhaParaEditar.getValue().toString().split("-")[0].trim() + "'";
         conn.atualizarStatus("usuario", "nome", campoEditaNomeUsuario.getText(), "matricula = "+filtro, false);
         conn.atualizarStatus("usuario", "cargo", ((ToggleButton) toggleGroup2.getSelectedToggle()).getText(), "matricula = "+filtro, false);
-        conn.atualizarStatus("usuario", "status", checkboxUsuarioAtivo.isSelected() ? "Ativo" : "Inativo", "matricula = "+filtro, false);
+        conn.atualizarStatus("usuario", "situacao", checkboxUsuarioAtivo.isSelected() ? Situacao.Ativo.toString() : Situacao.Inativo.toString(), "matricula = "+filtro, false);
         if (!campoEditaSenhaUsuario.getText().trim().equals("")){
             conn.atualizarStatus("usuario", "senha", Criptografia.criptografar(campoEditaSenhaUsuario.getText()), "matricula = "+filtro, false);
         }
@@ -304,7 +307,9 @@ public class Admin implements Initializable {
 //            .setCellValueFactory(new PropertyValueFactory<TabelaUsuario, String>("selecione"));
 //            .setItems(FXCollections.observableArrayList(conn.getTabelaCliente()));
 
-        }catch (Exception ignored){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void salvarEditarEquipe(){
@@ -336,8 +341,8 @@ public class Admin implements Initializable {
                     insertOuDrop = "drop";
                 }
                 conn.cadastrarEquipeCliente(conn.getIdEquipe(campoEscolhaParaEditar.getValue().toString()),conn.getIdCliente(c.getEmpresa()),insertOuDrop);
-            }catch (Exception e){
-                e.printStackTrace();
+            }catch (Exception ignored){
+
             }
         }
 
@@ -353,7 +358,8 @@ public class Admin implements Initializable {
             campoEditaResponsavelCliente.setText(cliente.getResponsavel());
             campoEditaEmailCliente.setText(cliente.getEmail());
             campoEditaTelefoneCliente.setText(cliente.getTelefone());
-        }catch (Exception ignored){}
+            campoEditaProjetoCliente.setText(cliente.getProjeto());
+        }catch (Exception e){e.printStackTrace();}
     }
 
     public void salvarEditaCliente(){
@@ -362,6 +368,7 @@ public class Admin implements Initializable {
         conn.atualizarStatus("cliente", "responsavel", campoEditaResponsavelCliente.getText(), "empresa = "+filtro, false);
         conn.atualizarStatus("cliente", "email", campoEditaEmailCliente.getText(), "empresa = "+filtro, false);
         conn.atualizarStatus("cliente", "telefone", campoEditaTelefoneCliente.getText(), "empresa = "+filtro, false);
+        conn.atualizarStatus("cliente", "projeto", campoEditaProjetoCliente.getText(), "empresa = "+filtro, false);
         Alerts.showAlert("Atualizado!", null, "O cliente foi atualizado com sucesso!", Alert.AlertType.INFORMATION);
     }
 
