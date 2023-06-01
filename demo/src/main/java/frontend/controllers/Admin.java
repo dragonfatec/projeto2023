@@ -165,15 +165,26 @@ public class Admin implements Initializable {
         conn.cadastrarUsuario(matricula, Criptografia.criptografar(campoSenhaUsuario.getText()), campoNomeUsuario.getText(), TiposDeUsuario.valueOf(selectedRadioButton.getText()), Situacao.ATIVO);
         labelCadastroUsuarioRealizado.setVisible(true);
         labelMatricula.setText(matricula);
+
+        campoNomeUsuario.clear();
+        campoSenhaUsuario.clear();
+        selectedRadioButton.setSelected(false);
     }
 
     public void cadastrarEquipe(MouseEvent mouseEvent) {
         conn.cadastrarEquipe(campoNomeEquipe.getText());
+        labelCadastroEquipeRealizado.setVisible(true);
+        campoNomeEquipe.clear();
     }
 
     public void cadastrarCliente(MouseEvent mouseEvent) {
         conn.cadastrarCliente(campoEmpresaCliente.getText(), campoResponsavelCliente.getText(), campoEmailCliente.getText(), campoTelefoneCliente.getText(), campoProjetoCliente.getText());
-
+        labelCadastroClienteRealizado.setVisible(true);
+        campoEmpresaCliente.clear();
+        campoResponsavelCliente.clear();
+        campoEmailCliente.clear();
+        campoTelefoneCliente.clear();
+        campoProjetoCliente.clear();
     }
 
     public void mudarParaCadastra(){
