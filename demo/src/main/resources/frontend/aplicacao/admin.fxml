@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
@@ -20,7 +24,7 @@
          <children>
             <AnchorPane fx:id="anchorpaneAreaCadastro" prefHeight="720.0" prefWidth="1280.0" visible="false">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" layoutX="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
                   <Label fx:id="textoNomeUsuario" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -36,7 +40,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAprovaHora" layoutX="1.0" layoutY="428.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
+                  <Button fx:id="btnAprovaHora" layoutY="428.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -200,7 +204,12 @@
                         <TextField fx:id="campoProjetoCliente" layoutX="516.0" layoutY="430.0" prefHeight="40.0" prefWidth="200.0" promptText="Insira o nome do projeto..." />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnAreaEdicao" layoutX="1.0" layoutY="355.0" mnemonicParsing="false" onAction="#mudarParaEdita" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
+                  <Button fx:id="btnAreaEdicao" layoutY="355.0" mnemonicParsing="false" onAction="#mudarParaEdita" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDashboard" layoutY="499.0" mnemonicParsing="false" onAction="#irParaDashboard" prefHeight="60.0" prefWidth="368.0" text="Dashboard" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -235,7 +244,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAprovaHora2" layoutY="443.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
+                  <Button fx:id="btnAprovaHora2" layoutY="439.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -403,6 +412,11 @@
 <!--                        <Button fx:id="btnEditarProjetoCliente" layoutX="677.0" layoutY="389.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />-->
                      </children>
                   </AnchorPane>
+                  <Button fx:id="btnDashboard2" layoutY="522.0" mnemonicParsing="false" onAction="#irParaDashboard" prefHeight="60.0" prefWidth="368.0" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
 
@@ -473,7 +487,72 @@
 <!--                     </font>-->
 <!--                  </Button>-->
 <!--               </children></AnchorPane>-->
-            <AnchorPane disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false" />
+            <AnchorPane fx:id="anchorpaneDashboard" prefHeight="720.0" prefWidth="1280.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
+                  <Label fx:id="textoNomeUsuario3" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAreaCadastro3" layoutY="283.0" mnemonicParsing="false" onAction="#mudarParaCadastra" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="#fdffff">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAprovaHora3" layoutY="428.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAreaEdicao3" layoutY="355.0" mnemonicParsing="false" onAction="#mudarParaEdita" prefHeight="60.0" prefWidth="368.0" text="Área de Edição" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDashboard3" layoutY="499.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="392.0" layoutY="30.0" prefHeight="34.0" prefWidth="171.0" text="Selecione a Equipe:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="637.0" layoutY="30.0" prefHeight="34.0" prefWidth="147.0" text="Selecione o Ano:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="850.0" layoutY="30.0" prefHeight="34.0" prefWidth="200.0" text="Colaborador Específico:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1108.0" layoutY="30.0" prefHeight="34.0" prefWidth="132.0" text="Mês Específico:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <BarChart fx:id="graficoDashboard" layoutX="389.0" layoutY="143.0" prefHeight="480.0" prefWidth="858.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <ComboBox fx:id="campoEquipeDashboard" layoutX="402.0" layoutY="67.0" prefHeight="34.0" prefWidth="155.0" />
+                  <ComboBox fx:id="campoAnoDashboard" layoutX="640.0" layoutY="67.0" prefHeight="34.0" prefWidth="138.0" />
+                  <ComboBox fx:id="campoColaboradorDashboard" layoutX="857.0" layoutY="66.0" prefHeight="34.0" prefWidth="188.0" />
+                  <ComboBox fx:id="campoMesDashboard" layoutX="1115.0" layoutY="66.0" prefHeight="34.0" prefWidth="123.0" />
+               </children></AnchorPane>
             <AnchorPane disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false" />
          </children>
       </AnchorPane>
