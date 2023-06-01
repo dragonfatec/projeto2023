@@ -164,7 +164,7 @@ public class ConnectionFactory {
     public ArrayList<TabelaCliente> getTabelaCliente(String nomeEquipe){
         ArrayList<TabelaCliente> list = new ArrayList<>();
         String sql = String.format("""
-                SELECT 
+                SELECT  
                   	CASE WHEN equipe.nome_equipe = '%s' THEN 1 ELSE 2 END AS prioridade, 
                     cliente.empresa, 
                     cliente.responsavel 
