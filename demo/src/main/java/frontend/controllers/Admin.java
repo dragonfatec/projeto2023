@@ -15,6 +15,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -384,6 +387,21 @@ public class Admin implements Initializable {
         // Recarregar os dados para atualizar o ChoiceBox
         campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "cliente-matriculas"));
     }
+
+/*    public void generateCsv(String matricula){
+        String caminhoDeOrigem = "C:\\Users\\pablo\\Documents\\Programas\\Faculdade\\projeto2023\\demo\\output";
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoDeOrigem))){
+            bw.write(
+                    conn.getUsuario(matricula).getMatricula() + "," +
+                    conn.getUsuario(matricula).getNome() + "," +
+                    conn.getHorasUsuario(matricula).toString() + "," +
+                    conn.getCliente()
+                    );
+        }
+        catch (IOException e){
+            System.out.println("Error writing: " + e.getMessage());
+        }
+    }*/
 
 
     /////     Metodos Override     /////
