@@ -130,7 +130,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="campoNomeEquipe" layoutX="279.0" layoutY="134.0" prefHeight="40.0" prefWidth="357.0" promptText="Insira o nome da Equipe..." />
-                        <TableView fx:id="tabelaColaboradoresEquipe" layoutX="51.0" layoutY="248.0" prefHeight="237.0" prefWidth="406.0">
+  <!--                      <TableView fx:id="tabelaColaboradoresEquipe" layoutX="51.0" layoutY="248.0" prefHeight="237.0" prefWidth="406.0">
                            <columns>
                               <TableColumn fx:id="colunaMatriculaEquipe" prefWidth="106.0" text="Matrícula" />
                               <TableColumn fx:id="colunaNomeEquipe" prefWidth="227.0" text="Nome" />
@@ -152,7 +152,7 @@
                            <font>
                               <Font size="23.0" />
                            </font>
-                        </Label>
+                        </Label>-->
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="anchorpaneCadastroCliente" layoutX="369.0" layoutY="110.0" prefHeight="611.0" prefWidth="909.0" visible="false">
