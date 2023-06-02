@@ -298,6 +298,7 @@ public class Admin implements Initializable {
         checkboxUsuarioAtivo.setSelected(false);
 
         // Recarregar os dados para atualizar o ChoiceBox
+        campoEscolhaParaEditar.getItems().clear();
         campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "usuario-matriculas"));
     }
 
@@ -357,6 +358,7 @@ public class Admin implements Initializable {
         tabelaClientesEditarEquipe.getItems().clear();
 
         // Recarregar os dados para atualizar o ChoiceBox
+        campoEscolhaParaEditar.getItems().clear();
         campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "equipe-matriculas"));
     }
 
@@ -388,6 +390,7 @@ public class Admin implements Initializable {
         campoEditaProjetoCliente.setText("");
 
         // Recarregar os dados para atualizar o ChoiceBox
+        campoEscolhaParaEditar.getItems().clear();
         campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "cliente-matriculas"));
     }
 
