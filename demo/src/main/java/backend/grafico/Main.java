@@ -1,15 +1,20 @@
+package backend.grafico;
+
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
-import com.jfoenix.controls.JFXComboBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.chart.BarChart;
 import javafx.stage.Stage;
 
 public class Main {
 
-    @FXML private BarChart<String, Double> graficoAreaChart;
+    @FXML
+    private BarChart<String, Double> graficoAreaChart;
 
-    @FXML private JFXComboBox<String> opcoesEquipe;
-    @FXML private JFXComboBox<String> opcoesAno;
+    @FXML
+    private ComboBox<String> opcoesEquipe;
+    @FXML
+    private ComboBox<String> opcoesAno;
 
     @FXML
     void initialize(){
@@ -19,7 +24,7 @@ public class Main {
     public void atualizar(String equipe, String ano){
 
         graficoAreaChart.getData().clear();
-        
+
         Grafico consulta = new Grafico();
 
         Grafico.Opcoes opcoes = consulta.dadosOpcoes();
@@ -42,12 +47,14 @@ public class Main {
         } else if (opcoesEquipe.getValue() == null && opcoesAno.getValue() != null){
             atualizar(null, opcoesAno.getValue());
         }
-        
+
     }
-    
+
+/*
     public void main(Stage stage){
         App definir = new App();
         definir.janela("/resources/grafico.fxml", stage);
     }
-    
+*/
+
 }

@@ -1,3 +1,5 @@
+package backend.grafico;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,18 +35,18 @@ public class Grafico {
 
         try{
             Connection conexao = DriverManager.getConnection(banco, usuario, senha);
-            PreparedStatement stmt = conexao.prepareStatement("SELECT DISTINCT equipe.nome_equipe, EXTRACT(YEAR FROM data_hora_inicial) AS ano " + 
+            PreparedStatement stmt = conexao.prepareStatement("SELECT DISTINCT equipe.nome_equipe, EXTRACT(YEAR FROM data_hora_inicial) AS ano " +
             "FROM hora JOIN equipe ON hora.id_equipe = equipe.id_equipe ORDER BY ano");
             ResultSet rs = stmt.executeQuery();
-            
+
             while (rs.next()) {
                 String equipes = rs.getString("nome_equipe");
                 String anos = rs.getString("ano");
-            
+
                 Opcoes dadosOpcoes = new Opcoes(FXCollections.observableArrayList(equipes), FXCollections.observableArrayList(anos));
                 opcoes.add(dadosOpcoes);
             }
-    
+
             conexao.close();
             stmt.close();
             rs.close();
@@ -69,7 +71,7 @@ public class Grafico {
         });
 
         return new Opcoes(equipes, anos);
-        
+
     }
 
     public class Consulta{
@@ -109,7 +111,7 @@ public class Grafico {
 
             if (equipe != null && ano != null){
                 where = "WHERE id_equipe = '" + equipe + "' AND TO_CHAR(data_hora_inicial, 'YYYY') = '" + ano + "'";
-    
+
             } else if (equipe != null && ano == null){
                 where = "WHERE id_equipe = '" + equipe + "'";
             } else if (equipe == null && ano != null){
@@ -123,20 +125,20 @@ public class Grafico {
                 "WHEN tipo_hora = 'Hora extra' AND status = 'Aprovado' AND EXTRACT(HOUR FROM data_hora_final) > EXTRACT(HOUR FROM data_hora_inicial) THEN EXTRACT(HOUR FROM data_hora_final) - EXTRACT(HOUR FROM data_hora_inicial) " +
                 "WHEN tipo_hora = 'Hora extra' AND status = 'Aprovado' AND EXTRACT(HOUR FROM data_hora_final) < EXTRACT(HOUR FROM data_hora_inicial) AND EXTRACT(HOUR FROM data_hora_inicial) = 23 AND EXTRACT(MINUTE FROM data_hora_inicial) = 0 AND EXTRACT(HOUR FROM data_hora_final) = 0 AND EXTRACT(MINUTE FROM data_hora_final) = 0 THEN EXTRACT(HOUR FROM data_hora_final) + (24 - EXTRACT(HOUR FROM data_hora_inicial)) " +
                 "WHEN tipo_hora = 'Hora extra' AND status = 'Aprovado' AND EXTRACT(HOUR FROM data_hora_final) < EXTRACT(HOUR FROM data_hora_inicial) AND EXTRACT(HOUR FROM data_hora_inicial) = 23 AND EXTRACT(HOUR FROM data_hora_final) = 0 AND EXTRACT(MINUTE FROM data_hora_final) >= EXTRACT(MINUTE FROM data_hora_inicial) THEN EXTRACT(HOUR FROM data_hora_final) + (24 - EXTRACT(HOUR FROM data_hora_inicial)) ELSE 0 END) AS total_horasextra, " +
-                
+
                 "SUM(CASE " +
                 "WHEN tipo_hora = 'Hora extra' AND status = 'Aprovado' AND EXTRACT(MINUTE FROM data_hora_inicial) < EXTRACT(MINUTE FROM data_hora_final) THEN (EXTRACT(MINUTE FROM data_hora_final) - EXTRACT(MINUTE FROM data_hora_inicial)) " +
                 "WHEN tipo_hora = 'Hora extra' AND status = 'Aprovado' AND EXTRACT(MINUTE FROM data_hora_inicial) > EXTRACT(MINUTE FROM data_hora_final) THEN (EXTRACT(MINUTE FROM data_hora_inicial) - EXTRACT(MINUTE FROM data_hora_final))ELSE 0 END) AS total_minutosextra, " +
-                
+
                 "SUM(CASE " +
                 "WHEN tipo_hora = 'Sobreaviso' AND status = 'Aprovado' AND EXTRACT(HOUR FROM data_hora_final) > EXTRACT(HOUR FROM data_hora_inicial) THEN EXTRACT(HOUR FROM data_hora_final) - EXTRACT(HOUR FROM data_hora_inicial) " +
                 "WHEN tipo_hora = 'Sobreaviso' AND status = 'Aprovado' AND EXTRACT(HOUR FROM data_hora_final) < EXTRACT(HOUR FROM data_hora_inicial) AND EXTRACT(HOUR FROM data_hora_inicial) = 23 AND EXTRACT(MINUTE FROM data_hora_inicial) = 0 AND EXTRACT(HOUR FROM data_hora_final) = 0 AND EXTRACT(MINUTE FROM data_hora_final) = 0 THEN EXTRACT(HOUR FROM data_hora_final) + (24 - EXTRACT(HOUR FROM data_hora_inicial)) " +
                 "WHEN tipo_hora = 'Sobreaviso' AND status = 'Aprovado' AND EXTRACT(HOUR FROM data_hora_final) < EXTRACT(HOUR FROM data_hora_inicial) AND EXTRACT(HOUR FROM data_hora_inicial) = 23 AND EXTRACT(HOUR FROM data_hora_final) = 0 AND EXTRACT(MINUTE FROM data_hora_final) >= EXTRACT(MINUTE FROM data_hora_inicial) THEN EXTRACT(HOUR FROM data_hora_final) + (24 - EXTRACT(HOUR FROM data_hora_inicial)) ELSE 0 END) AS total_horassobreaviso, " +
-                
+
                 "SUM(CASE "  +
                 "WHEN tipo_hora = 'Sobreaviso' AND status = 'Aprovado' AND EXTRACT(MINUTE FROM data_hora_inicial) < EXTRACT(MINUTE FROM data_hora_final) THEN (EXTRACT(MINUTE FROM data_hora_final) - EXTRACT(MINUTE FROM data_hora_inicial)) " +
                 "WHEN tipo_hora = 'Sobreaviso' AND status = 'Aprovado' AND EXTRACT(MINUTE FROM data_hora_inicial) > EXTRACT(MINUTE FROM data_hora_final) THEN (EXTRACT(MINUTE FROM data_hora_inicial) - EXTRACT(MINUTE FROM data_hora_final)) ELSE 0 END) AS total_minutossobreaviso " +
-                
+
                 "FROM hora " + where + " GROUP BY mes ORDER BY mes");
                 ResultSet rs = stmt.executeQuery();
 
@@ -180,7 +182,7 @@ public class Grafico {
                     Consulta consulta = new Consulta(mes, totalHoraExtra, totalSobreaviso);
                     consultas.add(consulta);
                 }
-        
+
                 conexao.close();
                 stmt.close();
                 rs.close();
