@@ -154,6 +154,9 @@ public class Admin implements Initializable {
     public void irParaAprovaHora() throws IOException {
         App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
     }
+    public void irParaDashboard(){
+        
+    }
 
     public void cadastrarUsuario(MouseEvent mouseEvent) {
         RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();

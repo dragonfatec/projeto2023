@@ -339,10 +339,11 @@ public class ConnectionFactory {
         String sql = "";
         switch (equipeOuCliente.toLowerCase()){
             case "equipe":
-                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + id + "';";
+//                sql = "SELECT eq.nome_equipe FROM equipe_usuario AS eu INNER JOIN equipe AS eq ON eu.id_equipe = eq.id_equipe INNER JOIN usuario AS us ON us.matricula = eu.matricula WHERE us.matricula = '" + id + "';";
+                sql = "SELECT equipe.nome_equipe FROM equipe;";
                 break;
             case "cliente":
-                sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = eq.id_equipe INNER JOIN cliente cl ON cl.id_cliente = cl.id_cliente WHERE eq.nome_equipe = '"+ id +"';";
+                sql = "SELECT cl.empresa FROM equipe_cliente ec INNER JOIN equipe eq ON eq.id_equipe = ec.id_equipe INNER JOIN cliente cl ON cl.id_cliente = ec.id_cliente WHERE eq.nome_equipe = '"+ id +"';";
                 break;
             case "usuario":
                 sql = "SELECT matricula FROM usuario;";
@@ -379,4 +380,5 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
+
 }
