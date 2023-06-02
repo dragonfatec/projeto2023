@@ -487,7 +487,7 @@
 <!--                     </font>-->
 <!--                  </Button>-->
 <!--               </children></AnchorPane>-->
-            <AnchorPane fx:id="anchorpaneDashboard" prefHeight="720.0" prefWidth="1280.0" visible="false">
+            <AnchorPane fx:id="anchorpaneDashboard" prefHeight="720.0" prefWidth="1280.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />
                   <Label fx:id="textoNomeUsuario3" alignment="CENTER" layoutY="47.0" prefHeight="30.0" prefWidth="368.0" textFill="WHITE">
@@ -520,22 +520,12 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="392.0" layoutY="30.0" prefHeight="34.0" prefWidth="171.0" text="Selecione a Equipe:">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="502.0" layoutY="30.0" prefHeight="34.0" prefWidth="171.0" text="Selecione a Equipe:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="637.0" layoutY="30.0" prefHeight="34.0" prefWidth="147.0" text="Selecione o Ano:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="850.0" layoutY="30.0" prefHeight="34.0" prefWidth="200.0" text="Colaborador Específico:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1108.0" layoutY="30.0" prefHeight="34.0" prefWidth="132.0" text="Mês Específico:">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="747.0" layoutY="30.0" prefHeight="34.0" prefWidth="147.0" text="Selecione o Ano:">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -548,10 +538,18 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </BarChart>
-                  <ComboBox fx:id="campoEquipeDashboard" layoutX="402.0" layoutY="67.0" prefHeight="34.0" prefWidth="155.0" />
-                  <ComboBox fx:id="campoAnoDashboard" layoutX="640.0" layoutY="67.0" prefHeight="34.0" prefWidth="138.0" />
-                  <ComboBox fx:id="campoColaboradorDashboard" layoutX="857.0" layoutY="66.0" prefHeight="34.0" prefWidth="188.0" />
-                  <ComboBox fx:id="campoMesDashboard" layoutX="1115.0" layoutY="66.0" prefHeight="34.0" prefWidth="123.0" />
+                  <ComboBox fx:id="campoEquipeDashboard" layoutX="512.0" layoutY="67.0" prefHeight="34.0" prefWidth="155.0" />
+                  <ComboBox fx:id="campoAnoDashboard" layoutX="750.0" layoutY="67.0" prefHeight="34.0" prefWidth="138.0" />
+                  <Button fx:id="btnGerarGrafico" layoutX="990.0" layoutY="66.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="109.0" text="Consultar">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="675.0" layoutY="596.0" prefHeight="27.0" prefWidth="289.0" text="Hora Extra                        Sobreaviso">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
             <AnchorPane disable="true" prefHeight="720.0" prefWidth="1280.0" visible="false" />
          </children>
