@@ -123,9 +123,12 @@ public class ConnectionFactory {
                 String senha = rs.getString(2);
                 String nome = rs.getString(3);
                 String cargo = rs.getString(4);
+                String situacao = rs.getString(5);
 
-
-                user = Usuario.criarUsuario(mat, senha, nome, cargo, Situacao.Ativo);
+                if (situacao.equals(Situacao.Ativo.toString()))
+                    user = Usuario.criarUsuario(mat, senha, nome, cargo, Situacao.Ativo);
+                else
+                    user = Usuario.criarUsuario(mat, senha, nome, cargo, Situacao.Inativo);
 
             }
             return user;

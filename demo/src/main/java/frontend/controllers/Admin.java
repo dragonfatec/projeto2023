@@ -21,6 +21,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -99,6 +100,7 @@ public class Admin implements Initializable {
     public ChoiceBox campoClienteEquipe;
     public ChoiceBox campoEscolhaEdicao;
     public ChoiceBox campoEscolhaParaEditar;
+
     public CheckBox checkboxUsuarioAtivo;
 
     // AnchorPane
@@ -247,7 +249,6 @@ public class Admin implements Initializable {
     public void preencherDados(){
         switch (campoEscolhaEdicao.getValue().toString().toLowerCase()) {
             case "usuario" -> {
-                System.out.println("usuario");
                 preencherEditaUsuario();
             }
             case "equipe" -> {
@@ -258,6 +259,7 @@ public class Admin implements Initializable {
             }
         }
     }
+
 
     public void preencherEditaUsuario(){
         try {
@@ -275,7 +277,13 @@ public class Admin implements Initializable {
                 case RH -> {
                     radioAdminEdita.setSelected(true);
                 }
+
             }
+            if (userSelecionado.situacao().equals(Situacao.Ativo)){
+                checkboxUsuarioAtivo.setSelected(true);
+            }
+            else
+                checkboxUsuarioAtivo.setSelected(false);
         }catch (Exception e){
             e.printStackTrace();
         }
