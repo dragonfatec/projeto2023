@@ -391,14 +391,11 @@ public class Admin implements Initializable {
         campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "cliente-matriculas"));
     }
 
-/*    public void generateCsv(String matricula){
+  /*  public void generateCsv(String matricula){
         String caminhoDeOrigem = "C:\\Users\\pablo\\Documents\\Programas\\Faculdade\\projeto2023\\demo\\output";
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoDeOrigem))){
             bw.write(
-                    conn.getUsuario(matricula).getMatricula() + "," +
-                    conn.getUsuario(matricula).getNome() + "," +
-                    conn.getHorasUsuario(matricula).toString() + "," +
-                    conn.getCliente()
+                    conn.getHo
                     );
         }
         catch (IOException e){
