@@ -136,9 +136,6 @@ public class AprovaHora implements Initializable {
         VerificaAcesso.verificarAcesso(btnCadastra, usuario.getCargo(), NomesArquivosFXML.admin);
         VerificaAcesso.verificarAcesso(btnEdita, usuario.getCargo(), NomesArquivosFXML.admin);
 
-
-        conn.getInfoCSV();
-
         // Para preencher o campo de equipe
         campoEscolhaEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
 

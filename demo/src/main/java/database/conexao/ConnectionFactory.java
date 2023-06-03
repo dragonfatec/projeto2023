@@ -137,9 +137,7 @@ public class ConnectionFactory {
                 linha = matricula+","+nome+","+dataIni+","+dataFin+","+tipoHora+","+verba+"%,"+empresa+","+responsavel+","+projeto+","+nomeEquipe+","+justificativa+","+justificativaStatus;
                 list.add(linha);
             }
-            for(String row:list){
-                System.out.println(row);
-            }
+
             return list;
         }catch (SQLException e){
             throw new RuntimeException(e);
