@@ -2,6 +2,7 @@ package database.conexao;
 
 import backend.cliente.Cliente;
 import backend.datahora.RegistroDataHora;
+import backend.equipe.Equipe;
 import backend.usuario.Situacao;
 import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
@@ -89,6 +90,58 @@ public class ConnectionFactory {
             pr.execute();
         }
         catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<String> getInfoCSV(){
+        String linha = "";
+        String sql = " SELECT " +
+                "usuario.matricula, " +
+                "usuario.nome, " +
+                "hora.data_hora_inicial, " +
+                "hora.data_hora_final, " +
+                "hora.tipo_hora, "+
+                "CASE " +
+                "WHEN hora.tipo_hora = 'Extra' AND RANK() OVER (PARTITION BY  usuario.matricula, TO_CHAR(hora.data_hora_inicial, 'DD-MM-YYYY') ORDER BY hora.data_hora_inicial DESC) >= 2 THEN '100' " +
+                "WHEN hora.tipo_hora = 'Extra' THEN '75' " +
+                "ELSE '30' END AS verba, " +
+                "cliente.empresa, " +
+                "cliente.responsavel, " +
+                "cliente.projeto, " +
+                "equipe.nome_equipe, " +
+                "hora.justificativa, " +
+                "hora.justificativa_status " +
+                              "FROM " +
+                "hora " +
+                              "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
+                              "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
+                              "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
+                              "ORDER BY verba;";
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()){
+                String matricula = rs.getString(1);
+                String nome = rs.getString(2);
+                String dataIni = rs.getString(3);
+                String dataFin = rs.getString(4);
+                String tipoHora = rs.getString(5);
+                String verba = rs.getString(6);
+                String empresa = rs.getString(7);
+                String responsavel = rs.getString(8);
+                String projeto = rs.getString(9);
+                String nomeEquipe = rs.getString(10);
+                String justificativa = rs.getString(11);
+                String justificativaStatus = rs.getString(12);
+                linha = matricula+","+nome+","+dataIni+","+dataFin+","+tipoHora+","+verba+"%,"+empresa+","+responsavel+","+projeto+","+nomeEquipe+","+justificativa+","+justificativaStatus;
+                list.add(linha);
+            }
+            for(String row:list){
+                System.out.println(row);
+            }
+            return list;
+        }catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
