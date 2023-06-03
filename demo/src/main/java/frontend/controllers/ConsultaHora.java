@@ -1,5 +1,6 @@
 package frontend.controllers;
 
+import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
@@ -8,12 +9,10 @@ import frontend.util.Tabela;
 import frontend.util.VerificaAcesso;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +22,7 @@ public class ConsultaHora implements Initializable {
     // Objetos
     private final ConnectionFactory conn = new ConnectionFactory();
     private final Usuario usuario = Usuario.getInstancia();
+    public ChoiceBox campoSelecionaUsuario;
 
     // Texto
     @FXML Label textoNomeUsuario;
@@ -76,6 +76,19 @@ public class ConsultaHora implements Initializable {
         colunaStatus.setCellValueFactory(new PropertyValueFactory<Tabela, String>("status"));
         tabela.setItems(tabelasObjetoLista);
 
+        if (usuario.getCargo().equals(TiposDeUsuario.RH)){
+            campoSelecionaUsuario.setVisible(true);
+            campoSelecionaUsuario.getItems().addAll(conn.getListaColuna(null, "usuario-matriculas"));
+        }
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
+    }
+
+    public void mudarUsuario(ActionEvent event) {
+        try{
+            Usuario userSelecionado = conn.getUsuario(campoSelecionaUsuario.getValue().toString().split("-")[0].trim());
+            tabela.setItems(FXCollections.observableArrayList(conn.getHorasUsuario(userSelecionado.getMatricula())));
+        }catch (Exception ignored){
+
+        }
     }
 }

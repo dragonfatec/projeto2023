@@ -32,18 +32,12 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.AprovaHora">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.AprovaHora">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="875.0" VBox.vgrow="ALWAYS">
             <children>
@@ -59,7 +53,7 @@
                     </font>
                 </Button>
 
-                <Button fx:id="btnCadastra" layoutY="283.0" visible="false" mnemonicParsing="false" onAction="#irParaCadastra" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Cadastro" textFill="WHITE">
+                <Button fx:id="btnCadastra" layoutY="283.0" mnemonicParsing="false" onAction="#irParaCadastra" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Cadastro" textFill="WHITE" visible="false">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -71,7 +65,7 @@
                     </font>
                 </Button>
 
-                <Button fx:id="btnEdita" visible="false" layoutY="361.0" mnemonicParsing="false" onAction="#irParaEdita" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Edição" textFill="WHITE">
+                <Button fx:id="btnEdita" layoutY="361.0" mnemonicParsing="false" onAction="#irParaEdita" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Edição" textFill="WHITE" visible="false">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -123,6 +117,11 @@
             <Button fx:id="btnSelecionarTudo" layoutX="1165.0" layoutY="90.0" mnemonicParsing="false" onAction="#selecionarTudo" prefHeight="25.0" prefWidth="95.0" text="Selecionar Tudo">
                <font>
                   <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnConsultar1" layoutY="590.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
                </font>
             </Button>
             </children>
