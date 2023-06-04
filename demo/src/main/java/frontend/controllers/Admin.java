@@ -61,6 +61,7 @@ public class Admin implements Initializable {
 
     // Button
     public Button btnRegistrarHora;
+    @FXML
     public Button btnConsultar;
     public Button btnCadastrarUsuario;
     public Button btnCadastrarCliente;
@@ -158,7 +159,7 @@ public class Admin implements Initializable {
     }
     public void irParaDashboard(){
     }
-
+    @FXML
     public void irParaConsultaHora() throws IOException {
         App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
     }

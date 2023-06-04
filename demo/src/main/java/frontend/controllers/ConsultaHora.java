@@ -1,5 +1,6 @@
 package frontend.controllers;
 
+import backend.equipe.Equipe;
 import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
@@ -69,18 +70,23 @@ public class ConsultaHora implements Initializable {
         Admin.qualTelaIniciar = "cadastra";
         App.mudarTela(NomesArquivosFXML.admin + ".fxml");
     }
-/*    public void generateCsv(){
-        String caminhoDeOrigem = "C:\\Users\\pablo\\Documents\\Programas\\Faculdade\\projeto2023\\demo\\output";
-        ArrayList<String> horaEquipe;
-        horaEquipe.add(conn.getHoraEquipe());
+    public void generateCsv(){
+        String caminhoDeOrigem = "C:\\Users\\pablo\\Documents\\Programas\\Faculdade\\projeto2023\\demo\\output\\teste.csv";
+        Usuario userSelecionado = conn.getUsuario(campoSelecionaUsuario.getValue().toString().split("-")[0].trim());
+        /*ArrayList<String> lista = new ArrayList<>();
+        for (String user : FXCollections.observableArrayList(conn.getInfoCSV(userSelecionado.getMatricula()))){
+            lista.add(user);
+        }*/
+
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoDeOrigem))){
             bw.write("matricula,nome,verba,horas,cliente,CR,projeto");
             bw.newLine();
+            bw.write(userSelecionado.getMatricula().toString());
         }
         catch (IOException e){
             System.out.println("Error writing: " + e.getMessage());
         }
-    }*/
+    }
 
 
 
