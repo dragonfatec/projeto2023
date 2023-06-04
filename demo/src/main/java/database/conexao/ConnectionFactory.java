@@ -116,7 +116,7 @@ public class ConnectionFactory {
                     "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
                     "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
                     "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
-                "WHERE matricula = '%s' " +
+                "WHERE usuario.matricula = '%s' " +
                 "ORDER BY verba;", matricula);
         ArrayList<String> list = new ArrayList<>();
         try {
