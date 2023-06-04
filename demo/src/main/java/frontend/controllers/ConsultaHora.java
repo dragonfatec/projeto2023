@@ -39,6 +39,8 @@ public class ConsultaHora implements Initializable {
     @FXML Button btnConsultar;
     @FXML Button btnAprovaHora;
     @FXML Button exportExcel;
+    @FXML Button btnCadastra;
+    @FXML Button btnEdita;
 
     public void export(){
         System.out.println("foi");
@@ -52,6 +54,15 @@ public class ConsultaHora implements Initializable {
 
     public void irParaRegistraHora() throws IOException {
         App.mudarTela(NomesArquivosFXML.registraHora + ".fxml");
+    }
+
+    public void mudarParaEdita() throws IOException {
+        Admin.qualTelaIniciar = "edita";
+        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
+    }
+    public void mudarParaCadastra() throws IOException {
+        Admin.qualTelaIniciar = "cadastra";
+        App.mudarTela(NomesArquivosFXML.admin + ".fxml");
     }
 
 
@@ -79,6 +90,9 @@ public class ConsultaHora implements Initializable {
             exportExcel.setVisible(true);
             campoSelecionaUsuario.setVisible(true);
             campoSelecionaUsuario.getItems().addAll(conn.getListaColuna(null, "usuario-matriculas"));
+            btnCadastra.setVisible(true);
+            btnEdita.setVisible(true);
+
         }
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }

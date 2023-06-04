@@ -157,8 +157,12 @@ public class Admin implements Initializable {
         App.mudarTela(NomesArquivosFXML.aprovaHora + ".fxml");
     }
     public void irParaDashboard(){
-        
     }
+
+    public void irParaConsultaHora() throws IOException {
+        App.mudarTela(NomesArquivosFXML.consultaHora + ".fxml");
+    }
+
 
     public void cadastrarUsuario(MouseEvent mouseEvent) {
         RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();

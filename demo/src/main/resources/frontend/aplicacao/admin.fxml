@@ -40,6 +40,11 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
+                  <Button fx:id="btnConsultar1" layoutY="515.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                   <Button fx:id="btnAprovaHora" layoutY="428.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" text="Aprovar Hora" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
@@ -209,11 +214,6 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnDashboard" visible="false" layoutY="499.0" mnemonicParsing="false" onAction="#irParaDashboard" prefHeight="60.0" prefWidth="368.0" text="Dashboard" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="anchorpaneAreaEdicao" prefHeight="720.0" prefWidth="1280.0" visible="false">
@@ -235,6 +235,11 @@
                      </font>
                   </Label>
                   <Button fx:id="btnAreaCadastro2" layoutY="257.0" mnemonicParsing="false" onAction="#mudarParaCadastra" prefHeight="60.0" prefWidth="368.0" text="Área de Cadastro" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnConsultar2" layoutY="515.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -412,14 +417,8 @@
 <!--                        <Button fx:id="btnEditarProjetoCliente" layoutX="677.0" layoutY="389.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="75.0" text="EDITAR" />-->
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnDashboard2" visible="false" layoutY="522.0" mnemonicParsing="false" onAction="#irParaDashboard" prefHeight="60.0" prefWidth="368.0" text="Dashboard" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
                </children>
             </AnchorPane>
-
 <!--            <AnchorPane fx:id="anchorpaneAprovarHoraAdmin" prefHeight="720.0" prefWidth="1280.0" visible="false">-->
 <!--               <children>-->
 <!--                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ac3d9" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="368.0" />-->

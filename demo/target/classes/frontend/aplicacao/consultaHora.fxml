@@ -51,7 +51,7 @@
                     <font>
                         <Font size="24.0" />
                     </font></Button>
-                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+                <Button fx:id="btnConsultar" layoutY="515.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font></Button>
@@ -73,13 +73,23 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-            <Button fx:id="btnAprovaHora" layoutY="435.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Aprovar Hora" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
+                <Button fx:id="btnAprovaHora" layoutY="435.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Aprovar Hora" textFill="WHITE">
+                   <font>
+                      <Font size="24.0" />
+                   </font>
+                </Button>
+                <Button fx:id="btnCadastra" layoutY="283.0" mnemonicParsing="false" onAction="#mudarParaCadastra" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Cadastro" textFill="WHITE" visible="false">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnEdita" layoutY="361.0" mnemonicParsing="false" onAction="#mudarParaEdita" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Edição" textFill="WHITE" visible="false">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
             <ChoiceBox fx:id="campoSelecionaUsuario" layoutX="439.0" layoutY="35.0" onAction="#mudarUsuario" prefWidth="150.0" visible="false" />
-            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#export" text="Exrpotar p/ Excel" />
+            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#export" text="Exportar CSV" />
             </children>
         </AnchorPane>
     </children>
