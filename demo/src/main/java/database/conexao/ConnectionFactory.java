@@ -93,9 +93,9 @@ public class ConnectionFactory {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<String> getInfoCSV(){
+    public ArrayList<String> getInfoCSV(String matricula){
         String linha = "";
-        String sql = " SELECT " +
+        String sql = String.format(" SELECT " +
                 "usuario.matricula, " +
                 "usuario.nome, " +
                 "hora.data_hora_inicial, " +
@@ -111,18 +111,19 @@ public class ConnectionFactory {
                 "equipe.nome_equipe, " +
                 "hora.justificativa, " +
                 "hora.justificativa_status " +
-                              "FROM " +
+                    "FROM " +
                 "hora " +
-                              "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
-                              "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
-                              "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
-                              "ORDER BY verba;";
+                    "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
+                    "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
+                    "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
+                "WHERE matricula = '%s' " +
+                "ORDER BY verba;", matricula);
         ArrayList<String> list = new ArrayList<>();
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
             while (rs.next()){
-                String matricula = rs.getString(1);
+//                String mat = rs.getString(1);
                 String nome = rs.getString(2);
                 String dataIni = rs.getString(3);
                 String dataFin = rs.getString(4);
