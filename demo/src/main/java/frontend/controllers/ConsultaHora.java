@@ -38,6 +38,11 @@ public class ConsultaHora implements Initializable {
     @FXML Button btnRegistrarHora;
     @FXML Button btnConsultar;
     @FXML Button btnAprovaHora;
+    @FXML Button exportExcel;
+
+    public void export(){
+        System.out.println("foi");
+    }
 
 
     /////     Metodos Publicos     /////
@@ -63,12 +68,6 @@ public class ConsultaHora implements Initializable {
         ObservableList<Tabela> tabelasObjetoLista = FXCollections.observableArrayList();
         tabelasObjetoLista.addAll(conn.getHorasUsuario(usuario.getMatricula()));
 
-        // TESTE
-//        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
-//        tabelasObjetoLista.add(new Tabela("02/02/2023 12:00","02/02/2023 15:00","Cliente","Em andamento"));
-//        tabelasObjetoLista.add(new Tabela("02/04/2023 12:00","02/04/2023 15:00","Cliente","Reprovado"));
-//        tabelasObjetoLista.add(new Tabela("02/05/2023 12:00","02/05/2023 15:00","Cliente","Aprovado"));
-
         // Para cada campo da tabela vamos "conectar" com um parametro da classe Tabela
         colunaDataHoraInicial.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataInicio"));
         colunaDataHoraFinal.setCellValueFactory(new PropertyValueFactory<Tabela, String>("dataFim"));
@@ -77,6 +76,7 @@ public class ConsultaHora implements Initializable {
         tabela.setItems(tabelasObjetoLista);
 
         if (usuario.getCargo().equals(TiposDeUsuario.RH)){
+            exportExcel.setVisible(true);
             campoSelecionaUsuario.setVisible(true);
             campoSelecionaUsuario.getItems().addAll(conn.getListaColuna(null, "usuario-matriculas"));
         }

@@ -78,7 +78,8 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <ChoiceBox fx:id="campoSelecionaUsuario" onAction="#mudarUsuario" visible="false" layoutX="439.0" layoutY="35.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="campoSelecionaUsuario" layoutX="439.0" layoutY="35.0" onAction="#mudarUsuario" prefWidth="150.0" visible="false" />
+            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#export" text="Exrpotar p/ Excel" />
             </children>
         </AnchorPane>
     </children>
