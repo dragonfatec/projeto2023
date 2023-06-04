@@ -14,8 +14,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ConsultaHora implements Initializable {
@@ -65,6 +69,19 @@ public class ConsultaHora implements Initializable {
         Admin.qualTelaIniciar = "cadastra";
         App.mudarTela(NomesArquivosFXML.admin + ".fxml");
     }
+/*    public void generateCsv(){
+        String caminhoDeOrigem = "C:\\Users\\pablo\\Documents\\Programas\\Faculdade\\projeto2023\\demo\\output";
+        ArrayList<String> horaEquipe;
+        horaEquipe.add(conn.getHoraEquipe());
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoDeOrigem))){
+            bw.write("matricula,nome,verba,horas,cliente,CR,projeto");
+            bw.newLine();
+        }
+        catch (IOException e){
+            System.out.println("Error writing: " + e.getMessage());
+        }
+    }*/
+
 
 
     /////     Metodo Override     /////
@@ -107,4 +124,5 @@ public class ConsultaHora implements Initializable {
 
         }
     }
+
 }

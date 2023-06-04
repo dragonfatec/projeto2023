@@ -406,17 +406,6 @@ public class Admin implements Initializable {
         campoEscolhaParaEditar.getItems().addAll(conn.getListaColuna(null, "cliente-matriculas"));
     }
 
-  /*  public void generateCsv(String matricula){
-        String caminhoDeOrigem = "C:\\Users\\pablo\\Documents\\Programas\\Faculdade\\projeto2023\\demo\\output";
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoDeOrigem))){
-            bw.write(
-                    conn.getHo
-                    );
-        }
-        catch (IOException e){
-            System.out.println("Error writing: " + e.getMessage());
-        }
-    }*/
 
 
     /////     Metodos Override     /////

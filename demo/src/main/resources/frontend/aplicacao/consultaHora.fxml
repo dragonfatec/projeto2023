@@ -96,7 +96,7 @@
                     </font>
                 </Button>
             <ChoiceBox fx:id="campoSelecionaUsuario" layoutX="439.0" layoutY="35.0" onAction="#mudarUsuario" prefWidth="150.0" visible="false" />
-            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#export" text="Exportar CSV" visible="false" />
+            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#generateCsv" text="Exportar CSV" visible="false"/>
             </children>
         </AnchorPane>
     </children>
