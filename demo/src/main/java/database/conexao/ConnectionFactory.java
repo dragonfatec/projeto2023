@@ -96,49 +96,58 @@ public class ConnectionFactory {
     public ArrayList<String> getInfoCSV(String matricula){
         String linha = "";
         String sql = String.format(" SELECT " +
-                "usuario.matricula, " +
-                "usuario.nome, " +
-                "hora.data_hora_inicial, " +
-                "hora.data_hora_final, " +
-                "hora.tipo_hora, "+
-                "CASE " +
-                "WHEN hora.tipo_hora = 'Extra' AND RANK() OVER (PARTITION BY  usuario.matricula, TO_CHAR(hora.data_hora_inicial, 'DD-MM-YYYY') ORDER BY hora.data_hora_inicial DESC) >= 2 THEN '100' " +
-                "WHEN hora.tipo_hora = 'Extra' THEN '75' " +
-                "ELSE '30' END AS verba, " +
-                "cliente.empresa, " +
-                "cliente.responsavel, " +
-                "cliente.projeto, " +
-                "equipe.nome_equipe, " +
-                "hora.justificativa, " +
-                "hora.justificativa_status " +
-                    "FROM " +
-                "hora " +
-                    "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
-                    "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
-                    "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
-                "WHERE usuario.matricula = '%s' " +
-                "ORDER BY verba;", matricula);
+                                        "usuario.matricula, " +
+                                        "usuario.nome, " +
+                                    "CASE " +
+                                        "WHEN hora.tipo_hora = 'Sobreaviso' THEN '3016' " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 2 THEN '1601' " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 2 THEN CONCAT('2h 1601 E ',EXTRACT(EPOCH FROM (AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-2,'h 1602') " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 1 THEN CONCAT(EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600,'h 3000') " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 1 THEN CONCAT('1h 3000 e ',EXTRACT(EPOCH FROM (AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-1,'h 1809') " +
+                                        "ELSE 'NULL' END AS verba, " +
+                                    "CASE " +
+                                        "WHEN hora.tipo_hora = 'Sobreaviso' THEN EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 2 THEN EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600* 1.75 " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 2 THEN  3.5 + ((EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-2)*2 " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 1 THEN (EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600* 1.1429)*1.75 " +
+                                        "WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 1 THEN 1.75 + (((EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-1)*1.429)*2 " +
+                                        "ELSE 0.0 END AS horas_proporcionais, " +
+                                        "hora.data_hora_inicial, " +
+                                        "hora.data_hora_final, " +
+                                        "hora.tipo_hora, " +
+                                        "cliente.empresa, " +
+                                        "cliente.responsavel, " +
+                                        "cliente.projeto, " +
+                                        "equipe.nome_equipe, " +
+                                        "hora.justificativa, " +
+                                        "hora.justificativa_status " +
+                                    "FROM " +
+                                        "hora " +
+                                    "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
+                                    "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
+                                    "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
+                                    "WHERE usuario.matricula = '12345' " +
+                                    "ORDER BY cr,hora.data_hora_inicial", matricula);
         ArrayList<String> list = new ArrayList<>();
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
             while (rs.next()){
-//                String mat = rs.getString(1);
                 String nome = rs.getString(2);
-                String dataIni = rs.getString(3);
-                String dataFin = rs.getString(4);
-                String tipoHora = rs.getString(5);
-                String verba = rs.getString(6);
-                String empresa = rs.getString(7);
-                String responsavel = rs.getString(8);
-                String projeto = rs.getString(9);
-                String nomeEquipe = rs.getString(10);
-                String justificativa = rs.getString(11);
-                String justificativaStatus = rs.getString(12);
-                linha = matricula+","+nome+","+dataIni+","+dataFin+","+tipoHora+","+verba+"%,"+empresa+","+responsavel+","+projeto+","+nomeEquipe+","+justificativa+","+justificativaStatus;
+                String verba = rs.getString(3);
+                String horas_proporcionais = rs.getString(4);
+                String dataIni = rs.getString(5);
+                String dataFin = rs.getString(6);
+                String tipoHora = rs.getString(7);
+                String empresa = rs.getString(8);
+                String responsavel = rs.getString(9);
+                String projeto = rs.getString(10);
+                String nomeEquipe = rs.getString(11);
+                String justificativa = rs.getString(12);
+                String justificativaStatus = rs.getString(13);
+                linha = matricula+","+nome+","+dataIni+","+dataFin+","+tipoHora+","+verba+","+horas_proporcionais+","+empresa+","+responsavel+","+projeto+","+nomeEquipe+","+justificativa+","+justificativaStatus;
                 list.add(linha);
             }
-
             return list;
         }catch (SQLException e){
             throw new RuntimeException(e);

@@ -92,21 +92,21 @@ WHERE eq.nome_equipe = 'OMEGA'
 
 
 
+--	WHEN hora.tipo_hora = 'Extra' THEN RANK() OVER (PARTITION BY usuario.matricula, TO_CHAR(hora.data_hora_inicial, 'DD-MM-YYYY') ORDER BY hora.data_hora_inicial DESC)
 
 
 
 SELECT
-	CASE 
-	--	WHEN hora.tipo_hora = 'Extra' THEN RANK() OVER (PARTITION BY usuario.matricula, TO_CHAR(hora.data_hora_inicial, 'DD-MM-YYYY') ORDER BY hora.data_hora_inicial DESC)
-		WHEN hora.tipo_hora = 'Extra' AND RANK() OVER (PARTITION BY  usuario.matricula, TO_CHAR(hora.data_hora_inicial, 'DD-MM-YYYY') ORDER BY hora.data_hora_inicial DESC) >= 2 THEN '100'
-		WHEN hora.tipo_hora = 'Extra' THEN '75'
-		ELSE '30' END AS ord,
-
+	usuario.matricula,
+	usuario.nome,
+	EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 AS horas,	
 	hora.data_hora_inicial,
 	hora.data_hora_final,
 	hora.tipo_hora,
-	usuario.matricula,
-	usuario.nome,
+	CASE 
+		WHEN hora.tipo_hora = 'Extra' AND RANK() OVER (PARTITION BY  usuario.matricula, TO_CHAR(hora.data_hora_inicial, 'DD-MM-YYYY') ORDER BY hora.data_hora_inicial DESC) >= 2 THEN '100'
+		WHEN hora.tipo_hora = 'Extra' THEN '75'
+		ELSE '30' END AS verba,
 	cliente.empresa,
 	cliente.responsavel,
 	cliente.projeto,
@@ -118,8 +118,55 @@ FROM
 LEFT JOIN usuario ON usuario.matricula = hora.matricula
 LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente
 LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe
-WHERE hora.matricula = '12345'
-ORDER BY ord
+WHERE usuario.matricula = '12345'
+ORDER BY verba, hora.data_hora_inicial
 
 
 
+
+-- NOVA VERSÃO
+SELECT
+	usuario.matricula,
+	usuario.nome,
+	CASE 
+		WHEN hora.tipo_hora = 'Sobreaviso' THEN '3016'
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 2 THEN '1601'
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 2 THEN CONCAT('2h 1601 E ',EXTRACT(EPOCH FROM (AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-2,'h 1602')                           
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 1 THEN CONCAT(EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600,'h 3000')
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 1 THEN CONCAT('1h 3000 e ',EXTRACT(EPOCH FROM (AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-1,'h 1809')
+		ELSE 'NULL' END AS verba,
+	CASE 
+		WHEN hora.tipo_hora = 'Sobreaviso' THEN EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 2 THEN EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600* 1.75
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) >= 6 AND EXTRACT(HOUR FROM hora.data_hora_inicial) <= 22 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 2 THEN  3.5 + ((EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-2)*2
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 <= 1 THEN (EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600* 1.1429)*1.75
+		WHEN hora.tipo_hora = 'Extra' AND EXTRACT(HOUR FROM hora.data_hora_inicial) > 22 OR EXTRACT(HOUR FROM hora.data_hora_inicial) < 6 AND EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600 > 1 THEN 1.75 + (((EXTRACT(EPOCH FROM AGE(hora.data_hora_final,hora.data_hora_inicial))/3600)-1)*1.429)*2
+		ELSE 0.0 END AS horas_proporcionais,	
+	hora.data_hora_inicial,
+	hora.data_hora_final,
+	hora.tipo_hora,
+	cliente.empresa,
+	cliente.responsavel,
+	cliente.projeto,
+	equipe.nome_equipe,
+	hora.justificativa,
+	hora.justificativa_status
+FROM
+	hora
+LEFT JOIN usuario ON usuario.matricula = hora.matricula
+LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente
+LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe
+WHERE usuario.matricula = '12345'
+ORDER BY hora.data_hora_inicial
+
+
+
+
+
+CASE 
+		WHEN hora.tipo_hora = 'Extra' AND RANK() OVER (PARTITION BY  usuario.matricula, TO_CHAR(hora.data_hora_inicial, 'DD-MM-YYYY') ORDER BY hora.data_hora_inicial DESC) >= 2 THEN '100'
+		WHEN hora.tipo_hora = 'Extra' THEN '75'
+		ELSE '30' END AS verba,
+
+EXTRACT(HOUR FROM hora.data_hora_inicial) >= 7 AND EXTRACT(HOUR FROM hora.data_hora_inicial) < 17 THEN 'TRUE' ELSE 'FALSE' END AS verifica,
+TO_CHAR(hora.data_hora_inicial::DATE, 'Dy'),
