@@ -119,7 +119,8 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button fx:id="btnConsultar1" layoutY="515.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+
+            <Button fx:id="btnConsultar1" layoutY="515.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="false">
                <font>
                   <Font size="24.0" />
                </font>

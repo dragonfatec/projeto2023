@@ -37,6 +37,7 @@ public class ConsultaHora implements Initializable {
     // Botões
     @FXML Button btnRegistrarHora;
     @FXML Button btnConsultar;
+    @FXML Button btnConsultar1;
     @FXML Button btnAprovaHora;
     @FXML Button exportExcel;
     @FXML Button btnCadastra;
@@ -92,7 +93,8 @@ public class ConsultaHora implements Initializable {
             campoSelecionaUsuario.getItems().addAll(conn.getListaColuna(null, "usuario-matriculas"));
             btnCadastra.setVisible(true);
             btnEdita.setVisible(true);
-
+            btnConsultar1.setVisible(true);
+            btnConsultar.setVisible(false);
         }
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }

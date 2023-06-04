@@ -50,11 +50,18 @@
                 <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
-                    </font></Button>
-                <Button fx:id="btnConsultar" layoutY="515.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+                    </font>
+                </Button>
+                <Button fx:id="btnConsultar1" layoutY="515.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="false">
                     <font>
                         <Font size="24.0" />
-                    </font></Button>
+                    </font>
+                </Button>
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_registraHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="true">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
                 <Label alignment="CENTER" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
@@ -89,7 +96,7 @@
                     </font>
                 </Button>
             <ChoiceBox fx:id="campoSelecionaUsuario" layoutX="439.0" layoutY="35.0" onAction="#mudarUsuario" prefWidth="150.0" visible="false" />
-            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#export" text="Exportar CSV" />
+            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#export" text="Exportar CSV" visible="false" />
             </children>
         </AnchorPane>
     </children>
