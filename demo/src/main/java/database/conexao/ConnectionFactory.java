@@ -127,7 +127,7 @@ public class ConnectionFactory {
                                     "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
                                     "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
                                     "WHERE usuario.matricula = '12345' " +
-                                    "ORDER BY cr,hora.data_hora_inicial", matricula);
+                                    "ORDER BY hora.data_hora_inicial", matricula);
         ArrayList<String> list = new ArrayList<>();
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
@@ -135,17 +135,19 @@ public class ConnectionFactory {
             while (rs.next()){
                 String nome = rs.getString(2);
                 String verba = rs.getString(3);
-                String horas_proporcionais = rs.getString(4);
+                String horas = rs.getString(4);
                 String dataIni = rs.getString(5);
                 String dataFin = rs.getString(6);
                 String tipoHora = rs.getString(7);
-                String empresa = rs.getString(8);
+                String cliente = rs.getString(8);
                 String responsavel = rs.getString(9);
                 String projeto = rs.getString(10);
                 String nomeEquipe = rs.getString(11);
                 String justificativa = rs.getString(12);
                 String justificativaStatus = rs.getString(13);
-                linha = matricula+","+nome+","+dataIni+","+dataFin+","+tipoHora+","+verba+","+horas_proporcionais+","+empresa+","+responsavel+","+projeto+","+nomeEquipe+","+justificativa+","+justificativaStatus;
+
+//                "matricula,nome,verba,horas,cliente,CR,projeto"
+                linha = matricula+","+nome+","+verba+","+horas+","+cliente+","+nomeEquipe+","+projeto;
                 list.add(linha);
             }
             return list;
