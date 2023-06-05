@@ -67,8 +67,8 @@ public class ConsultaHora implements Initializable {
         App.mudarTela(NomesArquivosFXML.admin + ".fxml");
     }
     public void generateCsv(){
-        String caminhoDeOrigem = "C:\\Users\\lucas\\Codigos\\Java\\projeto2023\\demo\\output\\teste.csv";
         Usuario userSelecionado = conn.getUsuario(campoSelecionaUsuario.getValue().toString().split("-")[0].trim());
+        String caminhoDeOrigem = "C:\\Users\\lucas\\Codigos\\Java\\projeto2023\\demo\\output\\"+ userSelecionado.getNome() + ".csv";
         ArrayList<String> lista = new ArrayList<>();
         for (String user : FXCollections.observableArrayList(conn.getInfoCSV(userSelecionado.getMatricula()))){
             lista.add(user);

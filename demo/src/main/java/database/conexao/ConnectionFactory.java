@@ -261,7 +261,7 @@ public class ConnectionFactory {
     }
     public ArrayList<TabelaUsuario> getTabelaUsuario(String nomeEquipe){
         ArrayList<TabelaUsuario> list = new ArrayList<>();
-        String sql =String.format("SELECT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
+        String sql =String.format("SELECT DISTINCT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
                                     "usuario.nome, " +
                                     "usuario.matricula " +
                                     "FROM usuario " +
