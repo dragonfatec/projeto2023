@@ -39,7 +39,6 @@ public class AprovaHora implements Initializable {
     @FXML public TableColumn<TabelaAprova, String> colunaTipo;
     @FXML public TableColumn<TabelaAprova, String> colunaTotalDeHoras;
     @FXML public TableColumn<TabelaAprova, CheckBox> colunaSelecione;
-
     // Button
     @FXML public Button btnRegistrarHora;
     @FXML public Button btnConsultar;
@@ -49,6 +48,7 @@ public class AprovaHora implements Initializable {
     @FXML public Button btnReprovar;
     @FXML public Button btnCadastra;
     @FXML public Button btnEdita;
+    @FXML public Button btnConsultar1;
 
     // ChoiceBox
     @FXML public ChoiceBox campoEscolhaEquipe;
@@ -156,6 +156,9 @@ public class AprovaHora implements Initializable {
         colunaTotalDeHoras.setCellValueFactory(new PropertyValueFactory<TabelaAprova, String>("totalDeHoras"));
         colunaSelecione.setCellValueFactory(new PropertyValueFactory<TabelaAprova, CheckBox>("selecione"));
 
+        if (usuario.getCargo().equals(TiposDeUsuario.RH)){
+            btnConsultar1.setVisible(true);
+        }
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }
 }

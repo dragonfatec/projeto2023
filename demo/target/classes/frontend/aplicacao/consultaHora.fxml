@@ -32,16 +32,12 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.ConsultaHora">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controllers.ConsultaHora">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="875.0" VBox.vgrow="ALWAYS">
             <children>
@@ -54,11 +50,18 @@
                 <Button fx:id="btnRegistrarHora" layoutY="283.0" mnemonicParsing="false" onAction="#irParaRegistraHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Registrar Hora" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
-                    </font></Button>
-                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE">
+                    </font>
+                </Button>
+                <Button fx:id="btnConsultar1" layoutY="515.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="false">
                     <font>
                         <Font size="24.0" />
-                    </font></Button>
+                    </font>
+                </Button>
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_registraHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="true">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
                 <Label alignment="CENTER" layoutY="83.0" prefHeight="30.0" prefWidth="368.0" text="SELECIONE O QUE DESEJA:" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
@@ -77,11 +80,23 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-            <Button fx:id="btnAprovaHora" layoutY="435.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Aprovar Hora" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
+                <Button fx:id="btnAprovaHora" layoutY="435.0" mnemonicParsing="false" onAction="#irParaAprovaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Aprovar Hora" textFill="WHITE">
+                   <font>
+                      <Font size="24.0" />
+                   </font>
+                </Button>
+                <Button fx:id="btnCadastra" layoutY="283.0" mnemonicParsing="false" onAction="#mudarParaCadastra" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Cadastro" textFill="WHITE" visible="false">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnEdita" layoutY="361.0" mnemonicParsing="false" onAction="#mudarParaEdita" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_aprovaHora.css" text="Área de Edição" textFill="WHITE" visible="false">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+            <ChoiceBox fx:id="campoSelecionaUsuario" layoutX="439.0" layoutY="35.0" onAction="#mudarUsuario" prefWidth="150.0" visible="false" />
+            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#generateCsv" text="Exportar CSV" visible="false"/>
             </children>
         </AnchorPane>
     </children>

@@ -60,7 +60,8 @@
                 <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" onAction="#irParaConsultaHora" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_registraHora.css" text="Consultar Minhas Horas" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
-                    </font></Button>
+                    </font>
+                </Button>
                 <DatePicker fx:id="dataInicio" layoutX="603.0" layoutY="116.0" prefHeight="41.0" prefWidth="257.0" />
                 <TextArea fx:id="campoJustificativa" layoutX="494.0" layoutY="327.0" prefHeight="76.0" prefWidth="700.0" promptText="Ex: Foi necessário mais tempo para  o layout" />
                 <Label layoutX="742.0" layoutY="451.0" text="Tipo" textAlignment="CENTER">
