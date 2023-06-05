@@ -53,12 +53,17 @@ SELECT matricula, nome FROM usuario
 LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usario.matricula
 LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe
 
-SELECT CASE WHEN equipe.nome_equipe = 'DRAGONS' THEN '1' ELSE '2' END AS prioridade, 
-	   usuario.nome 
-	   FROM usuario 
-	   LEFT JOIN equipe_usuario ON usuario.matricula = equipe_usuario.matricula
+  
+SELECT CASE WHEN tabela.nome_equipe = 'DRAGONS' THEN '1' ELSE '2' END AS prioridade, * FROM 
+(SELECT DISTINCT  
+	   usuario.nome,
+	   usuario.matricula,
+ 	   equipe.nome_equipe
+	   FROM usuario
+	   LEFT JOIN equipe_usuario ON equipe_usuario.matricula = usuario.matricula
 	   LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe 
-	   ORDER BY prioridade,nome
+	   ) AS tabela
+	   ORDER BY prioridade,tabela.nome 
 	   
 SELECT 
 	CASE WHEN equipe.nome_equipe = 'DRAGONS' THEN 1 ELSE 2 END AS prioridade,
@@ -66,10 +71,31 @@ SELECT
 	cliente.responsavel
 FROM 
 	cliente
-LEFT JOIN equipe_cliente ON cliente.id_cliente = equipe_cliente.id_cliente
-LEFT JOIN equipe ON equipe.id_equipe = equipe_cliente.id_equipe
+LEFT JOIN (SELECT * FROM equipe_cliente WHERE id_equipe = 1) AS cl ON cl.id_cliente = cliente.id_cliente
+LEFT JOIN equipe ON equipe.id_equipe = cl.id_equipe
 ORDER BY
 	prioridade
+
+
+
+SELECT   
+	   CASE WHEN equipe.nome_equipe = 'DRAGONS' THEN '1' ELSE '2' END AS prioridade,
+	   usuario.nome,
+	   usuario.matricula,
+ 	   equipe.nome_equipe
+	   FROM usuario
+	   LEFT JOIN (SELECT * FROM equipe_usuario WHERE id_equipe = 2) AS eq ON eq.matricula = usuario.matricula
+	   LEFT JOIN equipe ON equipe.id_equipe = eq.id_equipe
+	   
+
+
+
+
+
+
+
+
+
 
 
 
