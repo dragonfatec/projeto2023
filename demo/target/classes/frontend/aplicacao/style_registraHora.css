@@ -1,0 +1,31 @@
+.button {
+    -fx-background-color: #6ac3d9;
+}
+
+#btnRegistrarHora {
+    -fx-background-color: #55a7bb;
+}
+
+#btnConfirmar {
+    -fx-background-color: #cdf0a3;
+    -fx-text-fill: green;
+    -fx-border-radius: 5;
+}
+
+#btnCancelar {
+    -fx-background-color: #f5a5a5;
+    -fx-text-fill: red;
+    -fx-border-radius: 5;
+}
+
+#btnEntrar {
+    -fx-background-color: rgb(0, 111, 145);
+    -fx-text-fill: rgb(255, 255, 255);
+    /*
+    BOTÃO BRANCO
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-text-fill: #377888;
+    */
+    -fx-font-weight: bold;
+}
+
