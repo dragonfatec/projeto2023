@@ -230,16 +230,17 @@ public class ConnectionFactory {
     public ArrayList<TabelaCliente> getTabelaCliente(String nomeEquipe){
         ArrayList<TabelaCliente> list = new ArrayList<>();
         String sql = String.format("""
-                SELECT  
-                  	CASE WHEN equipe.nome_equipe = '%s' THEN 1 ELSE 2 END AS prioridade, 
-                    cliente.empresa, 
-                    cliente.responsavel 
-                FROM 
+                SELECT
+                   	CASE WHEN equipe.nome_equipe = '%s' THEN 1 ELSE 2 END AS prioridade,
+                    cliente.empresa,
+                    cliente.responsavel
+                FROM
                     cliente
-                LEFT JOIN equipe_cliente ON cliente.id_cliente = equipe_cliente.id_cliente 
-                LEFT JOIN equipe ON equipe.id_equipe = equipe_cliente.id_equipe 
-                ORDER BY 
-                    prioridade""",nomeEquipe);
+                LEFT JOIN (SELECT * FROM equipe_cliente WHERE id_equipe = %s) AS cl ON cl.id_cliente = cliente.id_cliente
+                LEFT JOIN equipe ON equipe.id_equipe = cl.id_equipe
+                ORDER BY
+                    prioridade
+                              """,nomeEquipe, getIdEquipe(nomeEquipe));
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
@@ -261,13 +262,14 @@ public class ConnectionFactory {
     }
     public ArrayList<TabelaUsuario> getTabelaUsuario(String nomeEquipe){
         ArrayList<TabelaUsuario> list = new ArrayList<>();
-        String sql =String.format("SELECT DISTINCT CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
-                                    "usuario.nome, " +
-                                    "usuario.matricula " +
-                                    "FROM usuario " +
-                                    "LEFT JOIN equipe_usuario ON usuario.matricula = equipe_usuario.matricula " +
-                                    "LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe " +
-                                    "ORDER BY prioridade,nome", nomeEquipe.toUpperCase());
+        String sql =String.format("SELECT " +
+                "CASE WHEN equipe.nome_equipe = '%s' THEN '1' ELSE '2' END AS prioridade, " +
+                "usuario.nome, " +
+                "usuario.matricula, " +
+                "equipe.nome_equipe " +
+                "FROM usuario " +
+                "LEFT JOIN (SELECT * FROM equipe_usuario WHERE id_equipe = %s) AS eq ON eq.matricula = usuario.matricula " +
+                "LEFT JOIN equipe ON equipe.id_equipe = eq.id_equipe ORDER BY prioridade ",nomeEquipe.toUpperCase(), getIdEquipe(nomeEquipe));
         try {
             PreparedStatement pr = conn.prepareStatement(sql);
             ResultSet rs = pr.executeQuery();
