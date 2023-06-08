@@ -5,6 +5,7 @@ import backend.usuario.TiposDeUsuario;
 import backend.usuario.Usuario;
 import database.conexao.ConnectionFactory;
 import frontend.aplicacao.App;
+import frontend.util.Alerts;
 import frontend.util.NomesArquivosFXML;
 import frontend.util.Tabela;
 import frontend.util.VerificaAcesso;
@@ -82,9 +83,11 @@ public class ConsultaHora implements Initializable {
                 bw.write(info);
                 bw.newLine();
             }
+            Alerts.showAlert("Sucesso!", null, "O arquivo foi exportado com sucesso!\nPasta:  "+caminhoDeOrigem, Alert.AlertType.INFORMATION);
         }
         catch (IOException e){
             System.out.println("Error writing: " + e.getMessage());
+            Alerts.showAlert("Erro", null, "Não foi possivel exportar o arquivo", Alert.AlertType.ERROR);
         }
     }
 

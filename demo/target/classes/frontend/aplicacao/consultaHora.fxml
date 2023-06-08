@@ -52,12 +52,12 @@
                         <Font size="24.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnConsultar1" layoutY="515.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="false">
+                <Button fx:id="btnConsultar1" layoutY="515.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" stylesheets="@style_consultaHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="false">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" stylesheets="@style_registraHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="true">
+                <Button fx:id="btnConsultar" layoutY="361.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="368.0" style="-fx-background-color: #009fc3;" stylesheets="@style_registraHora.css" text="Consultar Minhas Horas" textFill="WHITE" visible="true">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -95,8 +95,8 @@
                         <Font size="24.0" />
                     </font>
                 </Button>
-            <ChoiceBox fx:id="campoSelecionaUsuario" layoutX="439.0" layoutY="35.0" onAction="#mudarUsuario" prefWidth="150.0" visible="false" />
-            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#generateCsv" text="Exportar CSV" visible="false"/>
+            <ChoiceBox fx:id="campoSelecionaUsuario" layoutX="439.0" layoutY="35.0" onAction="#mudarUsuario" prefWidth="180.0" prefHeight="40.0" visible="false" />
+            <Button fx:id="exportExcel" layoutX="1064.0" layoutY="40.0" mnemonicParsing="false" onAction="#generateCsv" text="Exportar CSV" visible="false" />
             </children>
         </AnchorPane>
     </children>
