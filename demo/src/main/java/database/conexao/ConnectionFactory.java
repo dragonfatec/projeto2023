@@ -126,7 +126,7 @@ public class ConnectionFactory {
                                     "LEFT JOIN usuario ON usuario.matricula = hora.matricula " +
                                     "LEFT JOIN cliente ON cliente.id_cliente = hora.id_cliente " +
                                     "LEFT JOIN equipe ON equipe.id_equipe = hora.id_equipe " +
-                                    "WHERE usuario.matricula = '12345' " +
+                                    "WHERE usuario.matricula = '%s' " +
                                     "ORDER BY hora.data_hora_inicial", matricula);
         ArrayList<String> list = new ArrayList<>();
         try {
@@ -425,6 +425,8 @@ public class ConnectionFactory {
             case "equipe-matriculas":
                 sql = "SELECT nome_equipe FROM equipe;";
                 break;
+            case "equipe-usuario":
+                sql = String.format("SELECT equipe.nome_equipe FROM equipe_usuario LEFT JOIN equipe ON equipe.id_equipe = equipe_usuario.id_equipe LEFT JOIN usuario ON usuario.matricula = equipe_usuario.matricula WHERE usuario.matricula = '%s'",id);
         }
 
         ArrayList<String> lista = new ArrayList<>();

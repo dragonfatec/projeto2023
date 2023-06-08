@@ -161,7 +161,7 @@ public class RegistraHora implements Initializable {
         horasFim.setItems(FXCollections.observableArrayList(horasLista));
 
         // Preenchendo o campo equipe
-        campoEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe"));
+        campoEquipe.getItems().addAll(conn.getListaColuna(usuario.getMatricula(),"equipe-usuario"));
 
         textoNomeUsuario.setText("Olá "+ usuario.getNome() + "!");
     }
